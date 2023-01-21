@@ -10,7 +10,7 @@ const StyledAppBar = styled(AppBar)(({ theme }) => ({
     width: '100%',
     backgroundColor: 'transparent',
     boxShadow: 'none',
-    padding: '2rem 4rem',
+    padding: '2rem 3rem',
     background: 'linear-gradient(180deg, rgba(23, 96, 118, 0.64) 0%, rgba(23, 96, 118, 0) 100%)',
     backdropFilter: 'blur(2px)'
 }));
@@ -25,7 +25,7 @@ function shadow({ trigger }: shadow) {
     };
 }
 
-const dir = ['GIỚI THIỆU', 'Y HỌC \n CỔ TRUYỀN', 'THUỐC', 'TIM MẠCH', 'BỆNH HỌC', 'THÔNG TIN\nY DƯỢC', 'PHÁP LUẬT\nY TẾ', 'GÓC BẠN ĐỌC'];
+const dir = ['giới thiệu', 'y học\ncổ truyền', 'thuốc', 'tim mạch', 'bệnh học', 'thông tin\ny dược', 'pháp luật\ny tế', 'góc bạn đọc'];
 
 const NavBar = () => {
     const trigger = useScrollTrigger({
@@ -35,14 +35,14 @@ const NavBar = () => {
 
     return (
         <StyledAppBar style={shadow({ trigger })}>
-            <Toolbar>
+            <Toolbar sx={{ padding: '0px !important'}}>
                 <Image src={logo} alt="logo" />
-                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%', margin: '0 3.5rem' }}>
+                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%', margin: '1rem' }}>
                     {dir.map((item, i) => (
                         <Typography
                             sx={{
-                                width: '12rem',
-                                fontSize: '1.4rem',
+                                textTransform: 'uppercase',
+                                fontSize: '0.9rem',
                                 whiteSpace: 'pre-line',
                                 textAlign: 'center',
                                 flex: '1'

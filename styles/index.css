@@ -5,4 +5,13 @@
     --palette-04: #28a5cb;
     --palette-05: #176076;
     --palette-06: #071b21;
+    --text-h1: 64px;
+    --text-h2: 50px;
+    --text-h3: 40px;
+    --text-h4: 32px;
+    --text-h5: 24px;
+    --text-h6: 20px;
+    --text-para: 1rem;
+    --text-small: 12px;
+    --text-tiny: 10px;
 }

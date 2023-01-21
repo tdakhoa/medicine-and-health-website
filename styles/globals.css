@@ -17,10 +17,10 @@ body,
 }
 
 ::-webkit-scrollbar {
-    background-color: var(--palette-01);
+    background-color: var(--palette-06);
     width: 0.2rem;
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: var(--palette-05);
+    background-color: var(--palette-02);
 }

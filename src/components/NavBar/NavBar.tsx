@@ -1,5 +1,5 @@
-import React from 'react';
-import { styled, Box, AppBar, Toolbar, useScrollTrigger, Typography } from '@mui/material';
+import React, { useState } from 'react';
+import { styled, Box, AppBar, Toolbar, useScrollTrigger, Typography, Menu, Grow } from '@mui/material';
 
 import Image from 'next/image';
 import logo from '../../../public/Logo.png';
@@ -9,9 +9,8 @@ const StyledAppBar = styled(AppBar)(({ theme }) => ({
     position: 'fixed',
     zIndex: '1000 !important',
     width: '100%',
-    backgroundColor: 'transparent',
     boxShadow: 'none',
-    padding: '1rem 3rem',
+    padding: '1.5rem 3rem',
     background: 'linear-gradient(180deg, rgba(23, 96, 118, 0.64) 0%, rgba(23, 96, 118, 0) 100%)',
     backdropFilter: 'blur(2px)',
     display: 'flex',
@@ -25,7 +24,8 @@ interface shadow {
 
 function shadow({ trigger }: shadow) {
     return {
-        boxShadow: `${trigger ? '5px 0px 27px -5px var(--black--color)' : 'none'}`
+        boxShadow: `${trigger ? '4px 4px 25px rgba(0, 0, 0, 0.35)' : 'none'}`,
+        backgroundColor: `${trigger ? 'var(--palette-02)' : 'transparent'}`
     };
 }
 const NavBar = () => {
@@ -33,9 +33,9 @@ const NavBar = () => {
         disableHysteresis: true,
         threshold: 50
     });
-
+    console.log(trigger);
     return (
-        <StyledAppBar style={shadow({ trigger })}>
+        <StyledAppBar sx={shadow({ trigger })}>
             <Image src={logo} alt="logo" width={40} />
             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'stretch', width: '100%', padding: '0rem 3rem' }}>
                 {dir.map((item, i) => (
@@ -86,10 +86,30 @@ interface NavItemProps {
     icon?: React.ReactNode;
 }
 const NavItem = ({ content = '', icon, ...props }: NavItemProps) => {
+    const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+    const [hovering, setHovering] = useState<null | String>('giới thiệu');
+    const open = Boolean(anchorEl);
+    const handleOpen = (event: React.MouseEvent<HTMLElement>) => {
+        setAnchorEl(event.currentTarget);
+        setHovering(event.currentTarget.textContent);
+    };
+    const handleClose = (event: React.MouseEvent<HTMLElement>) => {
+        if (event.currentTarget.textContent !== hovering)
+    };
+
     return (
         <StyledNavItem {...props}>
-            <Typography>{content}</Typography>
+            <Typography onMouseEnter={handleOpen} onMouseOut={handleClose}>{content}</Typography>
             {icon}
+            <Menu keepMounted anchorEl={anchorEl} open={open}>
+                {['Thuốc cấm lưu hành', 'Thuốc khác'].map((userItem, idx) => (
+                    <Grow key={idx} in={open} {...(open ? { timeout: 600 * idx } : {})}>
+                        <Typography sx={{ padding: 10, backgroundColor: 'black', color: 'inherit', position: 'absolute', bottom: '0' }}>
+                            {userItem}
+                        </Typography>
+                    </Grow>
+                ))}
+            </Menu>
         </StyledNavItem>
     );
 };

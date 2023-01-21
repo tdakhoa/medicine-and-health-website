@@ -10,13 +10,13 @@ const Hero = () => {
                 position: 'relative',
                 zIndex: 0,
                 width: '100%',
-                height: '90vh'
+                height: '900vh'
             }}>
             <Box
                 sx={{
                     position: 'absolute',
                     top: '0',
-                    background: 'linear-gradient(70deg, transparent 50%, rgba(113, 191, 218, 0.6) 50%)',
+                    background: '#fff',
                     width: '90%',
                     height: 'inherit'
                 }}></Box>
@@ -25,7 +25,7 @@ const Hero = () => {
                     position: 'absolute',
                     top: '0',
                     right: '0',
-                    background: 'rgba(113, 191, 218, 0.6)',
+                    background: '#fff',
                     width: '10%',
                     height: 'inherit'
                 }}></Box>

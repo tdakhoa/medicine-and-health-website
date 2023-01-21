@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 
-import { Navbar, Hero, Diseases, Heart, Medical, Meds, News } from '../components';
+import { NavBar, Hero, Diseases, Heart, Medical, Meds, News } from '../components';
 
 export default function Home() {
     return (
@@ -12,7 +12,7 @@ export default function Home() {
             </Head>
 
             <main>
-                <Navbar />
+                <NavBar />
                 <Hero />
                 <Diseases />
                 <Heart />

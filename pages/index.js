@@ -1,9 +1,9 @@
 import React from 'react';
 import Head from 'next/head';
+import Home from '../src/modules/Home/Home';
 
-import { NavBar, Hero, Diseases, Heart, Medical, Meds, News } from '../components';
 
-export default function Home() {
+export default function HomePage() {
     return (
         <div>
             <Head>
@@ -12,13 +12,7 @@ export default function Home() {
             </Head>
 
             <main>
-                <NavBar />
-                <Hero />
-                <Diseases />
-                <Heart />
-                <Medical />
-                <Meds />
-                <News />
+                <Home />
             </main>
         </div>
     );

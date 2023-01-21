@@ -2,11 +2,12 @@ import React from 'react';
 import { styled, Box, AppBar, Toolbar, useScrollTrigger, Typography } from '@mui/material';
 
 import Image from 'next/image';
-import logo from '../public/Logo.png';
+import logo from '../../../public/Logo.png';
 import { SearchOutlined } from '@mui/icons-material';
 
 const StyledAppBar = styled(AppBar)(({ theme }) => ({
     position: 'fixed',
+    zIndex: '1000 !important',
     width: '100%',
     backgroundColor: 'transparent',
     boxShadow: 'none',

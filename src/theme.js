@@ -12,6 +12,15 @@ const theme = createTheme({
             main: '#fff'
         },
         mode: 'light'
+    },
+    components: {
+        MuiTypography: {
+            styleOverrides: {
+                root: {
+                    fontFamily: 'Nunito'
+                }
+            }
+        }
     }
 });
 

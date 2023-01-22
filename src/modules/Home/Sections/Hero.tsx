@@ -4,6 +4,7 @@ import { ArrowDownwardOutlined } from "@mui/icons-material";
 import { Button, Carousel, Typography } from "../../../components";
 
 const Hero = () => {
+<<<<<<< HEAD
     return (
         <Box sx={{ position: "relative", width: "100%", height: "90vh" }}>
             <Overlay>
@@ -34,6 +35,40 @@ const Hero = () => {
             <Box sx={{ position: "absolute", zIndex: -999, height: "inherit" }}>
                 <Carousel listData={dataList} />
             </Box>
+=======
+  return (
+    <Box sx={{ position: "relative", width: "100%", height: "90vh" }}>
+      <Overlay>
+        <Box className="hero-introduction">
+          <Typography size="h1" color="white" weight="extraBold">
+            THUỐC
+          </Typography>
+          <Typography size="h2" color="white" weight="extraBold">
+            VÀ
+          </Typography>
+          <Typography size="h1" color="white" weight="extraBold">
+            SỨC KHOẺ
+          </Typography>
+          <Typography size="p" color="white" weight="light">
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy text
+            ever since the 1500s, when an unknown printer took a galley of type
+            and scrambled it to make a type specimen book.
+          </Typography>
+          <Button
+            bgColor="primary"
+            sx={{ marginTop: "1.4rem" }}
+            endIcon={
+              <ArrowDownwardOutlined
+                sx={{ fontSize: "1.2rem", paddingLeft: "0.2rem" }}
+              />
+            }
+          >
+            <Typography size="p" color="inherit" weight="medium">
+              Đọc thêm
+            </Typography>
+          </Button>
+>>>>>>> 2b0105034f352842fbcaf2ed4a6098cee735a1f4
         </Box>
     );
 };

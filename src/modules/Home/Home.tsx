@@ -4,7 +4,7 @@ import Hero from "./Sections/Hero";
 import NormalSection from "./Sections/Normal";
 import Meds from "./Sections/Meds";
 import News from "./Sections/News";
-import Diseases from "./Sections/Diseases";
+import Alternate from "./Sections/Alternate";
 import { NavBar } from "../../components";
 
 const Home = () => {
@@ -14,7 +14,7 @@ const Home = () => {
       <Hero />
       <News />
       <NormalSection />
-      <Diseases />
+      <Alternate />
       <Heart />
       <Meds />
     </>

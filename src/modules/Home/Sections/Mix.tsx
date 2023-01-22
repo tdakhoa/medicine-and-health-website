@@ -21,7 +21,7 @@ const Mix = () => {
       <AlternateCard
         direction="row"
         sx={{
-          height: 300,
+          minHeight: 300,
           marginBottom: "3rem",
         }}
         img={cardData[0].img}

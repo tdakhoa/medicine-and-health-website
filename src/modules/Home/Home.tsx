@@ -2,7 +2,7 @@ import React from "react";
 import Heart from "./Sections/Heart";
 import Hero from "./Sections/Hero";
 import NormalSection from "./Sections/Normal";
-import Meds from "./Sections/Meds";
+import Mix from "./Sections/Mix";
 import News from "./Sections/News";
 import Alternate from "./Sections/Alternate";
 import { NavBar } from "../../components";
@@ -16,7 +16,7 @@ const Home = () => {
       <NormalSection />
       <Alternate />
       <Heart />
-      <Meds />
+      <Mix />
     </>
   );
 };

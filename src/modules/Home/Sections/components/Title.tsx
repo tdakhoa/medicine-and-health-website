@@ -29,15 +29,18 @@ interface TitleProps {
 const Title = ({ text, link = "#", sx = {}, ...props }: TitleProps) => {
   return (
     <Box sx={StyleTitle}>
-      <Typography text={text} size="h2" weight="bold" color="secondary" />
+      <Typography size="h2" weight="bold" color="secondary">
+        {text}
+      </Typography>
       <Link href={link} underline="none">
         <Typography
-          text="see all posts"
           size="p"
           weight="semiBold"
           color="secondary"
           sx={StyleSeeAll}
-        />
+        >
+          see all posts
+        </Typography>
       </Link>
       <Box sx={StyleDivider}></Box>
     </Box>

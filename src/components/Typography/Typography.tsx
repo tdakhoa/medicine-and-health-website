@@ -51,6 +51,7 @@ interface TypographyProps {
   size?: string;
   weight?: string;
   sx?: object;
+  children: React.ReactNode;
 }
 
 const Typography = ({
@@ -59,18 +60,18 @@ const Typography = ({
   size = "p",
   weight = "regular",
   sx = {},
+  children,
   ...props
 }: TypographyProps) => {
   return (
     <StyledTypography
       color={color}
-      text={text}
       size={size}
       weight={weight}
       sx={sx}
       {...props}
     >
-      {text}
+      {children}
     </StyledTypography>
   );
 };

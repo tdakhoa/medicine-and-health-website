@@ -50,6 +50,7 @@ interface TypographyProps {
   text?: string;
   size?: string;
   weight?: string;
+  sx?: object;
 }
 
 const Typography = ({
@@ -57,6 +58,7 @@ const Typography = ({
   text = "",
   size = "p",
   weight = "regular",
+  sx = {},
   ...props
 }: TypographyProps) => {
   return (
@@ -64,8 +66,9 @@ const Typography = ({
       color={color}
       text={text}
       size={size}
-      {...props}
       weight={weight}
+      sx={sx}
+      {...props}
     >
       {text}
     </StyledTypography>

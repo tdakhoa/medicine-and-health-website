@@ -19,6 +19,7 @@ const StyleTitle = {
   flexDirection: "column",
   alignItems: "center",
   textTransform: "uppercase",
+  marginBottom: "3rem",
 };
 
 interface TitleProps {
@@ -39,7 +40,7 @@ const Title = ({ text, link = "#", sx = {}, ...props }: TitleProps) => {
           color="secondary"
           sx={StyleSeeAll}
         >
-          see all posts
+          xem tất cả
         </Typography>
       </Link>
       <Box sx={StyleDivider}></Box>

@@ -1,22 +1,24 @@
-import React from 'react';
-import { styled, Box, AppBar, Toolbar, useScrollTrigger, Typography } from '@mui/material';
+import React, { useState } from 'react';
+import { styled, Box, AppBar, useScrollTrigger, Typography, Grow } from '@mui/material';
 
 import Image from 'next/image';
 import logo from '../../../public/Logo.png';
 import { SearchOutlined } from '@mui/icons-material';
+import PopupState, { bindPopover, bindHover } from 'material-ui-popup-state';
+import HoverPopover from 'material-ui-popup-state/HoverPopover';
 
 const StyledAppBar = styled(AppBar)(({ theme }) => ({
     position: 'fixed',
     zIndex: '1000 !important',
     width: '100%',
-    backgroundColor: 'transparent',
     boxShadow: 'none',
-    padding: '1rem 3rem',
+    padding: '1.5rem 3rem',
     background: 'linear-gradient(180deg, rgba(23, 96, 118, 0.64) 0%, rgba(23, 96, 118, 0) 100%)',
     backdropFilter: 'blur(2px)',
     display: 'flex',
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
+    justifyContent: 'space-between'
 }));
 
 interface shadow {
@@ -25,7 +27,8 @@ interface shadow {
 
 function shadow({ trigger }: shadow) {
     return {
-        boxShadow: `${trigger ? '5px 0px 27px -5px var(--black--color)' : 'none'}`
+        boxShadow: `${trigger ? '4px 4px 25px rgba(0, 0, 0, 0.35)' : 'none'}`,
+        backgroundColor: `${trigger ? 'var(--palette-02)' : 'transparent'}`
     };
 }
 const NavBar = () => {
@@ -33,44 +36,70 @@ const NavBar = () => {
         disableHysteresis: true,
         threshold: 50
     });
-
     return (
-        <StyledAppBar style={shadow({ trigger })}>
+        <StyledAppBar sx={shadow({ trigger })}>
             <Image src={logo} alt="logo" width={40} />
-            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'stretch', width: '100%', padding: '0rem 3rem' }}>
+            <Box sx={{ display: 'flex', alignItems: 'stretch', width: '100%', padding: '0rem 3rem' }}>
                 {dir.map((item, i) => (
-                    <NavItem key={i} content={item}></NavItem>
+                    <NavItem trigger={trigger} key={i} content={item}></NavItem>
                 ))}
             </Box>
-            <NavItem icon={<SearchOutlined sx={{ marginTop: '0.8rem' }} />}></NavItem>
+
+            <NavItem trigger={trigger} icon={<SearchOutlined />}></NavItem>
         </StyledAppBar>
     );
 };
 export default NavBar;
 
-const dir = ['giới thiệu', 'y học\ncổ truyền', 'thuốc', 'tim mạch', 'bệnh học', 'thông tin\ny dược', 'pháp luật\ny tế', 'góc bạn đọc'];
+const dir = [
+    { title: 'giới thiệu' },
+    { title: 'y học\ncổ truyền' },
+    { title: 'thuốc', items: ['thuốc', 'thuốc cấm lưu hành'] },
+    { title: 'tim mạch' },
+    {
+        title: 'bệnh học',
+        items: [
+            'nha khoa',
+            'nhi khoa',
+            'sản khoa',
+            'nội tiết',
+            'ung thư',
+            'tai - mũi - họng',
+            'cơ - xương khớp',
+            'tâm thần',
+            'tiêu hóa',
+            'dinh dưỡng',
+            'làm đẹp',
+            'thực phẩm chức năng'
+        ]
+    },
+    { title: 'thông tin\ny dược' },
+    { title: 'pháp luật\ny tế' },
+    { title: 'góc bạn đọc' }
+];
 
 const StyledNavItem = styled(Box)(({ theme }) => ({
     position: 'relative',
     cursor: 'pointer',
     flexGrow: '1',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
     '& .MuiTypography-root': {
         textTransform: 'uppercase',
         fontSize: '0.9rem',
         whiteSpace: 'pre-line',
         textAlign: 'center',
+        height: '100%',
         display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '100%'
+        alignItems: 'center'
     },
     '&:before': {
         content: '""',
         position: 'absolute',
-        bottom: '-10px',
+        bottom: '-24px',
         width: '100%',
         height: 4,
-        backgroundColor: 'white',
         transform: 'scaleX(0)',
         transformOrigin: 'center',
         transition: 'all .5s ease-in-out',
@@ -78,18 +107,71 @@ const StyledNavItem = styled(Box)(({ theme }) => ({
     },
     '&:hover::before': {
         transform: 'scaleX(1)'
+    },
+    '&:hover': {
+        '& .MuiBox-root': {
+            visibility: 'visible',
+            transform: 'scaleX(1)',
+            opacity: '1'
+        }
     }
 }));
 
-interface NavItemProps {
-    content?: string;
-    icon?: React.ReactNode;
+interface Content {
+    title?: string;
+    items?: string[];
 }
-const NavItem = ({ content = '', icon, ...props }: NavItemProps) => {
+interface NavItemProps {
+    content?: Content;
+    icon?: React.ReactNode;
+    trigger: Boolean;
+}
+const NavItem = ({ content = { title: '' }, icon, trigger, ...props }: NavItemProps) => {
+    const dropdown = content.title == 'thuốc' || content.title == 'bệnh học';
+    const len = content.items?.length || 0;
     return (
-        <StyledNavItem {...props}>
-            <Typography>{content}</Typography>
-            {icon}
-        </StyledNavItem>
+        <>
+            <StyledNavItem
+                sx={{
+                    '&:before': {
+                        bottom: icon ? '-34px' : '-24px',
+                        backgroundColor: trigger ? 'var(--palette-03)' : 'var(--palette-06)'
+                    }
+                }}
+                {...props}>
+                <Typography>
+                    {content.title}
+                    {icon}
+                </Typography>
+                {dropdown ? (
+                    <Box
+                        sx={{
+                            position: 'absolute',
+                            marginTop: '4.2rem',
+                            minWidth: '14vw',
+                            left: 0,
+                            top: 0,
+                            visibility: 'hidden',
+                            opacity: 0,
+                            transform: 'scaleX(0.3)',
+                            transformOrigin: 'center',
+                            transition: 'all .5s ease-in-out'
+                        }}>
+                        {content.items?.map((item, i) => (
+                            <Box
+                                sx={{
+                                    padding: '1rem',
+                                    backgroundColor: trigger ? 'var(--palette-03)' : 'transaprent',
+                                    borderRadius: i == len - 1 ? '0px 0px 6px 6px' : 'none'
+                                }}>
+                                <Typography sx={{ textTransform: 'uppercase' }}>{item}</Typography>
+                            </Box>
+                        ))}
+                    </Box>
+                ) : (
+                    <></>
+                )}
+            </StyledNavItem>
+        </>
     );
 };

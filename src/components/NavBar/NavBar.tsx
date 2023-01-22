@@ -99,7 +99,7 @@ const StyledNavItem = styled(Box)(({ theme }) => ({
         position: 'absolute',
         bottom: '-24px',
         width: '100%',
-        height: 5,
+        height: 4,
         transform: 'scaleX(0)',
         transformOrigin: 'center',
         transition: 'all .5s ease-in-out',
@@ -140,7 +140,7 @@ const NavItem = ({ content = { title: '' }, icon, trigger, ...props }: NavItemPr
             <StyledNavItem
                 sx={{
                     '&:before': {
-                        bottom: icon ? '-22px' : '-13px',
+                        bottom: icon ? '-22px' : '-14px',
                         backgroundColor: trigger ? 'var(--palette-03)' : 'var(--palette-06)'
                     }
                 }}
@@ -164,7 +164,7 @@ const NavItem = ({ content = { title: '' }, icon, trigger, ...props }: NavItemPr
                                 key={i}
                                 sx={{
                                     display: 'none',
-                                    padding: '0.8rem 1rem',
+                                    padding: '0.6rem 1rem',
                                     backgroundColor: trigger ? 'var(--palette-03)' : 'var(--palette-06)',
                                     color: trigger ? 'var(--palette-06)' : 'var(--palette-01)',
                                     borderRadius: i == len - 1 ? '0px 0px 6px 6px' : i == 0 ? '0px 6px 0px 0px' : 'none',
@@ -178,7 +178,7 @@ const NavItem = ({ content = { title: '' }, icon, trigger, ...props }: NavItemPr
                                     transformOrigin: 'top center',
                                     opacity: 0
                                 }}>
-                                <Typography sx={{ textTransform: 'uppercase' }}>{item}</Typography>
+                                <Typography sx={{ textAlign: 'left !important', textTransform: 'uppercase' }}>{item}</Typography>
                             </Box>
                         ))}
                     </Box>

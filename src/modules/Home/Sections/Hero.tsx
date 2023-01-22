@@ -1,7 +1,7 @@
 import { Typography, Box } from '@mui/material';
 import React from 'react';
 
-import heroImg from '../public/imgs/Hero1.png';
+import heroImg from '../../../../public/imgs/Hero1.png';
 
 const Hero = () => {
     return (

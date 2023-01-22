@@ -1,7 +1,7 @@
 import React from "react";
 import Heart from "./Sections/Heart";
 import Hero from "./Sections/Hero";
-import Medical from "./Sections/Medical";
+import NormalSection from "./Sections/Normal";
 import Meds from "./Sections/Meds";
 import News from "./Sections/News";
 import Diseases from "./Sections/Diseases";
@@ -11,12 +11,12 @@ const Home = () => {
   return (
     <>
       <NavBar />
+      <News />
+      <NormalSection />
       <Hero />
       <Diseases />
       <Heart />
-      <Medical />
       <Meds />
-      <News />
     </>
   );
 };

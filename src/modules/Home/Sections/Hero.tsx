@@ -5,7 +5,7 @@ import { Button, Carousel, Typography } from "../../../components";
 
 const Hero = () => {
   return (
-    <Box sx={{ position: "relative", width: "100%", height: "120vh" }}>
+    <Box sx={{ position: "relative", width: "100%", height: "90vh" }}>
       <Overlay>
         <Box className="hero-introduction">
           <Typography size="h1" color="white" weight="extraBold">

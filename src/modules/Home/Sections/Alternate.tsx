@@ -14,7 +14,7 @@ const AlternateSection = () => {
         <AlternateCard
           direction={id % 2 == 1 ? "row" : "row-reverse"}
           sx={{
-            height: 300,
+            minHeight: 300,
             marginBottom: "3rem",
           }}
           img={data.img}

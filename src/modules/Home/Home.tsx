@@ -11,9 +11,9 @@ const Home = () => {
   return (
     <>
       <NavBar />
+      <Hero />
       <News />
       <NormalSection />
-      <Hero />
       <Diseases />
       <Heart />
       <Meds />

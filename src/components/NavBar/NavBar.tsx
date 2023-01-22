@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { styled, Box, AppBar, useScrollTrigger, Typography, Grow } from '@mui/material';
 
 import Image from 'next/image';
 import logo from '../../../public/Logo.png';
 import { SearchOutlined } from '@mui/icons-material';
-import PopupState, { bindPopover, bindHover } from 'material-ui-popup-state';
-import HoverPopover from 'material-ui-popup-state/HoverPopover';
 
 const StyledAppBar = styled(AppBar)(({ theme }) => ({
     position: 'fixed',
@@ -99,11 +97,11 @@ const StyledNavItem = styled(Box)(({ theme }) => ({
         position: 'absolute',
         bottom: '-24px',
         width: '100%',
-        height: 4,
+        height: 5,
         transform: 'scaleX(0)',
         transformOrigin: 'center',
         transition: 'all .5s ease-in-out',
-        borderRadius: '6px 6px 0px 0px'
+        borderRadius: '10px 10px 0px 0px'
     },
     '&:hover::before': {
         transform: 'scaleX(1)'
@@ -148,7 +146,7 @@ const NavItem = ({ content = { title: '' }, icon, trigger, ...props }: NavItemPr
                         sx={{
                             position: 'absolute',
                             marginTop: '4.2rem',
-                            minWidth: '14vw',
+                            minWidth: '15vw',
                             left: 0,
                             top: 0,
                             visibility: 'hidden',
@@ -160,7 +158,7 @@ const NavItem = ({ content = { title: '' }, icon, trigger, ...props }: NavItemPr
                         {content.items?.map((item, i) => (
                             <Box
                                 sx={{
-                                    padding: '1rem',
+                                    padding: '0.8rem 1rem',
                                     backgroundColor: trigger ? 'var(--palette-03)' : 'transaprent',
                                     borderRadius: i == len - 1 ? '0px 0px 6px 6px' : 'none'
                                 }}>

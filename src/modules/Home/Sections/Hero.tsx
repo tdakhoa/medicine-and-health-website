@@ -81,10 +81,11 @@ const imgLinks = [
 
 const CarouselItem = styled(Box)(({ theme }) => ({
   height: "100%",
-  "& .img": {
-    width: "100%",
-    height: "100%",
-    objectFit: "cover",
+  display: "flex",
+  alignItems: "stretch",
+  backgroundColor: "red",
+  "& img": {
+    objectFit: "cover !important",
   },
 }));
 

@@ -9,7 +9,7 @@ interface CarouselProps {
 
 const StyledCarousel = styled(NPMCarousel)(({ theme }) => ({
   height: "inherit",
-  "& .carousel-slider": {
+  "& .carousel-slider, .slider-wrapper, .slider, .slide": {
     height: "inherit",
   },
   "& .control-dots": {},
@@ -28,6 +28,7 @@ const Carousel = ({ listData, ...props }: CarouselProps) => {
       animationHandler="fade"
       swipeable={false}
       stopOnHover={false}
+      dynamicHeight={false}
     >
       {listData.map((data) => data)}
     </StyledCarousel>

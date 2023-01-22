@@ -11,7 +11,7 @@ const StyledAppBar = styled(AppBar)(({ theme }) => ({
     zIndex: '1000 !important',
     width: '100%',
     boxShadow: 'none',
-    padding: '0.8rem 3rem',
+    padding: '0 3rem',
     background: 'linear-gradient(180deg, rgba(23, 96, 118, 0.64) 0%, rgba(23, 96, 118, 0) 100%)',
     backdropFilter: 'blur(2px)',
     display: 'flex',
@@ -38,7 +38,7 @@ const NavBar = () => {
     return (
         <StyledAppBar sx={shadow({ trigger })}>
             <Image src={logo} alt="logo" width={40} />
-            <Box sx={{ display: 'flex', alignItems: 'stretch', width: '100%', padding: '0rem 3rem' }}>
+            <Box sx={{ display: 'flex', alignItems: 'stretch', width: '100%', padding: '0 3rem' }}>
                 {dir.map((item, i) => (
                     <NavItem trigger={trigger} key={i} content={item}></NavItem>
                 ))}
@@ -85,6 +85,7 @@ const StyledNavItem = styled(Box)(({ theme }) => ({
     alignItems: 'center',
     justifyContent: 'center',
     maxWidth: '10rem',
+    padding: '1rem 0',
     '& .MuiTypography-root': {
         textTransform: 'uppercase',
         fontSize: '0.9rem',
@@ -97,7 +98,6 @@ const StyledNavItem = styled(Box)(({ theme }) => ({
     '&:before': {
         content: '""',
         position: 'absolute',
-        bottom: '-24px',
         width: '100%',
         height: 4,
         transform: 'scaleX(0)',
@@ -140,7 +140,7 @@ const NavItem = ({ content = { title: '' }, icon, trigger, ...props }: NavItemPr
             <StyledNavItem
                 sx={{
                     '&:before': {
-                        bottom: icon ? '-22px' : '-14px',
+                        bottom: icon ? '-10px' : '0',
                         backgroundColor: trigger ? 'var(--palette-03)' : 'var(--palette-06)'
                     }
                 }}
@@ -154,7 +154,7 @@ const NavItem = ({ content = { title: '' }, icon, trigger, ...props }: NavItemPr
                         id="shadow"
                         sx={{
                             position: 'absolute',
-                            marginTop: '3.5rem',
+                            marginTop: '4.7rem',
                             minWidth: '15vw',
                             left: 0,
                             top: 0

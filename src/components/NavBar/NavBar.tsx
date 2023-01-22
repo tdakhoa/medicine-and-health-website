@@ -1,16 +1,17 @@
 import React from 'react';
-import { styled, Box, AppBar, useScrollTrigger, Typography, Grow } from '@mui/material';
-
+import Link from 'next/link';
 import Image from 'next/image';
-import logo from '../../../public/Logo.png';
+import { styled, Box, AppBar, useScrollTrigger, Typography, Grow } from '@mui/material';
 import { SearchOutlined } from '@mui/icons-material';
+
+import logo from '../../../public/Logo.png';
 
 const StyledAppBar = styled(AppBar)(({ theme }) => ({
     position: 'fixed',
     zIndex: '1000 !important',
     width: '100%',
     boxShadow: 'none',
-    padding: '1.5rem 3rem',
+    padding: '0.8rem 3rem',
     background: 'linear-gradient(180deg, rgba(23, 96, 118, 0.64) 0%, rgba(23, 96, 118, 0) 100%)',
     backdropFilter: 'blur(2px)',
     display: 'flex',
@@ -83,6 +84,7 @@ const StyledNavItem = styled(Box)(({ theme }) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    maxWidth: '10rem',
     '& .MuiTypography-root': {
         textTransform: 'uppercase',
         fontSize: '0.9rem',
@@ -108,9 +110,15 @@ const StyledNavItem = styled(Box)(({ theme }) => ({
     },
     '&:hover': {
         '& .MuiBox-root': {
-            visibility: 'visible',
-            transform: 'scaleX(1)',
-            opacity: '1'
+            display: 'block'
+        },
+        '& #shadow': {
+            animation: 'shadow 0.3s ease-in-out forwards',
+            animationDelay: `0.5s`,
+            '@keyframes shadow': {
+                '0%': { boxShadow: 'none' },
+                '100%': { boxShadow: '0px 15px 25px rgba(255, 255, 255, 0.35)' }
+            }
         }
     }
 }));
@@ -132,7 +140,7 @@ const NavItem = ({ content = { title: '' }, icon, trigger, ...props }: NavItemPr
             <StyledNavItem
                 sx={{
                     '&:before': {
-                        bottom: icon ? '-34px' : '-24px',
+                        bottom: icon ? '-22px' : '-13px',
                         backgroundColor: trigger ? 'var(--palette-03)' : 'var(--palette-06)'
                     }
                 }}
@@ -143,24 +151,32 @@ const NavItem = ({ content = { title: '' }, icon, trigger, ...props }: NavItemPr
                 </Typography>
                 {dropdown ? (
                     <Box
+                        id="shadow"
                         sx={{
                             position: 'absolute',
-                            marginTop: '4.2rem',
+                            marginTop: '3.5rem',
                             minWidth: '15vw',
                             left: 0,
-                            top: 0,
-                            visibility: 'hidden',
-                            opacity: 0,
-                            transform: 'scaleX(0.3)',
-                            transformOrigin: 'center',
-                            transition: 'all .5s ease-in-out'
+                            top: 0
                         }}>
                         {content.items?.map((item, i) => (
                             <Box
+                                key={i}
                                 sx={{
+                                    display: 'none',
                                     padding: '0.8rem 1rem',
-                                    backgroundColor: trigger ? 'var(--palette-03)' : 'transaprent',
-                                    borderRadius: i == len - 1 ? '0px 0px 6px 6px' : 'none'
+                                    backgroundColor: trigger ? 'var(--palette-03)' : 'var(--palette-06)',
+                                    color: trigger ? 'var(--palette-06)' : 'var(--palette-01)',
+                                    borderRadius: i == len - 1 ? '0px 0px 6px 6px' : i == 0 ? '0px 6px 0px 0px' : 'none',
+                                    animation: 'animate 0.3s ease-in-out forwards',
+                                    animationDelay: `${i * 0.05}s`,
+                                    '@keyframes animate': {
+                                        '0%': { transform: 'rotateX(-90deg)', opacity: 0 },
+                                        '50%': { transform: 'rotateX(20deg)' },
+                                        '100%': { transform: 'rotate(0deg)', opacity: 1 }
+                                    },
+                                    transformOrigin: 'top center',
+                                    opacity: 0
                                 }}>
                                 <Typography sx={{ textTransform: 'uppercase' }}>{item}</Typography>
                             </Box>

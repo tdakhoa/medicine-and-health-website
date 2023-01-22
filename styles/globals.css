@@ -17,10 +17,5 @@ body,
 }
 
 ::-webkit-scrollbar {
-    background-color: var(--palette-06);
-    width: 0.2rem;
-}
-
-::-webkit-scrollbar-thumb {
-    background-color: var(--palette-02);
+    display: none;
 }

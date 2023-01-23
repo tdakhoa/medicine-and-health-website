@@ -4,7 +4,6 @@ import { Typography } from "../../../../components";
 
 const Root = styled(Grid)((props: SimpleCardProps) => ({
   cursor: "pointer",
-  transition: "all .1s ease-in-out",
   "& .media-container": {
     position: "relative",
     overflow: "hidden",
@@ -24,9 +23,11 @@ const Root = styled(Grid)((props: SimpleCardProps) => ({
   "&:hover": {
     color: "var(--palette-02)",
     "& .media-overlay": {
+      transition: "all .4s ease-in-out",
       backgroundColor: "rgba(7, 27, 33, 0)",
     },
     "& .media-image": {
+      transition: "all .4s ease-in-out",
       transform: "scale(1.1)",
     },
   },
@@ -56,10 +57,7 @@ const SimpleCard = ({
   return (
     <Root container sx={sx} {...props} direction="column" spacing={2}>
       <Grid item xs={imgRatio}>
-        <Box
-          className="media-container"
-          sx={{ borderRadius: `${borderRadius}` }}
-        >
+        <Box className="media-container" sx={{ borderRadius: `${borderRadius}` }}>
           {overlay === true ? <Box className="media-overlay"></Box> : <></>}
           <CardMedia image={img} title="" className="media-image" />
         </Box>

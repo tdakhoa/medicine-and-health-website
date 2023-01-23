@@ -12,6 +12,7 @@ import { Button, Typography } from "../../../../components";
 
 const Root = styled(Grid)((props: AlternateCardProps) => ({
   cursor: "pointer",
+  transition: "all 0.1s ease-in-out",
   "& .content-container": {
     display: "flex",
     flexDirection: "column",
@@ -34,6 +35,9 @@ const Root = styled(Grid)((props: AlternateCardProps) => ({
       borderRadius:
         props.direction === "row" ? "0px 40px 40px 0px" : "40px 0px 0px 40px",
     },
+  },
+  "&:hover": {
+    color: "var(--palette-02)",
   },
 }));
 

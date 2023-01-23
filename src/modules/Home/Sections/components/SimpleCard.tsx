@@ -26,6 +26,9 @@ const Root = styled(Grid)((props: SimpleCardProps) => ({
     "& .media-overlay": {
       backgroundColor: "rgba(7, 27, 33, 0)",
     },
+    "& .media-image": {
+      transform: "scale(1.1)",
+    },
   },
 }));
 

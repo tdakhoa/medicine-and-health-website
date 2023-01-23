@@ -5,7 +5,7 @@ import NormalSection from "./Sections/Normal";
 import Mix from "./Sections/Mix";
 import News from "./Sections/News";
 import Alternate from "./Sections/Alternate";
-import { NavBar } from "../../components";
+import { Footer, NavBar } from "../../components";
 
 const Home = () => {
   return (
@@ -17,6 +17,7 @@ const Home = () => {
       <Alternate />
       <Heart />
       <Mix />
+      <Footer />
     </>
   );
 };

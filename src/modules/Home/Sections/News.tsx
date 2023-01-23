@@ -80,7 +80,7 @@ const News = () => {
                     <Typography sx={{ textTransform: "uppercase" }} size="h2" weight="bold" color="secondary">
                         Tin mới nhất
                     </Typography>
-                    <Typography size="h3" weight="semiBold" color="secondary">
+                    <Typography size="h5" weight="semiBold" color="secondary">
                         Ngày {day} tháng {month} năm {year}
                     </Typography>
                 </Box>
@@ -92,7 +92,7 @@ const News = () => {
             </Box>
 
             <Grid container direction="row" spacing={2}>
-                <NewsGrid xs={7.5} item container>
+                <NewsGrid xs={7.2} item container>
                     <Grid item className="media-container" sx={{ borderRadius: "60px 0 0 60px" }}>
                         <Box className="media-overlay media-bgMain">
                             <Typography size="h1" weight="bold" sx={{ textAlign: "start" }}>
@@ -105,11 +105,11 @@ const News = () => {
                         <Image src={mainNews.img} alt="image" className="media-image" />
                     </Grid>
                 </NewsGrid>
-                <NewsGrid xs={4.5} direction="column" item container>
+                <NewsGrid xs={4.8} direction="column" item container sx={{ justifyContent: "space-between" }}>
                     {newsData.map((item, i) => (
-                        <Grid xs={3.8} item className="media-container" sx={item.style}>
+                        <Grid xs={3.75} item className="media-container" sx={item.style}>
                             <Box
-                                sx={{ paddingLeft: "50%", paddingRight: "1rem" }}
+                                sx={{ paddingLeft: "45%", paddingRight: "1rem" }}
                                 className="media-overlay media-bgComp">
                                 <Typography size="h6" weight="bold" sx={{ textAlign: "start" }}>
                                     {item.title}
@@ -141,7 +141,7 @@ const newsData = [
         img: news2,
         title: "TĂNG HUYẾT ÁP VÔ CĂN VÀ THẬN",
         description: "Ở người trưởng thành, mỗi quả thận cân độ 150g và chứa đựng khoảng 1 triệu nêphron (đơn vị thận)",
-        style: { borderRadius: "0 40px 0 0 " }
+        style: { borderRadius: "0 40px 0 0" }
     },
     {
         img: news2,

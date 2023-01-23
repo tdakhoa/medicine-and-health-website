@@ -11,7 +11,6 @@ const Root = styled("div")(({ theme }) => ({
 const StyleSimpleCard = {
   height: 400,
   textAlign: "center",
-  borderRadius: "10px 10px 0px 0px",
 };
 
 const Mix = () => {
@@ -29,50 +28,24 @@ const Mix = () => {
         content={cardData[0].content}
       />
       <Grid container rowSpacing={0} columnSpacing={2}>
-        <Grid item xs={3}>
-          <SimpleCard
-            img={cardData[1].img}
-            title={cardData[1].title}
-            content={cardData[1].content}
-            sx={StyleSimpleCard}
-            imgRatio={4}
-            contentRatio={8}
-            overlay={false}
-          />
-        </Grid>
-        <Grid item xs={3}>
-          <SimpleCard
-            img={cardData[2].img}
-            title={cardData[2].title}
-            content={cardData[2].content}
-            sx={StyleSimpleCard}
-            imgRatio={4}
-            contentRatio={8}
-            overlay={false}
-          />
-        </Grid>
-        <Grid item xs={3}>
-          <SimpleCard
-            img={cardData[3].img}
-            title={cardData[3].title}
-            content={cardData[3].content}
-            sx={StyleSimpleCard}
-            imgRatio={4}
-            contentRatio={8}
-            overlay={false}
-          />
-        </Grid>
-        <Grid item xs={3}>
-          <SimpleCard
-            img={cardData[4].img}
-            title={cardData[4].title}
-            content={cardData[4].content}
-            sx={StyleSimpleCard}
-            imgRatio={4}
-            contentRatio={8}
-            overlay={false}
-          />
-        </Grid>
+        {cardData.map((data, i) =>
+          i !== 0 ? (
+            <Grid item xs={3} key={i}>
+              <SimpleCard
+                img={data.img}
+                title={data.title}
+                content={data.content}
+                sx={StyleSimpleCard}
+                imgRatio={4}
+                contentRatio={8}
+                overlay={true}
+                borderRadius="10px 10px 0px 0px"
+              />
+            </Grid>
+          ) : (
+            <></>
+          )
+        )}
       </Grid>
     </Root>
   );

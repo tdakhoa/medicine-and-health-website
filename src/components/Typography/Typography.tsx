@@ -46,7 +46,7 @@ const StyledTypography = styled(MuiTypography)((props: TypographyProps) => ({
 }));
 
 interface TypographyProps {
-  color?: "primary" | "secondary" | "white" | "black" | "inherit";
+  color?: string;
   text?: string;
   size?: string;
   weight?: string;

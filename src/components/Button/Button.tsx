@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, styled, Typography, Button as MuiButton } from "@mui/material";
+import { styled, Button as MuiButton } from "@mui/material";
 
 const MyButton = styled(MuiButton)((props: ButtonProps) => ({
   display: "flex",

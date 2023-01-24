@@ -15,7 +15,9 @@ const MyButton = styled(MuiButton)((props: ButtonProps) => ({
       ? "var(--palette-01)"
       : props.bgColor === "secondary"
       ? "var(--palette-02)"
-      : "var(--palette-06)",
+      : props.bgColor === "white"
+      ? "var(--palette-06)"
+      : props.bgColor,
   border: "2px solid transparent",
   "&:hover": {
     backgroundColor: "transparent",
@@ -26,19 +28,23 @@ const MyButton = styled(MuiButton)((props: ButtonProps) => ({
         ? "var(--palette-01)"
         : props.bgColor === "secondary"
         ? "var(--palette-02)"
-        : "var(--palette-06)",
+        : props.bgColor === "white"
+        ? "var(--palette-06)"
+        : props.bgColor,
     color:
       props.bgColor === "primary"
         ? "var(--palette-01)"
         : props.bgColor === "secondary"
         ? "var(--palette-02)"
-        : "var(--palette-06)",
+        : props.bgColor === "white"
+        ? "var(--palette-06)"
+        : props.bgColor,
   },
 }));
 
 interface ButtonProps {
   onClick?: () => void;
-  bgColor: "primary" | "secondary" | "white";
+  bgColor?: string;
   borderRadius?: string;
   children: React.ReactNode;
   sx?: object;
@@ -48,7 +54,7 @@ interface ButtonProps {
 
 const Button = ({
   onClick,
-  bgColor,
+  bgColor = "primary",
   borderRadius = "30px",
   children,
   startIcon,

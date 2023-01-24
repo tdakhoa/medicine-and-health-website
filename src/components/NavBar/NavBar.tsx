@@ -43,7 +43,6 @@ const NavBar = () => {
                     <NavItem trigger={trigger} key={i} content={item}></NavItem>
                 ))}
             </Box>
-
             <NavItem trigger={trigger} icon={<SearchOutlined />}></NavItem>
         </StyledAppBar>
     );
@@ -167,7 +166,8 @@ const NavItem = ({ content = { title: "" }, icon, trigger, ...props }: NavItemPr
                                     padding: "0.6rem 1rem",
                                     backgroundColor: trigger ? "var(--palette-03)" : "var(--palette-06)",
                                     color: trigger ? "var(--palette-06)" : "var(--palette-01)",
-                                    borderRadius: i == len - 1 ? "0px 0px 6px 6px" : i == 0 ? "0px 6px 0px 0px" : "none",
+                                    borderRadius:
+                                        i == len - 1 ? "0px 0px 6px 6px" : i == 0 ? "0px 6px 0px 0px" : "none",
                                     animation: "animate 0.3s ease-in-out forwards",
                                     animationDelay: `${i * 0.05}s`,
                                     "@keyframes animate": {
@@ -178,7 +178,9 @@ const NavItem = ({ content = { title: "" }, icon, trigger, ...props }: NavItemPr
                                     transformOrigin: "top center",
                                     opacity: 0
                                 }}>
-                                <Typography sx={{ textAlign: "left !important", textTransform: "uppercase" }}>{item}</Typography>
+                                <Typography sx={{ textAlign: "left !important", textTransform: "uppercase" }}>
+                                    {item}
+                                </Typography>
                             </Box>
                         ))}
                     </Box>

@@ -19,7 +19,7 @@ import {
   LogoutOutlined,
   AccountCircleOutlined,
 } from "@mui/icons-material";
-import { Typography } from "../../components";
+import { Typography } from "../../../components";
 
 const avatar =
   "https://scontent.fsgn2-1.fna.fbcdn.net/v/t39.30808-6/326096520_670444968197841_461525136651728368_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=ebmBbb9a2mQAX88ojWU&tn=_JWBHwD98b41WzaG&_nc_ht=scontent.fsgn2-1.fna&oh=00_AfD_7Q91aOT7VXNTtbk8qGnBFC2JvJRbNxDJo-rSf2bkmw&oe=63D5713F";
@@ -94,7 +94,7 @@ const AvatarContainer = styled(Box)(({ theme }) => ({
   margin: "2rem 0rem",
 }));
 
-export default function MiniDrawer() {
+export default function ToggleDrawer() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 

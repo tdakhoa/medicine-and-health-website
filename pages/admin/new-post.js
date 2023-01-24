@@ -1,6 +1,6 @@
 import React from "react";
 import Head from "next/head";
-import Admin from "../src/modules/Admin/Admin";
+import NewPost from "../../src/modules/Admin/NewPost";
 
 export default function HomePage() {
   return (
@@ -11,7 +11,7 @@ export default function HomePage() {
       </Head>
 
       <main>
-        <Admin />
+        <NewPost />
       </main>
     </div>
   );

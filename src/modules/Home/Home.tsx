@@ -5,21 +5,19 @@ import NormalSection from "./Sections/Normal";
 import Mix from "./Sections/Mix";
 import News from "./Sections/News";
 import Alternate from "./Sections/Alternate";
-import { Footer, NavBar } from "../../components";
+import Layout from "../Layout";
 
 const Home = () => {
-    return (
-        <>
-            <NavBar />
-            <Hero />
-            <News />
-            <NormalSection />
-            <Alternate />
-            <CardCarousel />
-            <Mix />
-            <Footer />
-        </>
-    );
+  return (
+    <Layout>
+      <Hero />
+      <News />
+      <NormalSection />
+      <Alternate />
+      <CardCarousel />
+      <Mix />
+    </Layout>
+  );
 };
 
 export default Home;

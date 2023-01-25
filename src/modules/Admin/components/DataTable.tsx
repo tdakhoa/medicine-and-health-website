@@ -2,14 +2,20 @@ import * as React from "react";
 import { alpha } from "@mui/material/styles";
 import { styled, Box } from "@mui/material";
 import { Table, TableBody, TableCell, TableContainer, TableHead } from "@mui/material";
-import { TablePagination, TableRow, TableSortLabel, Toolbar, Paper } from "@mui/material";
+import { TablePagination, TableRow, TableSortLabel, Toolbar, Chip } from "@mui/material";
 import { Checkbox, IconButton, Tooltip } from "@mui/material";
-import { Delete, FilterList } from "@mui/icons-material";
+import {
+  CancelOutlined,
+  CheckCircleOutline,
+  Delete,
+  DeleteOutlined,
+  EditOutlined,
+  FilterList,
+  VisibilityOutlined,
+} from "@mui/icons-material";
 import { visuallyHidden } from "@mui/utils";
 
 import { Typography } from "../../../components";
-
-const MyTableCell = styled(TableCell)(() => ({}));
 
 interface Data {
   category: string;
@@ -130,7 +136,7 @@ function EnhancedTableHead(props: EnhancedTableProps) {
       <TableRow sx={{ backgroundColor: "var(--palette-02)", color: "white" }}>
         <TableCell padding="checkbox">
           <Checkbox
-            sx={{ color: "white !important", fontSize: "0.8rem" }}
+            sx={{ color: "white !important" }}
             indeterminate={numSelected > 0 && numSelected < rowCount}
             checked={rowCount > 0 && numSelected === rowCount}
             onChange={onSelectAllClick}
@@ -160,6 +166,11 @@ function EnhancedTableHead(props: EnhancedTableProps) {
             </TableSortLabel>
           </TableCell>
         ))}
+        <TableCell>
+          <Typography weight="bold" color="white">
+            Hành động
+          </Typography>
+        </TableCell>
       </TableRow>
     </TableHead>
   );
@@ -257,62 +268,134 @@ export default function EnhancedTable() {
   const isSelected = (title: string) => selected.indexOf(title) !== -1;
 
   return (
-    <Box sx={{ width: "100%" }}>
-      <Paper sx={{ width: "100%", mb: 2 }}>
-        {selected.length > 0 ? <EnhancedTableToolbar numSelected={selected.length} /> : <></>}
-        <TableContainer>
-          <Table sx={{ minWidth: 750 }} aria-labelledby="tableTitle" size="medium">
-            <EnhancedTableHead
-              numSelected={selected.length}
-              order={order}
-              orderBy={orderBy}
-              onSelectAllClick={handleSelectAllClick}
-              onRequestSort={handleRequestSort}
-              rowCount={rows.length}
-            />
-            <TableBody>
-              {stableSort(rows, getComparator(order, orderBy))
-                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                .map((row, index) => {
-                  const isItemSelected = isSelected(row.title);
-                  const labelId = `enhanced-table-checkbox-${index}`;
+    <Box sx={{ width: "100%", mt: 2, border: "1px solid #176076", borderRadius: 4, overflow: "hidden" }}>
+      {selected.length > 0 ? <EnhancedTableToolbar numSelected={selected.length} /> : <></>}
+      <TableContainer>
+        <Table sx={{ minWidth: 750 }} aria-labelledby="tableTitle" size="medium">
+          <EnhancedTableHead
+            numSelected={selected.length}
+            order={order}
+            orderBy={orderBy}
+            onSelectAllClick={handleSelectAllClick}
+            onRequestSort={handleRequestSort}
+            rowCount={rows.length}
+          />
+          <TableBody>
+            {stableSort(rows, getComparator(order, orderBy))
+              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              .map((row, index) => {
+                const isItemSelected = isSelected(row.title);
+                const labelId = `enhanced-table-checkbox-${index}`;
 
-                  return (
-                    <TableRow
-                      hover
-                      onClick={(event) => handleClick(event, row.title)}
-                      role="checkbox"
-                      aria-checked={isItemSelected}
-                      tabIndex={-1}
-                      key={row.title}
-                      selected={isItemSelected}
-                    >
-                      <TableCell padding="checkbox">
-                        <Checkbox color="primary" checked={isItemSelected} />
-                      </TableCell>
-                      <TableCell component="th" id={labelId} scope="row" padding="none" align="center">
-                        {row.title}
-                      </TableCell>
-                      <TableCell align="center">{row.category}</TableCell>
-                      <TableCell align="center">{row.writer}</TableCell>
-                      <TableCell align="center">{row.date}</TableCell>
-                      <TableCell align="center">{row.status}</TableCell>
-                    </TableRow>
-                  );
-                })}
-            </TableBody>
-          </Table>
-        </TableContainer>
-        <TablePagination
-          rowsPerPageOptions={[5, 10, 25]}
-          component="div"
-          count={rows.length}
-          rowsPerPage={rowsPerPage}
-          page={page}
-          onPageChange={handleChangePage}
-          onRowsPerPageChange={handleChangeRowsPerPage}
-        />
-      </Paper>
+                return (
+                  <TableRow
+                    hover
+                    role="checkbox"
+                    aria-checked={isItemSelected}
+                    tabIndex={-1}
+                    key={row.title}
+                    selected={isItemSelected}
+                  >
+                    <TableCell padding="checkbox">
+                      <Checkbox
+                        onClick={(event) => handleClick(event, row.title)}
+                        color="primary"
+                        checked={isItemSelected}
+                      />
+                    </TableCell>
+                    <TableCell component="th" id={labelId} scope="row" padding="none" align="center">
+                      <Typography size="p">{row.title}</Typography>
+                    </TableCell>
+                    <TableCell align="center">
+                      <Typography size="p">{row.category}</Typography>
+                    </TableCell>
+                    <TableCell align="center">
+                      <Typography size="p">{row.writer}</Typography>
+                    </TableCell>
+                    <TableCell align="center">
+                      <Typography size="p">{row.date}</Typography>
+                    </TableCell>
+                    <TableCell align="center">
+                      <StatusChip status={row.status == 1} />
+                    </TableCell>
+                    <TableCell align="center">
+                      <ActionCell />
+                    </TableCell>
+                  </TableRow>
+                );
+              })}
+          </TableBody>
+        </Table>
+      </TableContainer>
+      <TablePagination
+        rowsPerPageOptions={[5, 10, 25]}
+        component="div"
+        count={rows.length}
+        rowsPerPage={rowsPerPage}
+        page={page}
+        onPageChange={handleChangePage}
+        onRowsPerPageChange={handleChangeRowsPerPage}
+      />
     </Box>
   );
 }
+
+interface StatusChipProps {
+  status?: Boolean;
+  sx?: object;
+}
+const StatusChip = ({ status = true, sx = {}, ...props }: StatusChipProps) => {
+  const handleClick = () => {
+    console.info("You clicked the Chip.");
+  };
+  const StyledChip = {
+    border: "none",
+    padding: "0rem 1rem",
+    "& .MuiChip-label": {
+      paddingRight: 0,
+    },
+    "& svg": {
+      fontSize: "1rem",
+      marginLeft: "0px !important",
+      color: "inherit !important",
+    },
+  };
+  const StyledPushlished = {
+    backgroundColor: "#DCFCE7",
+    color: "#22C55E",
+    ...StyledChip,
+  };
+  const StyledDraft = {
+    backgroundColor: "#FFEDD5",
+    color: "#F97316",
+    ...StyledChip,
+  };
+  return (
+    <Chip
+      label={status == true ? "Đã đăng" : "Bản nháp"}
+      icon={status == true ? <CheckCircleOutline /> : <CancelOutlined />}
+      variant="outlined"
+      sx={status == true ? StyledPushlished : StyledDraft}
+      onClick={handleClick}
+    />
+  );
+};
+
+const ActionCell = () => {
+  const StyledActionCell = {
+    display: "flex",
+  };
+  return (
+    <Box sx={StyledActionCell}>
+      <IconButton>
+        <VisibilityOutlined />
+      </IconButton>
+      <IconButton>
+        <EditOutlined />
+      </IconButton>
+      <IconButton>
+        <DeleteOutlined />
+      </IconButton>
+    </Box>
+  );
+};

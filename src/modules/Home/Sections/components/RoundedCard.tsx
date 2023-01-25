@@ -87,8 +87,8 @@ const RoundedCard = ({
                 direction="column"
                 container
                 onClick={() => handlePageChange(index)}
-                onMouseDown={() => handlePointerEvent}
-                onTouchStart={() => handlePointerEvent}
+                onMouseDown={handlePointerEvent}
+                onTouchStart={handlePointerEvent}
                 onMouseEnter={() => setHover(true)}
                 onMouseLeave={() => setHover(false)}>
                 <Grid item xs={5}>

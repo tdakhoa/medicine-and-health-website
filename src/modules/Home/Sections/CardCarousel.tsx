@@ -99,7 +99,7 @@ const CardCarousel = () => {
         document.onmouseup = onPointerEnd;
         document.ontouchend = onPointerEnd;
 
-        function onPointerEnd() {
+        function onPointerEnd(e: PointerTypes) {
             offset = 0;
             if (offset < 0 && offset > -100) {
                 e.target.style.left = "0";
@@ -112,7 +112,7 @@ const CardCarousel = () => {
             document.onmouseup = null;
             document.ontouchend = null;
         }
-        function onPointerMove() {
+        function onPointerMove(e: PointerTypes) {
             offset = (isTouchEvent ? e.touches[0].clientX : e.clientX) - initialX;
             if (offset <= -100) slideRight();
             if (index === data.length - 1) {

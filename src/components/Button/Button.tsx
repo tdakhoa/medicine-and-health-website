@@ -38,7 +38,7 @@ const MyButton = styled(MuiButton)((props: ButtonProps) => ({
 
 interface ButtonProps {
     onClick?: React.MouseEventHandler<HTMLButtonElement>;
-    bgColor: "primary" | "secondary" | "white";
+    bgColor: string;
     borderRadius?: string;
     children?: React.ReactNode;
     sx?: object;

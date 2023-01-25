@@ -89,6 +89,7 @@ const CardCarousel = () => {
         else setIndex(page);
     };
 
+    
     const handlePointerEvent = (e: PointerTypes) => {
         let isTouchEvent = e.type === "touchstart" ? true : false;
         let card = e.target;
@@ -99,7 +100,7 @@ const CardCarousel = () => {
         document.onmouseup = onPointerEnd;
         document.ontouchend = onPointerEnd;
 
-        function onPointerEnd(e: PointerTypes) {
+        function onPointerEnd() {
             offset = 0;
             if (offset < 0 && offset > -100) {
                 e.target.style.left = "0";
@@ -112,7 +113,7 @@ const CardCarousel = () => {
             document.onmouseup = null;
             document.ontouchend = null;
         }
-        function onPointerMove(e: PointerTypes) {
+        function onPointerMove() {
             offset = (isTouchEvent ? e.touches[0].clientX : e.clientX) - initialX;
             if (offset <= -100) slideRight();
             if (index === data.length - 1) {

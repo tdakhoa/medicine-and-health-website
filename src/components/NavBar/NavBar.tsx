@@ -107,7 +107,7 @@ function shadow({ trigger }: shadow) {
 }
 
 const NavBar = () => {
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
   const trigger = useScrollTrigger({
     disableHysteresis: true,
     threshold: 50,

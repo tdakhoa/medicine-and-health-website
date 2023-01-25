@@ -9,7 +9,6 @@ const InputContainer = styled(Grid)(() => ({
   width: "100%",
   margin: 0,
 }));
-const RowItem = { flexGrow: 1 };
 
 const NewPost = () => {
   return (

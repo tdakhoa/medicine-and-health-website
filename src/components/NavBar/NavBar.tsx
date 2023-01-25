@@ -151,7 +151,7 @@ const NavBar = () => {
         open={open}
         onClick={handleToggleOpen}
       />
-      <AppBarMobile variant="persistent" anchor="right" open={open}>
+      <AppBarMobile variant="persistent" anchor="right" open={open} sx={{ display: { lg: "none" } }}>
         <AppBarMobileHeader>
           <IconButton onClick={handleToggleOpen}>
             <ChevronRightOutlined />

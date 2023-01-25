@@ -89,6 +89,7 @@ const CardCarousel = () => {
         else setIndex(page);
     };
 
+    
     const handlePointerEvent = (e: PointerTypes) => {
         let isTouchEvent = e.type === "touchstart" ? true : false;
         let card = e.target;

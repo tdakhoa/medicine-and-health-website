@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { styled } from "@mui/material";
 
 import Title from "./components/Title";
@@ -57,6 +57,10 @@ const activeStyle = {
     border: "solid 2px var(--palette-06)"
 };
 
+interface Position {
+    index: number;
+    i: number;
+}
 interface Touch {
     clientX: number;
 }
@@ -68,76 +72,101 @@ interface PointerTypes {
     target: EventTarget & { style: { left: string } };
 }
 
+const ChoosePosition = ({ index, i }: Position) => {
+    if (index >= 1 && index <= data.length - 2) {
+        if (i === index) return activeCard;
+        else if (i === index - 1) return prevCard;
+        else if (i === index + 1) return nextCard;
+        else return hideCard;
+    } else if (index == 0) {
+        if (i === index) return activeCard;
+        else if (i === data.length - 1) return prevCard;
+        else if (i === index + 1) return nextCard;
+        else return hideCard;
+    } else if (index == data.length - 1) {
+        if (i === index) return activeCard;
+        else if (i === index - 1) return prevCard;
+        else if (i === 0) return nextCard;
+        else return hideCard;
+    }
+};
+
 const CardCarousel = () => {
-    const [index, setIndex] = useState(1);
+    const [index, setIndex] = useState(0);
 
     const slideLeft = () => {
-        if (index - 1 >= 1) {
+        if (index - 1 >= 0) {
             setIndex(index - 1);
-        } else setIndex(data.length - 2);
+        } else setIndex(data.length - 1);
     };
 
     const slideRight = () => {
-        if (index + 1 <= data.length - 2) {
+        if (index + 1 <= data.length - 1) {
             setIndex(index + 1);
-        } else setIndex(1);
+        } else setIndex(0);
     };
 
     const handlePageChange = (page: number) => {
-        if (page == 0) setIndex(data.length - 2);
-        else if (page == data.length - 1) setIndex(1);
-        else setIndex(page);
+        setIndex(page);
     };
 
-    
     const handlePointerEvent = (e: PointerTypes) => {
         let isTouchEvent = e.type === "touchstart" ? true : false;
         let card = e.target;
         let offset = 0;
         let initialX = isTouchEvent ? e.touches[0].clientX : e.clientX;
 
-        document.onmousemove = onPointerMove;
-        document.onmouseup = onPointerEnd;
-        document.ontouchend = onPointerEnd;
-
-        function onPointerEnd() {
-            offset = 0;
+        function onPointerEnd(e: PointerTypes | MouseEvent) {
+            if (e && "touches" in e) offset = 0;
             if (offset < 0 && offset > -100) {
-                e.target.style.left = "0";
+                card.style.left = "0";
             }
             if (offset > 0 && offset < 100) {
-                e.target.style.left = "0";
-            }
+                card.style.left = "0";
 
-            document.onmousemove = null;
-            document.onmouseup = null;
-            document.ontouchend = null;
-        }
-        function onPointerMove() {
-            offset = (isTouchEvent ? e.touches[0].clientX : e.clientX) - initialX;
-            if (offset <= -100) slideRight();
-            if (index === data.length - 1) {
-                card.style.left = "0";
-            } else {
-                setTimeout(() => {
-                    card.style.left = "0";
-                }, 800);
+                return;
             }
-            return;
+            window.removeEventListener("mouseup", onPointerEnd);
+            window.removeEventListener("mousemove", onPointerMove);
         }
-        if (offset >= 100) {
-            slideLeft();
-            if (index === 0) {
-                card.style.left = "0";
-            } else {
-                setTimeout(() => {
+        function onPointerMove(e: PointerTypes | MouseEvent) {
+            if (e && "touches" in e) offset = (isTouchEvent ? e.touches[0].clientX : e.clientX) - initialX;
+            else offset = e.clientX - initialX;
+            if (offset <= -100) {
+                slideRight();
+                if (index === data.length - 1) {
                     card.style.left = "0";
-                }, 800);
+                } else {
+                    setTimeout(() => {
+                        card.style.left = "0";
+                    }, 800);
+                }
+                return;
             }
-            return;
+            if (offset >= 100) {
+                slideLeft();
+                if (index === 0) {
+                    card.style.left = "0";
+                } else {
+                    setTimeout(() => {
+                        card.style.left = "0";
+                    }, 800);
+                }
+                return;
+            }
         }
         card.style.left = offset + "px";
+        window.addEventListener("mouseup", onPointerEnd);
+        window.addEventListener("mousemove", onPointerMove);
     };
+
+    useEffect(() => {
+        var highestTimeoutId = setTimeout(";");
+        for (var i = 0; i < highestTimeoutId; i++) {
+            clearTimeout(i);
+        }
+        setTimeout(slideRight, 5000);
+    }, [index]);
 
     return (
         <Root>
@@ -145,11 +174,7 @@ const CardCarousel = () => {
             <BoxContainer>
                 <CardContainer>
                     {data.map((person, i) => {
-                        let position;
-                        if (i === index) position = activeCard;
-                        else if (i === index - 1) position = prevCard;
-                        else if (i === index + 1) position = nextCard;
-                        else position = hideCard;
+                        let position = ChoosePosition({ index, i }) || {};
                         return (
                             <RoundedCard
                                 key={i}

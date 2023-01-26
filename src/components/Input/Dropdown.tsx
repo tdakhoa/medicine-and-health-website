@@ -50,7 +50,7 @@ const Dropdown = ({ label = "", placeholder = "", sx = {}, ...props }: DropdownP
             <FormControl fullWidth sx={StyleDropdown}>
                 <InputLabel
                     shrink={false}
-                    sx={{ display: showPlaceholder ? "initial" : "none", color: "var(--palette-01) !important" }}>
+                    sx={{ display: showPlaceholder ? "initial" : "none", color: "#B2B2B2 !important" }}>
                     {placeholder}
                 </InputLabel>
                 <Select value={val} onChange={handleChange} displayEmpty fullWidth MenuProps={MenuProps}>

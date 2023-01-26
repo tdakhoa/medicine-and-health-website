@@ -41,7 +41,7 @@ interface PaginatorProps {
 
 const Paginator = ({ dataLength, activeIndex, handlePageChange }: PaginatorProps) => {
     let dots = [];
-    for (let index = 1; index < dataLength - 1; index++) {
+    for (let index = 0; index < dataLength; index++) {
         dots.push(
             <DotBox
                 key={index}

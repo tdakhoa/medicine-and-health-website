@@ -105,7 +105,6 @@ export default function ToggleDrawer() {
         setOpen(open !== true);
     };
 
-    console.log(asPath);
     return (
         <Drawer variant="permanent" open={open}>
             <DrawerHeader

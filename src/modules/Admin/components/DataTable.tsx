@@ -116,6 +116,7 @@ const headCells: readonly HeadCell[] = [
     }
 ];
 
+const animationSx = {};
 interface EnhancedTableProps {
     numSelected: number;
     onRequestSort: (event: React.MouseEvent<unknown>, property: keyof Data) => void;

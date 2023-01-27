@@ -17,6 +17,7 @@ import { visuallyHidden } from "@mui/utils";
 import { Typography } from "../../../components";
 
 interface Data {
+    id: string;
     name: string;
     username: string;
     password: string;
@@ -24,8 +25,9 @@ interface Data {
     status: number;
 }
 
-function createData(name: string, username: string, password: string, role: string, status: number): Data {
+function createData(id: string, name: string, username: string, password: string, role: string, status: number): Data {
     return {
+        id,
         name,
         username,
         password,
@@ -35,11 +37,11 @@ function createData(name: string, username: string, password: string, role: stri
 }
 
 const rows = [
-    createData("Richard Bellamy", "zmoore", "akuokesip", "Admin", 1),
-    createData("Franco Delort", "eliane03", "ahmadyani1234", "BTV", 2),
-    createData("Lawerence Munford", "nblock", "welcome123", "BTV", 2),
-    createData("Harry Peter", "anya.morar", "welcome123", "BTV", 1),
-    createData("Alfredo Vetrovs", "ronny18", "akuokesip", "BTV", 1)
+    createData("0", "Harry Peter", "zmoore", "akuokesip", "Admin", 1),
+    createData("1", "Franco Delort", "eliane03", "ahmadyani1234", "BTV", 2),
+    createData("2", "Lawerence Munford", "nblock", "welcome123", "BTV", 2),
+    createData("3", "Harry Peter", "anya.morar", "welcome123", "BTV", 1),
+    createData("4", "Alfredo Vetrovs", "ronny18", "akuokesip", "BTV", 1)
 ];
 
 function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
@@ -230,7 +232,7 @@ export default function EnhancedTable() {
 
     const handleSelectAllClick = (event: React.ChangeEvent<HTMLInputElement>) => {
         if (event.target.checked) {
-            const newSelected = rows.map((n) => n.name);
+            const newSelected = rows.map((n) => n.id);
             setAllowAnimation(true);
             setSelected(newSelected);
             return;
@@ -238,12 +240,12 @@ export default function EnhancedTable() {
         setSelected([]);
     };
 
-    const handleClick = (event: React.MouseEvent<unknown>, name: string) => {
-        const selectedIndex = selected.indexOf(name);
+    const handleClick = (event: React.MouseEvent<unknown>, id: string) => {
+        const selectedIndex = selected.indexOf(id);
         let newSelected: readonly string[] = [];
 
         if (selectedIndex === -1) {
-            newSelected = newSelected.concat(selected, name);
+            newSelected = newSelected.concat(selected, id);
         } else if (selectedIndex === 0) {
             newSelected = newSelected.concat(selected.slice(1));
         } else if (selectedIndex === selected.length - 1) {
@@ -312,7 +314,7 @@ export default function EnhancedTable() {
                             {stableSort(rows, getComparator(order, orderBy))
                                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                                 .map((row, index) => {
-                                    const isItemSelected = isSelected(row.name);
+                                    const isItemSelected = isSelected(row.id);
                                     const labelId = `enhanced-table-checkbox-${index}`;
 
                                     return (
@@ -321,11 +323,11 @@ export default function EnhancedTable() {
                                             role="checkbox"
                                             aria-checked={isItemSelected}
                                             tabIndex={-1}
-                                            key={row.name}
+                                            key={row.id}
                                             selected={isItemSelected}>
                                             <TableCell padding="checkbox">
                                                 <Checkbox
-                                                    onClick={(event) => handleClick(event, row.name)}
+                                                    onClick={(event) => handleClick(event, row.id)}
                                                     color="primary"
                                                     checked={isItemSelected}
                                                 />

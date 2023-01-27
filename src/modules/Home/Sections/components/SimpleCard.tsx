@@ -62,7 +62,7 @@ const SimpleCard = ({
           <CardMedia image={img} title="" className="media-image" />
         </Box>
       </Grid>
-      <Grid item xs={contentRatio}>
+      <Grid item xs={contentRatio} sx={{ overflow: "hidden" }}>
         <Typography size="h6" weight="bold">
           {title}
         </Typography>

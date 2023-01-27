@@ -1,9 +1,10 @@
 import { ChangeEventHandler, useEffect, useState } from "react";
-import { styled, Box, Grid, Avatar, NoSsr } from "@mui/material";
+import { styled, Box, Grid, Avatar } from "@mui/material";
 import ToggleDrawer from "./components/Drawer";
 import { CancelOutlined, CreateOutlined, SaveOutlined } from "@mui/icons-material";
 import { VariantType } from "notistack";
 import AvatarEdit from "react-avatar-edit";
+import NoSsr from "./components/NoSsr";
 
 import { Button, TextField, Typography } from "../../components";
 import Popup from "./components/Popup";
@@ -146,7 +147,7 @@ const Profile = () => {
     };
 
     return (
-        <>
+        <NoSsr>
             <Box sx={{ display: "flex" }}>
                 <ToggleDrawer />
                 <Box component="main" sx={{ flexGrow: 1, px: 4, py: 3 }}>
@@ -166,18 +167,18 @@ const Profile = () => {
 
                             <StyledDialog disableScrollLock={true} open={dialogs} onClose={handleCloseDialog}>
                                 <StyledDialogTitle>Change Avatar</StyledDialogTitle>
-                                <NoSsr>
-                                    <AvatarEdit
-                                        labelStyle={{
-                                            fontSize: "20px",
-                                            fontWeight: "500"
-                                        }}
-                                        width={280}
-                                        height={280}
-                                        onClose={onClose}
-                                        onCrop={onCrop}
-                                    />
-                                </NoSsr>
+
+                                <AvatarEdit
+                                    labelStyle={{
+                                        fontSize: "20px",
+                                        fontWeight: "500"
+                                    }}
+                                    width={280}
+                                    height={280}
+                                    onClose={onClose}
+                                    onCrop={onCrop}
+                                />
+
                                 <Box sx={{ paddingTop: "1rem", display: "flex", justifyContent: "space-between" }}>
                                     <Button bgColor="secondary" sx={{ width: "8rem" }} onClick={handleCloseDialog}>
                                         Cancel
@@ -239,7 +240,7 @@ const Profile = () => {
                 </Box>
                 <Popup content={content} snackbar={snackbar} open={open} setOpen={setOpen} />
             </Box>
-        </>
+        </NoSsr>
     );
 };
 

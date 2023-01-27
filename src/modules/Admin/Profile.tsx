@@ -1,9 +1,10 @@
 import { ChangeEventHandler, useEffect, useState } from "react";
-import { styled, Box, Grid, Avatar, NoSsr } from "@mui/material";
+import { styled, Box, Grid, Avatar } from "@mui/material";
 import ToggleDrawer from "./components/Drawer";
 import { CancelOutlined, CreateOutlined, SaveOutlined } from "@mui/icons-material";
 import { VariantType } from "notistack";
 import AvatarEdit from "react-avatar-edit";
+import NoSsr from "./components/NoSsr";
 
 import { Button, TextField, Typography } from "../../components";
 import Popup from "./components/Popup";

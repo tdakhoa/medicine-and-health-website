@@ -1,23 +1,37 @@
-import { createTheme } from '@mui/material/styles';
+import { createTheme } from "@mui/material/styles";
 
 const theme = createTheme({
     palette: {
         primary: {
-            main: '#556cd6'
+            main: "#556cd6"
         },
         secondary: {
-            main: '#19857b'
+            main: "#19857b"
         },
         error: {
-            main: '#fff'
+            main: "#fff"
         },
-        mode: 'light'
+        mode: "light"
     },
     components: {
         MuiTypography: {
             styleOverrides: {
                 root: {
-                    fontFamily: 'Nunito'
+                    fontFamily: "Nunito"
+                }
+            }
+        },
+        MuiMenuItem: {
+            styleOverrides: {
+                root: {
+                    fontFamily: "Nunito"
+                }
+            }
+        },
+        MuiListSubheader: {
+            styleOverrides: {
+                root: {
+                    fontFamily: "Nunito"
                 }
             }
         }

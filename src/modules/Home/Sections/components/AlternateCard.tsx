@@ -1,7 +1,6 @@
 import { ArrowForwardOutlined } from "@mui/icons-material";
 import {
   styled,
-  Box,
   CardMedia,
   Grid,
   CardContent,

@@ -1,5 +1,5 @@
 import { ChangeEventHandler, useEffect, useState } from "react";
-import { styled, Box, Grid, Avatar } from "@mui/material";
+import { styled, Box, Grid, Avatar, NoSsr } from "@mui/material";
 import ToggleDrawer from "./components/Drawer";
 import { CancelOutlined, CreateOutlined, SaveOutlined } from "@mui/icons-material";
 import { VariantType } from "notistack";
@@ -166,16 +166,18 @@ const Profile = () => {
 
                             <StyledDialog disableScrollLock={true} open={dialogs} onClose={handleCloseDialog}>
                                 <StyledDialogTitle>Change Avatar</StyledDialogTitle>
-                                <AvatarEdit
-                                    labelStyle={{
-                                        fontSize: "20px",
-                                        fontWeight: "500"
-                                    }}
-                                    width={280}
-                                    height={280}
-                                    onClose={onClose}
-                                    onCrop={onCrop}
-                                />
+                                <NoSsr>
+                                    <AvatarEdit
+                                        labelStyle={{
+                                            fontSize: "20px",
+                                            fontWeight: "500"
+                                        }}
+                                        width={280}
+                                        height={280}
+                                        onClose={onClose}
+                                        onCrop={onCrop}
+                                    />
+                                </NoSsr>
                                 <Box sx={{ paddingTop: "1rem", display: "flex", justifyContent: "space-between" }}>
                                     <Button bgColor="secondary" sx={{ width: "8rem" }} onClick={handleCloseDialog}>
                                         Cancel

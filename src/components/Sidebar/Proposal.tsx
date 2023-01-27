@@ -22,7 +22,7 @@ const Proposal = () => {
       >
         Đề xuất
       </Typography>
-      <Carousel listData={dataList} indicators={false} />
+      <Carousel listData={dataList} indicators={false} animation="slide" />
     </Box>
   );
 };

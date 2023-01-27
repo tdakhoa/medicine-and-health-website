@@ -41,7 +41,7 @@ export default function Tabs() {
         width: "100%",
         border: "0.5px solid rgba(23, 96, 118, 0.4)",
         borderRadius: "10px",
-        padding: "1rem 0.5rem",
+        padding: "1.5rem",
       }}
     >
       <Box>
@@ -73,9 +73,9 @@ function TabPanel(props: TabPanelProps) {
   const { children, value, index, data, ...other } = props;
 
   return (
-    <div role="tabpanel" hidden={value !== index} {...other}>
+    <Box role="tabpanel" hidden={value !== index} {...other}>
       {value === index && (
-        <Box sx={{ p: 3 }}>
+        <Box sx={{ p: 0, pt: 3 }}>
           {data?.map((item, i) => (
             <>
               <MiniCard title={item.title} date={item.date} img={item.img} key={i} />
@@ -93,7 +93,7 @@ function TabPanel(props: TabPanelProps) {
           ))}
         </Box>
       )}
-    </div>
+    </Box>
   );
 }
 

@@ -3,6 +3,7 @@ import React from "react";
 import { Sidebar } from "../../components";
 import Layout from "../Layout";
 import MainTitle from "./components/MainTitle";
+import Main from "./Main";
 
 const Category = () => {
   return (
@@ -10,7 +11,7 @@ const Category = () => {
       <MainTitle title="Y học cổ truyền" />
       <Grid container columnSpacing={2} sx={{ padding: "5% 10%" }}>
         <Grid item xs={8}>
-          main
+          <Main />
         </Grid>
         <Grid item xs={4}>
           <Sidebar />

@@ -21,6 +21,7 @@ import {
     AccountCircleOutlined
 } from "@mui/icons-material";
 import { Typography } from "../../../components";
+import { useRouter } from "next/router";
 
 const avatar =
     "https://scontent.fsgn2-1.fna.fbcdn.net/v/t39.30808-6/326096520_670444968197841_461525136651728368_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=ebmBbb9a2mQAX88ojWU&tn=_JWBHwD98b41WzaG&_nc_ht=scontent.fsgn2-1.fna&oh=00_AfD_7Q91aOT7VXNTtbk8qGnBFC2JvJRbNxDJo-rSf2bkmw&oe=63D5713F";
@@ -97,12 +98,14 @@ const AvatarContainer = styled(Box)(({ theme }) => ({
 
 export default function ToggleDrawer() {
     const theme = useTheme();
+    const { asPath } = useRouter();
     const [open, setOpen] = React.useState(false);
 
     const handleToggleOpen = () => {
         setOpen(open !== true);
     };
 
+    console.log(asPath);
     return (
         <Drawer variant="permanent" open={open}>
             <DrawerHeader
@@ -126,7 +129,11 @@ export default function ToggleDrawer() {
             </DrawerHeader>
 
             <AvatarContainer sx={{ display: open ? "flex" : "none" }}>
-                <Avatar alt="Lam Ngan" src={avatar} sx={{ width: 80, height: 80 }} />
+                <Avatar
+                    alt="Lam Ngan"
+                    src={avatar}
+                    sx={{ width: 80, height: 80, boxShadow: "0px 0px 50px rgba(255, 255, 255, 0.25)" }}
+                />
                 <Typography size="h6" weight="bold">
                     Ngân Lam
                 </Typography>
@@ -136,10 +143,17 @@ export default function ToggleDrawer() {
             <List className="full">
                 {menuItems.map((item, index) => (
                     <Link href={item.link}>
-                        <ListItem key={index} sx={{ padding: theme.spacing(0, 2), display: "block" }}>
+                        <ListItem
+                            key={index}
+                            sx={{
+                                padding: theme.spacing(0, 2),
+                                display: "block"
+                            }}>
                             <ListItemButton
                                 sx={{
-                                    justifyContent: open ? "initial" : "center"
+                                    justifyContent: open ? "initial" : "center",
+                                    backgroundColor:
+                                        asPath === item.link ? "rgba(255, 255, 255, 0.1) !important" : "transparent"
                                 }}>
                                 <ListItemIcon
                                     sx={{
@@ -182,7 +196,7 @@ const menuItems = [
     {
         text: "Thông tin cá nhân",
         icon: <AccountCircleOutlined />,
-        link: "/"
+        link: "/admin/profile"
     },
     {
         text: "Đăng xuất",

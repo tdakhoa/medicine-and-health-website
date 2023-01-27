@@ -1,11 +1,10 @@
-import { useState } from "react";
+import { ChangeEvent, ChangeEventHandler, useState } from "react";
 import { styled, Box, Grid } from "@mui/material";
-import { Button, Dropdown, TextField, Typography } from "../../components";
 import ToggleDrawer from "./components/Drawer";
-import TextEditor from "../../components/Input/TextEditor";
-import { AccessTimeOutlined, CancelOutlined, SaveOutlined } from "@mui/icons-material";
-import Popup from "./components/Popup";
+import { CancelOutlined, CreateOutlined, SaveOutlined } from "@mui/icons-material";
 import { VariantType } from "notistack";
+
+import { Button, TextField, Typography } from "../../components";
 
 const InputContainer = styled(Grid)(() => ({
     width: "100%",
@@ -17,8 +16,10 @@ interface SnackbarState {
     variant: VariantType;
 }
 
-const NewPost = () => {
+const Profile = () => {
     const [open, setOpen] = useState(false);
+    const [render, setRender] = useState(false);
+    const [tempValue, setTempValue] = useState(false);
     const [content, setContent] = useState({ title: "", description: "", link: "" });
     const [snackbar, setSnackbar] = useState<SnackbarState>({ title: "", variant: "default" });
 
@@ -55,34 +56,39 @@ const NewPost = () => {
         });
     };
 
+    const handlePick = (i: number) => {
+        data[i].disabled = false;
+        setRender(!render);
+    };
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>, i: number) => {
+        data[i].value = e.currentTarget.value;
+    };
+
     return (
         <>
             <Box sx={{ display: "flex" }}>
                 <ToggleDrawer />
                 <Box component="main" sx={{ flexGrow: 1, px: 4, py: 3 }}>
                     <Typography size="h2" weight="bold" color="secondary">
-                        THÊM BÀI VIẾT
+                        THÔNG TIN CÁ NHÂN
                     </Typography>
                     <InputContainer container spacing={3}>
-                        <Grid item xs={6}>
-                            <TextField label="Tiêu đề" placeholder="Nhập tiêu đề bài viết" />
-                        </Grid>
-                        <Grid item xs={6}>
-                            <Dropdown label="Danh mục" placeholder="Chọn danh mục" />
-                        </Grid>
-                        <Grid item xs={6}>
-                            <TextField
-                                label="Từ khoá"
-                                placeholder="Nhập các từ khoá của bài viết, mỗi từ khoá cách nhau một dấu phẩy, nhập tối đa 20 từ khoá "
-                                numberOfRows={4}
-                            />
-                        </Grid>
-                        <Grid item xs={12}>
-                            <TextEditor label="Nội dung bài viết" />
-                        </Grid>
-                        <Grid item xs={12}>
-                            <TextField label="Tác giả" placeholder="Nhập tác giả bài viết" />
-                        </Grid>
+                        {data.map((item, i) => (
+                            <Grid item xs={6} key={i}>
+                                <TextField
+                                    label={item.label}
+                                    disabled={item.disabled}
+                                    value={item.value}
+                                    endIcon={
+                                        <CreateOutlined
+                                            onClick={() => handlePick(i)}
+                                            sx={{ fontSize: "1.2rem", ml: "0.5rem" }}
+                                        />
+                                    }
+                                />
+                            </Grid>
+                        ))}
                     </InputContainer>
                     <Box
                         sx={{
@@ -93,32 +99,33 @@ const NewPost = () => {
                             mt: "3rem"
                         }}>
                         <Button
-                            bgColor="primary"
-                            borderRadius="10px"
-                            endIcon={<SaveOutlined sx={{ fontSize: "1.4rem", pl: "0.3rem" }} />}
-                            onClick={handleSave}>
-                            <Typography size="p">Lưu và đăng ngay</Typography>
-                        </Button>
-                        <Button
                             bgColor="secondary"
                             borderRadius="10px"
-                            endIcon={<AccessTimeOutlined sx={{ fontSize: "1.4rem", pl: "0.3rem" }} />}
+                            endIcon={<SaveOutlined sx={{ fontSize: "1.4rem", pl: "0.3rem" }} />}
                             onClick={handleDraft}>
-                            <Typography size="p">Lưu thành bản nháp</Typography>
+                            <Typography size="p">Lưu thay đổi</Typography>
                         </Button>
                         <Button
                             bgColor="gray"
                             borderRadius="10px"
                             endIcon={<CancelOutlined sx={{ fontSize: "1.4rem", pl: "0.3rem" }} />}
                             onClick={handleExit}>
-                            <Typography size="p">Huỷ và không lưu</Typography>
+                            <Typography size="p">Huỷ thay đổi</Typography>
                         </Button>
                     </Box>
                 </Box>
-                <Popup content={content} snackbar={snackbar} open={open} setOpen={setOpen} />
             </Box>
         </>
     );
 };
 
-export default NewPost;
+export default Profile;
+
+const data = [
+    { label: "Họ và tên", disabled: true, value: "21/04/2003" },
+    { label: "Họ và tên", disabled: true, value: "21/04/2003" },
+    { label: "Họ và tên", disabled: true, value: "21/04/2003" },
+    { label: "Họ và tên", disabled: true, value: "21/04/2003" },
+    { label: "Họ và tên", disabled: true, value: "21/04/2003" },
+    { label: "Họ và tên", disabled: true, value: "21/04/2003" }
+];

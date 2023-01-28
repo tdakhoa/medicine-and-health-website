@@ -47,6 +47,7 @@ interface ButtonProps {
     onClick?: React.MouseEventHandler<HTMLButtonElement>;
     bgColor: string;
     borderRadius?: string;
+    disabled?: boolean;
     children?: React.ReactNode;
     sx?: object;
     startIcon?: JSX.Element;
@@ -57,6 +58,7 @@ const Button = ({
     onClick,
     bgColor = "primary",
     borderRadius = "30px",
+    disabled,
     children,
     startIcon,
     endIcon,
@@ -64,7 +66,13 @@ const Button = ({
     ...props
 }: ButtonProps) => {
     return (
-        <MyButton bgColor={bgColor} borderRadius={borderRadius} sx={sx} onClick={onClick} {...props}>
+        <MyButton
+            bgColor={bgColor}
+            borderRadius={borderRadius}
+            disabled={disabled}
+            sx={sx}
+            onClick={onClick}
+            {...props}>
             {startIcon}
             {children}
             {endIcon}

@@ -77,6 +77,7 @@ const Profile = () => {
     const [open, setOpen] = useState(false);
     const [render, setRender] = useState(false);
     const [editing, setEditing] = useState(false);
+    const [disabled, setDisabled] = useState(true);
     const [data, setData] = useState(fetchData);
     const [content, setContent] = useState({ title: "", description: "", link: "" });
     const [snackbar, setSnackbar] = useState<SnackbarState>({ title: "", variant: "default" });
@@ -145,9 +146,14 @@ const Profile = () => {
         setImageCrop("");
     };
 
+    const handleOpenDialog = () => {
+        setDialogs(true);
+        setDisabled(true);
+    };
+
     return (
         <>
-            <Box sx={{ display: "flex" }}>
+            <Box sx={{ display: "flex", paddingBottom: "5%" }}>
                 <ToggleDrawer />
                 <Box component="main" sx={{ flexGrow: 1, px: 4, py: 3 }}>
                     <Typography size="h2" weight="bold" color="secondary">
@@ -159,7 +165,7 @@ const Profile = () => {
                                 Ảnh đại diện
                             </Typography>
                             <StyledAvatar alt="Avatar" src={avatar || undefined} />
-                            <StyledAvatarBox onClick={() => setDialogs(true)}>
+                            <StyledAvatarBox onClick={handleOpenDialog}>
                                 <Typography>Thay đổi ảnh đại diện</Typography>
                                 <CreateOutlined sx={{ fontSize: "1.2rem", ml: "0.5rem", cursor: "pointer" }} />
                             </StyledAvatarBox>
@@ -167,23 +173,29 @@ const Profile = () => {
                             <StyledDialog disableScrollLock={true} open={dialogs} onClose={handleCloseDialog}>
                                 <StyledDialogTitle>Change Avatar</StyledDialogTitle>
 
-                                <AvatarEdit
-                                    labelStyle={{
-                                        fontSize: "20px",
-                                        fontWeight: "500"
-                                    }}
-                                    width={280}
-                                    height={280}
-                                    onClose={onClose}
-                                    onCrop={onCrop}
-                                />
+                                <Box sx={{ cursor: "pointer" }}>
+                                    <AvatarEdit
+                                        labelStyle={{
+                                            fontSize: "20px",
+                                            fontWeight: "500",
+                                            cursor: "pointer",
+                                            padding: "7.9rem 4.9rem"
+                                        }}
+                                        width={280}
+                                        height={280}
+                                        onClose={onClose}
+                                        onCrop={onCrop}
+                                        onBeforeFileLoad={() => setDisabled(false)}
+                                    />
+                                </Box>
 
                                 <Box sx={{ paddingTop: "1rem", display: "flex", justifyContent: "space-between" }}>
                                     <Button bgColor="secondary" sx={{ width: "8rem" }} onClick={handleCloseDialog}>
                                         Cancel
                                     </Button>
                                     <Button
-                                        bgColor="secondary"
+                                        bgColor={disabled ? "gray" : "secondary"}
+                                        disabled={disabled}
                                         sx={{ width: "8rem" }}
                                         onClick={() => saveImage(imageCrop)}>
                                         Save

@@ -16,7 +16,7 @@ const NewPost = () => {
                             QUẢN LÝ NHÂN SỰ
                         </Typography>
                         <Button
-                            bgColor="secondary"
+                            bgcolor="secondary"
                             borderRadius="10px"
                             endIcon={<CreateOutlined sx={{ fontSize: "1.4rem", pl: "0.3rem" }} />}>
                             <Typography size="p">Thêm nhân sự</Typography>

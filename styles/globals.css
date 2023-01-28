@@ -23,3 +23,8 @@ body,
 ::-webkit-scrollbar-thumb {
     background-color: var(--palette-02);
 }
+
+a {
+    color: inherit;
+    text-decoration: inherit;
+}

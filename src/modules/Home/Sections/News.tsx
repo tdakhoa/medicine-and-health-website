@@ -89,7 +89,7 @@ const News = () => {
                     </Typography>
                 </Box>
                 <Button
-                    bgColor="primary"
+                    bgcolor="primary"
                     endIcon={<ArrowForwardOutlined sx={{ fontSize: "1.2rem", paddingLeft: "0.2rem" }} />}>
                     <Typography size="p">Đọc thêm</Typography>
                 </Button>
@@ -111,7 +111,7 @@ const News = () => {
                 </NewsGrid>
                 <NewsGrid xs={4.8} direction="column" item container rowSpacing={2}>
                     {newsData.map((item, i) => (
-                        <Grid xs={4} item>
+                        <Grid key={i} xs={4} item>
                             <Box className="media-container" sx={item.style}>
                                 <Box className="media-overlay media-bgComp">
                                     <Typography size="p" weight="bold" sx={{ textAlign: "end" }}>

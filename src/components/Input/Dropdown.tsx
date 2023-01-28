@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { ChangeEventHandler } from "react";
 import { MenuItem, ListSubheader, Box, InputLabel } from "@mui/material";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
@@ -27,19 +27,28 @@ const StyleDropdown = {
     }
 };
 
+interface Types {
+    title: string;
+    category: string;
+    keyword: string;
+    author: string;
+}
 interface DropdownProps {
     label?: string;
     placeholder?: string;
     sx?: object;
+    setData: React.Dispatch<React.SetStateAction<{ title: string; category: string; keyword: string; author: string }>>;
+    data: Types;
 }
 
-const Dropdown = ({ label = "", placeholder = "", sx = {}, ...props }: DropdownProps) => {
+const Dropdown = ({ label = "", placeholder = "", data, setData, sx = {}, ...props }: DropdownProps) => {
     const [val, setValue] = React.useState("");
     const [showPlaceholder, setShowPlaceholder] = React.useState(true);
 
     const handleChange = (event: SelectChangeEvent) => {
         setValue(event.target.value);
         setShowPlaceholder(!Boolean(event.target.value));
+        setData({ title: data.title, category: event.target.value, keyword: data.keyword, author: data.title });
     };
 
     return (
@@ -60,9 +69,11 @@ const Dropdown = ({ label = "", placeholder = "", sx = {}, ...props }: DropdownP
                     {MenuItems.map((item, id1) =>
                         item.title.map((e, id2) =>
                             id2 == 0 && item.title.length > 1 ? (
-                                <ListSubheader sx={{ fontWeight: 800 }}>{e}</ListSubheader>
+                                <ListSubheader key={id2} sx={{ fontWeight: 800 }}>
+                                    {e}
+                                </ListSubheader>
                             ) : (
-                                <MenuItem value={e} key={id1} sx={{ pl: id2 > 0 ? 6 : "auto" }}>
+                                <MenuItem value={e} key={id2} sx={{ pl: id2 > 0 ? 6 : "auto" }}>
                                     {e}
                                 </MenuItem>
                             )

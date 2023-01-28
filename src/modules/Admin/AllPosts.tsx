@@ -18,8 +18,8 @@ const NewPost = () => {
                         </Typography>
                         <Link href="/admin/new-post">
                             <Button
-                                bgColor="secondary"
-                                borderRadius="10px"
+                                bgcolor="secondary"
+                                borderradiuss="10px"
                                 endIcon={<CreateOutlined sx={{ fontSize: "1.4rem", pl: "0.3rem" }} />}>
                                 <Typography size="p">Thêm bài viết mới</Typography>
                             </Button>

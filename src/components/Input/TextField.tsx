@@ -1,5 +1,5 @@
 import { TextField as MuiTextField, Box, styled } from "@mui/material";
-import React, { ChangeEvent, ChangeEventHandler } from "react";
+import React, { ChangeEventHandler } from "react";
 import Typography from "../Typography/Typography";
 
 const MyTextField = styled(MuiTextField)(() => ({

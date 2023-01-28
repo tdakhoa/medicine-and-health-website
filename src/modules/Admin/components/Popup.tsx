@@ -43,11 +43,11 @@ const Popup = (props: PopupProps) => {
                     <DialogContentText>{content.description}</DialogContentText>
                 </DialogContent>
                 <DialogActions>
-                    <Button bgColor="gray" onClick={handleClose}>
+                    <Button bgcolor="gray" onClick={handleClose}>
                         Thoát
                     </Button>
                     <Button
-                        bgColor="secondary"
+                        bgcolor="secondary"
                         onClick={() => handleClick(content.link || "", snackbar.title || "", snackbar.variant)}>
                         Tiếp tục
                     </Button>

@@ -104,7 +104,7 @@ const RoundedCard = ({
                     <Box sx={{ display: "flex", justifyContent: "end", alignItems: "center", height: "50%" }}>
                         <Button
                             sx={CardBottomStyle({ activeStyle, hover })}
-                            bgColor="primary"
+                            bgcolor="primary"
                             endIcon={<ArrowForwardOutlined sx={{ fontSize: "1.2rem", paddingLeft: "0.2rem" }} />}>
                             <Typography size="p">Tìm hiểu thêm</Typography>
                         </Button>

@@ -214,14 +214,14 @@ const Profile = () => {
                         }}>
                         <Button
                             bgcolor="secondary"
-                            borderradiuss="10px"
+                            borderradius="10px"
                             endIcon={<SaveOutlined sx={{ fontSize: "1.4rem", pl: "0.3rem" }} />}
                             onClick={handleDraft}>
                             <Typography size="p">Lưu thay đổi</Typography>
                         </Button>
                         <Button
                             bgcolor="gray"
-                            borderradiuss="10px"
+                            borderradius="10px"
                             endIcon={<CancelOutlined sx={{ fontSize: "1.4rem", pl: "0.3rem" }} />}
                             onClick={handleExit}>
                             <Typography size="p">Huỷ thay đổi</Typography>

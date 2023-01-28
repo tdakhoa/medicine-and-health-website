@@ -5,7 +5,7 @@ const MyButton = styled(MuiButton)((props: ButtonProps) => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    borderRadius: props.borderradiuss,
+    borderRadius: props.borderradius,
     cursor: "pointer",
     padding: "0.5rem 1rem",
     color: "white",
@@ -46,7 +46,7 @@ const MyButton = styled(MuiButton)((props: ButtonProps) => ({
 interface ButtonProps {
     onClick?: React.MouseEventHandler<HTMLButtonElement>;
     bgcolor: string;
-    borderradiuss?: string;
+    borderradius?: string;
     disabled?: boolean;
     children?: React.ReactNode;
     sx?: object;
@@ -57,7 +57,7 @@ interface ButtonProps {
 const Button = ({
     onClick,
     bgcolor = "primary",
-    borderradiuss = "30px",
+    borderradius = "30px",
     disabled,
     children,
     startIcon,
@@ -68,7 +68,7 @@ const Button = ({
     return (
         <MyButton
             bgcolor={bgcolor}
-            borderradiuss={borderradiuss}
+            borderradius={borderradius}
             disabled={disabled}
             sx={sx}
             onClick={onClick}

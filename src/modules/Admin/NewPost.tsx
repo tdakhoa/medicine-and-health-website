@@ -128,21 +128,21 @@ const NewPost = () => {
                         }}>
                         <Button
                             bgcolor="primary"
-                            borderradiuss="10px"
+                            borderradius="10px"
                             endIcon={<SaveOutlined sx={{ fontSize: "1.4rem", pl: "0.3rem" }} />}
                             onClick={handleSave}>
                             <Typography size="p">Lưu và đăng ngay</Typography>
                         </Button>
                         <Button
                             bgcolor="secondary"
-                            borderradiuss="10px"
+                            borderradius="10px"
                             endIcon={<AccessTimeOutlined sx={{ fontSize: "1.4rem", pl: "0.3rem" }} />}
                             onClick={handleDraft}>
                             <Typography size="p">Lưu thành bản nháp</Typography>
                         </Button>
                         <Button
                             bgcolor="gray"
-                            borderradiuss="10px"
+                            borderradius="10px"
                             endIcon={<CancelOutlined sx={{ fontSize: "1.4rem", pl: "0.3rem" }} />}
                             onClick={handleExit}>
                             <Typography size="p">Huỷ và không lưu</Typography>

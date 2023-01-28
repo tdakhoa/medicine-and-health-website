@@ -55,24 +55,6 @@ interface SnackbarState {
     variant: VariantType;
 }
 
-const fetchData = [
-    { label: "Họ và tên", disabled: true, value: "Lê Vũ Ngân Lam" },
-    { label: "Ngày sinh", disabled: true, value: "21/04/2003" },
-    { label: "Username", disabled: true, value: "nganlamforwork" },
-    { label: "Password", disabled: true, value: "yeukhoaratnhieu" },
-    { label: "Email", disabled: true, value: "nganlamforwork@gmail.com" },
-    { label: "Số điện thoại", disabled: true, value: "0945293031" }
-];
-
-const tempData = [
-    { label: "Họ và tên", disabled: true, value: "Lê Vũ Ngân Lam" },
-    { label: "Ngày sinh", disabled: true, value: "21/04/2003" },
-    { label: "Username", disabled: true, value: "nganlamforwork" },
-    { label: "Password", disabled: true, value: "yeukhoaratnhieu" },
-    { label: "Email", disabled: true, value: "nganlamforwork@gmail.com" },
-    { label: "Số điện thoại", disabled: true, value: "0945293031" }
-];
-
 const Profile = () => {
     const [open, setOpen] = useState(false);
     const [render, setRender] = useState(false);
@@ -187,11 +169,11 @@ const Profile = () => {
                                 </Box>
 
                                 <Box sx={{ paddingTop: "1rem", display: "flex", justifyContent: "space-between" }}>
-                                    <Button bgColor="secondary" sx={{ width: "8rem" }} onClick={handleCloseDialog}>
+                                    <Button bgcolor="secondary" sx={{ width: "8rem" }} onClick={handleCloseDialog}>
                                         Cancel
                                     </Button>
                                     <Button
-                                        bgColor={disabled ? "gray" : "secondary"}
+                                        bgcolor={disabled ? "gray" : "secondary"}
                                         disabled={disabled}
                                         sx={{ width: "8rem" }}
                                         onClick={() => saveImage(imageCrop)}>
@@ -231,15 +213,15 @@ const Profile = () => {
                             mt: "2rem"
                         }}>
                         <Button
-                            bgColor="secondary"
-                            borderRadius="10px"
+                            bgcolor="secondary"
+                            borderradiuss="10px"
                             endIcon={<SaveOutlined sx={{ fontSize: "1.4rem", pl: "0.3rem" }} />}
                             onClick={handleDraft}>
                             <Typography size="p">Lưu thay đổi</Typography>
                         </Button>
                         <Button
-                            bgColor="gray"
-                            borderRadius="10px"
+                            bgcolor="gray"
+                            borderradiuss="10px"
                             endIcon={<CancelOutlined sx={{ fontSize: "1.4rem", pl: "0.3rem" }} />}
                             onClick={handleExit}>
                             <Typography size="p">Huỷ thay đổi</Typography>
@@ -253,3 +235,21 @@ const Profile = () => {
 };
 
 export default Profile;
+
+const fetchData = [
+    { label: "Họ và tên", disabled: true, value: "Lê Vũ Ngân Lam" },
+    { label: "Ngày sinh", disabled: true, value: "21/04/2003" },
+    { label: "Username", disabled: true, value: "nganlamforwork" },
+    { label: "Password", disabled: true, value: "yeukhoaratnhieu" },
+    { label: "Email", disabled: true, value: "nganlamforwork@gmail.com" },
+    { label: "Số điện thoại", disabled: true, value: "0945293031" }
+];
+
+const tempData = [
+    { label: "Họ và tên", disabled: true, value: "Lê Vũ Ngân Lam" },
+    { label: "Ngày sinh", disabled: true, value: "21/04/2003" },
+    { label: "Username", disabled: true, value: "nganlamforwork" },
+    { label: "Password", disabled: true, value: "yeukhoaratnhieu" },
+    { label: "Email", disabled: true, value: "nganlamforwork@gmail.com" },
+    { label: "Số điện thoại", disabled: true, value: "0945293031" }
+];

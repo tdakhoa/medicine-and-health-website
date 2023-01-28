@@ -5,19 +5,19 @@ const MyButton = styled(MuiButton)((props: ButtonProps) => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    borderRadius: props.borderRadius,
+    borderRadius: props.borderradiuss,
     cursor: "pointer",
     padding: "0.5rem 1rem",
     color: "white",
     textTransform: "initial",
     backgroundColor:
-        props.bgColor === "primary"
+        props.bgcolor === "primary"
             ? "var(--palette-01)"
-            : props.bgColor === "secondary"
+            : props.bgcolor === "secondary"
             ? "var(--palette-02)"
-            : props.bgColor === "white"
+            : props.bgcolor === "white"
             ? "var(--palette-06)"
-            : props.bgColor,
+            : props.bgcolor,
     border: "2px solid transparent",
     fontFamily: "Nunito",
     "&:hover": {
@@ -25,28 +25,28 @@ const MyButton = styled(MuiButton)((props: ButtonProps) => ({
         borderWidth: "2px",
         borderStyle: "solid",
         borderColor:
-            props.bgColor === "primary"
+            props.bgcolor === "primary"
                 ? "var(--palette-01)"
-                : props.bgColor === "secondary"
+                : props.bgcolor === "secondary"
                 ? "var(--palette-02)"
-                : props.bgColor === "white"
+                : props.bgcolor === "white"
                 ? "var(--palette-06)"
-                : props.bgColor,
+                : props.bgcolor,
         color:
-            props.bgColor === "primary"
+            props.bgcolor === "primary"
                 ? "var(--palette-01)"
-                : props.bgColor === "secondary"
+                : props.bgcolor === "secondary"
                 ? "var(--palette-02)"
-                : props.bgColor === "white"
+                : props.bgcolor === "white"
                 ? "var(--palette-06)"
-                : props.bgColor
+                : props.bgcolor
     }
 }));
 
 interface ButtonProps {
     onClick?: React.MouseEventHandler<HTMLButtonElement>;
-    bgColor: string;
-    borderRadius?: string;
+    bgcolor: string;
+    borderradiuss?: string;
     disabled?: boolean;
     children?: React.ReactNode;
     sx?: object;
@@ -56,8 +56,8 @@ interface ButtonProps {
 
 const Button = ({
     onClick,
-    bgColor = "primary",
-    borderRadius = "30px",
+    bgcolor = "primary",
+    borderradiuss = "30px",
     disabled,
     children,
     startIcon,
@@ -67,8 +67,8 @@ const Button = ({
 }: ButtonProps) => {
     return (
         <MyButton
-            bgColor={bgColor}
-            borderRadius={borderRadius}
+            bgcolor={bgcolor}
+            borderradiuss={borderradiuss}
             disabled={disabled}
             sx={sx}
             onClick={onClick}

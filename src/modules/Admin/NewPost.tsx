@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ChangeEventHandler, useState } from "react";
 import { styled, Box, Grid } from "@mui/material";
 import { Button, Dropdown, TextField, Typography } from "../../components";
 import ToggleDrawer from "./components/Drawer";
@@ -21,6 +21,7 @@ const NewPost = () => {
     const [open, setOpen] = useState(false);
     const [content, setContent] = useState({ title: "", description: "", link: "" });
     const [snackbar, setSnackbar] = useState<SnackbarState>({ title: "", variant: "default" });
+    const [data, setData] = useState({ title: "", category: "", keyword: "", author: "" });
 
     const handleExit = () => {
         setOpen(true);
@@ -55,6 +56,12 @@ const NewPost = () => {
         });
     };
 
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>, i: number) => {
+        if (i === 0) setData({ ...data, title: e.currentTarget.value });
+        else if (i === 1) setData({ ...data, keyword: e.currentTarget.value });
+        else if (i === 2) setData({ ...data, author: e.currentTarget.value });
+    };
+
     return (
         <>
             <Box sx={{ display: "flex" }}>
@@ -65,23 +72,50 @@ const NewPost = () => {
                     </Typography>
                     <InputContainer container spacing={3}>
                         <Grid item xs={6}>
-                            <TextField label="Tiêu đề" placeholder="Nhập tiêu đề bài viết" />
+                            <TextField
+                                label="Tiêu đề"
+                                placeholder="Nhập tiêu đề bài viết"
+                                value={data.title}
+                                onChange={
+                                    ((e: React.ChangeEvent<HTMLInputElement>) =>
+                                        handleChange(e, 0)) as ChangeEventHandler<
+                                        HTMLInputElement | HTMLTextAreaElement
+                                    >
+                                }
+                            />
                         </Grid>
                         <Grid item xs={6}>
-                            <Dropdown label="Danh mục" placeholder="Chọn danh mục" />
+                            <Dropdown label="Danh mục" placeholder="Chọn danh mục" data={data} setData={setData} />
                         </Grid>
                         <Grid item xs={6}>
                             <TextField
                                 label="Từ khoá"
                                 placeholder="Nhập các từ khoá của bài viết, mỗi từ khoá cách nhau một dấu phẩy, nhập tối đa 20 từ khoá "
                                 numberOfRows={4}
+                                value={data.keyword}
+                                onChange={
+                                    ((e: React.ChangeEvent<HTMLInputElement>) =>
+                                        handleChange(e, 1)) as ChangeEventHandler<
+                                        HTMLInputElement | HTMLTextAreaElement
+                                    >
+                                }
                             />
                         </Grid>
                         <Grid item xs={12}>
                             <TextEditor label="Nội dung bài viết" />
                         </Grid>
                         <Grid item xs={12}>
-                            <TextField label="Tác giả" placeholder="Nhập tác giả bài viết" />
+                            <TextField
+                                label="Tác giả"
+                                placeholder="Nhập tác giả bài viết"
+                                value={data.author}
+                                onChange={
+                                    ((e: React.ChangeEvent<HTMLInputElement>) =>
+                                        handleChange(e, 2)) as ChangeEventHandler<
+                                        HTMLInputElement | HTMLTextAreaElement
+                                    >
+                                }
+                            />
                         </Grid>
                     </InputContainer>
                     <Box
@@ -93,22 +127,22 @@ const NewPost = () => {
                             mt: "3rem"
                         }}>
                         <Button
-                            bgColor="primary"
-                            borderRadius="10px"
+                            bgcolor="primary"
+                            borderradiuss="10px"
                             endIcon={<SaveOutlined sx={{ fontSize: "1.4rem", pl: "0.3rem" }} />}
                             onClick={handleSave}>
                             <Typography size="p">Lưu và đăng ngay</Typography>
                         </Button>
                         <Button
-                            bgColor="secondary"
-                            borderRadius="10px"
+                            bgcolor="secondary"
+                            borderradiuss="10px"
                             endIcon={<AccessTimeOutlined sx={{ fontSize: "1.4rem", pl: "0.3rem" }} />}
                             onClick={handleDraft}>
                             <Typography size="p">Lưu thành bản nháp</Typography>
                         </Button>
                         <Button
-                            bgColor="gray"
-                            borderRadius="10px"
+                            bgcolor="gray"
+                            borderradiuss="10px"
                             endIcon={<CancelOutlined sx={{ fontSize: "1.4rem", pl: "0.3rem" }} />}
                             onClick={handleExit}>
                             <Typography size="p">Huỷ và không lưu</Typography>

@@ -8,13 +8,10 @@ import {
   Typography,
   IconButton,
   Backdrop,
-  Accordion as MuiAccordion,
-  AccordionSummary,
-  AccordionDetails,
   Divider,
 } from "@mui/material";
-import { Drawer, List, ListItem, ListItemButton, ListItemText } from "@mui/material";
-import { SearchOutlined, MenuOutlined, ExpandMoreOutlined, ChevronRightOutlined } from "@mui/icons-material";
+import { Drawer } from "@mui/material";
+import { SearchOutlined, MenuOutlined, ChevronRightOutlined } from "@mui/icons-material";
 
 import logo from "../../../public/Logo.png";
 import CategoryAccordion from "../CategoryAccordion/CategoryAccordion";

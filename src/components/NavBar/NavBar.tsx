@@ -17,6 +17,7 @@ import { Drawer, List, ListItem, ListItemButton, ListItemText } from "@mui/mater
 import { SearchOutlined, MenuOutlined, ExpandMoreOutlined, ChevronRightOutlined } from "@mui/icons-material";
 
 import logo from "../../../public/Logo.png";
+import CategoryAccordion from "../CategoryAccordion/CategoryAccordion";
 
 const drawerWidth = 280;
 
@@ -56,44 +57,6 @@ const AppBarMobileHeader = styled(Box)(() => ({
   justifyContent: "space-between",
   padding: "1rem",
 }));
-
-const Accordion = styled(MuiAccordion)(() => ({
-  border: "none",
-  boxShadow: "none",
-  "&::before": {
-    display: "none",
-  },
-}));
-
-interface ListItem {
-  title: string[];
-}
-
-const RenderListItem = (item: ListItem, index: number) => {
-  if (item.title.length == 1)
-    return (
-      <ListItemButton key={index}>
-        <ListItemText primary={item.title[0]} sx={{ "& .MuiTypography-root": { fontWeight: 700 } }} />
-      </ListItemButton>
-    );
-  else
-    return (
-      <Accordion disableGutters key={index}>
-        <AccordionSummary expandIcon={<ExpandMoreOutlined />}>
-          <Typography sx={{ fontWeight: 700 }}>{item.title[0]}</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          {item.title.map((e, i) =>
-            i != 0 ? (
-              <ListItemButton key={i}>
-                <ListItemText primary={e} />
-              </ListItemButton>
-            ) : null
-          )}
-        </AccordionDetails>
-      </Accordion>
-    );
-};
 
 interface shadow {
   trigger: boolean;
@@ -161,7 +124,7 @@ const NavBar = () => {
           </IconButton>
         </AppBarMobileHeader>
         <Divider />
-        <List>{MenuItems.map((item, i) => RenderListItem(item, i))}</List>
+        <CategoryAccordion data={MenuItems} />
       </AppBarMobile>
     </>
   );
@@ -319,8 +282,8 @@ const NavItem = ({ content = { title: "" }, icon, sx = {}, trigger, ...props }: 
 
 const MenuItems = [
   { title: ["Giới thiệu"] },
-  { title: ["Thuốc", "Thuốc cấm lưu hành", "Thuốc khác"] },
   { title: ["Y học cổ truyền"] },
+  { title: ["Thuốc", "Thuốc cấm lưu hành", "Thuốc khác"] },
   { title: ["Tim mạch"] },
   {
     title: [

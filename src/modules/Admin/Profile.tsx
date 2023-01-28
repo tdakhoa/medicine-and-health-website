@@ -12,12 +12,12 @@ import Dialog from "@mui/material/Dialog";
 
 const InputContainer = styled(Grid)(() => ({
     width: "100%",
-    margin: 0
+    marginLeft: "0"
 }));
 
 const StyledAvatar = styled(Avatar)(({ theme }) => ({
-    width: "180px",
-    height: "180px",
+    width: "170px",
+    height: "170px",
     display: "flex",
     margin: "0 auto",
     objectFit: "cover",
@@ -161,9 +161,6 @@ const Profile = () => {
                     </Typography>
                     <InputContainer container spacing={3}>
                         <Grid item xs={12}>
-                            <Typography size="p" weight="bold" sx={{ marginBottom: "0.8rem", textAlign: "center" }}>
-                                Ảnh đại diện
-                            </Typography>
                             <StyledAvatar alt="Avatar" src={avatar || undefined} />
                             <StyledAvatarBox onClick={handleOpenDialog}>
                                 <Typography>Thay đổi ảnh đại diện</Typography>
@@ -231,7 +228,7 @@ const Profile = () => {
                             flexDirection: "row-reverse",
                             justifyContent: "end",
                             gap: "2rem",
-                            mt: "3rem"
+                            mt: "2rem"
                         }}>
                         <Button
                             bgColor="secondary"

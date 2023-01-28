@@ -1,7 +1,7 @@
 import { ArrowForwardOutlined } from "@mui/icons-material";
 import {
-  Box,
   styled,
+  Box,
   TextField as MuiTextField,
   FilledTextFieldProps as MuiTextFieldProps,
   CardMedia,
@@ -18,14 +18,17 @@ const Root = styled(Box)(() => ({
   padding: "3rem 10%",
 }));
 
-const FormContainer = styled(Box)(() => ({
+const FormContainer = styled(Box)(({ theme }) => ({
   width: "80%",
   background: "linear-gradient(180deg, rgba(40, 165, 203, 0.3) 0%, rgba(40, 165, 203, 0) 100%)",
   borderRadius: "40px",
   padding: "3rem",
+  [theme.breakpoints.down("md")]: {
+    width: "100%",
+  },
 }));
 
-const TitleContainer = styled(Box)(() => ({
+const TitleContainer = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   alignItems: "end",
@@ -36,16 +39,36 @@ const TitleContainer = styled(Box)(() => ({
     backgroundColor: "var(--palette-02)",
     margin: "0.8rem 0px",
   },
+  [theme.breakpoints.down("md")]: {
+    alignItems: "center",
+    textAlign: "center",
+  },
 }));
 
-const TextFieldContainer = styled(Box)(() => ({
+const TextFieldContainer = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   gap: "1rem",
   marginTop: "2rem",
   paddingLeft: "30%",
   alignItems: "end",
+  [theme.breakpoints.down("md")]: {
+    paddingLeft: "0%",
+  },
 }));
+
+const StyleCardMedia = (theme: any) => ({
+  width: "32%",
+  height: "60%",
+  position: "absolute",
+  bottom: 0,
+  left: "10%",
+  borderRadius: "40px",
+  boxShadow: "0px 0px 30px rgba(0, 0, 0, 0.4)",
+  [theme.breakpoints.down("md")]: {
+    display: "none",
+  },
+});
 
 const ConsulationForm = () => {
   return (
@@ -77,15 +100,7 @@ const ConsulationForm = () => {
         </TextFieldContainer>
       </FormContainer>
       <CardMedia
-        sx={{
-          width: "420px",
-          height: "520px",
-          position: "absolute",
-          bottom: 0,
-          left: "10%",
-          borderRadius: "40px",
-          boxShadow: "0px 0px 30px rgba(0, 0, 0, 0.4)",
-        }}
+        sx={StyleCardMedia}
         component="img"
         image="https://images.unsplash.com/photo-1517120026326-d87759a7b63b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
         alt="form img"

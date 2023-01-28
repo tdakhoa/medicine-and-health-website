@@ -2,6 +2,7 @@ import { Grid } from "@mui/material";
 import React from "react";
 import { Sidebar } from "../../components";
 import Layout from "../Layout";
+import ConsulationForm from "./components/ConsulationForm";
 import MainTitle from "./components/MainTitle";
 import Main from "./Main";
 
@@ -17,6 +18,7 @@ const Category = () => {
           <Sidebar />
         </Grid>
       </Grid>
+      <ConsulationForm />
     </Layout>
   );
 };

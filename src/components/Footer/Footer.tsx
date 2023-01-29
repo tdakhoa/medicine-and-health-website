@@ -1,10 +1,11 @@
-import { styled, Box, Grid, Link } from "@mui/material";
-import { default as Typography } from ".././Typography/Typography";
 import React from "react";
-import Button from "../Button/Button";
+import Image from "next/image";
+import { styled, Box, Grid, Link } from "@mui/material";
 import { ArrowForwardOutlined, EmailOutlined, FacebookOutlined, LocationOn, PhoneOutlined } from "@mui/icons-material";
 
-import Image from "next/image";
+import { default as Typography } from ".././Typography/Typography";
+import Button from "../Button/Button";
+import { footerItems } from "../../constants";
 import logo from "../../../public/Logo.svg";
 
 const Root = styled("div")(({ theme }) => ({
@@ -190,84 +191,6 @@ const Footer = () => {
 };
 
 export default Footer;
-
-const footerItems = [
-    {
-        title: "subtitle",
-        links: [
-            {
-                link: "https://facebook.com",
-                aliases: "Parturient Lorem"
-            },
-            {
-                link: "https://facebook.com",
-                aliases: "Parturient Lorem"
-            },
-            {
-                link: "https://facebook.com",
-                aliases: "Parturient Lorem"
-            },
-            {
-                link: "https://facebook.com",
-                aliases: "Parturient Lorem"
-            },
-            {
-                link: "https://facebook.com",
-                aliases: "Parturient Lorem"
-            }
-        ]
-    },
-    {
-        title: "subtitle",
-        links: [
-            {
-                link: "https://facebook.com",
-                aliases: "Parturient Lorem"
-            },
-            {
-                link: "https://facebook.com",
-                aliases: "Parturient Lorem"
-            },
-            {
-                link: "https://facebook.com",
-                aliases: "Parturient Lorem"
-            },
-            {
-                link: "https://facebook.com",
-                aliases: "Parturient Lorem"
-            },
-            {
-                link: "https://facebook.com",
-                aliases: "Parturient Lorem"
-            }
-        ]
-    },
-    {
-        title: "subtitle",
-        links: [
-            {
-                link: "https://facebook.com",
-                aliases: "Parturient Lorem"
-            },
-            {
-                link: "https://facebook.com",
-                aliases: "Parturient Lorem"
-            },
-            {
-                link: "https://facebook.com",
-                aliases: "Parturient Lorem"
-            },
-            {
-                link: "https://facebook.com",
-                aliases: "Parturient Lorem"
-            },
-            {
-                link: "https://facebook.com",
-                aliases: "Parturient Lorem"
-            }
-        ]
-    }
-];
 
 const socialItems = [
     { icon: <PhoneOutlined />, link: "(+84) 384 375  64" },

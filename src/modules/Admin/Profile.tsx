@@ -1,14 +1,17 @@
 import { ChangeEventHandler, useEffect, useState } from "react";
-import { styled, Box, Grid, Avatar } from "@mui/material";
-import ToggleDrawer from "./components/Drawer";
+import { styled, Box, Grid, Avatar, DialogTitle, Dialog } from "@mui/material";
 import { CancelOutlined, CreateOutlined, SaveOutlined } from "@mui/icons-material";
 import { VariantType } from "notistack";
 import AvatarEdit from "react-avatar-edit";
 
+import ToggleDrawer from "./components/Drawer";
 import { Button, TextField, Typography } from "../../components";
 import Popup from "./components/Popup";
-import DialogTitle from "@mui/material/DialogTitle";
-import Dialog from "@mui/material/Dialog";
+
+const Root = styled(Box)(({ theme }) => ({
+    display: "flex",
+    paddingBottom: "5%"
+}));
 
 const InputContainer = styled(Grid)(() => ({
     width: "100%",
@@ -50,6 +53,19 @@ const StyledDialog = styled(Dialog)(({ theme }) => ({
     }
 }));
 
+const ButtonBox = styled(Box)(({ theme }) => ({
+    flexDirection: "row-reverse",
+    justifyContent: "end",
+    gap: "2rem",
+    marginTop: "2rem"
+}));
+
+const AvatarLabelStyle = {
+    fontSize: "20px",
+    fontWeight: "500",
+    cursor: "pointer",
+    padding: "7.9rem 4.9rem"
+};
 interface SnackbarState {
     title: string;
     variant: VariantType;
@@ -134,103 +150,89 @@ const Profile = () => {
     };
 
     return (
-        <>
-            <Box sx={{ display: "flex", paddingBottom: "5%" }}>
-                <ToggleDrawer />
-                <Box component="main" sx={{ flexGrow: 1, px: 4, py: 3 }}>
-                    <Typography size="h2" weight="bold" color="secondary">
-                        THÔNG TIN CÁ NHÂN
-                    </Typography>
-                    <InputContainer container spacing={3}>
-                        <Grid item xs={12}>
-                            <StyledAvatar alt="Avatar" src={avatar || undefined} />
-                            <StyledAvatarBox onClick={handleOpenDialog}>
-                                <Typography>Thay đổi ảnh đại diện</Typography>
-                                <CreateOutlined sx={{ fontSize: "1.2rem", ml: "0.5rem", cursor: "pointer" }} />
-                            </StyledAvatarBox>
+        <Root>
+            <ToggleDrawer />
+            <Box component="main" sx={{ flexGrow: 1, px: 4, py: 3 }}>
+                <Typography size="h2" weight="bold" color="secondary">
+                    THÔNG TIN CÁ NHÂN
+                </Typography>
+                <InputContainer container spacing={3}>
+                    <Grid item xs={12}>
+                        <StyledAvatar alt="Avatar" src={avatar || undefined} />
+                        <StyledAvatarBox onClick={handleOpenDialog}>
+                            <Typography>Thay đổi ảnh đại diện</Typography>
+                            <CreateOutlined sx={{ fontSize: "1.2rem", ml: "0.5rem", cursor: "pointer" }} />
+                        </StyledAvatarBox>
 
-                            <StyledDialog disableScrollLock={true} open={dialogs} onClose={handleCloseDialog}>
-                                <StyledDialogTitle>Change Avatar</StyledDialogTitle>
+                        <StyledDialog disableScrollLock={true} open={dialogs} onClose={handleCloseDialog}>
+                            <StyledDialogTitle>Change Avatar</StyledDialogTitle>
 
-                                <Box sx={{ cursor: "pointer" }}>
-                                    <AvatarEdit
-                                        labelStyle={{
-                                            fontSize: "20px",
-                                            fontWeight: "500",
-                                            cursor: "pointer",
-                                            padding: "7.9rem 4.9rem"
-                                        }}
-                                        width={280}
-                                        height={280}
-                                        onClose={onClose}
-                                        onCrop={onCrop}
-                                        onBeforeFileLoad={() => setDisabled(false)}
-                                    />
-                                </Box>
-
-                                <Box sx={{ paddingTop: "1rem", display: "flex", justifyContent: "space-between" }}>
-                                    <Button bgcolor="secondary" sx={{ width: "8rem" }} onClick={handleCloseDialog}>
-                                        Cancel
-                                    </Button>
-                                    <Button
-                                        bgcolor={disabled ? "gray" : "secondary"}
-                                        disabled={disabled}
-                                        sx={{ width: "8rem" }}
-                                        onClick={() => saveImage(imageCrop)}>
-                                        Save
-                                    </Button>
-                                </Box>
-                            </StyledDialog>
-                        </Grid>
-                        {data.map((item, i) => (
-                            <Grid item xs={6} key={i}>
-                                <TextField
-                                    label={item.label}
-                                    disabled={item.disabled}
-                                    value={item.value}
-                                    onChange={
-                                        ((e: React.ChangeEvent<HTMLInputElement>) =>
-                                            handleChange(e, i)) as ChangeEventHandler<
-                                            HTMLInputElement | HTMLTextAreaElement
-                                        >
-                                    }
-                                    endIcon={
-                                        <CreateOutlined
-                                            onClick={() => handlePick(i)}
-                                            sx={{ fontSize: "1.2rem", ml: "0.5rem", cursor: "pointer" }}
-                                        />
-                                    }
+                            <Box sx={{ cursor: "pointer" }}>
+                                <AvatarEdit
+                                    labelStyle={AvatarLabelStyle}
+                                    width={280}
+                                    height={280}
+                                    onClose={onClose}
+                                    onCrop={onCrop}
+                                    onBeforeFileLoad={() => setDisabled(false)}
                                 />
-                            </Grid>
-                        ))}
-                    </InputContainer>
-                    <Box
-                        sx={{
-                            display: editing ? "flex" : "none",
-                            flexDirection: "row-reverse",
-                            justifyContent: "end",
-                            gap: "2rem",
-                            mt: "2rem"
-                        }}>
-                        <Button
-                            bgcolor="secondary"
-                            borderradius="10px"
-                            endIcon={<SaveOutlined sx={{ fontSize: "1.4rem", pl: "0.3rem" }} />}
-                            onClick={handleDraft}>
-                            <Typography size="p">Lưu thay đổi</Typography>
-                        </Button>
-                        <Button
-                            bgcolor="gray"
-                            borderradius="10px"
-                            endIcon={<CancelOutlined sx={{ fontSize: "1.4rem", pl: "0.3rem" }} />}
-                            onClick={handleExit}>
-                            <Typography size="p">Huỷ thay đổi</Typography>
-                        </Button>
-                    </Box>
-                </Box>
-                <Popup content={content} snackbar={snackbar} open={open} setOpen={setOpen} />
+                            </Box>
+
+                            <Box sx={{ paddingTop: "1rem", display: "flex", justifyContent: "space-between" }}>
+                                <Button bgcolor="secondary" sx={{ width: "8rem" }} onClick={handleCloseDialog}>
+                                    Cancel
+                                </Button>
+                                <Button
+                                    bgcolor={disabled ? "gray" : "secondary"}
+                                    disabled={disabled}
+                                    sx={{ width: "8rem" }}
+                                    onClick={() => saveImage(imageCrop)}>
+                                    Save
+                                </Button>
+                            </Box>
+                        </StyledDialog>
+                    </Grid>
+                    {data.map((item, i) => (
+                        <Grid item xs={6} key={i}>
+                            <TextField
+                                label={item.label}
+                                disabled={item.disabled}
+                                value={item.value}
+                                onChange={
+                                    ((e: React.ChangeEvent<HTMLInputElement>) =>
+                                        handleChange(e, i)) as ChangeEventHandler<
+                                        HTMLInputElement | HTMLTextAreaElement
+                                    >
+                                }
+                                endIcon={
+                                    <CreateOutlined
+                                        onClick={() => handlePick(i)}
+                                        sx={{ fontSize: "1.2rem", ml: "0.5rem", cursor: "pointer" }}
+                                    />
+                                }
+                            />
+                        </Grid>
+                    ))}
+                </InputContainer>
+                <ButtonBox sx={{ display: editing ? "flex" : "none" }}>
+                    <Button
+                        bgcolor="secondary"
+                        borderradius="10px"
+                        endIcon={<SaveOutlined sx={{ fontSize: "1.4rem", pl: "0.3rem" }} />}
+                        onClick={handleDraft}>
+                        <Typography size="p">Lưu thay đổi</Typography>
+                    </Button>
+                    <Button
+                        bgcolor="gray"
+                        borderradius="10px"
+                        endIcon={<CancelOutlined sx={{ fontSize: "1.4rem", pl: "0.3rem" }} />}
+                        onClick={handleExit}>
+                        <Typography size="p">Huỷ thay đổi</Typography>
+                    </Button>
+                </ButtonBox>
             </Box>
-        </>
+            <Popup content={content} snackbar={snackbar} open={open} setOpen={setOpen} />
+        </Root>
     );
 };
 

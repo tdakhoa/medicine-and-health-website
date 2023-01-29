@@ -1,8 +1,8 @@
 import React from "react";
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel as NPMCarousel } from "react-responsive-carousel";
 import { styled } from "@mui/material";
+import { Carousel as NPMCarousel } from "react-responsive-carousel";
 
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 interface CarouselProps {
     listData?: JSX.Element[];
     time?: number;

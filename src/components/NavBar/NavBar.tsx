@@ -212,7 +212,7 @@ const NavItem = ({ content = { title: [""], link: [""] }, icon, sx = {}, trigger
                                         display: "none",
                                         padding: "0.6rem 1rem",
                                         backgroundColor: trigger ? "var(--palette-03)" : "var(--palette-06)",
-                                        color: trigger ? "var(--palette-06)" : "var(--palette-01)",
+                                        color: trigger ? "var(--palette-06) !important" : "var(--palette-01)",
                                         borderRadius:
                                             i === content.title.length - 1
                                                 ? "0px 0px 6px 6px"
@@ -233,7 +233,11 @@ const NavItem = ({ content = { title: [""], link: [""] }, icon, sx = {}, trigger
                                             backgroundColor: trigger ? "#34BEE8" : "#E8E6E6"
                                         }
                                     }}>
-                                    <Typography sx={{ textAlign: "left !important", textTransform: "uppercase" }}>
+                                    <Typography
+                                        sx={{
+                                            textAlign: "left !important",
+                                            textTransform: "uppercase"
+                                        }}>
                                         {item}
                                     </Typography>
                                 </Box>

@@ -63,7 +63,7 @@ interface CardTypes {
     handlePointerEvent: (e: PointerTypes) => void;
     handlePageChange: (index: number) => void;
     title: string;
-    description: string;
+    content: string;
     img: string;
     cardStyle: object;
     activeStyle: object;
@@ -74,7 +74,7 @@ const RoundedCard = ({
     handlePointerEvent,
     handlePageChange,
     title,
-    description,
+    content,
     img,
     cardStyle,
     activeStyle
@@ -99,7 +99,7 @@ const RoundedCard = ({
                         {title}
                     </Typography>
                     <Typography size="p" sx={{ fontSize: "0.9rem" }}>
-                        {description}
+                        {content}
                     </Typography>
                     <Box sx={{ display: "flex", justifyContent: "end", alignItems: "center", height: "50%" }}>
                         <Button

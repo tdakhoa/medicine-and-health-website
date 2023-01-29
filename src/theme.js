@@ -3,13 +3,13 @@ import { createTheme } from "@mui/material/styles";
 const theme = createTheme({
     palette: {
         primary: {
-            main: "#556cd6"
+            main: "#176076"
         },
         secondary: {
-            main: "#19857b"
+            main: "#176076"
         },
         error: {
-            main: "#fff"
+            main: "#176076"
         },
         mode: "light"
     },
@@ -32,6 +32,16 @@ const theme = createTheme({
             styleOverrides: {
                 root: {
                     fontFamily: "Nunito"
+                }
+            }
+        },
+        MuiPagination: {
+            styleOverrides: {
+                root: {
+                    "& .Mui-selected": {
+                        backgroundColor: "rgba(23, 96, 118, 0.6) !important",
+                        color: "#fcfcfc !important"
+                    }
                 }
             }
         }

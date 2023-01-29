@@ -1,8 +1,10 @@
-import { styled, Grid } from "@mui/material";
 import React from "react";
+import { styled, Grid } from "@mui/material";
+
 import AlternateCard from "./components/AlternateCard";
 import SimpleCard from "./components/SimpleCard";
 import Title from "./components/Title";
+import { cardData } from "../../../constants";
 
 const Root = styled("div")(({ theme }) => ({
     margin: "5% 10%"
@@ -52,32 +54,3 @@ const Mix = () => {
 };
 
 export default Mix;
-
-const cardData = [
-    {
-        img: "https://images.unsplash.com/photo-1666214276454-09b8876cb6ba?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
-        title: "THỦ TỤC KÊ KHAI GIÁ TRANG THIẾT BỊ Y TẾ",
-        content:
-            "Việc kê khai giá trang thiết bị y tế là một trong những cách đảm bảo tính minh bạch về giá bán trang thiết bị y tế trên thị trường, góp phần hạn chế và tiến tới xóa bỏ hiện tượng đẩy giá trang"
-    },
-    {
-        img: "https://images.unsplash.com/photo-1666214280250-41f16ba24a26?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
-        title: "VIÊM GAN TRONG BỆNH WILSON",
-        content: "Biểu hiện đầu tiên của bệnh Wilson là tổn thương gan. Trong bệnh Wilson, "
-    },
-    {
-        img: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
-        title: "VIÊM GAN TRONG BỆNH WILSON",
-        content: "Biểu hiện đầu tiên của bệnh Wilson là tổn thương gan. Trong bệnh Wilson, "
-    },
-    {
-        img: "https://images.unsplash.com/photo-1550831107-1553da8c8464?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
-        title: "VIÊM GAN TRONG BỆNH WILSON",
-        content: "Biểu hiện đầu tiên của bệnh Wilson là tổn thương gan. Trong bệnh Wilson, "
-    },
-    {
-        img: "https://images.unsplash.com/photo-1666214276454-09b8876cb6ba?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
-        title: "VIÊM GAN TRONG BỆNH WILSON",
-        content: "Biểu hiện đầu tiên của bệnh Wilson là tổn thương gan. Trong bệnh Wilson, "
-    }
-];

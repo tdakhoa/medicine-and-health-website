@@ -1,8 +1,9 @@
-import React, { ChangeEventHandler } from "react";
-import { MenuItem, ListSubheader, Box, InputLabel } from "@mui/material";
-import FormControl from "@mui/material/FormControl";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
+import React from "react";
+import { MenuItem, ListSubheader, Box, InputLabel, FormControl, Select } from "@mui/material";
+import { SelectChangeEvent } from "@mui/material/Select";
+
 import Typography from "../Typography/Typography";
+import { MenuItems } from "../../constants";
 
 const MenuProps = {
     PaperProps: {
@@ -86,35 +87,3 @@ const Dropdown = ({ label = "", placeholder = "", data, setData, sx = {}, ...pro
 };
 
 export default Dropdown;
-
-const MenuItems = [
-    {
-        title: ["Thuốc", "Thuốc cấm lưu hành", "Thuốc khác"]
-    },
-    {
-        title: ["Y học cổ truyền"]
-    },
-    {
-        title: ["Tim mạch"]
-    },
-    {
-        title: [
-            "Bệnh học",
-            "Nha khoa",
-            "Nhi khoa",
-            "Sản khoa",
-            "Nội tiết",
-            "Ung thư",
-            "Tai - Mũi - Họng",
-            "Cơ - Xương khớp",
-            "Tâm thần",
-            "Tiêu hoá"
-        ]
-    },
-    {
-        title: ["Thông tin y dược"]
-    },
-    {
-        title: ["Pháp luật y tế"]
-    }
-];

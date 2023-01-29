@@ -1,15 +1,9 @@
 import React from "react";
-import Image from "next/image";
-import { Link, Box, CardMedia } from "@mui/material";
-import { styled, Grid } from "@mui/material";
+import { Box, CardMedia, styled, Grid } from "@mui/material";
+
 import { Button, Typography } from "../../../components";
 import { ArrowForwardOutlined } from "@mui/icons-material";
-
-const news1 =
-    "https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=547&q=80";
-
-const news2 =
-    "https://images.unsplash.com/photo-1666214280138-358232b8f5e5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80";
+import { mainNews, newsData } from "../../../constants";
 
 const Root = styled(Box)(({ theme }) => ({
     display: "flex",
@@ -132,31 +126,3 @@ const News = () => {
 };
 
 export default News;
-
-const mainNews = {
-    img: news1,
-    title: "VIÊM GAN TRONG BỆNH WILSON",
-    description:
-        "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat."
-};
-
-const newsData = [
-    {
-        img: news2,
-        title: "TĂNG HUYẾT ÁP VÔ CĂN VÀ THẬN",
-        description: "Ở người trưởng thành, mỗi quả thận cân độ 150g và chứa đựng khoảng 1 triệu nêphron (đơn vị thận)",
-        style: { borderRadius: "0 40px 0 0" }
-    },
-    {
-        img: news2,
-        title: "TĂNG HUYẾT ÁP VÔ CĂN VÀ THẬN",
-        description: "Ở người trưởng thành, mỗi quả thận cân độ 150g và chứa đựng khoảng 1 triệu nêphron (đơn vị thận)",
-        style: {}
-    },
-    {
-        img: news2,
-        title: "TĂNG HUYẾT ÁP VÔ CĂN VÀ THẬN",
-        description: "Ở người trưởng thành, mỗi quả thận cân độ 150g và chứa đựng khoảng 1 triệu nêphron (đơn vị thận)",
-        style: { borderRadius: "0 0 40px 0 " }
-    }
-];

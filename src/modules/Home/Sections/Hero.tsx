@@ -1,6 +1,7 @@
-import { styled, Box } from "@mui/material";
 import React from "react";
+import { styled, Box } from "@mui/material";
 import { ArrowDownwardOutlined } from "@mui/icons-material";
+
 import { Button, Carousel, Typography } from "../../../components";
 
 const Hero = () => {

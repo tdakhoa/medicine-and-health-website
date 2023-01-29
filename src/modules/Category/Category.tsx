@@ -1,6 +1,6 @@
+import React from "react";
 import { Grid } from "@mui/material";
 import { useRouter } from "next/router";
-import React from "react";
 
 import { Sidebar } from "../../components";
 import Layout from "../Layout";

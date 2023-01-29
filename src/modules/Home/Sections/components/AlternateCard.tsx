@@ -1,6 +1,7 @@
-import { ArrowForwardOutlined } from "@mui/icons-material";
-import { styled, CardMedia, Grid, CardContent, CardActions } from "@mui/material";
 import React from "react";
+import { styled, CardMedia, Grid, CardContent, CardActions } from "@mui/material";
+import { ArrowForwardOutlined } from "@mui/icons-material";
+
 import { Button, Typography } from "../../../../components";
 
 const Root = styled(Grid)((props: AlternateCardProps) => ({

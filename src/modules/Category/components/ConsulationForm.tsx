@@ -1,4 +1,4 @@
-import { ArrowForwardOutlined } from "@mui/icons-material";
+import React from "react";
 import {
     styled,
     Box,
@@ -6,7 +6,8 @@ import {
     FilledTextFieldProps as MuiTextFieldProps,
     CardMedia
 } from "@mui/material";
-import React from "react";
+import { ArrowForwardOutlined } from "@mui/icons-material";
+
 import { Button, Typography } from "../../../components";
 
 const Root = styled(Box)(() => ({

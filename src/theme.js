@@ -34,6 +34,16 @@ const theme = createTheme({
                     fontFamily: "Nunito"
                 }
             }
+        },
+        MuiPagination: {
+            styleOverrides: {
+                root: {
+                    "& .Mui-selected": {
+                        backgroundColor: "rgba(23, 96, 118, 0.6) !important",
+                        color: "#fcfcfc !important"
+                    }
+                }
+            }
         }
     }
 });

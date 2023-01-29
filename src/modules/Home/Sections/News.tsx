@@ -1,8 +1,8 @@
 import React from "react";
 import { Box, CardMedia, styled, Grid } from "@mui/material";
+import { ArrowForwardOutlined } from "@mui/icons-material";
 
 import { Button, Typography } from "../../../components";
-import { ArrowForwardOutlined } from "@mui/icons-material";
 import { mainNews, newsData } from "../../../constants";
 
 const Root = styled(Box)(({ theme }) => ({

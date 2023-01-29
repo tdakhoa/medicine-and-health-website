@@ -8,13 +8,14 @@ const MainCardBox = styled(Box)(({ theme }) => ({
     width: "100%",
     minHeight: "70px",
     display: "flex",
-    alignItems: "stretch",
+    maxHeight: "11rem",
     cursor: "pointer",
     gap: "1rem",
     "& img": {
         width: "30%",
-        height: "100%",
-        borderRadius: "10px"
+        maxHeight: "100%",
+        borderRadius: "10px",
+        objectFit: "cov"
     }
 }));
 

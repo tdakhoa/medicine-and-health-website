@@ -55,6 +55,14 @@ const NewsGrid = styled(Grid)(({ theme }) => ({
     }
 }));
 
+const ContentBox = styled(Box)(({ theme }) => ({
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    width: "100%",
+    marginBottom: "3rem"
+}));
+
 const News = () => {
     var currentTime = new Date();
     var month = `${currentTime.getMonth() + 1}`;
@@ -66,14 +74,7 @@ const News = () => {
 
     return (
         <Root>
-            <Box
-                sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                    width: "100%",
-                    marginBottom: "3rem"
-                }}>
+            <ContentBox>
                 <Box>
                     <Typography sx={{ textTransform: "uppercase" }} size="h3" weight="bold" color="secondary">
                         Tin mới nhất
@@ -87,7 +88,7 @@ const News = () => {
                     endIcon={<ArrowForwardOutlined sx={{ fontSize: "1.2rem", paddingLeft: "0.2rem" }} />}>
                     <Typography size="p">Đọc thêm</Typography>
                 </Button>
-            </Box>
+            </ContentBox>
 
             <Grid container direction="row" spacing={2}>
                 <NewsGrid xs={7.2} item container sx={{ minHeight: 600 }}>

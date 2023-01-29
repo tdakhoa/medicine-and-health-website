@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Grid, Pagination } from "@mui/material";
+import { Grid } from "@mui/material";
 import { useRouter } from "next/router";
 
 import { Sidebar } from "../../components";
@@ -14,7 +14,7 @@ const Category = () => {
     const mainTitleId = TitleLink.link.indexOf(asPath);
     return (
         <Layout>
-            <MainTitle title={TitleLink.title[mainTitleId]} />
+            <MainTitle title={TitleLink.title[mainTitleId]} subTitle={TitleLink.subTitle[mainTitleId]} />
             <Grid container columnSpacing={2} sx={{ padding: "5% 10% 2%" }}>
                 <Grid item xs={8}>
                     <Main />
@@ -23,9 +23,6 @@ const Category = () => {
                     <Sidebar />
                 </Grid>
             </Grid>
-            <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", paddingBottom: "3%" }}>
-                <Pagination count={10} size="large" />
-            </Box>
             <ConsulationForm />
         </Layout>
     );

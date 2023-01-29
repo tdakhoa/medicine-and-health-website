@@ -1,5 +1,5 @@
-import React from "react";
-import { Box, CardMedia, styled, Grid } from "@mui/material";
+import React, { ChangeEventHandler, useState } from "react";
+import { Box, CardMedia, styled, Grid, Pagination } from "@mui/material";
 
 import { Typography } from "../../components";
 import { mainNews } from "../../constants";
@@ -9,7 +9,7 @@ import { mainData } from "../../constants";
 const Root = styled(Box)(({ theme }) => ({
     display: "flex",
     flexDirection: "column",
-    alignItems: "start",
+    alignItems: "end",
     marginRight: "3%"
 }));
 
@@ -21,6 +21,7 @@ const MainGrid = styled(Grid)(({ theme }) => ({
         width: "100%",
         height: "100%",
         borderRadius: "10px",
+        color: "var(--palette-06)",
         "& .media-image": {
             width: "100%",
             height: "100%"
@@ -29,31 +30,19 @@ const MainGrid = styled(Grid)(({ theme }) => ({
             position: "absolute",
             width: "100%",
             height: "100%",
-            textAlign: "center",
             display: "flex",
-            flexDirection: "column"
-        },
-        "& .media-bgMain": {
-            background: "linear-gradient(360deg, #71BFDA 0%, rgba(217, 217, 217, 0) 100%)",
             justifyContent: "end",
+            flexDirection: "column",
+            background: "rgba(7, 27, 33, 0.3)",
             transition: "all .4s ease-in-out",
             padding: "4rem",
-            "&:hover": {
-                color: "white",
-                background: "linear-gradient(360deg, #071B21 0%, rgba(217, 217, 217, 0) 100%)"
-            }
-        },
-        "& .media-bgComp": {
-            background: "linear-gradient(270deg, #71BFDA 15%, rgba(217, 217, 217, 0) 100%)",
-            justifyContent: "center",
+            zIndex: "10000"
+        }
+    },
+    "&:hover": {
+        "& .media-image": {
             transition: "all .4s ease-in-out",
-            padding: "2rem",
-            width: "60%",
-            right: 0,
-            "&:hover": {
-                color: "white",
-                background: "linear-gradient(270deg, #071B21 0%, rgba(217, 217, 217, 0) 100%)"
-            }
+            transform: "scale(1.1)"
         }
     }
 }));
@@ -62,8 +51,8 @@ const CardGrid = styled(Grid)(({ theme }) => ({
     width: "100%",
     border: "0.5px solid rgba(23, 96, 118, 0.4)",
     borderRadius: "10px",
-    padding: "3rem",
-    marginTop: "7%"
+    padding: "3rem 2rem",
+    marginTop: "4%"
 }));
 
 const Divider = styled(Box)(({ theme }) => ({
@@ -73,12 +62,18 @@ const Divider = styled(Box)(({ theme }) => ({
 }));
 
 const Main = () => {
+    const [page, setPage] = useState(1);
+
+    const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
+        setPage(value);
+    };
+
     return (
         <Root>
             <Grid container direction="row">
-                <MainGrid xs={12} item sx={{ minHeight: 600 }}>
-                    <Box className="media-container" sx={{}}>
-                        <Box className="media-overlay media-bgMain">
+                <MainGrid xs={12} item sx={{ minHeight: 500 }}>
+                    <Box className="media-container">
+                        <Box className="media-overlay">
                             <Typography size="h2" weight="bold" sx={{ textAlign: "start" }}>
                                 THỦ TỤC KÊ KHAI GIÁ TRANG THIẾT BỊ Y TẾ
                             </Typography>
@@ -90,7 +85,7 @@ const Main = () => {
                     </Box>
                 </MainGrid>
                 <CardGrid xs={12} item>
-                    {mainData.map((item, i) => (
+                    {mainData[page % 2].map((item, i) => (
                         <Grid key={i} xs={12} item>
                             <MainCard
                                 title={item?.title}
@@ -98,11 +93,14 @@ const Main = () => {
                                 description={item?.description}
                                 img={item?.img}
                             />
-                            {i !== mainData.length - 1 ? <Divider /> : <></>}
+                            {i !== mainData[page % 2].length - 1 ? <Divider /> : <></>}
                         </Grid>
                     ))}
                 </CardGrid>
             </Grid>
+            <Box sx={{ position: "relative", right: "-1rem", padding: "3% 0" }}>
+                <Pagination page={page} onChange={handleChange} count={10} size="large" />
+            </Box>
         </Root>
     );
 };

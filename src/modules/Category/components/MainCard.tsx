@@ -15,7 +15,7 @@ const MainCardBox = styled(Box)(({ theme }) => ({
         width: "30%",
         maxHeight: "100%",
         borderRadius: "10px",
-        objectFit: "cov"
+        objectFit: "cover"
     }
 }));
 

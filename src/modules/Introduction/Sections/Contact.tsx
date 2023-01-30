@@ -1,6 +1,6 @@
 import React from "react";
-import { styled, Box, CardMedia } from "@mui/material";
-import { ArrowDownwardOutlined } from "@mui/icons-material";
+import { styled, Box, CardMedia, Grid } from "@mui/material";
+import { ArrowDownwardOutlined, PhoneOutlined } from "@mui/icons-material";
 
 import { Button, Typography } from "../../../components";
 
@@ -17,7 +17,7 @@ const Root = styled(Box)(() => ({
 const TextContainer = styled(Box)(() => ({
   display: "flex",
   flexDirection: "column",
-  alignItems: "start",
+  alignItems: "end",
   gap: "1rem",
 }));
 
@@ -28,6 +28,14 @@ const Contact = () => {
         <Typography size="h2" weight="extraBold" color="secondary" sx={{ textTransform: "uppercase" }}>
           Tìm chúng tôi tại
         </Typography>
+        <Grid container direction="row-reverse">
+          {ContactItems.map((item, i) => (
+            <Grid item xs={5} key={i} sx={{ display: "flex" }}>
+              {item.icon}
+              <Typography>{item.text}</Typography>
+            </Grid>
+          ))}
+        </Grid>
       </TextContainer>
       <CardMedia
         sx={{
@@ -44,3 +52,30 @@ const Contact = () => {
 };
 
 export default Contact;
+
+const ContactItems = [
+  {
+    icon: <PhoneOutlined />,
+    text: "0945293031",
+  },
+  {
+    icon: <PhoneOutlined />,
+    text: "0945293031",
+  },
+  {
+    icon: <PhoneOutlined />,
+    text: "0945293031",
+  },
+  {
+    icon: <PhoneOutlined />,
+    text: "0945293031",
+  },
+  {
+    icon: <PhoneOutlined />,
+    text: "0945293031",
+  },
+  {
+    icon: <PhoneOutlined />,
+    text: "0945293031",
+  },
+];

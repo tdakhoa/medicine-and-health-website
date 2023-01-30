@@ -18,6 +18,15 @@ const MainTitleContainer = styled(Box)(() => ({
     }
 }));
 
+const TitleBox = styled(Box)(() => ({
+    minWidth: "32rem",
+    padding: "2rem 3rem",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center"
+}));
+
 const Overlay = styled(Box)(() => ({
     width: "100%",
     height: "inherit",
@@ -64,10 +73,10 @@ const TextContainer = styled(Box)(() => ({
 
 interface MainTitleProps {
     title: string;
-    subTitle: string;
+    subTitle?: string;
 }
 
-const MainTitle = ({ title, subTitle, ...props }: MainTitleProps) => {
+const MainTitle = ({ title, subTitle = "", ...props }: MainTitleProps) => {
     return (
         <MainTitleContainer>
             <Overlay></Overlay>
@@ -77,22 +86,19 @@ const MainTitle = ({ title, subTitle, ...props }: MainTitleProps) => {
                 alt="thumbnail"
             />
             <TextContainer>
-                <Box
-                    sx={{
-                        padding: "2rem 3rem",
-                        display: "flex",
-                        flexDirection: "column",
-                        justifyContent: "center",
-                        alignItems: "center"
-                    }}>
-                    <Typography color="secondary" size="h5" weight="bold" sx={{ textTransform: "uppercase" }}>
+                <TitleBox>
+                    <Typography
+                        color="secondary"
+                        size="h5"
+                        weight="bold"
+                        sx={{ textTransform: "uppercase", mb: "1rem" }}>
                         {subTitle}
                     </Typography>
-                    <Box sx={subTitle ? { height: "1rem" } : {}} />
+
                     <Typography color="secondary" size="h3" weight="bold" sx={{ textTransform: "uppercase" }}>
                         {title}
                     </Typography>
-                </Box>
+                </TitleBox>
                 <Box className="background"></Box>
             </TextContainer>
         </MainTitleContainer>

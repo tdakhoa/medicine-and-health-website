@@ -73,10 +73,10 @@ const TextContainer = styled(Box)(() => ({
 
 interface MainTitleProps {
     title: string;
-    subTitle: string;
+    subTitle?: string;
 }
 
-const MainTitle = ({ title, subTitle, ...props }: MainTitleProps) => {
+const MainTitle = ({ title, subTitle = "", ...props }: MainTitleProps) => {
     return (
         <MainTitleContainer>
             <Overlay></Overlay>

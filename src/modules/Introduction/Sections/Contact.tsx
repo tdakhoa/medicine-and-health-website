@@ -1,6 +1,6 @@
 import React from "react";
 import { styled, Box, CardMedia, Grid } from "@mui/material";
-import { ArrowDownwardOutlined, PhoneOutlined } from "@mui/icons-material";
+import { ArrowDownwardOutlined, FacebookOutlined, MailOutline, PhoneOutlined } from "@mui/icons-material";
 
 import { Button, Typography } from "../../../components";
 
@@ -59,11 +59,11 @@ const ContactItems = [
     text: "0945293031",
   },
   {
-    icon: <PhoneOutlined />,
-    text: "0945293031",
+    icon: <MailOutline />,
+    text: "abc@gmail.com",
   },
   {
-    icon: <PhoneOutlined />,
+    icon: <FacebookOutlined />,
     text: "0945293031",
   },
   {

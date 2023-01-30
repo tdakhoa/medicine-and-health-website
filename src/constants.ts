@@ -59,7 +59,7 @@ export const MenuItems = [
     { title: ["Y học \n cổ truyền"], link: ["/category/traditional-medicine"] },
     {
         title: ["Thuốc", "Thuốc cấm lưu hành", "Thuốc khác"],
-        link: ["/category/medicine", "/category/non-circlating-medicine", "/category/other-medicine"]
+        link: ["/category/medicine", "/category/medicine/non-circlating-medicine", "/category/medicine/other-medicine"]
     },
     { title: ["Tim mạch"], link: ["/category/cardiovascular"] },
     {
@@ -77,15 +77,15 @@ export const MenuItems = [
         ],
         link: [
             "/category/pathology",
-            "/category/dental",
-            "/category/pediatric",
-            "/category/obstetric",
-            "/category/Endocrinology",
-            "/category/cancer",
-            "/category/otorhinolaryngology",
-            "/category/musculoskeletal",
-            "/category/psychiatric",
-            "/category/gastroenterology"
+            "/category/pathology/dental",
+            "/category/pathology/pediatric",
+            "/category/pathology/obstetric",
+            "/category/pathology/endocrinology",
+            "/category/pathology/cancer",
+            "/category/pathology/otorhinolaryngology",
+            "/category/pathology/musculoskeletal",
+            "/category/pathology/psychiatric",
+            "/category/pathology/gastroenterology"
         ]
     },
     { title: ["Thông tin \n y dược"], link: ["/category/pharmacy-information"] },
@@ -115,23 +115,44 @@ export const TitleLink = {
         "Pháp luật y tế",
         "Góc bạn đọc"
     ],
+    subTitle: [
+        "",
+        "",
+        "",
+        "Thuốc",
+        "Thuốc",
+        "",
+        "",
+        "Bệnh học",
+        "Bệnh học",
+        "Bệnh học",
+        "Bệnh học",
+        "Bệnh học",
+        "Bệnh học",
+        "Bệnh học",
+        "Bệnh học",
+        "Bệnh học",
+        "",
+        "",
+        ""
+    ],
     link: [
         "/category/introduction",
         "/category/traditional-medicine",
         "/category/medicine",
-        "/category/non-circlating-medicine",
-        "/category/other-medicine",
+        "/category/medicine/non-circlating-medicine",
+        "/category/medicine/other-medicine",
         "/category/cardiovascular",
         "/category/pathology",
-        "/category/dental",
-        "/category/pediatric",
-        "/category/obstetric",
-        "/category/Endocrinology",
-        "/category/cancer",
-        "/category/otorhinolaryngology",
-        "/category/musculoskeletal",
-        "/category/psychiatric",
-        "/category/gastroenterology",
+        "/category/pathology/dental",
+        "/category/pathology/pediatric",
+        "/category/pathology/obstetric",
+        "/category/pathology/endocrinology",
+        "/category/pathology/cancer",
+        "/category/pathology/otorhinolaryngology",
+        "/category/pathology/musculoskeletal",
+        "/category/pathology/psychiatric",
+        "/category/pathology/gastroenterology",
         "/category/pharmacy-information",
         "/category/medical-law",
         "/category/for-you"
@@ -263,74 +284,148 @@ export const footerItems = [
 ];
 
 export const mainData = [
-    {
-        title: "Start a blog to reach your creative peak",
-        date: "18 Jan 2023",
-        description:
-            "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat.",
-        img: "https://images.unsplash.com/photo-1666214277730-e9c7e755e5a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-    },
-    {
-        title: "Start a blog to reach your creative peak",
-        date: "18 Jan 2023",
-        description:
-            "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat.",
-        img: "https://images.unsplash.com/photo-1666214277730-e9c7e755e5a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-    },
-    {
-        title: "Start a blog to reach your creative peak",
-        date: "18 Jan 2023",
-        description:
-            "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat.",
-        img: "https://images.unsplash.com/photo-1666214277730-e9c7e755e5a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-    },
-    {
-        title: "Start a blog to reach your creative peak",
-        date: "18 Jan 2023",
-        description:
-            "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat.",
-        img: "https://images.unsplash.com/photo-1666214277730-e9c7e755e5a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-    },
-    {
-        title: "Start a blog to reach your creative peak",
-        date: "18 Jan 2023",
-        description:
-            "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat.",
-        img: "https://images.unsplash.com/photo-1666214277730-e9c7e755e5a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-    },
-    {
-        title: "Start a blog to reach your creative peak",
-        date: "18 Jan 2023",
-        description:
-            "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat.",
-        img: "https://images.unsplash.com/photo-1666214277730-e9c7e755e5a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-    },
-    {
-        title: "Start a blog to reach your creative peak",
-        date: "18 Jan 2023",
-        description:
-            "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat.",
-        img: "https://images.unsplash.com/photo-1666214277730-e9c7e755e5a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-    },
-    {
-        title: "Start a blog to reach your creative peak",
-        date: "18 Jan 2023",
-        description:
-            "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat.",
-        img: "https://images.unsplash.com/photo-1666214277730-e9c7e755e5a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-    },
-    {
-        title: "Start a blog to reach your creative peak",
-        date: "18 Jan 2023",
-        description:
-            "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat.",
-        img: "https://images.unsplash.com/photo-1666214277730-e9c7e755e5a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-    },
-    {
-        title: "Start a blog to reach your creative peak",
-        date: "18 Jan 2023",
-        description:
-            "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat.",
-        img: "https://images.unsplash.com/photo-1666214277730-e9c7e755e5a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-    }
+    [
+        {
+            title: "Start a blog to reach your creative peak",
+            date: "18 Jan 2023",
+            description:
+                "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat.",
+            img: "https://images.unsplash.com/photo-1666214277730-e9c7e755e5a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+        },
+        {
+            title: "Start a blog to reach your creative peak",
+            date: "18 Jan 2023",
+            description:
+                "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat.",
+            img: "https://images.unsplash.com/photo-1666214277730-e9c7e755e5a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+        },
+        {
+            title: "Start a blog to reach your creative peak",
+            date: "18 Jan 2023",
+            description:
+                "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat.",
+            img: "https://images.unsplash.com/photo-1666214277730-e9c7e755e5a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+        },
+        {
+            title: "Start a blog to reach your creative peak",
+            date: "18 Jan 2023",
+            description:
+                "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat.",
+            img: "https://images.unsplash.com/photo-1666214277730-e9c7e755e5a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+        },
+        {
+            title: "Start a blog to reach your creative peak",
+            date: "18 Jan 2023",
+            description:
+                "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat.",
+            img: "https://images.unsplash.com/photo-1666214277730-e9c7e755e5a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+        },
+        {
+            title: "Start a blog to reach your creative peak",
+            date: "18 Jan 2023",
+            description:
+                "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat.",
+            img: "https://images.unsplash.com/photo-1666214277730-e9c7e755e5a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+        },
+        {
+            title: "Start a blog to reach your creative peak",
+            date: "18 Jan 2023",
+            description:
+                "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat.",
+            img: "https://images.unsplash.com/photo-1666214277730-e9c7e755e5a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+        },
+        {
+            title: "Start a blog to reach your creative peak",
+            date: "18 Jan 2023",
+            description:
+                "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat.",
+            img: "https://images.unsplash.com/photo-1666214277730-e9c7e755e5a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+        },
+        {
+            title: "Start a blog to reach your creative peak",
+            date: "18 Jan 2023",
+            description:
+                "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat.",
+            img: "https://images.unsplash.com/photo-1666214277730-e9c7e755e5a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+        },
+        {
+            title: "Start a blog to reach your creative peak",
+            date: "18 Jan 2023",
+            description:
+                "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat.",
+            img: "https://images.unsplash.com/photo-1666214277730-e9c7e755e5a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+        }
+    ],
+    [
+        {
+            title: "Start a blog to reach your creative peak",
+            date: "18 Jan 2023",
+            description:
+                "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat.",
+            img: "https://images.unsplash.com/photo-1530026405186-ed1f139313f8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=8"
+        },
+        {
+            title: "Start a blog to reach your creative peak",
+            date: "18 Jan 2023",
+            description:
+                "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat.",
+            img: "https://images.unsplash.com/photo-1530026405186-ed1f139313f8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=8"
+        },
+        {
+            title: "Start a blog to reach your creative peak",
+            date: "18 Jan 2023",
+            description:
+                "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat.",
+            img: "https://images.unsplash.com/photo-1530026405186-ed1f139313f8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=8"
+        },
+        {
+            title: "Start a blog to reach your creative peak",
+            date: "18 Jan 2023",
+            description:
+                "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat.",
+            img: "https://images.unsplash.com/photo-1530026405186-ed1f139313f8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=8"
+        },
+        {
+            title: "Start a blog to reach your creative peak",
+            date: "18 Jan 2023",
+            description:
+                "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat.",
+            img: "https://images.unsplash.com/photo-1530026405186-ed1f139313f8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=8"
+        },
+        {
+            title: "Start a blog to reach your creative peak",
+            date: "18 Jan 2023",
+            description:
+                "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat.",
+            img: "https://images.unsplash.com/photo-1530026405186-ed1f139313f8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=8"
+        },
+        {
+            title: "Start a blog to reach your creative peak",
+            date: "18 Jan 2023",
+            description:
+                "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat.",
+            img: "https://images.unsplash.com/photo-1530026405186-ed1f139313f8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=8"
+        },
+        {
+            title: "Start a blog to reach your creative peak",
+            date: "18 Jan 2023",
+            description:
+                "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat.",
+            img: "https://images.unsplash.com/photo-1530026405186-ed1f139313f8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=8"
+        },
+        {
+            title: "Start a blog to reach your creative peak",
+            date: "18 Jan 2023",
+            description:
+                "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat.",
+            img: "https://images.unsplash.com/photo-1530026405186-ed1f139313f8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=8"
+        },
+        {
+            title: "Start a blog to reach your creative peak",
+            date: "18 Jan 2023",
+            description:
+                "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat.",
+            img: "https://images.unsplash.com/photo-1530026405186-ed1f139313f8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=8"
+        }
+    ]
 ];

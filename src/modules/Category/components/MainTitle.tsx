@@ -64,9 +64,10 @@ const TextContainer = styled(Box)(() => ({
 
 interface MainTitleProps {
     title: string;
+    subTitle: string;
 }
 
-const MainTitle = ({ title, ...props }: MainTitleProps) => {
+const MainTitle = ({ title, subTitle, ...props }: MainTitleProps) => {
     return (
         <MainTitleContainer>
             <Overlay></Overlay>
@@ -76,7 +77,18 @@ const MainTitle = ({ title, ...props }: MainTitleProps) => {
                 alt="thumbnail"
             />
             <TextContainer>
-                <Box sx={{ padding: "2rem 3rem" }}>
+                <Box
+                    sx={{
+                        padding: "2rem 3rem",
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "center",
+                        alignItems: "center"
+                    }}>
+                    <Typography color="secondary" size="h5" weight="bold" sx={{ textTransform: "uppercase" }}>
+                        {subTitle}
+                    </Typography>
+                    <Box sx={subTitle ? { height: "1rem" } : {}} />
                     <Typography color="secondary" size="h3" weight="bold" sx={{ textTransform: "uppercase" }}>
                         {title}
                     </Typography>

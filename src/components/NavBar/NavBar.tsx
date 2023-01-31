@@ -26,6 +26,7 @@ const AppBarDesktop = styled(AppBar)(({ theme }) => ({
 
 const StyledNavContainer = styled(Box)(() => ({
     alignItems: "stretch",
+    justifyContent: "center",
     width: "100%",
     padding: "0 3rem"
 }));
@@ -87,10 +88,16 @@ const NavBar = () => {
                     ))}
                 </StyledNavContainer>
 
-                <NavItem
-                    trigger={trigger}
-                    icon={<SearchOutlined />}
-                    sx={{ display: { xs: "none", lg: "flex" } }}></NavItem>
+                <StyledNavItem
+                    sx={{
+                        "&:before": {
+                            backgroundColor: trigger ? "var(--palette-03)" : "var(--palette-06)",
+                            bottom: "-10px"
+                        },
+                        display: { xs: "none", lg: "flex" }
+                    }}>
+                    <SearchOutlined />
+                </StyledNavItem>
 
                 <IconButton
                     sx={{ color: "white", display: { xs: "inline-flex", lg: "none" } }}
@@ -142,6 +149,7 @@ const StyledNavItem = styled(Box)(({ theme }) => ({
     "&:before": {
         content: '""',
         position: "absolute",
+        bottom: 0,
         width: "100%",
         height: 4,
         transform: "scaleX(0)",
@@ -173,26 +181,21 @@ interface Content {
 }
 interface NavItemProps {
     content?: Content;
-    icon?: React.ReactNode;
     trigger: Boolean;
     sx?: object;
 }
-const NavItem = ({ content = { title: [""], link: [""] }, icon, sx = {}, trigger, ...props }: NavItemProps) => {
+const NavItem = ({ content = { title: [""], link: [""] }, sx = {}, trigger, ...props }: NavItemProps) => {
     return (
         <StyledNavItem
             sx={{
                 "&:before": {
-                    bottom: icon ? "-10px" : "0",
                     backgroundColor: trigger ? "var(--palette-03)" : "var(--palette-06)"
                 },
                 ...sx
             }}
             {...props}>
             <Link href={content.link[0]}>
-                <Typography>
-                    {content.title[0]}
-                    {icon}
-                </Typography>
+                <Typography>{content.title[0]}</Typography>
             </Link>
             {content.title.length > 1 ? (
                 <Box

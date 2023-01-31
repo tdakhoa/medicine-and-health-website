@@ -55,7 +55,7 @@ export const cardData = [
 ];
 
 export const MenuItems = [
-    { title: ["Giới thiệu"], link: ["/category/introduction"] },
+    { title: ["Giới thiệu"], link: ["/introduction"] },
     { title: ["Y học \n cổ truyền"], link: ["/category/traditional-medicine"] },
     {
         title: ["Thuốc", "Thuốc cấm lưu hành", "Thuốc khác"],
@@ -137,7 +137,7 @@ export const TitleLink = {
         ""
     ],
     link: [
-        "/category/introduction",
+        "/introduction",
         "/category/traditional-medicine",
         "/category/medicine",
         "/category/medicine/non-circlating-medicine",

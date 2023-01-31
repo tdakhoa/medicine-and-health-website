@@ -429,3 +429,17 @@ export const mainData = [
         }
     ]
 ];
+
+export const links = [
+    { mainCategory: "medicine", subCategory: "non-circlating-medicine" },
+    { mainCategory: "medicine", subCategory: "other-medicine" },
+    { mainCategory: "pathology", subCategory: "dental" },
+    { mainCategory: "pathology", subCategory: "pediatric" },
+    { mainCategory: "pathology", subCategory: "obstetric" },
+    { mainCategory: "pathology", subCategory: "endocrinology" },
+    { mainCategory: "pathology", subCategory: "cancer" },
+    { mainCategory: "pathology", subCategory: "otorhinolaryngology" },
+    { mainCategory: "pathology", subCategory: "musculoskeletal" },
+    { mainCategory: "pathology", subCategory: "psychiatric" },
+    { mainCategory: "pathology", subCategory: "gastroenterology" }
+];

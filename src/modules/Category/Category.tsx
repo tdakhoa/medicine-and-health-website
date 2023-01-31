@@ -13,18 +13,9 @@ const Category = () => {
     const router = useRouter();
     const mainTitleId = TitleLink.link.indexOf(router.asPath);
 
-    useEffect(() => {
-        if (mainTitleId === -1) {
-            router.push("/404");
-        }
-    }, [mainTitleId]);
-
     return (
         <Layout>
-            <MainTitle
-                title={TitleLink.title[mainTitleId] || "ERROR! 404"}
-                subTitle={TitleLink.subTitle[mainTitleId]}
-            />
+            <MainTitle title={TitleLink.title[mainTitleId]} subTitle={TitleLink.subTitle[mainTitleId]} />
             <Grid container columnSpacing={2} sx={{ padding: "5% 10% 2%" }}>
                 <Grid item xs={8}>
                     <Main />

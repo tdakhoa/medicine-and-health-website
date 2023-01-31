@@ -60,6 +60,16 @@ const AppBarMobileHeader = styled(Box)(() => ({
     padding: "1rem"
 }));
 
+const ScrollTop = styled(Fab)(() => ({
+    color: "var(--palette-06)",
+    backgroundColor: "var(--palette-02)",
+    "&:hover": {
+        opacity: "0.9",
+        color: "var(--palette-06)",
+        backgroundColor: "var(--palette-02)"
+    }
+}));
+
 interface shadow {
     trigger: boolean;
 }
@@ -136,10 +146,10 @@ const NavBar = () => {
             </AppBarMobile>
 
             <Fade in={Boolean(trigger)}>
-                <Box role="presentation" sx={{ position: "fixed", bottom: 20, right: 20 }}>
-                    <Fab size="small" onClick={() => window.scrollTo(0, 0)}>
+                <Box sx={{ position: "fixed", bottom: 20, right: 20, zIndex: 100000 }}>
+                    <ScrollTop size="small" onClick={() => window.scrollTo(0, 0)}>
                         <KeyboardArrowUp />
-                    </Fab>
+                    </ScrollTop>
                 </Box>
             </Fade>
         </>
@@ -194,6 +204,27 @@ const StyledNavItem = styled(Box)(({ theme }) => ({
     }
 }));
 
+const NavContentBox = styled(Box)(() => ({
+    position: "absolute",
+    marginTop: "4.7rem",
+    minWidth: 200,
+    left: 0,
+    top: 0
+}));
+
+const NavItemBox = styled(Box)(() => ({
+    display: "none",
+    padding: "0.6rem 1rem",
+    opacity: 0,
+    transformOrigin: "top center",
+    transition: "all 0.3s ease-in-out",
+    animation: "animate 0.3s ease-in-out forwards",
+    "@keyframes animate": {
+        "0%": { transform: "rotateX(-90deg)", opacity: 0 },
+        "50%": { transform: "rotateX(20deg)" },
+        "100%": { transform: "rotate(0deg)", opacity: 1 }
+    }
+}));
 interface Content {
     title: string[];
     link: string[];
@@ -217,22 +248,12 @@ const NavItem = ({ content = { title: [""], link: [""] }, sx = {}, trigger, ...p
                 <Typography>{content.title[0]}</Typography>
             </Link>
             {content.title.length > 1 ? (
-                <Box
-                    id="shadow"
-                    sx={{
-                        position: "absolute",
-                        marginTop: "4.7rem",
-                        minWidth: 200,
-                        left: 0,
-                        top: 0
-                    }}>
+                <NavContentBox id="shadow">
                     {content.title.map((item, i) =>
                         i !== 0 ? (
                             <Link key={i} href={content.link[i]}>
-                                <Box
+                                <NavItemBox
                                     sx={{
-                                        display: "none",
-                                        padding: "0.6rem 1rem",
                                         backgroundColor: trigger ? "var(--palette-03)" : "var(--palette-06)",
                                         color: trigger ? "var(--palette-06) !important" : "var(--palette-01)",
                                         borderRadius:
@@ -241,16 +262,8 @@ const NavItem = ({ content = { title: [""], link: [""] }, sx = {}, trigger, ...p
                                                 : i === 1
                                                 ? "0px 6px 0px 0px"
                                                 : "none",
-                                        transition: "all 0.3s ease-in-out",
-                                        animation: "animate 0.3s ease-in-out forwards",
+
                                         animationDelay: `${i * 0.05}s`,
-                                        "@keyframes animate": {
-                                            "0%": { transform: "rotateX(-90deg)", opacity: 0 },
-                                            "50%": { transform: "rotateX(20deg)" },
-                                            "100%": { transform: "rotate(0deg)", opacity: 1 }
-                                        },
-                                        transformOrigin: "top center",
-                                        opacity: 0,
                                         "&:hover": {
                                             backgroundColor: trigger ? "#34BEE8" : "#E8E6E6"
                                         }
@@ -262,13 +275,13 @@ const NavItem = ({ content = { title: [""], link: [""] }, sx = {}, trigger, ...p
                                         }}>
                                         {item}
                                     </Typography>
-                                </Box>
+                                </NavItemBox>
                             </Link>
                         ) : (
                             <div key={i}></div>
                         )
                     )}
-                </Box>
+                </NavContentBox>
             ) : (
                 <></>
             )}

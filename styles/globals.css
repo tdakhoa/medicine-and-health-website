@@ -3,18 +3,28 @@
 html,
 body,
 * {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  font-family: "Nunito", sans-serif;
-  font-style: normal;
-  text-decoration: none;
-  list-style: none;
-  scroll-behavior: smooth;
-  font-size: 16px;
-  transition: all 0.4s ease-in-out;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Nunito", sans-serif;
+    font-style: normal;
+    text-decoration: none;
+    list-style: none;
+    scroll-behavior: smooth;
+    font-size: 16px;
+    scroll-behavior: smooth;
 }
 
 ::-webkit-scrollbar {
-    display: none;
+    background-color: var(--palette-06);
+    width: 0.3rem;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--palette-02);
+}
+
+a {
+    color: unset;
+    text-decoration: unset;
 }

@@ -1,24 +1,24 @@
 import React from "react";
-import Heart from "./Sections/Heart";
+
+import CardCarousel from "./Sections/CardCarousel";
 import Hero from "./Sections/Hero";
-import Medical from "./Sections/Medical";
-import Meds from "./Sections/Meds";
+import NormalSection from "./Sections/Normal";
+import Mix from "./Sections/Mix";
 import News from "./Sections/News";
-import Diseases from "./Sections/Diseases";
-import { NavBar } from "../../components";
+import Alternate from "./Sections/Alternate";
+import Layout from "../Layout";
 
 const Home = () => {
-  return (
-    <>
-      <NavBar />
-      <Hero />
-      <Diseases />
-      <Heart />
-      <Medical />
-      <Meds />
-      <News />
-    </>
-  );
+    return (
+        <Layout>
+            <Hero />
+            <News />
+            <NormalSection />
+            <Alternate />
+            <CardCarousel />
+            <Mix />
+        </Layout>
+    );
 };
 
 export default Home;

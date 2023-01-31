@@ -25,7 +25,7 @@ const Information = () => {
     return (
         <Root>
             <TextContainer>
-                <Typography size="h2" weight="extraBold" color="secondary" sx={{ textTransform: "uppercase" }}>
+                <Typography size="h2" weight="extraBold" color="secondary" transform="uppercase">
                     Thuốc và sức khoẻ
                 </Typography>
                 <Typography sx={{ textAlign: "justify" }}>

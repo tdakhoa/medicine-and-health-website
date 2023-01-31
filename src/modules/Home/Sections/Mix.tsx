@@ -18,7 +18,7 @@ const StyleSimpleCard = {
 const Mix = () => {
     return (
         <Root>
-            <Title text="PHÁP LUẬT Y TẾ" />
+            <Title text="PHÁP LUẬT Y TẾ" link="/category/medical-law" />
             <AlternateCard
                 direction="row"
                 sx={{

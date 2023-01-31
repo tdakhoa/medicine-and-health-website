@@ -11,7 +11,7 @@ const Root = styled("div")(({ theme }) => ({
 const AlternateSection = () => {
     return (
         <Root>
-            <Title text="BỆNH HỌC" />
+            <Title text="BỆNH HỌC" link="/category/pathology" />
             {cardData.map((data, id) => (
                 <AlternateCard
                     key={id}

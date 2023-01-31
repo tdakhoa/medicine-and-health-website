@@ -74,9 +74,10 @@ const News = () => {
 
     return (
         <Root>
+            <Box sx={{ position: "relative", top: "-90px" }} id="news" />
             <ContentBox>
                 <Box>
-                    <Typography sx={{ textTransform: "uppercase" }} size="h3" weight="bold" color="secondary">
+                    <Typography transform="uppercase" size="h3" weight="bold" color="secondary">
                         Tin mới nhất
                     </Typography>
                     <Typography size="h5" weight="semiBold" color="secondary">

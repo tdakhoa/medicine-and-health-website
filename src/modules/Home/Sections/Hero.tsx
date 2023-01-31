@@ -5,6 +5,10 @@ import { ArrowDownwardOutlined } from "@mui/icons-material";
 import { Button, Carousel, Typography } from "../../../components";
 
 const Hero = () => {
+    const handleScroll = () => {
+        const element = document.getElementById("news");
+        element?.scrollIntoView();
+    };
     return (
         <Box sx={{ position: "relative", width: "100%", height: "90vh" }}>
             <Overlay>
@@ -26,6 +30,7 @@ const Hero = () => {
                     <Button
                         bgcolor="primary"
                         sx={{ marginTop: "1.4rem" }}
+                        onClick={handleScroll}
                         endIcon={<ArrowDownwardOutlined sx={{ fontSize: "1.2rem", paddingLeft: "0.2rem" }} />}>
                         <Typography size="p" color="inherit" weight="medium">
                             Đọc thêm

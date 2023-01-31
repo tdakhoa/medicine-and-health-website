@@ -15,6 +15,7 @@ const Root = styled(Box)(() => ({
 }));
 
 const TextContainer = styled(Box)(() => ({
+    width: "100%",
     display: "flex",
     flexDirection: "column",
     alignItems: "end",
@@ -25,14 +26,16 @@ const Contact = () => {
     return (
         <Root>
             <TextContainer>
-                <Typography size="h2" weight="extraBold" color="secondary" sx={{ textTransform: "uppercase" }}>
+                <Typography size="h2" weight="extraBold" color="secondary" transform="uppercase">
                     Tìm chúng tôi tại
                 </Typography>
-                <Grid container direction="row" rowSpacing={4} sx={{ justifyContent: "end" }}>
+                <Grid container direction="row" columnSpacing={8} rowSpacing={4} sx={{ justifyContent: "end" }}>
                     {ContactItems.map((item, i) => (
                         <Grid item xs={5} key={i} sx={{ display: "flex" }}>
                             {item.icon}
-                            <Typography sx={{ width: "100%", wordWrap: "break-word" }}>{item.text}</Typography>
+                            <Typography sx={{ width: "100%", wordWrap: "break-word", paddingLeft: "0.5rem" }}>
+                                {item.text}
+                            </Typography>
                         </Grid>
                     ))}
                 </Grid>

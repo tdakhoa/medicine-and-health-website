@@ -12,7 +12,7 @@ const Root = styled("div")(({ theme }) => ({
 const NormalSection = () => {
     return (
         <Root>
-            <Title text="Y HỌC CỔ TRUYỀN" />
+            <Title text="Y HỌC CỔ TRUYỀN" link="/category/traditional-medicine" />
             <Grid container spacing={2} sx={{ textAlign: "center" }}>
                 <Grid item xs={4}>
                     <SimpleCard

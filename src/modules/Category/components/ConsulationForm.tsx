@@ -76,10 +76,10 @@ const ConsulationForm = () => {
         <Root>
             <FormContainer>
                 <TitleContainer>
-                    <Typography size="h3" weight="bold" color="secondary" sx={{ textTransform: "uppercase" }}>
+                    <Typography size="h3" weight="bold" color="secondary" transform="uppercase">
                         Tư vấn pháp luật y tế miễn phí
                     </Typography>
-                    <Typography size="p" weight="semiBold" color="secondary" sx={{ textTransform: "uppercase" }}>
+                    <Typography size="p" weight="semiBold" color="secondary" transform="uppercase">
                         HÃY ĐỂ LẠI THÔNG TIN LIÊN HỆ CỦA BẠN
                     </Typography>
                     <Box className="divider"></Box>

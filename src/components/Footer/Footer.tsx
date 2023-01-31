@@ -144,7 +144,7 @@ const Footer = () => {
                 <LinkContainer container>
                     {footerItems.map((item, id) => (
                         <Grid className="footer-item" item xs={4} key={id}>
-                            <Typography size="h6" weight="bold" sx={{ textTransform: "uppercase" }}>
+                            <Typography size="h6" weight="bold" transform="uppercase">
                                 {item.title}
                             </Typography>
                             <Box sx={StyleDivider}></Box>
@@ -157,7 +157,7 @@ const Footer = () => {
                     ))}
                     <SocialContainer container>
                         <Grid item xs={12} className="social-title">
-                            <Typography size="h6" weight="bold" sx={{ textTransform: "uppercase" }}>
+                            <Typography size="h6" weight="bold" transform="uppercase">
                                 contact us
                             </Typography>
                             <Box sx={StyleDivider}></Box>

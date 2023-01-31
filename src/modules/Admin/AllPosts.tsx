@@ -1,10 +1,11 @@
-import { Box } from "@mui/material";
 import React from "react";
+import Link from "next/link";
+import { Box } from "@mui/material";
+import { CreateOutlined } from "@mui/icons-material";
+
 import { Button, Typography } from "../../components";
 import ToggleDrawer from "./components/Drawer";
-import { CreateOutlined } from "@mui/icons-material";
 import DataTable from "./components/DataTable";
-import Link from "next/link";
 
 const NewPost = () => {
     return (

@@ -1,5 +1,6 @@
 import React from "react";
-import { Link, Box } from "@mui/material";
+import Link from "next/link";
+import { Box, styled } from "@mui/material";
 
 import { Typography } from "../../../../components";
 
@@ -15,32 +16,33 @@ const StyleDivider = {
     backgroundColor: "var(--palette-02)",
     margin: "0.8rem 0px"
 };
-const StyleTitle = {
+
+const StyledTitle = styled(Box)(({ theme }) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     textTransform: "uppercase",
     marginBottom: "3rem"
-};
+}));
 
 interface TitleProps {
     text: string;
     link?: string;
     sx?: object;
 }
-const Title = ({ text, link = "#", sx = {}, ...props }: TitleProps) => {
+const Title = ({ text, link = "", sx = {}, ...props }: TitleProps) => {
     return (
-        <Box sx={StyleTitle}>
-            <Typography size="h2" weight="bold" color="secondary">
+        <StyledTitle sx={sx}>
+            <Typography size="h2" weight="bold" color="secondary" transform="uppercase">
                 {text}
             </Typography>
-            <Link href={link} underline="none">
-                <Typography size="p" weight="semiBold" color="secondary" sx={StyleSeeAll}>
+            <Link className="see-more" href={link}>
+                <Typography size="p" weight="semiBold" color="secondary" transform="uppercase" sx={StyleSeeAll}>
                     xem tất cả
                 </Typography>
             </Link>
             <Box sx={StyleDivider}></Box>
-        </Box>
+        </StyledTitle>
     );
 };
 

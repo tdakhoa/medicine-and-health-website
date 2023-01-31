@@ -12,10 +12,12 @@ const Root = styled(Grid)((props: SimpleCardProps) => ({
         height: "100%",
         "& .media-image": {
             width: "100%",
-            height: "100%"
+            height: "100%",
+            transition: "all .4s ease-in-out"
         },
         "& .media-overlay": {
             position: "absolute",
+            transition: "all .4s ease-in-out",
             width: "100%",
             height: "100%",
             backgroundColor: "rgba(7, 27, 33, 0.3)"
@@ -24,11 +26,9 @@ const Root = styled(Grid)((props: SimpleCardProps) => ({
     "&:hover": {
         color: "var(--palette-02)",
         "& .media-overlay": {
-            transition: "all .4s ease-in-out",
             backgroundColor: "rgba(7, 27, 33, 0)"
         },
         "& .media-image": {
-            transition: "all .4s ease-in-out",
             transform: "scale(1.1)"
         }
     }

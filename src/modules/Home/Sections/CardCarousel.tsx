@@ -45,10 +45,17 @@ const nextCard = {
     transition: "all 1s ease-in-out"
 };
 
-const hideCard = {
-    left: "50%",
-    transform: "translateX(-50%)",
-    transition: "all 0.3s ease-in-out",
+const hidePrevCard = {
+    left: "-5%",
+    transform: "translateX(-40%)",
+    transition: "all 1s ease-in-out",
+    opacity: 0
+};
+
+const hideNextCard = {
+    left: "105%",
+    transform: "translateX(-40%)",
+    transition: "all 1s ease-in-out",
     opacity: 0
 };
 
@@ -74,21 +81,36 @@ interface PointerTypes {
 }
 
 const ChoosePosition = ({ index, i }: Position) => {
-    if (index >= 1 && index <= cardData.length - 2) {
+    if (index === cardData.length - 2) {
         if (i === index) return activeCard;
         else if (i === index - 1) return prevCard;
         else if (i === index + 1) return nextCard;
-        else return hideCard;
-    } else if (index == 0) {
+        else if (i === 0) return hideNextCard;
+        else if (i < index - 1) return hidePrevCard;
+        else if (i > index + 1) return hideNextCard;
+    } else if (index === 1) {
+        if (i === index) return activeCard;
+        else if (i === index - 1) return prevCard;
+        else if (i === index + 1) return nextCard;
+        else if (i === cardData.length - 1) return hidePrevCard;
+        else if (i < index - 1) return hidePrevCard;
+        else if (i > index + 1) return hideNextCard;
+    } else if (index >= 2 && index <= cardData.length - 3) {
+        if (i === index) return activeCard;
+        else if (i === index - 1) return prevCard;
+        else if (i === index + 1) return nextCard;
+        else if (i < index - 1) return hidePrevCard;
+        else if (i > index + 1) return hideNextCard;
+    } else if (index === 0) {
         if (i === index) return activeCard;
         else if (i === cardData.length - 1) return prevCard;
         else if (i === index + 1) return nextCard;
-        else return hideCard;
-    } else if (index == cardData.length - 1) {
+        else if (i > index + 1) return hideNextCard;
+    } else if (index === cardData.length - 1) {
         if (i === index) return activeCard;
         else if (i === index - 1) return prevCard;
         else if (i === 0) return nextCard;
-        else return hideCard;
+        else if (i < index - 1) return hidePrevCard;
     }
 };
 
@@ -171,7 +193,7 @@ const CardCarousel = () => {
 
     return (
         <Root>
-            <Title text="Thuốc" />
+            <Title text="Thuốc" link="/category/medicine" />
             <BoxContainer>
                 <CardContainer>
                     {cardData.map((person, i) => {

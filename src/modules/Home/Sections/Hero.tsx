@@ -3,14 +3,12 @@ import { styled, Box } from "@mui/material";
 import { ArrowDownwardOutlined } from "@mui/icons-material";
 
 import { Button, Carousel, Typography } from "../../../components";
-import Link from "next/link";
 
 const Hero = () => {
     const handleScroll = () => {
         const element = document.getElementById("news");
         element?.scrollIntoView();
     };
-
     return (
         <Box sx={{ position: "relative", width: "100%", height: "90vh" }}>
             <Overlay>
@@ -29,17 +27,15 @@ const Hero = () => {
                         the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
                         of type and scrambled it to make a type specimen book.
                     </Typography>
-                    <Link href="#news">
-                        <Button
-                            bgcolor="primary"
-                            sx={{ marginTop: "1.4rem" }}
-                            onClick={handleScroll}
-                            endIcon={<ArrowDownwardOutlined sx={{ fontSize: "1.2rem", paddingLeft: "0.2rem" }} />}>
-                            <Typography size="p" color="inherit" weight="medium">
-                                Đọc thêm
-                            </Typography>
-                        </Button>
-                    </Link>
+                    <Button
+                        bgcolor="primary"
+                        sx={{ marginTop: "1.4rem" }}
+                        onClick={handleScroll}
+                        endIcon={<ArrowDownwardOutlined sx={{ fontSize: "1.2rem", paddingLeft: "0.2rem" }} />}>
+                        <Typography size="p" color="inherit" weight="medium">
+                            Đọc thêm
+                        </Typography>
+                    </Button>
                 </Box>
             </Overlay>
             <Box sx={{ position: "absolute", zIndex: -999, height: "inherit" }}>

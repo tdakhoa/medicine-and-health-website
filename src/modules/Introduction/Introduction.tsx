@@ -4,6 +4,7 @@ import Layout from "../Layout";
 import MainTitle from "../Category/components/MainTitle";
 import Information from "./Sections/Information";
 import Contact from "./Sections/Contact";
+import Specialists from "./Sections/Specialists";
 
 const Introduction = () => {
     return (
@@ -11,6 +12,7 @@ const Introduction = () => {
             <MainTitle title="Giới thiệu" />
             <Information />
             <Contact />
+            <Specialists />
         </Layout>
     );
 };

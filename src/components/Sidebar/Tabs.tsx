@@ -118,7 +118,7 @@ const MiniCard = ({ title = "", date = "", img = "", ...props }: MiniCardProps) 
         <ImgBox>
             <img src={img} alt="mini card img" />
             <Box>
-                <Typography weight="bold" sx={{ textTransform: "uppercase" }}>
+                <Typography weight="bold" transform="uppercase">
                     {title}
                 </Typography>
                 <Typography weight="light" size="small" sx={{ fontStyle: "italic" }}>

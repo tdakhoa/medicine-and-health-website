@@ -95,7 +95,7 @@ const MainTitle = ({ title, subTitle = "", ...props }: MainTitleProps) => {
                         {subTitle}
                     </Typography>
 
-                    <Typography color="secondary" size="h3" weight="bold" sx={{ textTransform: "uppercase" }}>
+                    <Typography color="secondary" size="h3" weight="bold" transform="uppercase">
                         {title}
                     </Typography>
                 </TitleBox>

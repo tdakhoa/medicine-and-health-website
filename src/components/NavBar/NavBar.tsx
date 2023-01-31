@@ -1,9 +1,20 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { styled, Box, AppBar, useScrollTrigger, Typography, IconButton, Backdrop, Divider } from "@mui/material";
-import { Drawer } from "@mui/material";
-import { SearchOutlined, MenuOutlined, ChevronRightOutlined } from "@mui/icons-material";
+import {
+    styled,
+    Box,
+    AppBar,
+    useScrollTrigger,
+    Typography,
+    IconButton,
+    Backdrop,
+    Divider,
+    Fade,
+    Fab,
+    Drawer
+} from "@mui/material";
+import { SearchOutlined, MenuOutlined, ChevronRightOutlined, KeyboardArrowUp } from "@mui/icons-material";
 
 import logo from "../../../public/Logo.png";
 import CategoryAccordion from "../CategoryAccordion/CategoryAccordion";
@@ -123,6 +134,14 @@ const NavBar = () => {
                 <Divider />
                 <CategoryAccordion data={MenuItems} />
             </AppBarMobile>
+
+            <Fade in={Boolean(trigger)}>
+                <Box role="presentation" sx={{ position: "fixed", bottom: 20, right: 20 }}>
+                    <Fab size="small" onClick={() => window.scrollTo(0, 0)}>
+                        <KeyboardArrowUp />
+                    </Fab>
+                </Box>
+            </Fade>
         </>
     );
 };

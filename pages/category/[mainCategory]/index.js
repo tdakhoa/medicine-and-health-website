@@ -16,3 +16,24 @@ export default function HomePage() {
         </div>
     );
 }
+
+export async function getStaticProps({ params }) {
+    return {
+        props: params
+    };
+}
+
+export async function getStaticPaths() {
+    return {
+        paths: [
+            { params: { mainCategory: "traditional-medicine" } },
+            { params: { mainCategory: "medicine" } },
+            { params: { mainCategory: "cardiovascular" } },
+            { params: { mainCategory: "pathology" } },
+            { params: { mainCategory: "pharmacy-information" } },
+            { params: { mainCategory: "medical-law" } },
+            { params: { mainCategory: "for-you" } }
+        ],
+        fallback: false
+    };
+}

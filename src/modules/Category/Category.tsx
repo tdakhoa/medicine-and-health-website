@@ -1,20 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Grid } from "@mui/material";
 import { useRouter } from "next/router";
 
-import { Sidebar } from "../../components";
-import Layout from "../Layout";
 import ConsulationForm from "./components/ConsulationForm";
-import MainTitle from "./components/MainTitle";
+import Layout from "../Layout";
 import Main from "./Main";
+import MainTitle from "./components/MainTitle";
+import { Sidebar } from "../../components";
 import { TitleLink } from "../../constants";
 
 const Category = () => {
-    const { asPath } = useRouter();
-    const mainTitleId = TitleLink.link.indexOf(asPath);
+    const router = useRouter();
+    const mainTitleId = TitleLink.link.indexOf(router.asPath);
+
+    useEffect(() => {
+        if (mainTitleId === -1) {
+            router.push("/404");
+        }
+    }, [mainTitleId]);
+
     return (
         <Layout>
-            <MainTitle title={TitleLink.title[mainTitleId]} subTitle={TitleLink.subTitle[mainTitleId]} />
+            <MainTitle
+                title={TitleLink.title[mainTitleId] || "ERROR! 404"}
+                subTitle={TitleLink.subTitle[mainTitleId]}
+            />
             <Grid container columnSpacing={2} sx={{ padding: "5% 10% 2%" }}>
                 <Grid item xs={8}>
                     <Main />

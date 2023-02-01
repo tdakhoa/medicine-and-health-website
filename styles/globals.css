@@ -12,7 +12,6 @@ body,
     list-style: none;
     scroll-behavior: smooth;
     font-size: 16px;
-    scroll-behavior: smooth;
 }
 
 ::-webkit-scrollbar {

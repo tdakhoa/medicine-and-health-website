@@ -3,6 +3,7 @@ import { styled, Typography as MuiTypography } from "@mui/material";
 
 const StyledTypography = styled(MuiTypography)((props: TypographyProps) => ({
     margin: 0,
+    textTransform: props.transform === "uppercase" ? "uppercase" : "none",
     color:
         props.color === "primary"
             ? "var(--palette-01)"
@@ -42,7 +43,17 @@ const StyledTypography = styled(MuiTypography)((props: TypographyProps) => ({
             ? 400
             : props.weight === "light"
             ? 300
-            : 300
+            : 300,
+    textAlign:
+        props.format == "left"
+            ? "left"
+            : props.format == "center"
+            ? "center"
+            : props.format == "right"
+            ? "right"
+            : props.format == "justify"
+            ? "justify"
+            : "inherit"
 }));
 
 interface TypographyProps {
@@ -50,6 +61,8 @@ interface TypographyProps {
     text?: string;
     size?: string;
     weight?: string;
+    transform?: string;
+    format?: string;
     sx?: object;
     children: React.ReactNode;
 }
@@ -59,12 +72,21 @@ const Typography = ({
     text = "",
     size = "p",
     weight = "regular",
+    transform = "none",
+    format = "inherit",
     sx = {},
     children,
     ...props
 }: TypographyProps) => {
     return (
-        <StyledTypography color={color} size={size} weight={weight} sx={sx} {...props}>
+        <StyledTypography
+            color={color}
+            size={size}
+            weight={weight}
+            transform={transform}
+            format={format}
+            sx={sx}
+            {...props}>
             {children}
         </StyledTypography>
     );

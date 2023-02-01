@@ -8,69 +8,6 @@ import ToggleDrawer from "./components/Drawer";
 import { Button, TextField, Typography } from "../../components";
 import Popup from "./components/Popup";
 
-const Root = styled(Box)(({ theme }) => ({
-    display: "flex",
-    paddingBottom: "5%"
-}));
-
-const InputContainer = styled(Grid)(() => ({
-    width: "100%",
-    marginLeft: "0"
-}));
-
-const StyledAvatar = styled(Avatar)(({ theme }) => ({
-    width: "170px",
-    height: "170px",
-    display: "flex",
-    margin: "0 auto",
-    objectFit: "cover",
-    [theme.breakpoints.down("md")]: {
-        marginTop: "1rem",
-        width: "120px",
-        height: "120px"
-    }
-}));
-
-const StyledAvatarBox = styled(Box)({
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    marginTop: "0.5rem",
-    cursor: "pointer",
-    color: "#B2B2B2"
-});
-
-const StyledDialogTitle = styled(DialogTitle)({
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center"
-});
-
-const StyledDialog = styled(Dialog)(({ theme }) => ({
-    "& .MuiDialog-paper": {
-        padding: "1rem",
-        paddingTop: 0
-    }
-}));
-
-const ButtonBox = styled(Box)(({ theme }) => ({
-    flexDirection: "row-reverse",
-    justifyContent: "end",
-    gap: "2rem",
-    marginTop: "2rem"
-}));
-
-const AvatarLabelStyle = {
-    fontSize: "20px",
-    fontWeight: "500",
-    cursor: "pointer",
-    padding: "7.9rem 4.9rem"
-};
-interface SnackbarState {
-    title: string;
-    variant: VariantType;
-}
-
 const Profile = () => {
     const [open, setOpen] = useState(false);
     const [render, setRender] = useState(false);
@@ -255,3 +192,67 @@ const tempData = [
     { label: "Email", disabled: true, value: "nganlamforwork@gmail.com" },
     { label: "Số điện thoại", disabled: true, value: "0945293031" }
 ];
+
+interface SnackbarState {
+    title: string;
+    variant: VariantType;
+}
+
+const Root = styled(Box)(({ theme }) => ({
+    display: "flex",
+    paddingBottom: "5%"
+}));
+
+const InputContainer = styled(Grid)(() => ({
+    width: "100%",
+    marginLeft: "0"
+}));
+
+const StyledAvatar = styled(Avatar)(({ theme }) => ({
+    width: "170px",
+    height: "170px",
+    display: "flex",
+    margin: "0 auto",
+    objectFit: "cover",
+    [theme.breakpoints.down("md")]: {
+        marginTop: "1rem",
+        width: "120px",
+        height: "120px"
+    }
+}));
+
+const StyledAvatarBox = styled(Box)({
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: "0.5rem",
+    cursor: "pointer",
+    color: "#B2B2B2"
+});
+
+const StyledDialogTitle = styled(DialogTitle)({
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center"
+});
+
+const StyledDialog = styled(Dialog)(({ theme }) => ({
+    "& .MuiDialog-paper": {
+        padding: "1rem",
+        paddingTop: 0
+    }
+}));
+
+const ButtonBox = styled(Box)(({ theme }) => ({
+    flexDirection: "row-reverse",
+    justifyContent: "end",
+    gap: "2rem",
+    marginTop: "2rem"
+}));
+
+const AvatarLabelStyle = {
+    fontSize: "20px",
+    fontWeight: "500",
+    cursor: "pointer",
+    padding: "7.9rem 4.9rem"
+};

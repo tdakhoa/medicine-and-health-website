@@ -6,89 +6,37 @@ import Paginator from "./components/Paginator";
 import RoundedCard from "./components/RoundedCard";
 import { cardData } from "../../../constants";
 
-const Root = styled("div")(({ theme }) => ({
-    margin: "10% 5%",
-    paddingBottom: "5%"
-}));
-
-const BoxContainer = styled("div")(({ theme }) => ({
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    width: "100%",
-    paddingLeft: "0.3rem"
-}));
-
-const CardContainer = styled("div")(({ theme }) => ({
-    position: "relative",
-    width: "70%",
-    height: "30rem",
-    paddingBottom: "5%"
-}));
-
-const activeCard = {
-    left: "50%",
-    transition: "all 1s ease-in-out",
-    transform: "translateX(-85%) scale(1.3)",
-    zIndex: "1"
-};
-
-const prevCard = {
-    left: "0%",
-    transform: "translateX(-40%)",
-    transition: "all 1s ease-in-out"
-};
-
-const nextCard = {
-    left: "100%",
-    transform: "translateX(-115%)",
-    transition: "all 1s ease-in-out"
-};
-
-const hideCard = {
-    left: "50%",
-    transform: "translateX(-50%)",
-    transition: "all 0.3s ease-in-out",
-    opacity: 0
-};
-
-const activeStyle = {
-    backgroundColor: "var(--palette-02)",
-    color: "var(--palette-06)",
-    border: "solid 2px var(--palette-06)"
-};
-
-interface Position {
-    index: number;
-    i: number;
-}
-interface Touch {
-    clientX: number;
-}
-
-interface PointerTypes {
-    touches: Touch[];
-    clientX: number;
-    type: string;
-    target: EventTarget & { style: { left: string } };
-}
-
 const ChoosePosition = ({ index, i }: Position) => {
-    if (index >= 1 && index <= cardData.length - 2) {
+    if (index === cardData.length - 2) {
         if (i === index) return activeCard;
         else if (i === index - 1) return prevCard;
         else if (i === index + 1) return nextCard;
-        else return hideCard;
-    } else if (index == 0) {
+        else if (i === 0) return hideNextCard;
+        else if (i < index - 1) return hidePrevCard;
+        else if (i > index + 1) return hideNextCard;
+    } else if (index === 1) {
+        if (i === index) return activeCard;
+        else if (i === index - 1) return prevCard;
+        else if (i === index + 1) return nextCard;
+        else if (i === cardData.length - 1) return hidePrevCard;
+        else if (i < index - 1) return hidePrevCard;
+        else if (i > index + 1) return hideNextCard;
+    } else if (index >= 2 && index <= cardData.length - 3) {
+        if (i === index) return activeCard;
+        else if (i === index - 1) return prevCard;
+        else if (i === index + 1) return nextCard;
+        else if (i < index - 1) return hidePrevCard;
+        else if (i > index + 1) return hideNextCard;
+    } else if (index === 0) {
         if (i === index) return activeCard;
         else if (i === cardData.length - 1) return prevCard;
         else if (i === index + 1) return nextCard;
-        else return hideCard;
-    } else if (index == cardData.length - 1) {
+        else if (i > index + 1) return hideNextCard;
+    } else if (index === cardData.length - 1) {
         if (i === index) return activeCard;
         else if (i === index - 1) return prevCard;
         else if (i === 0) return nextCard;
-        else return hideCard;
+        else if (i < index - 1) return hidePrevCard;
     }
 };
 
@@ -111,13 +59,13 @@ const CardCarousel = () => {
         setIndex(page);
     };
 
-    const handlePointerEvent = (e: PointerTypes) => {
+    const handlePointerEvent = (e: PointerProps) => {
         let isTouchEvent = e.type === "touchstart" ? true : false;
         let card = e.target;
         let offset = 0;
         let initialX = isTouchEvent ? e.touches[0].clientX : e.clientX;
 
-        function onPointerEnd(e: PointerTypes | MouseEvent) {
+        function onPointerEnd(e: PointerProps | MouseEvent) {
             if (e && "touches" in e) offset = 0;
             if (offset < 0 && offset > -100) {
                 card.style.left = "0";
@@ -130,7 +78,7 @@ const CardCarousel = () => {
             window.removeEventListener("mouseup", onPointerEnd);
             window.removeEventListener("mousemove", onPointerMove);
         }
-        function onPointerMove(e: PointerTypes | MouseEvent) {
+        function onPointerMove(e: PointerProps | MouseEvent) {
             if (e && "touches" in e) offset = (isTouchEvent ? e.touches[0].clientX : e.clientX) - initialX;
             else offset = e.clientX - initialX;
             if (offset <= -100) {
@@ -171,7 +119,7 @@ const CardCarousel = () => {
 
     return (
         <Root>
-            <Title text="Thuốc" />
+            <Title text="Thuốc" link="/category/medicine" />
             <BoxContainer>
                 <CardContainer>
                     {cardData.map((person, i) => {
@@ -180,7 +128,7 @@ const CardCarousel = () => {
                             <RoundedCard
                                 key={i}
                                 index={i}
-                                handlePointerEvent={(e: PointerTypes) => handlePointerEvent(e)}
+                                handlePointerEvent={(e: PointerProps) => handlePointerEvent(e)}
                                 handlePageChange={handlePageChange}
                                 {...person}
                                 cardStyle={position}
@@ -196,3 +144,77 @@ const CardCarousel = () => {
 };
 
 export default CardCarousel;
+
+interface Position {
+    index: number;
+    i: number;
+}
+interface Touch {
+    clientX: number;
+}
+
+interface PointerProps {
+    touches: Touch[];
+    clientX: number;
+    type: string;
+    target: EventTarget & { style: { left: string } };
+}
+
+const Root = styled("div")(({ theme }) => ({
+    margin: "10% 5%",
+    paddingBottom: "5%"
+}));
+
+const BoxContainer = styled("div")(({ theme }) => ({
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
+    paddingLeft: "0.3rem"
+}));
+
+const CardContainer = styled("div")(({ theme }) => ({
+    position: "relative",
+    width: "70%",
+    height: "30rem",
+    paddingBottom: "5%"
+}));
+
+const activeCard = {
+    left: "50%",
+    transition: "all 1s ease-in-out",
+    transform: "translateX(-85%) scale(1.3)",
+    zIndex: "1"
+};
+
+const prevCard = {
+    left: "0%",
+    transform: "translateX(-40%)",
+    transition: "all 1s ease-in-out"
+};
+
+const nextCard = {
+    left: "100%",
+    transform: "translateX(-115%)",
+    transition: "all 1s ease-in-out"
+};
+
+const hidePrevCard = {
+    left: "-5%",
+    transform: "translateX(-40%)",
+    transition: "all 1s ease-in-out",
+    opacity: 0
+};
+
+const hideNextCard = {
+    left: "105%",
+    transform: "translateX(-40%)",
+    transition: "all 1s ease-in-out",
+    opacity: 0
+};
+
+const activeStyle = {
+    backgroundColor: "var(--palette-02)",
+    color: "var(--palette-06)",
+    border: "solid 2px var(--palette-06)"
+};

@@ -5,13 +5,6 @@ import { useSnackbar, VariantType } from "notistack";
 
 import { Button } from "../../../components";
 
-interface PopupProps {
-    content: { title: string; description: string; link?: string };
-    snackbar: { title: string; variant: VariantType };
-    setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-    open: boolean;
-}
-
 const Popup = (props: PopupProps) => {
     const router = useRouter();
     const { enqueueSnackbar } = useSnackbar();
@@ -58,3 +51,10 @@ const Popup = (props: PopupProps) => {
 };
 
 export default Popup;
+
+interface PopupProps {
+    content: { title: string; description: string; link?: string };
+    snackbar: { title: string; variant: VariantType };
+    setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    open: boolean;
+}

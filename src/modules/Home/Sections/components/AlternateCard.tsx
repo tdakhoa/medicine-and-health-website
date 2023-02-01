@@ -4,43 +4,6 @@ import { ArrowForwardOutlined } from "@mui/icons-material";
 
 import { Button, Typography } from "../../../../components";
 
-const Root = styled(Grid)((props: AlternateCardProps) => ({
-    cursor: "pointer",
-    transition: "all 0.1s ease-in-out",
-    "& .content-container": {
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
-        alignItems: props.direction === "row" ? "start" : "end",
-        textAlign: props.direction === "row" ? "left" : "right",
-        "& .content-bottom": {
-            width: "100%",
-            display: "flex",
-            flexDirection: props.direction,
-            justifyContent: "space-between",
-            alignItems: "end"
-        }
-    },
-    "& .media-container": {
-        "& .media-image": {
-            width: "100%",
-            height: "100%",
-            boxShadow: "0px 4px 30px rgba(40, 165, 203, 0.35)",
-            borderRadius: props.direction === "row" ? "0px 40px 40px 0px" : "40px 0px 0px 40px"
-        }
-    },
-    "&:hover": {
-        color: "var(--palette-02)"
-    }
-}));
-
-interface AlternateCardProps {
-    title?: string;
-    content?: string;
-    img?: string;
-    direction?: "row" | "row-reverse" | "column" | "column-reverse";
-    sx?: object;
-}
 const AlternateCard = ({
     title = "",
     content = "",
@@ -77,3 +40,41 @@ const AlternateCard = ({
 };
 
 export default AlternateCard;
+
+interface AlternateCardProps {
+    title?: string;
+    content?: string;
+    img?: string;
+    direction?: "row" | "row-reverse" | "column" | "column-reverse";
+    sx?: object;
+}
+
+const Root = styled(Grid)((props: AlternateCardProps) => ({
+    cursor: "pointer",
+    transition: "all 0.1s ease-in-out",
+    "& .content-container": {
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        alignItems: props.direction === "row" ? "start" : "end",
+        textAlign: props.direction === "row" ? "left" : "right",
+        "& .content-bottom": {
+            width: "100%",
+            display: "flex",
+            flexDirection: props.direction,
+            justifyContent: "space-between",
+            alignItems: "end"
+        }
+    },
+    "& .media-container": {
+        "& .media-image": {
+            width: "100%",
+            height: "100%",
+            boxShadow: "0px 4px 30px rgba(40, 165, 203, 0.35)",
+            borderRadius: props.direction === "row" ? "0px 40px 40px 0px" : "40px 0px 0px 40px"
+        }
+    },
+    "&:hover": {
+        color: "var(--palette-02)"
+    }
+}));

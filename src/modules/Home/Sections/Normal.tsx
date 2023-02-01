@@ -5,14 +5,10 @@ import SimpleCard from "./components/SimpleCard";
 import Title from "./components/Title";
 import { cardData } from "../../../constants";
 
-const Root = styled("div")(({ theme }) => ({
-    margin: "5% 10%"
-}));
-
 const NormalSection = () => {
     return (
         <Root>
-            <Title text="Y HỌC CỔ TRUYỀN" />
+            <Title text="Y HỌC CỔ TRUYỀN" link="/category/traditional-medicine" />
             <Grid container spacing={2} sx={{ textAlign: "center" }}>
                 <Grid item xs={4}>
                     <SimpleCard
@@ -59,3 +55,7 @@ const NormalSection = () => {
 };
 
 export default NormalSection;
+
+const Root = styled("div")(({ theme }) => ({
+    margin: "5% 10%"
+}));

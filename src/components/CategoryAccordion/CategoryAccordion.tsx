@@ -14,33 +14,13 @@ import { ExpandMoreOutlined } from "@mui/icons-material";
 
 import Typography from "../Typography/Typography";
 
-interface Data {
-    title: string[];
-    link: string[];
-}
-
-interface CategoryAccordionProps {
-    data: Data[];
-}
-
-const Accordion = styled(MuiAccordion)(() => ({
-    border: "none",
-    boxShadow: "none",
-    "&::before": {
-        display: "none"
-    }
-}));
-
-const LinkBox = styled(Box)(({ theme }) => ({
-    position: "absolute",
-    left: "1rem",
-    padding: "0.5rem 1.5rem",
-    zIndex: "100000",
-    opacity: 0
-}));
-
 const CategoryAccordion = ({ data, ...props }: CategoryAccordionProps) => {
     const [trigger, setTrigger] = useState(false);
+
+    const handleClick = (i: number) => {
+        if (i === 2) setTrigger(!trigger);
+    };
+
     return (
         <List>
             {data.map((item, index) =>
@@ -56,7 +36,7 @@ const CategoryAccordion = ({ data, ...props }: CategoryAccordionProps) => {
                 ) : (
                     <div key={index}>
                         <Link key={index} href={item.link[0]}>
-                            <LinkBox sx={{ top: index === 4 ? (trigger ? "20.3rem" : "12.8rem") : "6.8rem" }}>
+                            <LinkBox trigger={trigger} index={index}>
                                 Link
                             </LinkBox>
                         </Link>
@@ -64,16 +44,12 @@ const CategoryAccordion = ({ data, ...props }: CategoryAccordionProps) => {
                             <AccordionSummary
                                 expandIcon={
                                     <ExpandMoreOutlined
-                                        onClick={
-                                            index === 2
-                                                ? () => {
-                                                      setTrigger(!trigger);
-                                                  }
-                                                : () => {}
-                                        }
+                                        onClick={() => {
+                                            handleClick(index);
+                                        }}
                                     />
                                 }>
-                                <Typography sx={{ fontWeight: 700 }}>{item.title[0]}</Typography>
+                                <Typography weight="bold">{item.title[0]}</Typography>
                             </AccordionSummary>
                             <AccordionDetails>
                                 {item.title.map((e, i) =>
@@ -95,3 +71,34 @@ const CategoryAccordion = ({ data, ...props }: CategoryAccordionProps) => {
 };
 
 export default CategoryAccordion;
+
+interface Data {
+    title: string[];
+    link: string[];
+}
+
+interface CategoryAccordionProps {
+    data: Data[];
+}
+
+interface LinkBoxProps {
+    trigger: boolean;
+    index: number;
+}
+
+const Accordion = styled(MuiAccordion)(() => ({
+    border: "none",
+    boxShadow: "none",
+    "&::before": {
+        display: "none"
+    }
+}));
+
+const LinkBox = styled(Box)<LinkBoxProps>(({ theme, trigger, index }) => ({
+    position: "absolute",
+    zIndex: "100000",
+    left: "1rem",
+    padding: "0.5rem 1.5rem",
+    opacity: 0,
+    top: index === 4 ? (trigger ? "20.3rem" : "12.8rem") : "6.8rem"
+}));

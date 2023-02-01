@@ -3,47 +3,6 @@ import { styled, Box, CardMedia, Grid } from "@mui/material";
 
 import { Typography } from "../../../../components";
 
-const Root = styled(Grid)((props: SimpleCardProps) => ({
-    cursor: "pointer",
-    "& .media-container": {
-        position: "relative",
-        overflow: "hidden",
-        width: "100%",
-        height: "100%",
-        "& .media-image": {
-            width: "100%",
-            height: "100%"
-        },
-        "& .media-overlay": {
-            position: "absolute",
-            width: "100%",
-            height: "100%",
-            backgroundColor: "rgba(7, 27, 33, 0.3)"
-        }
-    },
-    "&:hover": {
-        color: "var(--palette-02)",
-        "& .media-overlay": {
-            transition: "all .4s ease-in-out",
-            backgroundColor: "rgba(7, 27, 33, 0)"
-        },
-        "& .media-image": {
-            transition: "all .4s ease-in-out",
-            transform: "scale(1.1)"
-        }
-    }
-}));
-
-interface SimpleCardProps {
-    title?: string;
-    content?: string;
-    img?: string;
-    imgRatio?: number;
-    contentRatio?: number;
-    overlay?: boolean;
-    borderRadius?: string;
-    sx?: object;
-}
 const SimpleCard = ({
     title = "",
     content = "",
@@ -74,3 +33,45 @@ const SimpleCard = ({
 };
 
 export default SimpleCard;
+
+interface SimpleCardProps {
+    title?: string;
+    content?: string;
+    img?: string;
+    imgRatio?: number;
+    contentRatio?: number;
+    overlay?: boolean;
+    borderRadius?: string;
+    sx?: object;
+}
+
+const Root = styled(Grid)((props: SimpleCardProps) => ({
+    cursor: "pointer",
+    "& .media-container": {
+        position: "relative",
+        overflow: "hidden",
+        width: "100%",
+        height: "100%",
+        "& .media-image": {
+            width: "100%",
+            height: "100%",
+            transition: "all .4s ease-in-out"
+        },
+        "& .media-overlay": {
+            position: "absolute",
+            transition: "all .4s ease-in-out",
+            width: "100%",
+            height: "100%",
+            backgroundColor: "rgba(7, 27, 33, 0.3)"
+        }
+    },
+    "&:hover": {
+        color: "var(--palette-02)",
+        "& .media-overlay": {
+            backgroundColor: "rgba(7, 27, 33, 0)"
+        },
+        "& .media-image": {
+            transform: "scale(1.1)"
+        }
+    }
+}));

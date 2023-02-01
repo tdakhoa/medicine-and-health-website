@@ -3,6 +3,42 @@ import { Box, styled } from "@mui/material";
 
 import { Typography } from "../../../components";
 
+const MainTitle = ({ title, subTitle = "", ...props }: MainTitleProps) => {
+    return (
+        <MainTitleContainer>
+            <Overlay></Overlay>
+            <img
+                className="thumbnail"
+                src="https://images.unsplash.com/photo-1666214280250-41f16ba24a26?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+                alt="thumbnail"
+            />
+            <TextContainer>
+                <TitleBox>
+                    <Typography
+                        color="secondary"
+                        size="h5"
+                        weight="bold"
+                        sx={{ textTransform: "uppercase", mb: "1rem" }}>
+                        {subTitle}
+                    </Typography>
+
+                    <Typography color="secondary" size="h3" weight="bold" transform="uppercase">
+                        {title}
+                    </Typography>
+                </TitleBox>
+                <Box className="background"></Box>
+            </TextContainer>
+        </MainTitleContainer>
+    );
+};
+
+export default MainTitle;
+
+interface MainTitleProps {
+    title: string;
+    subTitle?: string;
+}
+
 const MainTitleContainer = styled(Box)(() => ({
     position: "relative",
     width: "100%",
@@ -70,39 +106,3 @@ const TextContainer = styled(Box)(() => ({
         }
     }
 }));
-
-interface MainTitleProps {
-    title: string;
-    subTitle?: string;
-}
-
-const MainTitle = ({ title, subTitle = "", ...props }: MainTitleProps) => {
-    return (
-        <MainTitleContainer>
-            <Overlay></Overlay>
-            <img
-                className="thumbnail"
-                src="https://images.unsplash.com/photo-1666214280250-41f16ba24a26?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-                alt="thumbnail"
-            />
-            <TextContainer>
-                <TitleBox>
-                    <Typography
-                        color="secondary"
-                        size="h5"
-                        weight="bold"
-                        sx={{ textTransform: "uppercase", mb: "1rem" }}>
-                        {subTitle}
-                    </Typography>
-
-                    <Typography color="secondary" size="h3" weight="bold" sx={{ textTransform: "uppercase" }}>
-                        {title}
-                    </Typography>
-                </TitleBox>
-                <Box className="background"></Box>
-            </TextContainer>
-        </MainTitleContainer>
-    );
-};
-
-export default MainTitle;

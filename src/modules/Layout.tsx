@@ -3,10 +3,6 @@ import { Box } from "@mui/material";
 
 import { Footer, NavBar } from "../components";
 
-interface LayoutProps {
-    children?: React.ReactNode;
-}
-
 const Layout = ({ children, ...props }: LayoutProps) => {
     return (
         <Box sx={{ width: "100%" }}>
@@ -18,3 +14,7 @@ const Layout = ({ children, ...props }: LayoutProps) => {
 };
 
 export default Layout;
+
+interface LayoutProps {
+    children?: React.ReactNode;
+}

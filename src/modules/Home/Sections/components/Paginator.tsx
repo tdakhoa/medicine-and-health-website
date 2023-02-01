@@ -1,5 +1,26 @@
 import { Box, styled } from "@mui/material";
 
+const Paginator = ({ dataLength, activeIndex, handlePageChange }: PaginatorProps) => {
+    let dots = [];
+    for (let index = 0; index < dataLength; index++) {
+        dots.push(
+            <DotBox
+                key={index}
+                sx={activeIndex === index ? { boxShadow: "0 0 0 2px var(--palette-02)", backgroundColor: "white" } : {}}
+                onClick={() => handlePageChange(index)}></DotBox>
+        );
+    }
+    return <Box sx={paginator}>{dots.map((dot) => dot)}</Box>;
+};
+
+export default Paginator;
+
+interface PaginatorProps {
+    dataLength: number;
+    activeIndex: number;
+    handlePageChange: (index: number) => void;
+}
+
 const paginator = {
     display: "flex",
     justifyContent: "center",
@@ -26,24 +47,3 @@ const DotBox = styled(Box)(({ theme }) => ({
         cursor: "pointer"
     }
 }));
-
-interface PaginatorProps {
-    dataLength: number;
-    activeIndex: number;
-    handlePageChange: (index: number) => void;
-}
-
-const Paginator = ({ dataLength, activeIndex, handlePageChange }: PaginatorProps) => {
-    let dots = [];
-    for (let index = 0; index < dataLength; index++) {
-        dots.push(
-            <DotBox
-                key={index}
-                sx={activeIndex === index ? { boxShadow: "0 0 0 2px var(--palette-02)", backgroundColor: "white" } : {}}
-                onClick={() => handlePageChange(index)}></DotBox>
-        );
-    }
-    return <Box sx={paginator}>{dots.map((dot) => dot)}</Box>;
-};
-
-export default Paginator;

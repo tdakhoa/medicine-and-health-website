@@ -4,28 +4,11 @@ import { ArrowDownwardOutlined } from "@mui/icons-material";
 
 import { Button, Typography } from "../../../components";
 
-const Root = styled(Box)(() => ({
-    width: "100%",
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "stretch",
-    padding: "5% 10%",
-    gap: "7%",
-    justifyContent: "space-between"
-}));
-
-const TextContainer = styled(Box)(() => ({
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "start",
-    gap: "1rem"
-}));
-
 const Information = () => {
     return (
         <Root>
             <TextContainer>
-                <Typography size="h2" weight="extraBold" color="secondary" sx={{ textTransform: "uppercase" }}>
+                <Typography size="h2" weight="extraBold" color="secondary" transform="uppercase">
                     Thuốc và sức khoẻ
                 </Typography>
                 <Typography sx={{ textAlign: "justify" }}>
@@ -59,3 +42,20 @@ const Information = () => {
 };
 
 export default Information;
+
+const Root = styled(Box)(() => ({
+    width: "100%",
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "stretch",
+    padding: "5% 10%",
+    gap: "7%",
+    justifyContent: "space-between"
+}));
+
+const TextContainer = styled(Box)(() => ({
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "start",
+    gap: "1rem"
+}));

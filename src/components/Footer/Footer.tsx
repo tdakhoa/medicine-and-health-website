@@ -82,7 +82,7 @@ const Footer = () => {
                 </LinkContainer>
             </MainRectangle>
 
-            <Typography size="small" color="white" weight="light" alignn="center" sx={FooterTypo}>
+            <Typography size="small" color="white" weight="light" format="center" sx={FooterTypo}>
                 Copyright &#169; 2023. All rights reserved.
             </Typography>
         </Root>

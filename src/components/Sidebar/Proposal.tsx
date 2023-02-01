@@ -9,7 +9,7 @@ import { cardData } from "../../constants";
 const Proposal = () => {
     return (
         <Root>
-            <Typography size="h5" weight="bold" color="secondary" alignn="center" transform="uppercase" sx={{ mb: 2 }}>
+            <Typography size="h5" weight="bold" color="secondary" format="center" transform="uppercase" sx={{ mb: 2 }}>
                 Đề xuất
             </Typography>
             <Carousel listData={dataList} indicators={false} animation="slide" />

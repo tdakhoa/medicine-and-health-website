@@ -59,13 +59,13 @@ const CardCarousel = () => {
         setIndex(page);
     };
 
-    const handlePointerEvent = (e: PointerTypes) => {
+    const handlePointerEvent = (e: PointerProps) => {
         let isTouchEvent = e.type === "touchstart" ? true : false;
         let card = e.target;
         let offset = 0;
         let initialX = isTouchEvent ? e.touches[0].clientX : e.clientX;
 
-        function onPointerEnd(e: PointerTypes | MouseEvent) {
+        function onPointerEnd(e: PointerProps | MouseEvent) {
             if (e && "touches" in e) offset = 0;
             if (offset < 0 && offset > -100) {
                 card.style.left = "0";
@@ -78,7 +78,7 @@ const CardCarousel = () => {
             window.removeEventListener("mouseup", onPointerEnd);
             window.removeEventListener("mousemove", onPointerMove);
         }
-        function onPointerMove(e: PointerTypes | MouseEvent) {
+        function onPointerMove(e: PointerProps | MouseEvent) {
             if (e && "touches" in e) offset = (isTouchEvent ? e.touches[0].clientX : e.clientX) - initialX;
             else offset = e.clientX - initialX;
             if (offset <= -100) {
@@ -128,7 +128,7 @@ const CardCarousel = () => {
                             <RoundedCard
                                 key={i}
                                 index={i}
-                                handlePointerEvent={(e: PointerTypes) => handlePointerEvent(e)}
+                                handlePointerEvent={(e: PointerProps) => handlePointerEvent(e)}
                                 handlePageChange={handlePageChange}
                                 {...person}
                                 cardStyle={position}
@@ -153,7 +153,7 @@ interface Touch {
     clientX: number;
 }
 
-interface PointerTypes {
+interface PointerProps {
     touches: Touch[];
     clientX: number;
     type: string;

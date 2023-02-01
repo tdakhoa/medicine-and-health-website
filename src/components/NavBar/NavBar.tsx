@@ -56,7 +56,7 @@ const NavBar = () => {
                 <CategoryAccordion data={MenuItems} />
             </AppBarMobile>
 
-            <Fade in={Boolean(trigger)}>
+            <Fade in={trigger}>
                 <ScrollTop size="small" onClick={() => window.scrollTo(0, 0)}>
                     <KeyboardArrowUp />
                 </ScrollTop>
@@ -78,7 +78,7 @@ const NavItem = ({ content = { title: [""], link: [""] }, sx = {}, trigger, ...p
                         i !== 0 ? (
                             <Link key={i} href={content.link[i]}>
                                 <NavItemBox trigger={trigger} i={i} length={content.title.length - 1}>
-                                    <Typography transform="uppercase" alignn="center">
+                                    <Typography transform="uppercase" sx={{ textAlign: "left !important" }}>
                                         {item}
                                     </Typography>
                                 </NavItemBox>

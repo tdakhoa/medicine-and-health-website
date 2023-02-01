@@ -8,7 +8,7 @@ import { MenuItems } from "../../constants";
 const CategoryBox = () => {
     return (
         <Root>
-            <Typography size="h5" weight="bold" color="secondary" alignn="center" transform="uppercase">
+            <Typography size="h5" weight="bold" color="secondary" format="center" transform="uppercase">
                 danh mục bài viết
             </Typography>
             <CategoryAccordion data={MenuItems} />

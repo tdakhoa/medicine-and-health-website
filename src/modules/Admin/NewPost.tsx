@@ -8,28 +8,6 @@ import ToggleDrawer from "./components/Drawer";
 import TextEditor from "../../components/Input/TextEditor";
 import Popup from "./components/Popup";
 
-const Root = styled(Box)(({ theme }) => ({
-    display: "flex"
-}));
-
-const InputContainer = styled(Grid)(() => ({
-    width: "100%",
-    margin: 0
-}));
-
-const ButtonBox = styled(Box)(({ theme }) => ({
-    display: "flex",
-    flexDirection: "row-reverse",
-    justifyContent: "end",
-    gap: "2rem",
-    mt: "3rem"
-}));
-
-interface SnackbarState {
-    title: string;
-    variant: VariantType;
-}
-
 const NewPost = () => {
     const [open, setOpen] = useState(false);
     const [content, setContent] = useState({ title: "", description: "", link: "" });
@@ -157,3 +135,25 @@ const NewPost = () => {
 };
 
 export default NewPost;
+
+interface SnackbarState {
+    title: string;
+    variant: VariantType;
+}
+
+const Root = styled(Box)(({ theme }) => ({
+    display: "flex"
+}));
+
+const InputContainer = styled(Grid)(() => ({
+    width: "100%",
+    margin: 0
+}));
+
+const ButtonBox = styled(Box)(({ theme }) => ({
+    display: "flex",
+    flexDirection: "row-reverse",
+    justifyContent: "end",
+    gap: "2rem",
+    mt: "3rem"
+}));

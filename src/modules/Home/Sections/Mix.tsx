@@ -6,15 +6,6 @@ import SimpleCard from "./components/SimpleCard";
 import Title from "./components/Title";
 import { cardData } from "../../../constants";
 
-const Root = styled("div")(({ theme }) => ({
-    margin: "5% 10%"
-}));
-
-const StyleSimpleCard = {
-    height: 400,
-    textAlign: "center"
-};
-
 const Mix = () => {
     return (
         <Root>
@@ -54,3 +45,12 @@ const Mix = () => {
 };
 
 export default Mix;
+
+const Root = styled("div")(({ theme }) => ({
+    margin: "5% 10%"
+}));
+
+const StyleSimpleCard = {
+    height: 400,
+    textAlign: "center"
+};

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Grid } from "@mui/material";
 import { useRouter } from "next/router";
 

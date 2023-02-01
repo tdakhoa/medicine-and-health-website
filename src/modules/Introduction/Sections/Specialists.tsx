@@ -3,15 +3,6 @@ import { styled, Box, CardMedia, Grid } from "@mui/material";
 
 import Title from "../../Home/Sections/components/Title";
 
-const Root = styled(Box)(({ theme }) => ({
-    width: "100%",
-    display: "flex",
-    flexDirection: "column",
-    padding: "5% 10%",
-    gap: "7%",
-    justifyContent: "space-between"
-}));
-
 const Contact = () => {
     return (
         <Root>
@@ -82,3 +73,12 @@ const ImageData = [
         description: "Lorem ispum"
     }
 ];
+
+const Root = styled(Box)(({ theme }) => ({
+    width: "100%",
+    display: "flex",
+    flexDirection: "column",
+    padding: "5% 10%",
+    gap: "7%",
+    justifyContent: "space-between"
+}));

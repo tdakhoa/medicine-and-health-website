@@ -6,80 +6,6 @@ import Paginator from "./components/Paginator";
 import RoundedCard from "./components/RoundedCard";
 import { cardData } from "../../../constants";
 
-const Root = styled("div")(({ theme }) => ({
-    margin: "10% 5%",
-    paddingBottom: "5%"
-}));
-
-const BoxContainer = styled("div")(({ theme }) => ({
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    width: "100%",
-    paddingLeft: "0.3rem"
-}));
-
-const CardContainer = styled("div")(({ theme }) => ({
-    position: "relative",
-    width: "70%",
-    height: "30rem",
-    paddingBottom: "5%"
-}));
-
-const activeCard = {
-    left: "50%",
-    transition: "all 1s ease-in-out",
-    transform: "translateX(-85%) scale(1.3)",
-    zIndex: "1"
-};
-
-const prevCard = {
-    left: "0%",
-    transform: "translateX(-40%)",
-    transition: "all 1s ease-in-out"
-};
-
-const nextCard = {
-    left: "100%",
-    transform: "translateX(-115%)",
-    transition: "all 1s ease-in-out"
-};
-
-const hidePrevCard = {
-    left: "-5%",
-    transform: "translateX(-40%)",
-    transition: "all 1s ease-in-out",
-    opacity: 0
-};
-
-const hideNextCard = {
-    left: "105%",
-    transform: "translateX(-40%)",
-    transition: "all 1s ease-in-out",
-    opacity: 0
-};
-
-const activeStyle = {
-    backgroundColor: "var(--palette-02)",
-    color: "var(--palette-06)",
-    border: "solid 2px var(--palette-06)"
-};
-
-interface Position {
-    index: number;
-    i: number;
-}
-interface Touch {
-    clientX: number;
-}
-
-interface PointerTypes {
-    touches: Touch[];
-    clientX: number;
-    type: string;
-    target: EventTarget & { style: { left: string } };
-}
-
 const ChoosePosition = ({ index, i }: Position) => {
     if (index === cardData.length - 2) {
         if (i === index) return activeCard;
@@ -218,3 +144,77 @@ const CardCarousel = () => {
 };
 
 export default CardCarousel;
+
+interface Position {
+    index: number;
+    i: number;
+}
+interface Touch {
+    clientX: number;
+}
+
+interface PointerTypes {
+    touches: Touch[];
+    clientX: number;
+    type: string;
+    target: EventTarget & { style: { left: string } };
+}
+
+const Root = styled("div")(({ theme }) => ({
+    margin: "10% 5%",
+    paddingBottom: "5%"
+}));
+
+const BoxContainer = styled("div")(({ theme }) => ({
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
+    paddingLeft: "0.3rem"
+}));
+
+const CardContainer = styled("div")(({ theme }) => ({
+    position: "relative",
+    width: "70%",
+    height: "30rem",
+    paddingBottom: "5%"
+}));
+
+const activeCard = {
+    left: "50%",
+    transition: "all 1s ease-in-out",
+    transform: "translateX(-85%) scale(1.3)",
+    zIndex: "1"
+};
+
+const prevCard = {
+    left: "0%",
+    transform: "translateX(-40%)",
+    transition: "all 1s ease-in-out"
+};
+
+const nextCard = {
+    left: "100%",
+    transform: "translateX(-115%)",
+    transition: "all 1s ease-in-out"
+};
+
+const hidePrevCard = {
+    left: "-5%",
+    transform: "translateX(-40%)",
+    transition: "all 1s ease-in-out",
+    opacity: 0
+};
+
+const hideNextCard = {
+    left: "105%",
+    transform: "translateX(-40%)",
+    transition: "all 1s ease-in-out",
+    opacity: 0
+};
+
+const activeStyle = {
+    backgroundColor: "var(--palette-02)",
+    color: "var(--palette-06)",
+    border: "solid 2px var(--palette-06)"
+};

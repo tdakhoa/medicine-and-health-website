@@ -1,9 +1,22 @@
 import * as React from "react";
 import { alpha } from "@mui/material/styles";
-import { Box } from "@mui/material";
-import { Table, TableBody, TableCell, TableContainer, TableHead } from "@mui/material";
-import { TablePagination, TableRow, TableSortLabel, Toolbar, Chip } from "@mui/material";
-import { Checkbox, IconButton, Tooltip } from "@mui/material";
+import {
+    Box,
+    styled,
+    Table,
+    TableBody,
+    TableCell,
+    TableContainer,
+    TableHead,
+    TablePagination,
+    TableRow,
+    TableSortLabel,
+    Toolbar,
+    Chip,
+    Checkbox,
+    IconButton,
+    Tooltip
+} from "@mui/material";
 import {
     CancelOutlined,
     CheckCircleOutline,
@@ -16,16 +29,14 @@ import { visuallyHidden } from "@mui/utils";
 
 import { Typography } from "../../../components";
 
-interface Data {
-    id: string;
-    name: string;
-    username: string;
-    password: string;
-    role: string;
-    status: number;
-}
-
-function createData(id: string, name: string, username: string, password: string, role: string, status: number): Data {
+const createData = (
+    id: string,
+    name: string,
+    username: string,
+    password: string,
+    role: string,
+    status: number
+): Data => {
     return {
         id,
         name,
@@ -34,15 +45,7 @@ function createData(id: string, name: string, username: string, password: string
         role,
         status
     };
-}
-
-const rows = [
-    createData("0", "Harry Peter", "zmoore", "akuokesip", "Admin", 1),
-    createData("1", "Franco Delort", "eliane03", "ahmadyani1234", "BTV", 2),
-    createData("2", "Lawerence Munford", "nblock", "welcome123", "BTV", 2),
-    createData("3", "Harry Peter", "anya.morar", "welcome123", "BTV", 1),
-    createData("4", "Alfredo Vetrovs", "ronny18", "akuokesip", "BTV", 1)
-];
+};
 
 function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
     if (b[orderBy] < a[orderBy]) {
@@ -53,8 +56,6 @@ function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
     }
     return 0;
 }
-
-type Order = "asc" | "desc";
 
 function getComparator<Key extends keyof any>(
     order: Order,
@@ -77,56 +78,7 @@ function stableSort<T>(array: readonly T[], comparator: (a: T, b: T) => number) 
     return stabilizedThis.map((el) => el[0]);
 }
 
-interface HeadCell {
-    disablePadding: boolean;
-    id: keyof Data;
-    label: string;
-    numeric: boolean;
-}
-
-const headCells: readonly HeadCell[] = [
-    {
-        id: "name",
-        numeric: false,
-        disablePadding: true,
-        label: "Tên"
-    },
-    {
-        id: "username",
-        numeric: true,
-        disablePadding: false,
-        label: "Tên đăng nhập"
-    },
-    {
-        id: "password",
-        numeric: true,
-        disablePadding: false,
-        label: "Mật khẩu"
-    },
-    {
-        id: "role",
-        numeric: true,
-        disablePadding: false,
-        label: "Vai trò"
-    },
-    {
-        id: "status",
-        numeric: true,
-        disablePadding: false,
-        label: "Trạng thái"
-    }
-];
-
-interface EnhancedTableProps {
-    numSelected: number;
-    onRequestSort: (event: React.MouseEvent<unknown>, property: keyof Data) => void;
-    onSelectAllClick: (event: React.ChangeEvent<HTMLInputElement>) => void;
-    order: Order;
-    orderBy: string;
-    rowCount: number;
-}
-
-function EnhancedTableHead(props: EnhancedTableProps) {
+const EnhancedTableHead = (props: EnhancedTableProps) => {
     const { onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } = props;
     const createSortHandler = (property: keyof Data) => (event: React.MouseEvent<unknown>) => {
         onRequestSort(event, property);
@@ -173,13 +125,9 @@ function EnhancedTableHead(props: EnhancedTableProps) {
             </TableRow>
         </TableHead>
     );
-}
+};
 
-interface EnhancedTableToolbarProps {
-    numSelected: number;
-}
-
-function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
+const EnhancedTableToolbar = (props: EnhancedTableToolbarProps) => {
     const { numSelected } = props;
 
     return (
@@ -214,7 +162,7 @@ function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
             )}
         </Toolbar>
     );
-}
+};
 
 export default function EnhancedTable() {
     const [order, setOrder] = React.useState<Order>("asc");
@@ -269,15 +217,7 @@ export default function EnhancedTable() {
     const isSelected = (title: string) => selected.indexOf(title) !== -1;
 
     return (
-        <Box
-            sx={{
-                width: "100%",
-                mt: 2,
-                border: "1px solid #176076",
-                borderRadius: 4,
-                overflow: "hidden",
-                transition: "all 0.3s ease-in-out"
-            }}>
+        <EnhancedTableBox>
             {selected.length > 0 ? <EnhancedTableToolbar numSelected={selected.length} /> : <></>}
             <Box
                 sx={
@@ -371,39 +311,13 @@ export default function EnhancedTable() {
                     onRowsPerPageChange={handleChangeRowsPerPage}
                 />
             </Box>
-        </Box>
+        </EnhancedTableBox>
     );
 }
 
-interface StatusChipProps {
-    status?: Boolean;
-    sx?: object;
-}
 const StatusChip = ({ status = true, sx = {}, ...props }: StatusChipProps) => {
     const handleClick = () => {
         console.info("You clicked the Chip.");
-    };
-    const StyledChip = {
-        border: "none",
-        padding: "0rem 1rem",
-        "& .MuiChip-label": {
-            paddingRight: 0
-        },
-        "& svg": {
-            fontSize: "1rem",
-            marginLeft: "0px !important",
-            color: "inherit !important"
-        }
-    };
-    const StyledPushlished = {
-        backgroundColor: "#DCFCE7",
-        color: "#22C55E",
-        ...StyledChip
-    };
-    const StyledDraft = {
-        backgroundColor: "#FEE2E2",
-        color: "#EF4444",
-        ...StyledChip
     };
     return (
         <Chip
@@ -417,9 +331,6 @@ const StatusChip = ({ status = true, sx = {}, ...props }: StatusChipProps) => {
 };
 
 const ActionCell = () => {
-    const StyledActionCell = {
-        display: "flex"
-    };
     return (
         <Box sx={StyledActionCell}>
             <IconButton>
@@ -431,3 +342,117 @@ const ActionCell = () => {
         </Box>
     );
 };
+
+const rows = [
+    createData("0", "Harry Peter", "zmoore", "akuokesip", "Admin", 1),
+    createData("1", "Franco Delort", "eliane03", "ahmadyani1234", "BTV", 2),
+    createData("2", "Lawerence Munford", "nblock", "welcome123", "BTV", 2),
+    createData("3", "Harry Peter", "anya.morar", "welcome123", "BTV", 1),
+    createData("4", "Alfredo Vetrovs", "ronny18", "akuokesip", "BTV", 1)
+];
+
+const headCells: readonly HeadCell[] = [
+    {
+        id: "name",
+        numeric: false,
+        disablePadding: true,
+        label: "Tên"
+    },
+    {
+        id: "username",
+        numeric: true,
+        disablePadding: false,
+        label: "Tên đăng nhập"
+    },
+    {
+        id: "password",
+        numeric: true,
+        disablePadding: false,
+        label: "Mật khẩu"
+    },
+    {
+        id: "role",
+        numeric: true,
+        disablePadding: false,
+        label: "Vai trò"
+    },
+    {
+        id: "status",
+        numeric: true,
+        disablePadding: false,
+        label: "Trạng thái"
+    }
+];
+
+const StyledActionCell = {
+    display: "flex"
+};
+
+const StyledChip = {
+    border: "none",
+    padding: "0rem 1rem",
+    "& .MuiChip-label": {
+        paddingRight: 0
+    },
+    "& svg": {
+        fontSize: "1rem",
+        marginLeft: "0px !important",
+        color: "inherit !important"
+    }
+};
+
+const StyledPushlished = {
+    backgroundColor: "#DCFCE7",
+    color: "#22C55E",
+    ...StyledChip
+};
+
+const StyledDraft = {
+    backgroundColor: "#FEE2E2",
+    color: "#EF4444",
+    ...StyledChip
+};
+
+interface Data {
+    id: string;
+    name: string;
+    username: string;
+    password: string;
+    role: string;
+    status: number;
+}
+
+type Order = "asc" | "desc";
+
+interface HeadCell {
+    disablePadding: boolean;
+    id: keyof Data;
+    label: string;
+    numeric: boolean;
+}
+
+interface EnhancedTableProps {
+    numSelected: number;
+    onRequestSort: (event: React.MouseEvent<unknown>, property: keyof Data) => void;
+    onSelectAllClick: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    order: Order;
+    orderBy: string;
+    rowCount: number;
+}
+
+interface EnhancedTableToolbarProps {
+    numSelected: number;
+}
+interface StatusChipProps {
+    status?: Boolean;
+    sx?: object;
+}
+
+const EnhancedTableBox = styled(Box)(({ theme }) => ({
+    width: "100%",
+    marginTop: "20px",
+    border: "1px solid #176076",
+    borderRadius: "15px",
+    overflow: "hidden",
+    transition: "all 0.3s ease-in-out"
+}));

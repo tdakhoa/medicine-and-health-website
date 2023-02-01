@@ -4,24 +4,6 @@ import { FacebookOutlined, Instagram, MailOutline, PhoneOutlined, Place, YouTube
 
 import { Typography } from "../../../components";
 
-const Root = styled(Box)(() => ({
-    width: "100%",
-    display: "flex",
-    flexDirection: "row-reverse",
-    alignItems: "stretch",
-    padding: "5% 10%",
-    gap: "7%",
-    justifyContent: "space-between"
-}));
-
-const TextContainer = styled(Box)(() => ({
-    width: "100%",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "end",
-    gap: "1rem"
-}));
-
 const Contact = () => {
     return (
         <Root>
@@ -82,3 +64,21 @@ const ContactItems = [
         text: "https://www.youtube.com/@malshome"
     }
 ];
+
+const Root = styled(Box)(() => ({
+    width: "100%",
+    display: "flex",
+    flexDirection: "row-reverse",
+    alignItems: "stretch",
+    padding: "5% 10%",
+    gap: "7%",
+    justifyContent: "space-between"
+}));
+
+const TextContainer = styled(Box)(() => ({
+    width: "100%",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "end",
+    gap: "1rem"
+}));

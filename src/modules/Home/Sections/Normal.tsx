@@ -5,10 +5,6 @@ import SimpleCard from "./components/SimpleCard";
 import Title from "./components/Title";
 import { cardData } from "../../../constants";
 
-const Root = styled("div")(({ theme }) => ({
-    margin: "5% 10%"
-}));
-
 const NormalSection = () => {
     return (
         <Root>
@@ -59,3 +55,7 @@ const NormalSection = () => {
 };
 
 export default NormalSection;
+
+const Root = styled("div")(({ theme }) => ({
+    margin: "5% 10%"
+}));

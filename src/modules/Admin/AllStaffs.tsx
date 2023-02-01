@@ -6,16 +6,6 @@ import ToggleDrawer from "./components/Drawer";
 import { CreateOutlined } from "@mui/icons-material";
 import StaffTable from "./components/StaffTable";
 
-const Root = styled(Box)(({ theme }) => ({
-    display: "flex"
-}));
-
-const HeaderBox = styled(Box)(({ theme }) => ({
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "end"
-}));
-
 const NewPost = () => {
     return (
         <Root>
@@ -40,3 +30,13 @@ const NewPost = () => {
 };
 
 export default NewPost;
+
+const Root = styled(Box)(({ theme }) => ({
+    display: "flex"
+}));
+
+const HeaderBox = styled(Box)(({ theme }) => ({
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "end"
+}));

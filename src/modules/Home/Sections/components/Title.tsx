@@ -4,6 +4,30 @@ import { Box, styled } from "@mui/material";
 
 import { Typography } from "../../../../components";
 
+const Title = ({ text, link = "", sx = {}, ...props }: TitleProps) => {
+    return (
+        <StyledTitle sx={sx}>
+            <Typography size="h2" weight="bold" color="secondary" transform="uppercase">
+                {text}
+            </Typography>
+            <Link className="see-more" href={link}>
+                <Typography size="p" weight="semiBold" color="secondary" transform="uppercase" sx={StyleSeeAll}>
+                    xem tất cả
+                </Typography>
+            </Link>
+            <Box sx={StyleDivider}></Box>
+        </StyledTitle>
+    );
+};
+
+export default Title;
+
+interface TitleProps {
+    text: string;
+    link?: string;
+    sx?: object;
+}
+
 const StyleSeeAll = {
     position: "relative",
     "&:hover": {
@@ -24,26 +48,3 @@ const StyledTitle = styled(Box)(({ theme }) => ({
     textTransform: "uppercase",
     marginBottom: "3rem"
 }));
-
-interface TitleProps {
-    text: string;
-    link?: string;
-    sx?: object;
-}
-const Title = ({ text, link = "", sx = {}, ...props }: TitleProps) => {
-    return (
-        <StyledTitle sx={sx}>
-            <Typography size="h2" weight="bold" color="secondary" transform="uppercase">
-                {text}
-            </Typography>
-            <Link className="see-more" href={link}>
-                <Typography size="p" weight="semiBold" color="secondary" transform="uppercase" sx={StyleSeeAll}>
-                    xem tất cả
-                </Typography>
-            </Link>
-            <Box sx={StyleDivider}></Box>
-        </StyledTitle>
-    );
-};
-
-export default Title;

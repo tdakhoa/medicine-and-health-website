@@ -6,21 +6,10 @@ import Carousel from "../Carousel/Carousel";
 import SimpleCard from "../../modules/Home/Sections/components/SimpleCard";
 import { cardData } from "../../constants";
 
-const Root = styled(Box)(({ theme }) => ({
-    width: "100%",
-    border: "0.5px solid rgba(23, 96, 118, 0.4)",
-    borderRadius: "10px",
-    padding: "1.5rem"
-}));
-
 const Proposal = () => {
     return (
         <Root>
-            <Typography
-                size="h5"
-                weight="bold"
-                color="secondary"
-                sx={{ textAlign: "center", textTransform: "uppercase", mb: 2 }}>
+            <Typography size="h5" weight="bold" color="secondary" alignn="center" transform="uppercase" sx={{ mb: 2 }}>
                 Đề xuất
             </Typography>
             <Carousel listData={dataList} indicators={false} animation="slide" />
@@ -43,3 +32,10 @@ const dataList = cardData.map((item, i) => (
         />
     </div>
 ));
+
+const Root = styled(Box)(({ theme }) => ({
+    width: "100%",
+    border: "0.5px solid rgba(23, 96, 118, 0.4)",
+    borderRadius: "10px",
+    padding: "1.5rem"
+}));

@@ -1,9 +1,22 @@
 import * as React from "react";
 import { alpha } from "@mui/material/styles";
-import { Box } from "@mui/material";
-import { Table, TableBody, TableCell, TableContainer, TableHead } from "@mui/material";
-import { TablePagination, TableRow, TableSortLabel, Toolbar, Chip } from "@mui/material";
-import { Checkbox, IconButton, Tooltip } from "@mui/material";
+import {
+    Box,
+    styled,
+    Table,
+    TableBody,
+    TableCell,
+    TableContainer,
+    TableHead,
+    TablePagination,
+    TableRow,
+    TableSortLabel,
+    Toolbar,
+    Chip,
+    Checkbox,
+    IconButton,
+    Tooltip
+} from "@mui/material";
 import {
     CancelOutlined,
     CheckCircleOutline,
@@ -17,15 +30,7 @@ import { visuallyHidden } from "@mui/utils";
 
 import { Typography } from "../../../components";
 
-interface Data {
-    category: string;
-    date: string;
-    writer: string;
-    title: string;
-    status: number;
-}
-
-function createData(title: string, category: string, writer: string, date: string, status: number): Data {
+const createData = (title: string, category: string, writer: string, date: string, status: number): Data => {
     return {
         title,
         category,
@@ -33,15 +38,7 @@ function createData(title: string, category: string, writer: string, date: strin
         date,
         status
     };
-}
-
-const rows = [
-    createData("Bệnh cúm gia cầm", "Bệnh học", "Ngân Lam", "1/1/2023", 1),
-    createData("Chuyển gốc đại động mạch: Bệnh tim bẩm sinh hiếm gặp", "Bệnh học", "Tùng Lâm", "1/1/2023", 2),
-    createData("Kháng sinh CEFTAZIDIM - AVIBACTAM", "Bệnh học", "Ngân Lam", "1/2/2023", 1),
-    createData("Bệnh cúm gia cầm3", "Bệnh học", "Bình Kha", "1/1/2023", 1),
-    createData("Kháng sinh CEFTAZIDIM - AVIBACTAM3", "Bệnh học", "Hiệp Phát", "2/1/2023", 2)
-];
+};
 
 function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
     if (b[orderBy] < a[orderBy]) {
@@ -52,8 +49,6 @@ function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
     }
     return 0;
 }
-
-type Order = "asc" | "desc";
 
 function getComparator<Key extends keyof any>(
     order: Order,
@@ -74,56 +69,6 @@ function stableSort<T>(array: readonly T[], comparator: (a: T, b: T) => number) 
         return a[1] - b[1];
     });
     return stabilizedThis.map((el) => el[0]);
-}
-
-interface HeadCell {
-    disablePadding: boolean;
-    id: keyof Data;
-    label: string;
-    numeric: boolean;
-}
-
-const headCells: readonly HeadCell[] = [
-    {
-        id: "title",
-        numeric: false,
-        disablePadding: true,
-        label: "Tiêu đề"
-    },
-    {
-        id: "category",
-        numeric: true,
-        disablePadding: false,
-        label: "Danh mục"
-    },
-    {
-        id: "writer",
-        numeric: true,
-        disablePadding: false,
-        label: "Người đăng"
-    },
-    {
-        id: "date",
-        numeric: true,
-        disablePadding: false,
-        label: "Ngày đăng"
-    },
-    {
-        id: "status",
-        numeric: true,
-        disablePadding: false,
-        label: "Trạng thái"
-    }
-];
-
-const animationSx = {};
-interface EnhancedTableProps {
-    numSelected: number;
-    onRequestSort: (event: React.MouseEvent<unknown>, property: keyof Data) => void;
-    onSelectAllClick: (event: React.ChangeEvent<HTMLInputElement>) => void;
-    order: Order;
-    orderBy: string;
-    rowCount: number;
 }
 
 function EnhancedTableHead(props: EnhancedTableProps) {
@@ -175,11 +120,7 @@ function EnhancedTableHead(props: EnhancedTableProps) {
     );
 }
 
-interface EnhancedTableToolbarProps {
-    numSelected: number;
-}
-
-function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
+const EnhancedTableToolbar = (props: EnhancedTableToolbarProps) => {
     const { numSelected } = props;
 
     return (
@@ -214,7 +155,7 @@ function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
             )}
         </Toolbar>
     );
-}
+};
 
 export default function EnhancedTable() {
     const [order, setOrder] = React.useState<Order>("asc");
@@ -270,15 +211,7 @@ export default function EnhancedTable() {
     const isSelected = (title: string) => selected.indexOf(title) !== -1;
 
     return (
-        <Box
-            sx={{
-                width: "100%",
-                mt: 2,
-                border: "1px solid #176076",
-                borderRadius: 4,
-                overflow: "hidden",
-                transition: "all 0.3s ease-in-out"
-            }}>
+        <EnhancedTableBox>
             {selected.length > 0 ? <EnhancedTableToolbar numSelected={selected.length} /> : <></>}
             <Box
                 sx={
@@ -372,40 +305,11 @@ export default function EnhancedTable() {
                     onRowsPerPageChange={handleChangeRowsPerPage}
                 />
             </Box>
-        </Box>
+        </EnhancedTableBox>
     );
 }
 
-interface StatusChipProps {
-    status?: Boolean;
-    sx?: object;
-}
 const StatusChip = ({ status = true, sx = {}, ...props }: StatusChipProps) => {
-    const handleClick = () => {
-        console.info("You clicked the Chip.");
-    };
-    const StyledChip = {
-        border: "none",
-        padding: "0rem 1rem",
-        "& .MuiChip-label": {
-            paddingRight: 0
-        },
-        "& svg": {
-            fontSize: "1rem",
-            marginLeft: "0px !important",
-            color: "inherit !important"
-        }
-    };
-    const StyledPushlished = {
-        backgroundColor: "#DCFCE7",
-        color: "#22C55E",
-        ...StyledChip
-    };
-    const StyledDraft = {
-        backgroundColor: "#FFEDD5",
-        color: "#F97316",
-        ...StyledChip
-    };
     return (
         <Chip
             label={status == true ? "Đã đăng" : "Bản nháp"}
@@ -418,9 +322,6 @@ const StatusChip = ({ status = true, sx = {}, ...props }: StatusChipProps) => {
 };
 
 const ActionCell = () => {
-    const StyledActionCell = {
-        display: "flex"
-    };
     return (
         <Box sx={StyledActionCell}>
             <IconButton>
@@ -435,3 +336,119 @@ const ActionCell = () => {
         </Box>
     );
 };
+
+const rows = [
+    createData("Bệnh cúm gia cầm", "Bệnh học", "Ngân Lam", "1/1/2023", 1),
+    createData("Chuyển gốc đại động mạch: Bệnh tim bẩm sinh hiếm gặp", "Bệnh học", "Tùng Lâm", "1/1/2023", 2),
+    createData("Kháng sinh CEFTAZIDIM - AVIBACTAM", "Bệnh học", "Ngân Lam", "1/2/2023", 1),
+    createData("Bệnh cúm gia cầm3", "Bệnh học", "Bình Kha", "1/1/2023", 1),
+    createData("Kháng sinh CEFTAZIDIM - AVIBACTAM3", "Bệnh học", "Hiệp Phát", "2/1/2023", 2)
+];
+
+const headCells: readonly HeadCell[] = [
+    {
+        id: "title",
+        numeric: false,
+        disablePadding: true,
+        label: "Tiêu đề"
+    },
+    {
+        id: "category",
+        numeric: true,
+        disablePadding: false,
+        label: "Danh mục"
+    },
+    {
+        id: "writer",
+        numeric: true,
+        disablePadding: false,
+        label: "Người đăng"
+    },
+    {
+        id: "date",
+        numeric: true,
+        disablePadding: false,
+        label: "Ngày đăng"
+    },
+    {
+        id: "status",
+        numeric: true,
+        disablePadding: false,
+        label: "Trạng thái"
+    }
+];
+
+interface Data {
+    category: string;
+    date: string;
+    writer: string;
+    title: string;
+    status: number;
+}
+
+type Order = "asc" | "desc";
+
+interface HeadCell {
+    disablePadding: boolean;
+    id: keyof Data;
+    label: string;
+    numeric: boolean;
+}
+
+interface EnhancedTableProps {
+    numSelected: number;
+    onRequestSort: (event: React.MouseEvent<unknown>, property: keyof Data) => void;
+    onSelectAllClick: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    order: Order;
+    orderBy: string;
+    rowCount: number;
+}
+
+interface EnhancedTableToolbarProps {
+    numSelected: number;
+}
+
+interface StatusChipProps {
+    status?: Boolean;
+    sx?: object;
+}
+
+const handleClick = () => {
+    console.info("You clicked the Chip.");
+};
+
+const StyledChip = {
+    border: "none",
+    padding: "0rem 1rem",
+    "& .MuiChip-label": {
+        paddingRight: 0
+    },
+    "& svg": {
+        fontSize: "1rem",
+        marginLeft: "0px !important",
+        color: "inherit !important"
+    }
+};
+const StyledPushlished = {
+    backgroundColor: "#DCFCE7",
+    color: "#22C55E",
+    ...StyledChip
+};
+const StyledDraft = {
+    backgroundColor: "#FFEDD5",
+    color: "#F97316",
+    ...StyledChip
+};
+
+const StyledActionCell = {
+    display: "flex"
+};
+
+const EnhancedTableBox = styled(Box)(({ theme }) => ({
+    width: "100%",
+    marginTop: "20px",
+    border: "1px solid #176076",
+    borderRadius: "15px",
+    overflow: "hidden",
+    transition: "all 0.3s ease-in-out"
+}));

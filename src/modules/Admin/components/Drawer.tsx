@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useRouter } from "next/router";
 import Link from "next/link";
 import { styled, useTheme, Theme, CSSObject } from "@mui/material/styles";
 import {
@@ -20,81 +21,8 @@ import {
     LogoutOutlined,
     AccountCircleOutlined
 } from "@mui/icons-material";
+
 import { Typography } from "../../../components";
-import { useRouter } from "next/router";
-
-const avatar =
-    "https://scontent.fsgn2-1.fna.fbcdn.net/v/t39.30808-6/326096520_670444968197841_461525136651728368_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=ebmBbb9a2mQAX88ojWU&tn=_JWBHwD98b41WzaG&_nc_ht=scontent.fsgn2-1.fna&oh=00_AfD_7Q91aOT7VXNTtbk8qGnBFC2JvJRbNxDJo-rSf2bkmw&oe=63D5713F";
-
-const drawerWidth = 250;
-const miniDrawerWidth = "6rem";
-
-const openedMixin = (theme: Theme): CSSObject => ({
-    width: drawerWidth,
-    transition: theme.transitions.create("width", {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.enteringScreen
-    }),
-    overflowX: "hidden",
-    color: "white",
-    backgroundColor: "var(--palette-01)"
-});
-
-const closedMixin = (theme: Theme): CSSObject => ({
-    transition: theme.transitions.create("width", {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.leavingScreen
-    }),
-    display: "flex",
-    flexDirection: "column",
-    width: miniDrawerWidth,
-    overflowX: "hidden",
-    color: "white",
-    backgroundColor: "var(--palette-01)"
-});
-
-const DrawerHeader = styled("div")(({ theme }) => ({
-    display: "flex",
-    alignItems: "center",
-    padding: theme.spacing(0, 2),
-    // necessary for content to be below app bar
-    ...theme.mixins.toolbar
-}));
-
-const Drawer = styled(MuiDrawer)(({ theme, open }) => ({
-    color: "white",
-    backgroundColor: "var(--palette-01)",
-    flexShrink: 0,
-    whiteSpace: "nowrap",
-    boxSizing: "border-box",
-    ...(open
-        ? {
-              ...openedMixin(theme),
-              "& .MuiDrawer-paper": openedMixin(theme)
-          }
-        : {
-              ...closedMixin(theme),
-              "& .MuiDrawer-paper": closedMixin(theme)
-          })
-}));
-
-const ListItemButton = styled(MuiListItemButton)(({ theme }) => ({
-    minWidth: 0,
-    padding: "0.8rem",
-    borderRadius: 10,
-    transition: "all 0.4s ease-in-out",
-    "&:hover": {
-        backgroundColor: "rgba(255, 255, 255, 0.1) !important"
-    },
-    marginBottom: "0.8rem"
-}));
-
-const AvatarContainer = styled(Box)(({ theme }) => ({
-    flexDirection: "column",
-    alignItems: "center",
-    gap: "0.8rem",
-    margin: "2rem 0rem"
-}));
 
 export default function ToggleDrawer() {
     const theme = useTheme();
@@ -142,38 +70,19 @@ export default function ToggleDrawer() {
             <List className="full">
                 {menuItems.map((item, index) => (
                     <Link href={item.link}>
-                        <ListItem
-                            key={index}
-                            sx={{
-                                padding: theme.spacing(0, 2),
-                                display: "block"
-                            }}>
+                        <StyledItem key={index}>
                             <ListItemButton
                                 sx={{
                                     justifyContent: open ? "initial" : "center",
                                     backgroundColor:
                                         asPath === item.link ? "rgba(255, 255, 255, 0.1) !important" : "transparent"
                                 }}>
-                                <ListItemIcon
-                                    sx={{
-                                        minWidth: 0,
-                                        mr: open ? 3 : 0,
-                                        justifyContent: "center",
-                                        color: "white"
-                                    }}>
-                                    {item.icon}
-                                </ListItemIcon>
-                                <Typography
-                                    size="p"
-                                    sx={{
-                                        display: open ? "initial" : "none",
-                                        lineHeight: 0,
-                                        color: "var(--palette-06)"
-                                    }}>
+                                <StyledItemIcon open={open}>{item.icon}</StyledItemIcon>
+                                <StyledTypo size="p" open={open}>
                                     {item.text}
-                                </Typography>
+                                </StyledTypo>
                             </ListItemButton>
-                        </ListItem>
+                        </StyledItem>
                     </Link>
                 ))}
             </List>
@@ -203,3 +112,97 @@ const menuItems = [
         link: "/"
     }
 ];
+
+const avatar =
+    "https://scontent.fsgn2-1.fna.fbcdn.net/v/t39.30808-6/326096520_670444968197841_461525136651728368_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=ebmBbb9a2mQAX88ojWU&tn=_JWBHwD98b41WzaG&_nc_ht=scontent.fsgn2-1.fna&oh=00_AfD_7Q91aOT7VXNTtbk8qGnBFC2JvJRbNxDJo-rSf2bkmw&oe=63D5713F";
+
+const drawerWidth = 250;
+const miniDrawerWidth = "6rem";
+
+interface TypoProps {
+    open?: boolean;
+}
+
+const openedMixin = (theme: Theme): CSSObject => ({
+    width: drawerWidth,
+    transition: theme.transitions.create("width", {
+        easing: theme.transitions.easing.sharp,
+        duration: theme.transitions.duration.enteringScreen
+    }),
+    overflowX: "hidden",
+    color: "white",
+    backgroundColor: "var(--palette-01)"
+});
+
+const closedMixin = (theme: Theme): CSSObject => ({
+    transition: theme.transitions.create("width", {
+        easing: theme.transitions.easing.sharp,
+        duration: theme.transitions.duration.leavingScreen
+    }),
+    display: "flex",
+    flexDirection: "column",
+    width: miniDrawerWidth,
+    overflowX: "hidden",
+    color: "white",
+    backgroundColor: "var(--palette-01)"
+});
+
+const DrawerHeader = styled("div")(({ theme }) => ({
+    display: "flex",
+    alignItems: "center",
+    padding: theme.spacing(0, 2),
+    ...theme.mixins.toolbar
+}));
+
+const Drawer = styled(MuiDrawer)(({ theme, open }) => ({
+    color: "white",
+    backgroundColor: "var(--palette-01)",
+    flexShrink: 0,
+    whiteSpace: "nowrap",
+    boxSizing: "border-box",
+    ...(open
+        ? {
+              ...openedMixin(theme),
+              "& .MuiDrawer-paper": openedMixin(theme)
+          }
+        : {
+              ...closedMixin(theme),
+              "& .MuiDrawer-paper": closedMixin(theme)
+          })
+}));
+
+const ListItemButton = styled(MuiListItemButton)(({ theme }) => ({
+    minWidth: 0,
+    padding: "0.8rem",
+    borderRadius: 10,
+    transition: "all 0.4s ease-in-out",
+    "&:hover": {
+        backgroundColor: "rgba(255, 255, 255, 0.1) !important"
+    },
+    marginBottom: "0.8rem"
+}));
+
+const AvatarContainer = styled(Box)(({ theme }) => ({
+    flexDirection: "column",
+    alignItems: "center",
+    gap: "0.8rem",
+    margin: "2rem 0rem"
+}));
+
+const StyledTypo = styled(Typography)<TypoProps>(({ theme, open }) => ({
+    display: open ? "initial" : "none",
+    lineHeight: 0,
+    color: "var(--palette-06)"
+}));
+
+const StyledItem = styled(ListItem)(({ theme }) => ({
+    padding: theme.spacing(0, 2),
+    display: "block"
+}));
+
+const StyledItemIcon = styled(ListItemIcon)<TypoProps>(({ theme, open }) => ({
+    minWidth: 0,
+    marginRight: open ? "12px" : "0px",
+    justifyContent: "center",
+    color: "white"
+}));

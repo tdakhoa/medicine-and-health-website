@@ -3,10 +3,99 @@ import Image from "next/image";
 import { styled, Box, Grid, Link } from "@mui/material";
 import { ArrowForwardOutlined, EmailOutlined, FacebookOutlined, LocationOn, PhoneOutlined } from "@mui/icons-material";
 
-import { default as Typography } from ".././Typography/Typography";
+import Typography from ".././Typography/Typography";
 import Button from "../Button/Button";
 import { footerItems } from "../../constants";
 import logo from "../../../public/Logo.svg";
+
+const Footer = () => {
+    return (
+        <Root>
+            <MainRectangle>
+                <SubRectangle>
+                    <Box>
+                        <Image
+                            src={logo}
+                            alt="logo"
+                            width={50}
+                            style={{
+                                filter: "drop-shadow(0px 0px 20px rgba(255, 255, 255, 0.6))"
+                            }}
+                        />
+                        <Typography size="h6" weight="bold" color="#DE221F">
+                            THUỐC VÀ SỨC KHOẺ
+                        </Typography>
+                        <Typography size="p" weight="light" color="white">
+                            Lorem Ipsum is simply dummy text of the printing
+                        </Typography>
+                    </Box>
+                    <Button
+                        bgcolor="primary"
+                        endIcon={<ArrowForwardOutlined sx={{ fontSize: "1.2rem", paddingLeft: "0.2rem" }} />}>
+                        <Typography size="p" color="inherit" weight="medium">
+                            Đóng góp ý kiến
+                        </Typography>
+                    </Button>
+                </SubRectangle>
+                <AddressContainer>
+                    <Map src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.3390401268844!2d106.68123241431714!3d10.785323861979766!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752fe2829fc297%3A0x62c0a3fff1ed2433!2zMTI2QSBUcuG6p24gUXXhu5FjIFRo4bqjbywgUGjGsOG7nW5nIDE0LCBRdeG6rW4gMywgVGjDoG5oIHBo4buRIEjhu5MgQ2jDrSBNaW5oLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1674484736547!5m2!1svi!2s"></Map>
+                    <Address>
+                        <LocationOn color="inherit" />
+                        <Typography color="white" weight="bold" sx={{ flexShrink: 0 }}>
+                            Trụ sở chính
+                        </Typography>
+                        <Typography color="white" weight="light">
+                            126A Trần Quốc Thảo, Quận 3, Thành phố Hồ Chí Minh
+                        </Typography>
+                    </Address>
+                </AddressContainer>
+                <LinkContainer container>
+                    {footerItems.map((item, id) => (
+                        <Grid className="footer-item" item xs={4} key={id}>
+                            <Typography size="h6" weight="bold" transform="uppercase">
+                                {item.title}
+                            </Typography>
+                            <Box sx={StyleDivider} />
+                            {item.links.map((li, i) => (
+                                <Link className="footer-link" href={li.link} key={i} color="inherit" underline="none">
+                                    {li.aliases}
+                                </Link>
+                            ))}
+                        </Grid>
+                    ))}
+                    <SocialContainer container>
+                        <Grid item xs={12} className="social-title">
+                            <Typography size="h6" weight="bold" transform="uppercase">
+                                contact us
+                            </Typography>
+                            <Box sx={StyleDivider}></Box>
+                        </Grid>
+                        {socialItems.map((item, id) => (
+                            <Grid item key={id} xs={4} className="social-item">
+                                {item.icon}
+                                <Link className="footer-link" href={item.link} color="inherit" underline="none">
+                                    {item.link}
+                                </Link>
+                            </Grid>
+                        ))}
+                    </SocialContainer>
+                </LinkContainer>
+            </MainRectangle>
+
+            <Typography size="small" color="white" weight="light" alignn="center" sx={FooterTypo}>
+                Copyright &#169; 2023. All rights reserved.
+            </Typography>
+        </Root>
+    );
+};
+
+export default Footer;
+
+const socialItems = [
+    { icon: <PhoneOutlined />, link: "(+84) 384 375  64" },
+    { icon: <EmailOutlined />, link: "thuocsk@gmail.com" },
+    { icon: <FacebookOutlined />, link: "https://www.facebook.com" }
+];
 
 const Root = styled("div")(({ theme }) => ({
     marginTop: "8%"
@@ -100,100 +189,8 @@ const StyleDivider = {
     borderRadius: 999
 };
 
-const Footer = () => {
-    return (
-        <Root>
-            <MainRectangle>
-                <SubRectangle>
-                    <Box>
-                        <Image
-                            src={logo}
-                            alt="logo"
-                            width={50}
-                            style={{
-                                filter: "drop-shadow(0px 0px 20px rgba(255, 255, 255, 0.6))"
-                            }}
-                        />
-                        <Typography size="h6" weight="bold" color="#DE221F">
-                            THUỐC VÀ SỨC KHOẺ
-                        </Typography>
-                        <Typography size="p" weight="light" color="white">
-                            Lorem Ipsum is simply dummy text of the printing
-                        </Typography>
-                    </Box>
-                    <Button
-                        bgcolor="primary"
-                        endIcon={<ArrowForwardOutlined sx={{ fontSize: "1.2rem", paddingLeft: "0.2rem" }} />}>
-                        <Typography size="p" color="inherit" weight="medium">
-                            Đóng góp ý kiến
-                        </Typography>
-                    </Button>
-                </SubRectangle>
-                <AddressContainer>
-                    <Map src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.3390401268844!2d106.68123241431714!3d10.785323861979766!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752fe2829fc297%3A0x62c0a3fff1ed2433!2zMTI2QSBUcuG6p24gUXXhu5FjIFRo4bqjbywgUGjGsOG7nW5nIDE0LCBRdeG6rW4gMywgVGjDoG5oIHBo4buRIEjhu5MgQ2jDrSBNaW5oLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1674484736547!5m2!1svi!2s"></Map>
-                    <Address>
-                        <LocationOn color="inherit" />
-                        <Typography color="white" weight="bold" sx={{ flexShrink: 0 }}>
-                            Trụ sở chính
-                        </Typography>
-                        <Typography color="white" weight="light">
-                            126A Trần Quốc Thảo, Quận 3, Thành phố Hồ Chí Minh
-                        </Typography>
-                    </Address>
-                </AddressContainer>
-                <LinkContainer container>
-                    {footerItems.map((item, id) => (
-                        <Grid className="footer-item" item xs={4} key={id}>
-                            <Typography size="h6" weight="bold" transform="uppercase">
-                                {item.title}
-                            </Typography>
-                            <Box sx={StyleDivider}></Box>
-                            {item.links.map((li, i) => (
-                                <Link className="footer-link" href={li.link} key={i} color="inherit" underline="none">
-                                    {li.aliases}
-                                </Link>
-                            ))}
-                        </Grid>
-                    ))}
-                    <SocialContainer container>
-                        <Grid item xs={12} className="social-title">
-                            <Typography size="h6" weight="bold" transform="uppercase">
-                                contact us
-                            </Typography>
-                            <Box sx={StyleDivider}></Box>
-                        </Grid>
-                        {socialItems.map((item, id) => (
-                            <Grid item key={id} xs={4} className="social-item">
-                                {item.icon}
-                                <Link className="footer-link" href={item.link} color="inherit" underline="none">
-                                    {item.link}
-                                </Link>
-                            </Grid>
-                        ))}
-                    </SocialContainer>
-                </LinkContainer>
-            </MainRectangle>
-
-            <Typography
-                size="small"
-                color="white"
-                weight="light"
-                sx={{
-                    padding: "0.5rem 0rem",
-                    width: "100%",
-                    backgroundColor: "var(--palette-01)",
-                    textAlign: "center"
-                }}>
-                Copyright &#169; 2023. All rights reserved.
-            </Typography>
-        </Root>
-    );
+const FooterTypo = {
+    padding: "0.5rem 0rem",
+    width: "100%",
+    backgroundColor: "var(--palette-01)"
 };
-
-export default Footer;
-
-const socialItems = [
-    { icon: <PhoneOutlined />, link: "(+84) 384 375  64" },
-    { icon: <EmailOutlined />, link: "thuocsk@gmail.com" },
-    { icon: <FacebookOutlined />, link: "https://www.facebook.com" }
-];

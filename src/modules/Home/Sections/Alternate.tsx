@@ -5,9 +5,6 @@ import AlternateCard from "./components/AlternateCard";
 import Title from "./components/Title";
 import { cardData } from "../../../constants";
 
-const Root = styled("div")(({ theme }) => ({
-    margin: "5% 10%"
-}));
 const AlternateSection = () => {
     return (
         <Root>
@@ -30,3 +27,7 @@ const AlternateSection = () => {
 };
 
 export default AlternateSection;
+
+const Root = styled("div")(({ theme }) => ({
+    margin: "5% 10%"
+}));

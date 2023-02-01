@@ -37,10 +37,10 @@ const News = () => {
                 <NewsGrid xs={7.2} item container sx={{ minHeight: 600 }}>
                     <Box className="media-container" sx={{ borderRadius: "60px 0 0 60px" }}>
                         <Box className="media-overlay media-bgMain">
-                            <Typography size="h2" weight="bold" sx={{ textAlign: "start" }}>
+                            <Typography sx={{ zIndex: "100000" }} size="h2" weight="bold">
                                 {mainNews.title}
                             </Typography>
-                            <Typography size="p" sx={{ textAlign: "start" }}>
+                            <Typography sx={{ zIndex: "100000" }} size="p">
                                 {mainNews.description}
                             </Typography>
                         </Box>
@@ -52,10 +52,10 @@ const News = () => {
                         <Grid key={i} xs={4} item>
                             <Box className="media-container" sx={item.style}>
                                 <Box className="media-overlay media-bgComp">
-                                    <Typography size="p" weight="bold">
+                                    <Typography sx={{ zIndex: "100000" }} size="p" weight="bold">
                                         {item.title}
                                     </Typography>
-                                    <Typography size="0.9rem" weight="regular">
+                                    <Typography sx={{ zIndex: "100000" }} size="0.9rem" weight="regular">
                                         {item.description}
                                     </Typography>
                                 </Box>
@@ -97,25 +97,49 @@ const NewsGrid = styled(Grid)(({ theme }) => ({
             flexDirection: "column"
         },
         "& .media-bgMain": {
+            textAlign: "left",
             background: "linear-gradient(360deg, #71BFDA 0%, rgba(217, 217, 217, 0) 100%)",
             justifyContent: "end",
-            transition: "all .4s ease-in-out",
+            transition: "all .5s ease-in-out",
             padding: "4rem",
             "&:hover": {
+                color: "white"
+            },
+            "&::before": {
                 color: "white",
-                background: "linear-gradient(360deg, #071B21 0%, rgba(217, 217, 217, 0) 100%)"
+                background: "linear-gradient(360deg, #071B21 0%, rgba(217, 217, 217, 0) 100%)",
+                position: "absolute",
+                content: '""',
+                inset: 0,
+                opacity: 0,
+                transition: "all .5s ease-in-out"
+            },
+            "&:hover::before": {
+                opacity: "1"
             }
         },
         "& .media-bgComp": {
+            textAlign: "right",
             background: "linear-gradient(270deg, #71BFDA 15%, rgba(217, 217, 217, 0) 100%)",
             justifyContent: "center",
-            transition: "all .4s ease-in-out",
+            transition: "all .5s ease-in-out",
             padding: "2rem",
             width: "60%",
             right: 0,
             "&:hover": {
+                color: "white"
+            },
+            "&::before": {
                 color: "white",
-                background: "linear-gradient(270deg, #071B21 0%, rgba(217, 217, 217, 0) 100%)"
+                background: "linear-gradient(270deg, #071B21 0%, rgba(217, 217, 217, 0) 100%)",
+                position: "absolute",
+                content: '""',
+                inset: 0,
+                opacity: 0,
+                transition: "all .5s ease-in-out"
+            },
+            "&:hover::before": {
+                opacity: "1"
             }
         }
     }

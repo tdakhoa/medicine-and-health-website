@@ -45,13 +45,15 @@ const StyledTypography = styled(MuiTypography)((props: TypographyProps) => ({
             ? 300
             : 300,
     textAlign:
-        props.alignn == "left"
+        props.format == "left"
             ? "left"
-            : props.alignn == "center"
+            : props.format == "center"
             ? "center"
-            : props.alignn == "right"
+            : props.format == "right"
             ? "right"
-            : "justify"
+            : props.format == "justify"
+            ? "justify"
+            : "inherit"
 }));
 
 interface TypographyProps {
@@ -60,7 +62,7 @@ interface TypographyProps {
     size?: string;
     weight?: string;
     transform?: string;
-    alignn?: string;
+    format?: string;
     sx?: object;
     children: React.ReactNode;
 }
@@ -71,7 +73,7 @@ const Typography = ({
     size = "p",
     weight = "regular",
     transform = "none",
-    alignn = "left",
+    format = "inherit",
     sx = {},
     children,
     ...props
@@ -82,7 +84,7 @@ const Typography = ({
             size={size}
             weight={weight}
             transform={transform}
-            alignn={alignn}
+            format={format}
             sx={sx}
             {...props}>
             {children}

@@ -1,53 +1,114 @@
-import React from "react";
-import { styled, Box, CardMedia, Grid } from "@mui/material";
+import React, { useState } from "react";
+import { styled, Box, Grid, Dialog, Pagination } from "@mui/material";
 
 import Title from "../../Home/Sections/components/Title";
 import { Button, Typography } from "../../../components";
-import { ArrowForwardOutlined } from "@mui/icons-material";
+import { ArrowForwardOutlined, HighlightOff } from "@mui/icons-material";
 
 const Contact = () => {
-    return (
-        <Root>
-            <Title
-                sx={{
-                    "& .see-more": {
-                        display: "none"
-                    }
-                }}
-                text="Đội ngũ chuyên gia"
-            />
+    const [open, setOpen] = useState(false);
+    const [page, setPage] = useState(1);
+    const [data, setData] = useState<ImageDataProps>({ image: "", name: "", description: " ", position: "" });
 
-            <Grid container spacing={4}>
-                {ImageData.map((item, i) => (
-                    <ContentGrid key={i} item xs={4}>
-                        <Box className="media-container" sx={{ borderRadius: "60px 0 0 60px" }}>
-                            <Box className="media-overlay" />
-                            <Box className="media-text">
-                                <Typography size="h5" weight="bold" alignn="center">
-                                    Bác sĩ {item.name}
-                                </Typography>
-                                <Box className="media-subText">
-                                    <Typography sx={{ py: 1 }} size="p" alignn="center">
-                                        {item.position}
+    const handleOpenDialog = (item: ImageDataProps) => {
+        setData(item);
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
+    const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
+        setPage(value);
+    };
+
+    return (
+        <>
+            <Root>
+                <Title
+                    sx={{
+                        "& .see-more": {
+                            display: "none"
+                        }
+                    }}
+                    text="Đội ngũ chuyên gia"
+                />
+
+                <Grid container spacing={4}>
+                    {ImageData.map((item, i) => (
+                        <ContentGrid key={i} item xs={4}>
+                            <Box className="media-container" sx={{ borderRadius: "60px 0 0 60px" }}>
+                                <Box className="media-overlay" />
+                                <Box className="media-text">
+                                    <Typography size="h5" weight="bold" format="center">
+                                        Bác sĩ {item.name}
                                     </Typography>
-                                    <Button
-                                        bgcolor="white"
-                                        sx={{ color: "var(--palette-01)" }}
-                                        endIcon={
-                                            <ArrowForwardOutlined sx={{ fontSize: "1.2rem", paddingLeft: "0.2rem" }} />
-                                        }>
-                                        <Typography size="p" weight="medium">
-                                            Đọc thêm
+                                    <Box className="media-subText">
+                                        <Typography sx={{ py: 1 }} size="p" format="center">
+                                            {item.position}
                                         </Typography>
-                                    </Button>
+                                        <Button
+                                            bgcolor="white"
+                                            sx={{ color: "var(--palette-01)" }}
+                                            onClick={() => handleOpenDialog(item)}
+                                            endIcon={
+                                                <ArrowForwardOutlined
+                                                    sx={{ fontSize: "1.2rem", paddingLeft: "0.2rem" }}
+                                                />
+                                            }>
+                                            <Typography size="p" weight="medium">
+                                                Đọc thêm
+                                            </Typography>
+                                        </Button>
+                                    </Box>
                                 </Box>
+                                <img className="media-image" src={item.image} />
                             </Box>
-                            <img className="media-image" src={item.image} />
-                        </Box>
-                    </ContentGrid>
-                ))}
-            </Grid>
-        </Root>
+                        </ContentGrid>
+                    ))}
+                </Grid>
+
+                <Box sx={{ display: "flex", justifyContent: "center", paddingTop: "3%" }}>
+                    <Pagination page={page} onChange={handleChange} count={10} size="large" />
+                </Box>
+            </Root>
+
+            <StyledDialog maxWidth="md" open={open} onClose={handleClose}>
+                <img className="media-image" src={data.image} />
+                <Box
+                    sx={{
+                        height: "100%",
+                        overflow: "hidden",
+                        display: "flex",
+                        flexDirection: "column",
+                        padding: "2rem"
+                    }}>
+                    <Typography size="h3" weight="bold" format="center" sx={{ color: "var(--palette-02)" }}>
+                        Bác sĩ {data.name}
+                    </Typography>
+                    <Typography size="h5" weight="bold" format="center" sx={{ color: "var(--palette-02)" }}>
+                        {data.position}
+                    </Typography>
+                    <Box sx={{ overflow: "scroll", flexGrow: 1, pr: "1rem", marginTop: "1rem" }}>
+                        <Typography size="p" format="justify">
+                            {data.description}
+                        </Typography>
+                    </Box>
+                </Box>
+
+                <HighlightOff
+                    sx={{
+                        cursor: "pointer",
+                        color: "var(--palette-02)",
+                        position: "absolute",
+                        top: "15px",
+                        right: "15px"
+                    }}
+                    onClick={handleClose}
+                />
+            </StyledDialog>
+        </>
     );
 };
 
@@ -57,40 +118,53 @@ const ImageData = [
     {
         image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
         name: "Usman Yousaf",
-        position: "Tai - mũi - họng",
-        description: "Lorem ispum"
+        position: "Khoa tai - mũi - họng",
+        description:
+            "Mii là một chú mèo nhỏ, đi lạc, từng được người vợ đã mất của ông Kyoichi chăm sóc nhưng ông Kyoichi lại không thích Mii vì chú hay quậy phá, quẩn quanh nhà và đứng trước bàn thờ Phật. Cho đến một ngày, Mii không xuất hiện nữa. Trong sự cô đơn, trống vắng của tuổi già lúc này, ông Kyoichi lại đi tìm Mii. Mii là một chú mèo nhỏ, đi lạc, từng được người vợ đã mất của ông Kyoichi chăm sóc nhưng ông Kyoichi lại không thích Mii vì chú hay quậy phá, quẩn quanh nhà và đứng trước bàn thờ Phật. Cho đến một ngày, Mii không xuất hiện nữa. Trong sự cô đơn, trống vắng của tuổi già lúc này, ông Kyoichi lại đi tìm Mii.Mii là một chú mèo nhỏ, đi lạc, từng được người vợ đã mất của ông Kyoichi chăm sóc nhưng ông Kyoichi lại không thích Mii vì chú hay quậy phá, quẩn quanh nhà và đứng trước bàn thờ Phật. Cho đến một ngày, Mii không xuất hiện nữa. Trong sự cô đơn, trống vắng của tuổi già lúc này, ông Kyoichi lại đi tìm Mii.Mii là một chú mèo nhỏ, đi lạc, từng được người vợ đã mất của ông Kyoichi chăm sóc nhưng ông Kyoichi lại không thích Mii vì chú hay quậy phá, quẩn quanh nhà và đứng trước bàn thờ Phật. Cho đến một ngày, Mii không xuất hiện nữa. Trong sự cô đơn, trống vắng của tuổi già lúc này, ông Kyoichi lại đi tìm Mii.Mii là một chú mèo nhỏ, đi lạc, từng được người vợ đã mất của ông Kyoichi chăm sóc nhưng ông Kyoichi lại không thích Mii vì chú hay quậy phá, quẩn quanh nhà và đứng trước bàn thờ Phật. Cho đến một ngày, Mii không xuất hiện nữa. Trong sự cô đơn, trống vắng của tuổi già lúc này, ông Kyoichi lại đi tìm Mii."
     },
     {
         image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
         name: "Humberto Chavez",
-        position: "Tiêu hóa",
-        description: "Lorem ispum"
+        position: "Khoa tiêu hóa",
+        description:
+            "Mii là một chú mèo nhỏ, đi lạc, từng được người vợ đã mất của ông Kyoichi chăm sóc nhưng ông Kyoichi lại không thích Mii vì chú hay quậy phá, quẩn quanh nhà và đứng trước bàn thờ Phật. Cho đến một ngày, Mii không xuất hiện nữa. Trong sự cô đơn, trống vắng của tuổi già lúc này, ông Kyoichi lại đi tìm Mii. Mii là một chú mèo nhỏ, đi lạc, từng được người vợ đã mất của ông Kyoichi chăm sóc nhưng ông Kyoichi lại không thích Mii vì chú hay quậy phá, quẩn quanh nhà và đứng trước bàn thờ Phật. Cho đến một ngày, Mii không xuất hiện nữa. Trong sự cô đơn, trống vắng của tuổi già lúc này, ông Kyoichi lại đi tìm Mii.Mii là một chú mèo nhỏ, đi lạc, từng được người vợ đã mất của ông Kyoichi chăm sóc nhưng ông Kyoichi lại không thích Mii vì chú hay quậy phá, quẩn quanh nhà và đứng trước bàn thờ Phật. Cho đến một ngày, Mii không xuất hiện nữa. Trong sự cô đơn, trống vắng của tuổi già lúc này, ông Kyoichi lại đi tìm Mii.Mii là một chú mèo nhỏ, đi lạc, từng được người vợ đã mất của ông Kyoichi chăm sóc nhưng ông Kyoichi lại không thích Mii vì chú hay quậy phá, quẩn quanh nhà và đứng trước bàn thờ Phật. Cho đến một ngày, Mii không xuất hiện nữa. Trong sự cô đơn, trống vắng của tuổi già lúc này, ông Kyoichi lại đi tìm Mii.Mii là một chú mèo nhỏ, đi lạc, từng được người vợ đã mất của ông Kyoichi chăm sóc nhưng ông Kyoichi lại không thích Mii vì chú hay quậy phá, quẩn quanh nhà và đứng trước bàn thờ Phật. Cho đến một ngày, Mii không xuất hiện nữa. Trong sự cô đơn, trống vắng của tuổi già lúc này, ông Kyoichi lại đi tìm Mii."
     },
     {
         image: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
         name: "Austin Distel",
-        position: "Cơ - xương khớp",
-        description: "Lorem ispum"
+        position: "Khoa cơ - xương khớp",
+        description:
+            "Mii là một chú mèo nhỏ, đi lạc, từng được người vợ đã mất của ông Kyoichi chăm sóc nhưng ông Kyoichi lại không thích Mii vì chú hay quậy phá, quẩn quanh nhà và đứng trước bàn thờ Phật. Cho đến một ngày, Mii không xuất hiện nữa. Trong sự cô đơn, trống vắng của tuổi già lúc này, ông Kyoichi lại đi tìm Mii. Mii là một chú mèo nhỏ, đi lạc, từng được người vợ đã mất của ông Kyoichi chăm sóc nhưng ông Kyoichi lại không thích Mii vì chú hay quậy phá, quẩn quanh nhà và đứng trước bàn thờ Phật. Cho đến một ngày, Mii không xuất hiện nữa. Trong sự cô đơn, trống vắng của tuổi già lúc này, ông Kyoichi lại đi tìm Mii.Mii là một chú mèo nhỏ, đi lạc, từng được người vợ đã mất của ông Kyoichi chăm sóc nhưng ông Kyoichi lại không thích Mii vì chú hay quậy phá, quẩn quanh nhà và đứng trước bàn thờ Phật. Cho đến một ngày, Mii không xuất hiện nữa. Trong sự cô đơn, trống vắng của tuổi già lúc này, ông Kyoichi lại đi tìm Mii.Mii là một chú mèo nhỏ, đi lạc, từng được người vợ đã mất của ông Kyoichi chăm sóc nhưng ông Kyoichi lại không thích Mii vì chú hay quậy phá, quẩn quanh nhà và đứng trước bàn thờ Phật. Cho đến một ngày, Mii không xuất hiện nữa. Trong sự cô đơn, trống vắng của tuổi già lúc này, ông Kyoichi lại đi tìm Mii.Mii là một chú mèo nhỏ, đi lạc, từng được người vợ đã mất của ông Kyoichi chăm sóc nhưng ông Kyoichi lại không thích Mii vì chú hay quậy phá, quẩn quanh nhà và đứng trước bàn thờ Phật. Cho đến một ngày, Mii không xuất hiện nữa. Trong sự cô đơn, trống vắng của tuổi già lúc này, ông Kyoichi lại đi tìm Mii."
     },
     {
         image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80",
         name: "Bruno Rodrigues",
-        position: "Tâm thần",
-        description: "Lorem ispum"
+        position: "Khoa tâm thần",
+        description:
+            "Mii là một chú mèo nhỏ, đi lạc, từng được người vợ đã mất của ông Kyoichi chăm sóc nhưng ông Kyoichi lại không thích Mii vì chú hay quậy phá, quẩn quanh nhà và đứng trước bàn thờ Phật. Cho đến một ngày, Mii không xuất hiện nữa. Trong sự cô đơn, trống vắng của tuổi già lúc này, ông Kyoichi lại đi tìm Mii. Mii là một chú mèo nhỏ, đi lạc, từng được người vợ đã mất của ông Kyoichi chăm sóc nhưng ông Kyoichi lại không thích Mii vì chú hay quậy phá, quẩn quanh nhà và đứng trước bàn thờ Phật. Cho đến một ngày, Mii không xuất hiện nữa. Trong sự cô đơn, trống vắng của tuổi già lúc này, ông Kyoichi lại đi tìm Mii.Mii là một chú mèo nhỏ, đi lạc, từng được người vợ đã mất của ông Kyoichi chăm sóc nhưng ông Kyoichi lại không thích Mii vì chú hay quậy phá, quẩn quanh nhà và đứng trước bàn thờ Phật. Cho đến một ngày, Mii không xuất hiện nữa. Trong sự cô đơn, trống vắng của tuổi già lúc này, ông Kyoichi lại đi tìm Mii.Mii là một chú mèo nhỏ, đi lạc, từng được người vợ đã mất của ông Kyoichi chăm sóc nhưng ông Kyoichi lại không thích Mii vì chú hay quậy phá, quẩn quanh nhà và đứng trước bàn thờ Phật. Cho đến một ngày, Mii không xuất hiện nữa. Trong sự cô đơn, trống vắng của tuổi già lúc này, ông Kyoichi lại đi tìm Mii.Mii là một chú mèo nhỏ, đi lạc, từng được người vợ đã mất của ông Kyoichi chăm sóc nhưng ông Kyoichi lại không thích Mii vì chú hay quậy phá, quẩn quanh nhà và đứng trước bàn thờ Phật. Cho đến một ngày, Mii không xuất hiện nữa. Trong sự cô đơn, trống vắng của tuổi già lúc này, ông Kyoichi lại đi tìm Mii."
     },
     {
         image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
         name: "Rian Ramirez",
-        position: "Nội tiết",
-        description: "Lorem ispum"
+        position: "Khoa nội tiết",
+        description:
+            "Mii là một chú mèo nhỏ, đi lạc, từng được người vợ đã mất của ông Kyoichi chăm sóc nhưng ông Kyoichi lại không thích Mii vì chú hay quậy phá, quẩn quanh nhà và đứng trước bàn thờ Phật. Cho đến một ngày, Mii không xuất hiện nữa. Trong sự cô đơn, trống vắng của tuổi già lúc này, ông Kyoichi lại đi tìm Mii. Mii là một chú mèo nhỏ, đi lạc, từng được người vợ đã mất của ông Kyoichi chăm sóc nhưng ông Kyoichi lại không thích Mii vì chú hay quậy phá, quẩn quanh nhà và đứng trước bàn thờ Phật. Cho đến một ngày, Mii không xuất hiện nữa. Trong sự cô đơn, trống vắng của tuổi già lúc này, ông Kyoichi lại đi tìm Mii.Mii là một chú mèo nhỏ, đi lạc, từng được người vợ đã mất của ông Kyoichi chăm sóc nhưng ông Kyoichi lại không thích Mii vì chú hay quậy phá, quẩn quanh nhà và đứng trước bàn thờ Phật. Cho đến một ngày, Mii không xuất hiện nữa. Trong sự cô đơn, trống vắng của tuổi già lúc này, ông Kyoichi lại đi tìm Mii.Mii là một chú mèo nhỏ, đi lạc, từng được người vợ đã mất của ông Kyoichi chăm sóc nhưng ông Kyoichi lại không thích Mii vì chú hay quậy phá, quẩn quanh nhà và đứng trước bàn thờ Phật. Cho đến một ngày, Mii không xuất hiện nữa. Trong sự cô đơn, trống vắng của tuổi già lúc này, ông Kyoichi lại đi tìm Mii.Mii là một chú mèo nhỏ, đi lạc, từng được người vợ đã mất của ông Kyoichi chăm sóc nhưng ông Kyoichi lại không thích Mii vì chú hay quậy phá, quẩn quanh nhà và đứng trước bàn thờ Phật. Cho đến một ngày, Mii không xuất hiện nữa. Trong sự cô đơn, trống vắng của tuổi già lúc này, ông Kyoichi lại đi tìm Mii."
     },
     {
         image: "https://plus.unsplash.com/premium_photo-1661766752153-9f0c3fad728f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
         name: "Trần Văn Hùng",
-        position: "Nhi Khoa",
-        description: "Lorem ispum"
+        position: "Khoa nhi",
+        description:
+            "Mii là một chú mèo nhỏ, đi lạc, từng được người vợ đã mất của ông Kyoichi chăm sóc nhưng ông Kyoichi lại không thích Mii vì chú hay quậy phá, quẩn quanh nhà và đứng trước bàn thờ Phật. Cho đến một ngày, Mii không xuất hiện nữa. Trong sự cô đơn, trống vắng của tuổi già lúc này, ông Kyoichi lại đi tìm Mii. Mii là một chú mèo nhỏ, đi lạc, từng được người vợ đã mất của ông Kyoichi chăm sóc nhưng ông Kyoichi lại không thích Mii vì chú hay quậy phá, quẩn quanh nhà và đứng trước bàn thờ Phật. Cho đến một ngày, Mii không xuất hiện nữa. Trong sự cô đơn, trống vắng của tuổi già lúc này, ông Kyoichi lại đi tìm Mii.Mii là một chú mèo nhỏ, đi lạc, từng được người vợ đã mất của ông Kyoichi chăm sóc nhưng ông Kyoichi lại không thích Mii vì chú hay quậy phá, quẩn quanh nhà và đứng trước bàn thờ Phật. Cho đến một ngày, Mii không xuất hiện nữa. Trong sự cô đơn, trống vắng của tuổi già lúc này, ông Kyoichi lại đi tìm Mii.Mii là một chú mèo nhỏ, đi lạc, từng được người vợ đã mất của ông Kyoichi chăm sóc nhưng ông Kyoichi lại không thích Mii vì chú hay quậy phá, quẩn quanh nhà và đứng trước bàn thờ Phật. Cho đến một ngày, Mii không xuất hiện nữa. Trong sự cô đơn, trống vắng của tuổi già lúc này, ông Kyoichi lại đi tìm Mii.Mii là một chú mèo nhỏ, đi lạc, từng được người vợ đã mất của ông Kyoichi chăm sóc nhưng ông Kyoichi lại không thích Mii vì chú hay quậy phá, quẩn quanh nhà và đứng trước bàn thờ Phật. Cho đến một ngày, Mii không xuất hiện nữa. Trong sự cô đơn, trống vắng của tuổi già lúc này, ông Kyoichi lại đi tìm Mii."
     }
 ];
+
+interface ImageDataProps {
+    image: string;
+    name: string;
+    position: string;
+    description: string;
+}
 
 const Root = styled(Box)(({ theme }) => ({
     width: "100%",
@@ -108,7 +182,7 @@ const ContentGrid = styled(Grid)(({ theme }) => ({
         overflow: "hidden",
         borderRadius: "10px",
         color: "var(--palette-06)",
-        height: "30rem",
+        height: "32rem",
         width: "100%",
         "& .media-image": {
             width: "100%",
@@ -164,5 +238,22 @@ const ContentGrid = styled(Grid)(({ theme }) => ({
                 }
             }
         }
+    }
+}));
+
+const StyledDialog = styled(Dialog)(({ theme }) => ({
+    zIndex: "100000",
+    borderRadius: "30px !important",
+    "& .MuiPaper-root": {
+        height: "70vh",
+        borderRadius: "30px !important",
+        boxShadow: "0px 0px 40px rgba(255, 255, 255, 0.25)",
+        flexDirection: "row",
+        position: "relative"
+    },
+    "& img": {
+        height: "inherit",
+        width: "40%",
+        objectFit: "cover"
     }
 }));

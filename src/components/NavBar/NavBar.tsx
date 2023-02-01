@@ -56,7 +56,7 @@ const NavBar = () => {
                 <CategoryAccordion data={MenuItems} />
             </AppBarMobile>
 
-            <Fade in={Boolean(trigger)}>
+            <Fade in={trigger}>
                 <ScrollTop size="small" onClick={() => window.scrollTo(0, 0)}>
                     <KeyboardArrowUp />
                 </ScrollTop>

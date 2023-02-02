@@ -103,7 +103,8 @@ const NewsGrid = styled(Grid)(({ theme }) => ({
             transition: "all .5s ease-in-out",
             padding: "4rem",
             "&:hover": {
-                color: "white"
+                color: "white",
+                background: "none"
             },
             "&::before": {
                 color: "white",
@@ -127,7 +128,8 @@ const NewsGrid = styled(Grid)(({ theme }) => ({
             width: "60%",
             right: 0,
             "&:hover": {
-                color: "white"
+                color: "white",
+                background: "none"
             },
             "&::before": {
                 color: "white",

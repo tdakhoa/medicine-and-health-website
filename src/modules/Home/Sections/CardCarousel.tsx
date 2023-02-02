@@ -208,7 +208,7 @@ const hidePrevCard = {
 
 const hideNextCard = {
     left: "105%",
-    transform: "translateX(-40%)",
+    transform: "translateX(-70%)",
     transition: "all 1s ease-in-out",
     opacity: 0
 };

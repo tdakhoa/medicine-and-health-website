@@ -171,7 +171,7 @@ const ScrollTop = styled(IconButton)(() => ({
     border: "2px solid transparent",
     "&:hover": {
         color: "var(--palette-02)",
-        backgroundColor: "none",
+        backgroundColor: "var(--palette-06)",
         border: "2px solid var(--palette-02)"
     }
 }));

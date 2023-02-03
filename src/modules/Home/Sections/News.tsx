@@ -18,16 +18,26 @@ const News = () => {
         <Root>
             <Box sx={{ position: "relative", top: "-90px" }} id="news" />
             <ContentBox>
-                <Box>
-                    <Typography transform="uppercase" size="h3" weight="bold" color="secondary">
+                <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+                    <Typography
+                        transform="uppercase"
+                        size={{ lg: "h3", md: "h4", xs: "h4" }}
+                        weight="bold"
+                        color="secondary"
+                        format={{ lg: "left", md: "center", xs: "center" }}>
                         Tin mới nhất
                     </Typography>
-                    <Typography size="h5" weight="semiBold" color="secondary">
+                    <Typography
+                        size={{ lg: "h5", md: "h6", xs: "h6" }}
+                        weight="semiBold"
+                        color="secondary"
+                        format={{ lg: "left", md: "center", xs: "center" }}>
                         Ngày {day} tháng {month} năm {year}
                     </Typography>
                 </Box>
                 <Button
                     bgcolor="primary"
+                    sx={{ marginTop: "1.4rem", display: { xs: "none" } }}
                     endIcon={<ArrowForwardOutlined sx={{ fontSize: "1.2rem", paddingLeft: "0.2rem" }} />}>
                     <Typography size="p">Đọc thêm</Typography>
                 </Button>
@@ -103,7 +113,8 @@ const NewsGrid = styled(Grid)(({ theme }) => ({
             transition: "all .5s ease-in-out",
             padding: "4rem",
             "&:hover": {
-                color: "white"
+                color: "white",
+                background: "none"
             },
             "&::before": {
                 color: "white",
@@ -127,7 +138,8 @@ const NewsGrid = styled(Grid)(({ theme }) => ({
             width: "60%",
             right: 0,
             "&:hover": {
-                color: "white"
+                color: "white",
+                background: "none"
             },
             "&::before": {
                 color: "white",

@@ -90,7 +90,17 @@ const Contact = () => {
                     <Typography size="h5" weight="bold" format="center" sx={{ color: "var(--palette-02)" }}>
                         {data.position}
                     </Typography>
-                    <Box sx={{ overflow: "scroll", flexGrow: 1, pr: "1rem", marginTop: "1rem" }}>
+                    <Box
+                        sx={{
+                            overflowY: "scroll",
+                            overflowX: "hidden",
+                            flexGrow: 1,
+                            pr: "1rem",
+                            marginTop: "1rem",
+                            "&::-webkit-scrollbar-thumb": {
+                                backgroundColor: "#f2f2f2"
+                            }
+                        }}>
                         <Typography size="p" format="justify">
                             {data.description}
                         </Typography>

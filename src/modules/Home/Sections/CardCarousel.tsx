@@ -184,33 +184,38 @@ const activeCard = {
     left: "50%",
     transition: "all 1s ease-in-out",
     transform: "translateX(-85%) scale(1.3)",
-    zIndex: "1"
+    zIndex: "1",
+    display: { xs: "none" }
 };
 
 const prevCard = {
     left: "0%",
     transform: "translateX(-40%)",
-    transition: "all 1s ease-in-out"
+    transition: "all 1s ease-in-out",
+    display: { xs: "none" }
 };
 
 const nextCard = {
     left: "100%",
     transform: "translateX(-115%)",
-    transition: "all 1s ease-in-out"
+    transition: "all 1s ease-in-out",
+    display: { xs: "none" }
 };
 
 const hidePrevCard = {
     left: "-5%",
     transform: "translateX(-40%)",
     transition: "all 1s ease-in-out",
-    opacity: 0
+    opacity: 0,
+    display: { xs: "none" }
 };
 
 const hideNextCard = {
     left: "105%",
-    transform: "translateX(-40%)",
+    transform: "translateX(-70%)",
     transition: "all 1s ease-in-out",
-    opacity: 0
+    opacity: 0,
+    display: { xs: "none" }
 };
 
 const activeStyle = {

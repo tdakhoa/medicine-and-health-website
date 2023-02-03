@@ -37,6 +37,7 @@ const Footer = () => {
                         </Typography>
                     </Button>
                 </SubRectangle>
+
                 <AddressContainer>
                     <Map src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.3390401268844!2d106.68123241431714!3d10.785323861979766!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752fe2829fc297%3A0x62c0a3fff1ed2433!2zMTI2QSBUcuG6p24gUXXhu5FjIFRo4bqjbywgUGjGsOG7nW5nIDE0LCBRdeG6rW4gMywgVGjDoG5oIHBo4buRIEjhu5MgQ2jDrSBNaW5oLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1674484736547!5m2!1svi!2s"></Map>
                     <Address>
@@ -49,6 +50,7 @@ const Footer = () => {
                         </Typography>
                     </Address>
                 </AddressContainer>
+
                 <LinkContainer container>
                     {footerItems.map((item, id) => (
                         <Grid className="footer-item" item xs={4} key={id}>
@@ -70,14 +72,16 @@ const Footer = () => {
                             </Typography>
                             <Box sx={StyleDivider}></Box>
                         </Grid>
-                        {socialItems.map((item, id) => (
-                            <Grid item key={id} xs={4} className="social-item">
-                                {item.icon}
-                                <Link className="footer-link" href={item.link} color="inherit" underline="none">
-                                    {item.link}
-                                </Link>
-                            </Grid>
-                        ))}
+                        <Box sx={{ flexDirection: "column" }}>
+                            {socialItems.map((item, id) => (
+                                <Grid item key={id} xs={4} className="social-item">
+                                    {item.icon}
+                                    <Link className="footer-link" href={item.link} color="inherit" underline="none">
+                                        {item.link}
+                                    </Link>
+                                </Grid>
+                            ))}
+                        </Box>
                     </SocialContainer>
                 </LinkContainer>
             </MainRectangle>
@@ -113,7 +117,10 @@ const SubRectangle = styled(Box)(({ theme }) => ({
     justifyContent: "space-between",
     alignItems: "center",
     padding: "1.2rem 1.6rem",
-    textAlign: "center"
+    textAlign: "center",
+    [theme.breakpoints.down("md")]: {
+        flexDirection: "column"
+    }
 }));
 
 const MainRectangle = styled(Box)(({ theme }) => ({
@@ -122,7 +129,10 @@ const MainRectangle = styled(Box)(({ theme }) => ({
     position: "relative",
     backgroundColor: "var(--palette-02)",
     display: "flex",
-    gap: "2rem"
+    gap: "2rem",
+    [theme.breakpoints.down("md")]: {
+        flexDirection: "column"
+    }
 }));
 
 const Map = styled("iframe")(({ theme }) => ({

@@ -29,7 +29,7 @@ const Hero = () => {
                     </Typography>
                     <Button
                         bgcolor="primary"
-                        sx={{ marginTop: "1.4rem" }}
+                        sx={{ marginTop: "1.4rem", display: { xs: "none" } }}
                         onClick={handleScroll}
                         endIcon={<ArrowDownwardOutlined sx={{ fontSize: "1.2rem", paddingLeft: "0.2rem" }} />}>
                         <Typography size="p" color="inherit" weight="medium">

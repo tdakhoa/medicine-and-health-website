@@ -1,11 +1,15 @@
 import React from "react";
-import { InputBase, styled, Box } from "@mui/material";
+import { InputBase, styled, Box, Grid } from "@mui/material";
 
 import Layout from "../Layout";
 import MainTitle from "./components/MainTitle";
 import { ArrowDownwardOutlined, Search } from "@mui/icons-material";
 import { Button, Typography } from "../../components";
-import Title from "../Home/Sections/components/Title";
+import ConsulationForm from "./components/ConsulationForm";
+
+const Root = styled(Box)(({ theme }) => ({
+    margin: "5%"
+}));
 
 const SearchBox = styled(Box)(({ theme }) => ({
     display: "flex",
@@ -63,16 +67,55 @@ const FAQ = () => {
                     <Typography size="p">Ask new question</Typography>
                 </Button>
             </Box>
-            <Typography
-                transform="uppercase"
-                size={{ lg: "h3", md: "h4", xs: "h4" }}
-                weight="extraBold"
-                color="secondary"
-                format={{ lg: "center", md: "center", xs: "center" }}>
-                latest question
-            </Typography>
+            <Root>
+                <Typography
+                    transform="uppercase"
+                    size={{ lg: "h3", md: "h4", xs: "h4" }}
+                    weight="extraBold"
+                    color="secondary"
+                    format={{ lg: "center", md: "center", xs: "center" }}>
+                    latest question
+                </Typography>
+
+                <Grid container>
+                    {questionsData.map((item, i) => (
+                        <Grid item xs={4} key={i}>
+                            <Typography>{item.title}</Typography>
+                            <Typography>{item.description}</Typography>
+                        </Grid>
+                    ))}
+                </Grid>
+
+                <Typography
+                    transform="uppercase"
+                    size={{ lg: "h3", md: "h4", xs: "h4" }}
+                    weight="extraBold"
+                    color="secondary"
+                    format={{ lg: "center", md: "center", xs: "center" }}>
+                    other question
+                </Typography>
+            </Root>
+            <ConsulationForm />
         </Layout>
     );
 };
 
 export default FAQ;
+
+const questionsData = [
+    {
+        title: "What are the signs of a toxic relationship?",
+        description:
+            "User has 5 faces saved for PorchCam's facial recognition, but the system isn't letting him save more than those 5. He's tried removing existing ones and adding different ones, etc"
+    },
+    {
+        title: "What are the signs of a toxic relationship?",
+        description:
+            "User has 5 faces saved for PorchCam's facial recognition, but the system isn't letting him save more than those 5. He's tried removing existing ones and adding different ones, etc"
+    },
+    {
+        title: "What are the signs of a toxic relationship?",
+        description:
+            "User has 5 faces saved for PorchCam's facial recognition, but the system isn't letting him save more than those 5. He's tried removing existing ones and adding different ones, etc"
+    }
+];

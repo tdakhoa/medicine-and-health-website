@@ -1,6 +1,6 @@
 import React from "react";
 import Head from "next/head";
-import FAQ from "../../../src/modules/Category/FAQ";
+import FAQ from "../../src/modules/Category/FAQ";
 
 export default function HomePage() {
     return (

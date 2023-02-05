@@ -10,16 +10,16 @@ import { ArrowForwardOutlined } from "@mui/icons-material";
 
 import { Button, Typography } from "../../../components";
 
-const ConsulationForm = () => {
+const ConsulationForm = ({ title, description, img }: dataProps) => {
     return (
         <Root>
             <FormContainer>
                 <TitleContainer>
                     <Typography size="h3" weight="bold" color="secondary" transform="uppercase">
-                        Tư vấn pháp luật y tế miễn phí
+                        {title}
                     </Typography>
                     <Typography size="p" weight="semiBold" color="secondary" transform="uppercase">
-                        HÃY ĐỂ LẠI THÔNG TIN LIÊN HỆ CỦA BẠN
+                        {description}
                     </Typography>
                     <Box className="divider"></Box>
                 </TitleContainer>
@@ -38,17 +38,20 @@ const ConsulationForm = () => {
                     </Button>
                 </TextFieldContainer>
             </FormContainer>
-            <CardMedia
-                sx={StyleCardMedia}
-                component="img"
-                image="https://images.unsplash.com/photo-1517120026326-d87759a7b63b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-                alt="form img"
-            />
+            <CardMedia sx={StyleCardMedia} component="img" image={img} alt="form img" />
         </Root>
     );
 };
 
 export default ConsulationForm;
+
+interface dataProps {
+    title: string;
+    description: string;
+    img: string;
+}
+
+interface TextFieldProps extends MuiTextFieldProps {}
 
 const TextField = ({ label = "", variant = "filled", ...props }: TextFieldProps) => {
     const sx = {
@@ -74,8 +77,6 @@ const TextField = ({ label = "", variant = "filled", ...props }: TextFieldProps)
     };
     return <MuiTextField label={label} variant={variant} {...props} sx={sx} />;
 };
-
-interface TextFieldProps extends MuiTextFieldProps {}
 
 const Root = styled(Box)(() => ({
     width: "100%",

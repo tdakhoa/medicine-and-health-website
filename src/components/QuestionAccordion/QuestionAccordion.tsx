@@ -57,6 +57,6 @@ const Accordion = styled(MuiAccordion)(() => ({
 }));
 
 const Divider = styled(Box)(({ theme }) => ({
-    border: "1px solid rgba(23, 96, 118, 0.4)",
+    borderTop: "1px solid rgba(23, 96, 118, 0.4)",
     margin: "0.7rem 0rem"
 }));

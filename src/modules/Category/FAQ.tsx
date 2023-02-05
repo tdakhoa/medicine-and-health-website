@@ -46,7 +46,7 @@ const FAQ = () => {
                     weight="extraBold"
                     color="secondary"
                     format={{ lg: "center", md: "center", xs: "center" }}>
-                    latest question
+                    latest questions
                 </Typography>
 
                 <Grid container sx={{ justifyContent: "space-between", flexGrow: 1 }}>
@@ -68,7 +68,7 @@ const FAQ = () => {
                     weight="extraBold"
                     color="secondary"
                     format={{ lg: "center", md: "center", xs: "center" }}>
-                    other question
+                    other questions
                 </Typography>
 
                 <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column" }}>
@@ -139,7 +139,7 @@ const AccordionBox = styled(Box)(({ theme }) => ({
     border: "1px solid rgba(23, 96, 118, 0.4)",
     boxShadow: "0px 0px 30px rgba(23, 96, 118, 0.4)",
     borderRadius: "10px",
-    width: "55%",
+    width: "50%",
     margin: "1.5rem 0rem"
 }));
 
@@ -149,6 +149,9 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     paddingRight: "0.5rem",
     "& .MuiInputBase-root": {
         width: "100%"
+    },
+    "& ::placeholder": {
+        fontFamily: "Nunito"
     }
 }));
 

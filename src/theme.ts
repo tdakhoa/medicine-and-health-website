@@ -44,6 +44,16 @@ const theme = createTheme({
                     }
                 }
             }
+        },
+        MuiChip: {
+            styleOverrides: {
+                root: {
+                    "& .MuiChip-label": {
+                        fontFamily: "Nunito",
+                        color: "#757575"
+                    }
+                }
+            }
         }
     }
 });

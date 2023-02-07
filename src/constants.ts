@@ -443,3 +443,148 @@ export const links = [
     { mainCategory: "pathology", subCategory: "psychiatric" },
     { mainCategory: "pathology", subCategory: "gastroenterology" }
 ];
+
+export const questionsData = [
+    {
+        title: "What are the signs of a toxic relationship?",
+        description:
+            "User has 5 faces saved for PorchCam's facial recognition, but the system isn't letting him save more than those 5. He's tried removing existing ones and adding different ones, etc"
+    },
+    {
+        title: "What are the signs of a toxic relationship?",
+        description:
+            "User has 5 faces saved for PorchCam's facial recognition, but the system isn't letting him save more than those 5. He's tried removing existing ones and adding different ones, etc"
+    },
+    {
+        title: "What are the signs of a toxic relationship?",
+        description:
+            "User has 5 faces saved for PorchCam's facial recognition, but the system isn't letting him save more than those 5. He's tried removing existing ones and adding different ones, etc"
+    }
+];
+
+export const faqFormData = {
+    title: "ĐẶT CÂU HỎI TẠI ĐÂY",
+    description: "HÃY ĐỂ LẠI CÂU HỎI CỦA BẠN ĐỂ CHÚNG TÔI GIẢI ĐÁP",
+    img: "https://images.unsplash.com/photo-1517120026326-d87759a7b63b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+};
+
+export const questionTitle = [
+    { title: "Y học cổ truyền" },
+    { title: "Thuốc" },
+    { title: "Tim mạch" },
+    { title: "Bệnh học" },
+    { title: "Thông tin y dược" },
+    { title: "Pháp luật y tế" },
+    { title: "Khác" }
+];
+
+export const faq = [
+    {
+        title: "What are the signs of a toxic relationship?",
+        description:
+            "User has 5 faces saved for PorchCam's facial recognition, but the system isn't letting him save more than those 5. He's tried removing existing ones and adding different ones, etc"
+    },
+    {
+        title: "What are the signs of a toxic relationship?",
+        description:
+            "User has 5 faces saved for PorchCam's facial recognition, but the system isn't letting him save more than those 5. He's tried removing existing ones and adding different ones, etc"
+    },
+    {
+        title: "What are the signs of a toxic relationship?",
+        description:
+            "User has 5 faces saved for PorchCam's facial recognition, but the system isn't letting him save more than those 5. He's tried removing existing ones and adding different ones, etc"
+    },
+    {
+        title: "What are the signs of a toxic relationship?",
+        description:
+            "User has 5 faces saved for PorchCam's facial recognition, but the system isn't letting him save more than those 5. He's tried removing existing ones and adding different ones, etc"
+    },
+    {
+        title: "What are the signs of a toxic relationship?",
+        description:
+            "User has 5 faces saved for PorchCam's facial recognition, but the system isn't letting him save more than those 5. He's tried removing existing ones and adding different ones, etc"
+    },
+    {
+        title: "What are the signs of a toxic relationship?",
+        description:
+            "User has 5 faces saved for PorchCam's facial recognition, but the system isn't letting him save more than those 5. He's tried removing existing ones and adding different ones, etc"
+    },
+    {
+        title: "What are the signs of a toxic relationship?",
+        description:
+            "User has 5 faces saved for PorchCam's facial recognition, but the system isn't letting him save more than those 5. He's tried removing existing ones and adding different ones, etc"
+    },
+    {
+        title: "What are the signs of a toxic relationship?",
+        description:
+            "User has 5 faces saved for PorchCam's facial recognition, but the system isn't letting him save more than those 5. He's tried removing existing ones and adding different ones, etc"
+    },
+    {
+        title: "What are the signs of a toxic relationship?",
+        description:
+            "User has 5 faces saved for PorchCam's facial recognition, but the system isn't letting him save more than those 5. He's tried removing existing ones and adding different ones, etc"
+    },
+    {
+        title: "What are the signs of a toxic relationship?",
+        description:
+            "User has 5 faces saved for PorchCam's facial recognition, but the system isn't letting him save more than those 5. He's tried removing existing ones and adding different ones, etc"
+    }
+];
+
+export const postsData = [
+    {
+        title: "NHỮNG ĐIỀU CẦN BIẾT VỀ NGỘ ĐỘC",
+        date: "6 Feb 2023",
+        img: "https://images.unsplash.com/photo-1666214277730-e9c7e755e5a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+    },
+    {
+        title: "NHỮNG ĐIỀU CẦN BIẾT VỀ NGỘ ĐỘC",
+        date: "6 Feb 2023",
+        img: "https://images.unsplash.com/photo-1666214277730-e9c7e755e5a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+    },
+    {
+        title: "NHỮNG ĐIỀU CẦN BIẾT VỀ NGỘ ĐỘC",
+        date: "6 Feb 2023",
+        img: "https://images.unsplash.com/photo-1666214277730-e9c7e755e5a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+    },
+    {
+        title: "NHỮNG ĐIỀU CẦN BIẾT VỀ NGỘ ĐỘC",
+        date: "6 Feb 2023",
+        img: "https://images.unsplash.com/photo-1666214277730-e9c7e755e5a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+    },
+    {
+        title: "NHỮNG ĐIỀU CẦN BIẾT VỀ NGỘ ĐỘC",
+        date: "6 Feb 2023",
+        img: "https://images.unsplash.com/photo-1666214277730-e9c7e755e5a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+    },
+    {
+        title: "NHỮNG ĐIỀU CẦN BIẾT VỀ NGỘ ĐỘC",
+        date: "6 Feb 2023",
+        img: "https://images.unsplash.com/photo-1666214277730-e9c7e755e5a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+    },
+    {
+        title: "NHỮNG ĐIỀU CẦN BIẾT VỀ NGỘ ĐỘC",
+        date: "6 Feb 2023",
+        img: "https://images.unsplash.com/photo-1666214277730-e9c7e755e5a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+    },
+    {
+        title: "NHỮNG ĐIỀU CẦN BIẾT VỀ NGỘ ĐỘC",
+        date: "6 Feb 2023",
+        img: "https://images.unsplash.com/photo-1666214277730-e9c7e755e5a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+    },
+    {
+        title: "NHỮNG ĐIỀU CẦN BIẾT VỀ NGỘ ĐỘC",
+        date: "6 Feb 2023",
+        img: "https://images.unsplash.com/photo-1666214277730-e9c7e755e5a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+    },
+    {
+        title: "NHỮNG ĐIỀU CẦN BIẾT VỀ NGỘ ĐỘC",
+        date: "6 Feb 2023",
+        img: "https://images.unsplash.com/photo-1666214277730-e9c7e755e5a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+    },
+    {
+        title: "NHỮNG ĐIỀU CẦN BIẾT VỀ NGỘ ĐỘC",
+        date: "6 Feb 2023",
+        img: "https://images.unsplash.com/photo-1666214277730-e9c7e755e5a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+    }
+];

@@ -24,9 +24,15 @@ const Category = () => {
                     <Sidebar />
                 </Grid>
             </Grid>
-            <ConsulationForm />
+            <ConsulationForm title={catFormData.title} description={catFormData.title} img={catFormData.title} />
         </Layout>
     );
 };
 
 export default Category;
+
+const catFormData = {
+    title: "TƯ VẤN PHÁP LUẬT MIỄN PHÍ ",
+    description: "HÃY ĐỂ LẠI THÔNG TIN LIÊN HỆ CỦA BẠN",
+    img: "https://images.unsplash.com/photo-1517120026326-d87759a7b63b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+};

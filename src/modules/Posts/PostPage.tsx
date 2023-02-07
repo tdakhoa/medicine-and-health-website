@@ -5,6 +5,7 @@ import Layout from "../Layout";
 import { Sidebar, Typography } from "../../components";
 import PostTitle from "./components/PostTitle";
 import Main from "./Main";
+import PostCarousel from "./components/PostCarousel";
 
 const PostPage = () => {
     return (
@@ -19,6 +20,8 @@ const PostPage = () => {
                     <Sidebar />
                 </Grid>
             </Grid>
+
+            <PostCarousel />
         </Layout>
     );
 };

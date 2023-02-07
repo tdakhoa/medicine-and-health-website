@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import { Box, CardMedia, styled, Grid, Pagination } from "@mui/material";
+import React from "react";
+import { Box, styled } from "@mui/material";
+
 import Tags from "./components/Tags";
 import Sharing from "./components/Sharing";
 
@@ -10,6 +11,7 @@ const Main = () => {
             <Divider />
             <Tags data={tagsData} />
             <Sharing />
+          
         </Root>
     );
 };

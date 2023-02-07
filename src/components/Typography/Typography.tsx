@@ -183,12 +183,12 @@ const Typography = ({
     if (typeof weight === "string") weight = { lg: weight, md: weight, xs: weight };
     else
         weight = {
-            lg: weight?.lg || "inherit",
+            lg: weight?.lg || "regular",
             md: weight?.md || weight?.lg,
             xs: weight?.xs || weight?.md || weight?.lg
         };
     if (typeof size === "string") size = { lg: size, md: size, xs: size };
-    else size = { lg: size?.lg || "inherit", md: size?.md || size?.lg, xs: size?.xs || size?.md || size?.lg };
+    else size = { lg: size?.lg || "p", md: size?.md || size?.lg, xs: size?.xs || size?.md || size?.lg };
     if (typeof format === "string") format = { lg: format, md: format, xs: format };
     else
         format = {

@@ -1,6 +1,15 @@
 import React, { useState } from "react";
 import { Box, styled, Avatar } from "@mui/material";
-import { ContentCopy, EmailOutlined, Facebook, Instagram, Twitter, YouTube } from "@mui/icons-material";
+import {
+    ArrowBack,
+    ArrowForward,
+    ContentCopy,
+    EmailOutlined,
+    Facebook,
+    Instagram,
+    Twitter,
+    YouTube
+} from "@mui/icons-material";
 
 import { Typography } from "../../../components";
 
@@ -26,7 +35,6 @@ const Sharing = () => {
                     width: "100%",
                     border: "0.5px solid rgba(23, 96, 118, 0.4)",
                     borderRadius: "10px",
-                    margin: "2rem 0rem",
                     padding: "2rem 3rem",
                     gap: "1rem"
                 }}>
@@ -65,25 +73,66 @@ const Sharing = () => {
                     justifyContent: "space-between",
                     alignItems: "center",
                     width: "100%",
-                    border: "0.5px solid rgba(23, 96, 118, 0.4)",
                     borderRadius: "10px",
                     padding: "2.5rem",
-                    gap: "2rem"
+                    gap: "2rem",
+                    background: "rgba(23, 96, 118, 0.1)"
                 }}>
                 <Avatar
                     alt="Lam Ngan"
                     src={avatar}
-                    sx={{ width: 80, height: 80, boxShadow: "0px 0px 50px rgba(255, 255, 255, 0.25)" }}
+                    sx={{
+                        width: 80,
+                        height: 80,
+                        boxShadow: "0px 0px 50px rgba(255, 255, 255, 0.25)",
+                        position: "relative",
+                        zIndex: 1000
+                    }}
                 />
                 <Box sx={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
                     <Typography size="h6" weight="bold">
                         Ngan Lam
                     </Typography>
-                    <Typography weight="regular">
+                    <Typography>
                         Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of
                         classical Latin literature from 45 BC, making it over 2000 years old.
                     </Typography>
                 </Box>
+            </Box>
+
+            <Box sx={{ display: "flex", justifyContent: "space-between", gap: "1.5rem" }}>
+                {navData.map((item, i) => (
+                    <NavBox sx={{ flexDirection: i == 0 ? "row" : "row-reverse" }} key={i}>
+                        <Box sx={{ width: "50%" }}>
+                            <img src={item.img} alt="main card img" />
+                        </Box>
+                        <Box
+                            sx={{
+                                display: "flex",
+                                flexDirection: "column",
+                                justifyContent: "center",
+                                gap: "0.5rem",
+                                textAlign: i == 0 ? "left" : "right"
+                            }}>
+                            <Box
+                                sx={{
+                                    display: "flex",
+                                    flexDirection: i == 0 ? "row" : "row-reverse",
+                                    alignItems: "center",
+                                    color: "#6C6C6C",
+                                    gap: "0.2rem"
+                                }}>
+                                <item.icon sx={{ fontSize: "0.75rem" }} />
+                                <Typography size="small" weight="medium">
+                                    {item.direction}
+                                </Typography>
+                            </Box>
+                            <Typography size="p" weight="bold" transform="uppercase">
+                                {item.title}
+                            </Typography>
+                        </Box>
+                    </NavBox>
+                ))}
             </Box>
         </Root>
     );
@@ -117,6 +166,21 @@ const socials = [
     }
 ];
 
+const navData = [
+    {
+        title: "Thủ tục kê khai giá trang bị y tế",
+        img: "https://images.unsplash.com/photo-1530026405186-ed1f139313f8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=8",
+        icon: ArrowBack,
+        direction: "Previous"
+    },
+    {
+        title: "Thủ tục kê khai giá trang bị y tế 2",
+        img: "https://images.unsplash.com/photo-1666214280250-41f16ba24a26?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+        icon: ArrowForward,
+        direction: "Next"
+    }
+];
+
 interface SocialsProps {
     bgColor: string;
 }
@@ -126,7 +190,8 @@ const Root = styled(Box)(({ theme }) => ({
     justifyContent: "center",
     alignItems: "center",
     flexDirection: "column",
-    gap: "0.5rem",
+    marginTop: "2rem",
+    gap: "2.5rem",
     width: "100%"
 }));
 
@@ -152,5 +217,22 @@ const SocialBox = styled(Box)<SocialsProps>(({ theme, bgColor }) => ({
         "50%": { opacity: "0.95" },
         "75%": { opacity: "0.975" },
         "100%": { opacity: "1" }
+    }
+}));
+
+const NavBox = styled(Box)(({ theme }) => ({
+    display: "flex",
+    border: "0.5px solid rgba(23, 96, 118, 0.4)",
+    borderRadius: "10px",
+    padding: "1.5rem",
+    width: "100%",
+    maxHeight: "11rem",
+    cursor: "pointer",
+    gap: "1rem",
+    "& img": {
+        width: "100%",
+        height: "100%",
+        borderRadius: "10px",
+        objectFit: "cover"
     }
 }));

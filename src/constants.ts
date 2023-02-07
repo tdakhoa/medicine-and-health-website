@@ -478,7 +478,6 @@ export const questionTitle = [
     { title: "Khác" }
 ];
 
-
 export const faq = [
     {
         title: "What are the signs of a toxic relationship?",
@@ -529,5 +528,63 @@ export const faq = [
         title: "What are the signs of a toxic relationship?",
         description:
             "User has 5 faces saved for PorchCam's facial recognition, but the system isn't letting him save more than those 5. He's tried removing existing ones and adding different ones, etc"
+    }
+];
+
+export const postsData = [
+    {
+        title: "NHỮNG ĐIỀU CẦN BIẾT VỀ NGỘ ĐỘC",
+        date: "6 Feb 2023",
+        img: "https://images.unsplash.com/photo-1666214277730-e9c7e755e5a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+    },
+    {
+        title: "NHỮNG ĐIỀU CẦN BIẾT VỀ NGỘ ĐỘC",
+        date: "6 Feb 2023",
+        img: "https://images.unsplash.com/photo-1666214277730-e9c7e755e5a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+    },
+    {
+        title: "NHỮNG ĐIỀU CẦN BIẾT VỀ NGỘ ĐỘC",
+        date: "6 Feb 2023",
+        img: "https://images.unsplash.com/photo-1666214277730-e9c7e755e5a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+    },
+    {
+        title: "NHỮNG ĐIỀU CẦN BIẾT VỀ NGỘ ĐỘC",
+        date: "6 Feb 2023",
+        img: "https://images.unsplash.com/photo-1666214277730-e9c7e755e5a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+    },
+    {
+        title: "NHỮNG ĐIỀU CẦN BIẾT VỀ NGỘ ĐỘC",
+        date: "6 Feb 2023",
+        img: "https://images.unsplash.com/photo-1666214277730-e9c7e755e5a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+    },
+    {
+        title: "NHỮNG ĐIỀU CẦN BIẾT VỀ NGỘ ĐỘC",
+        date: "6 Feb 2023",
+        img: "https://images.unsplash.com/photo-1666214277730-e9c7e755e5a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+    },
+    {
+        title: "NHỮNG ĐIỀU CẦN BIẾT VỀ NGỘ ĐỘC",
+        date: "6 Feb 2023",
+        img: "https://images.unsplash.com/photo-1666214277730-e9c7e755e5a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+    },
+    {
+        title: "NHỮNG ĐIỀU CẦN BIẾT VỀ NGỘ ĐỘC",
+        date: "6 Feb 2023",
+        img: "https://images.unsplash.com/photo-1666214277730-e9c7e755e5a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+    },
+    {
+        title: "NHỮNG ĐIỀU CẦN BIẾT VỀ NGỘ ĐỘC",
+        date: "6 Feb 2023",
+        img: "https://images.unsplash.com/photo-1666214277730-e9c7e755e5a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+    },
+    {
+        title: "NHỮNG ĐIỀU CẦN BIẾT VỀ NGỘ ĐỘC",
+        date: "6 Feb 2023",
+        img: "https://images.unsplash.com/photo-1666214277730-e9c7e755e5a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+    },
+    {
+        title: "NHỮNG ĐIỀU CẦN BIẾT VỀ NGỘ ĐỘC",
+        date: "6 Feb 2023",
+        img: "https://images.unsplash.com/photo-1666214277730-e9c7e755e5a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
     }
 ];

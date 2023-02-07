@@ -47,10 +47,10 @@ const News = () => {
                 <NewsGrid xs={7.2} item container sx={{ minHeight: 600 }}>
                     <Box className="media-container" sx={{ borderRadius: "60px 0 0 60px" }}>
                         <Box className="media-overlay media-bgMain">
-                            <Typography sx={{ zIndex: "100000" }} size="h2" weight="bold">
+                            <Typography sx={{ zIndex: "100" }} size="h2" weight="bold">
                                 {mainNews.title}
                             </Typography>
-                            <Typography sx={{ zIndex: "100000" }} size="p">
+                            <Typography sx={{ zIndex: "100" }} size="p">
                                 {mainNews.description}
                             </Typography>
                         </Box>
@@ -62,10 +62,10 @@ const News = () => {
                         <Grid key={i} xs={4} item>
                             <Box className="media-container" sx={item.style}>
                                 <Box className="media-overlay media-bgComp">
-                                    <Typography sx={{ zIndex: "100000" }} size="p" weight="bold">
+                                    <Typography sx={{ zIndex: "100" }} size="p" weight="bold">
                                         {item.title}
                                     </Typography>
-                                    <Typography sx={{ zIndex: "100000" }} size="0.9rem" weight="regular">
+                                    <Typography sx={{ zIndex: "100" }} size="0.9rem" weight="regular">
                                         {item.description}
                                     </Typography>
                                 </Box>

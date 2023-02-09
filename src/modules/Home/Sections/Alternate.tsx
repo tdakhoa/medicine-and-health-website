@@ -28,7 +28,10 @@ const AlternateSection = () => {
 export default AlternateSection;
 
 const Root = styled("div")(({ theme }) => ({
-    margin: "5% 10%"
+    margin: "5% 10%",
+    [theme.breakpoints.down("md")]: {
+        margin: "20% 5%"
+    }
 }));
 
 const CardContainer = styled(Box)(({ theme }) => ({

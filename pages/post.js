@@ -1,6 +1,6 @@
 import React from "react";
 import Head from "next/head";
-import PostPage from "../../src/modules/Posts/PostPage";
+import PostPage from "../src/modules/Posts/PostPage";
 
 export default function HomePage() {
     return (

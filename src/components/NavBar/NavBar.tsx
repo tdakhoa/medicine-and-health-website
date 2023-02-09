@@ -24,7 +24,9 @@ const NavBar = () => {
         <>
             <AppBarDesktop trigger={trigger} open={open}>
                 <Link href="/">
-                    <Image priority src={logo} alt="logo" width={40} />
+                    <Box sx={{ display: "flex", alignItems: "center" }}>
+                        <Image priority src={logo} alt="logo" width={40} />
+                    </Box>
                 </Link>
                 <StyledNavContainer>
                     {MenuItems.map((item, i) => (
@@ -127,8 +129,9 @@ const AppBarDesktop = styled(AppBar)<AppBarDesktopProps>(({ theme, trigger, open
     backgroundColor: trigger ? "var(--palette-02)" : "transparent",
     zIndex: open ? "1000" : "10001",
     padding: "0rem 3rem",
-    [theme.breakpoints.down("md")]: {
-        padding: "1rem 3rem"
+    [theme.breakpoints.down("sm")]: {
+        padding: "1rem",
+        paddingLeft: "2rem"
     }
 }));
 
@@ -141,7 +144,6 @@ const StyledNavContainer = styled(Box)(() => ({
 }));
 
 const AppBarMobile = styled(Drawer)(() => ({
-    display: "none",
     position: "fixed",
     zIndex: 10000,
     height: "100vh",
@@ -186,8 +188,7 @@ const StyledIconButton = styled(IconButton)(({ theme }) => ({
 
 const StyledBackdrop = styled(Backdrop)(({ theme }) => ({
     color: "var(--palette-06)",
-    zIndex: 9999,
-    display: "none"
+    zIndex: 9999
 }));
 
 const StyledNavItem = styled(Box)<AppBarDesktopProps>(({ theme, trigger }) => ({

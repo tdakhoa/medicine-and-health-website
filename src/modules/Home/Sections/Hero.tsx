@@ -10,7 +10,7 @@ const Hero = () => {
         element?.scrollIntoView();
     };
     return (
-        <Box sx={{ position: "relative", width: "100%", height: "90vh" }}>
+        <Root>
             <Overlay>
                 <Box className="hero-introduction">
                     <Typography size="h1" color="white" weight="extraBold">
@@ -22,17 +22,23 @@ const Hero = () => {
                     <Typography size="h1" color="white" weight="extraBold">
                         SỨC KHOẺ
                     </Typography>
-                    <Typography size="p" color="white" weight="light" format="right">
+                    <Typography size="p" color="white" weight="light" sx={{ width: { xs: "80%", md: "100%" } }}>
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                        the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
-                        of type and scrambled it to make a type specimen book.
+                        the industry's standard dummy text ever since the 1500s.
                     </Typography>
                     <Button
                         bgcolor="primary"
-                        sx={{ marginTop: "1.4rem", display: { xs: "none" } }}
+                        sx={{
+                            marginTop: { xs: "0.4rem", md: "1.4rem" },
+                            padding: { xs: "0.5rem", md: "0.5rem 1rem" }
+                        }}
                         onClick={handleScroll}
-                        endIcon={<ArrowDownwardOutlined sx={{ fontSize: "1.2rem", paddingLeft: "0.2rem" }} />}>
-                        <Typography size="p" color="inherit" weight="medium">
+                        endIcon={<ArrowDownwardOutlined sx={{ fontSize: "1.2rem" }} />}>
+                        <Typography
+                            size="p"
+                            color="inherit"
+                            weight="medium"
+                            sx={{ display: { xs: "none", md: "block" }, paddingRight: "0.2rem" }}>
                             Đọc thêm
                         </Typography>
                     </Button>
@@ -41,13 +47,22 @@ const Hero = () => {
             <Box sx={{ position: "absolute", zIndex: -999, height: "inherit" }}>
                 <Carousel listData={dataList} />
             </Box>
-        </Box>
+        </Root>
     );
 };
 
 export default Hero;
 
 // ------------------------------------OVERLAY------------------------------------
+
+const Root = styled(Box)(({ theme }) => ({
+    position: "relative",
+    width: "100%",
+    height: "90vh",
+    [theme.breakpoints.down("md")]: {
+        height: "80vh"
+    }
+}));
 
 const Overlay = styled(Box)(({ theme }) => ({
     position: "absolute",
@@ -66,6 +81,19 @@ const Overlay = styled(Box)(({ theme }) => ({
         flexDirection: "column",
         alignItems: "end",
         justifyContent: "center"
+    },
+    [theme.breakpoints.down("sm")]: {
+        background: "linear-gradient(180deg, rgba(113, 191, 218, 0.8) 40%, rgba(113, 191, 218, 0) 100%)",
+        "& .hero-introduction": {
+            justifyContent: "start",
+            alignItems: "center",
+            textAlign: "center",
+            width: "100%",
+            inset: 0,
+            marginTop: "25%",
+            padding: "0 1rem",
+            gap: "0.5rem"
+        }
     }
 }));
 

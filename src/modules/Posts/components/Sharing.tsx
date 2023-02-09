@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, styled, Avatar } from "@mui/material";
+import { Box, styled, Avatar, IconButton } from "@mui/material";
 import {
     ArrowBack,
     ArrowForward,
@@ -204,19 +204,12 @@ const SocialBox = styled(Box)<SocialsProps>(({ theme, bgColor }) => ({
     borderRadius: "50%",
     boxShadow: "0px 4px 16px rgba(0, 0, 0, 0.25)",
     color: "white",
-    background: "#757575",
-    animation: "opacity1 .3s forwards",
+    background: bgColor,
+    filter: "grayscale(1)",
+    transition: "all .3s ease-in-out",
     "&:hover": {
         cursor: "pointer",
-        background: bgColor,
-        animation: "opacity .3s forwards"
-    },
-    "@keyframes opacity": {
-        "0%": { opacity: "0.9" },
-        "25%": { opacity: "0.925" },
-        "50%": { opacity: "0.95" },
-        "75%": { opacity: "0.975" },
-        "100%": { opacity: "1" }
+        filter: "grayscale(0)"
     }
 }));
 

@@ -15,7 +15,7 @@ const Home = () => {
             <News />
             <NormalSection />
             <Alternate />
-            <CardCarousel />
+            {/* <CardCarousel />*/}
             <Mix />
         </Layout>
     );

@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Box, styled } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode } from "swiper";

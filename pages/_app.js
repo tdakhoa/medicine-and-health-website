@@ -23,7 +23,7 @@ export default function MyApp(props) {
     return (
         <CacheProvider value={emotionCache}>
             <Head>
-                <meta name="viewport" content="initial-scale=1, width=device-width" />
+                <meta name="viewport" content="initial-scale=1.0, width=device-width" />
             </Head>
             <ThemeProvider theme={theme}>
                 <SnackbarProvider autoHideDuration={2000}>

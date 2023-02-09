@@ -47,6 +47,7 @@ const MyButton = styled(MuiButton)((props: ButtonProps) => ({
     borderRadius: props.borderradius,
     cursor: "pointer",
     padding: "0.5rem 1rem",
+    minWidth: "0",
     color: "white",
     textTransform: "initial",
     backgroundColor:

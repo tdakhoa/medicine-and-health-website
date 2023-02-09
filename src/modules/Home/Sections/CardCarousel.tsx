@@ -201,6 +201,8 @@ const MobileCardContainer = styled(Box)(({ theme }) => ({
     [theme.breakpoints.down("sm")]: {
         display: "flex",
         overflowX: "scroll",
+        position: "relative",
+        zIndex: "10000",
         gap: "2rem",
         padding: "0.5rem",
         borderRadius: "30px 30px 0px 0px",

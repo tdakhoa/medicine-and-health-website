@@ -66,7 +66,8 @@ const Root = styled(Grid)<AlternateCardProps>(({ theme, ...props }) => ({
             flexDirection: props.direction,
             justifyContent: "space-between",
             alignItems: "end",
-            padding: 0
+            padding: 0,
+            paddingLeft: "0.5rem"
         }
     },
     "& .media-container .media-image": {

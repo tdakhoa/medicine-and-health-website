@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { styled } from "@mui/material";
+import { Box, styled } from "@mui/material";
 
 import Title from "./components/Title";
 import Paginator from "./components/Paginator";
 import RoundedCard from "./components/RoundedCard";
+import AlternateCard from "./components/AlternateCard";
 import { cardData } from "../../../constants";
 
 const ChoosePosition = ({ index, i }: Position) => {
@@ -109,19 +110,18 @@ const CardCarousel = () => {
         window.addEventListener("mousemove", onPointerMove);
     };
 
+    var timer: number;
+
     useEffect(() => {
-        var highestTimeoutId = setTimeout(";");
-        for (var i = 0; i < highestTimeoutId; i++) {
-            clearTimeout(i);
-        }
-        setTimeout(slideRight, 5000);
+        window.clearTimeout(timer);
+        timer = window.setTimeout(slideRight, 5000);
     }, [index]);
 
     return (
         <Root>
             <Title text="Thuốc" link="/category/medicine" />
             <BoxContainer>
-                <CardContainer>
+                <DesktopCardContainer>
                     {cardData.map((person, i) => {
                         let position = ChoosePosition({ index, i }) || {};
                         return (
@@ -137,8 +137,21 @@ const CardCarousel = () => {
                         );
                     })}
                     <Paginator dataLength={cardData.length} activeIndex={index} handlePageChange={handlePageChange} />
-                </CardContainer>
+                </DesktopCardContainer>
             </BoxContainer>
+
+            <MobileCardContainer>
+                {cardData.map((data, id) => (
+                    <AlternateCard
+                        key={id}
+                        direction={id % 2 == 1 ? "row" : "row-reverse"}
+                        sx={{}}
+                        img={data.img}
+                        title={data.title}
+                        content={data.content}
+                    />
+                ))}
+            </MobileCardContainer>
         </Root>
     );
 };
@@ -173,11 +186,28 @@ const BoxContainer = styled("div")(({ theme }) => ({
     paddingLeft: "0.3rem"
 }));
 
-const CardContainer = styled("div")(({ theme }) => ({
+const DesktopCardContainer = styled("div")(({ theme }) => ({
     position: "relative",
     width: "70%",
     height: "30rem",
-    paddingBottom: "5%"
+    paddingBottom: "5%",
+    [theme.breakpoints.down("sm")]: {
+        display: "none"
+    }
+}));
+
+const MobileCardContainer = styled(Box)(({ theme }) => ({
+    display: "none",
+    [theme.breakpoints.down("sm")]: {
+        display: "flex",
+        overflowX: "scroll",
+        gap: "2rem",
+        padding: "0.5rem",
+        borderRadius: "30px 30px 0px 0px",
+        "&::-webkit-scrollbar": {
+            display: "none"
+        }
+    }
 }));
 
 const activeCard = {

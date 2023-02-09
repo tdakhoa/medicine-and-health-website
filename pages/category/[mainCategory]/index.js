@@ -31,8 +31,7 @@ export async function getStaticPaths() {
             { params: { mainCategory: "cardiovascular" } },
             { params: { mainCategory: "pathology" } },
             { params: { mainCategory: "pharmacy-information" } },
-            { params: { mainCategory: "medical-law" } },
-            { params: { mainCategory: "for-you" } }
+            { params: { mainCategory: "medical-law" } }
         ],
         fallback: false
     };

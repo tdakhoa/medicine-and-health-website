@@ -7,7 +7,12 @@ import { Typography } from "../../../../components";
 const Title = ({ text, link = "", sx = {}, ...props }: TitleProps) => {
     return (
         <StyledTitle sx={sx}>
-            <Typography size="h2" weight="bold" color="secondary" transform="uppercase">
+            <Typography
+                size={{ lg: "h2", md: "h3", xs: "h3" }}
+                weight="bold"
+                color="secondary"
+                transform="uppercase"
+                format="center">
                 {text}
             </Typography>
             <Link className="see-more" href={link}>

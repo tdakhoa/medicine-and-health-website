@@ -51,7 +51,7 @@ const Footer = () => {
                     </Address>
                 </AddressContainer>
 
-                <LinkContainer container>
+                <LinkContainer container columnSpacing={{ xs: 2, md: 0 }}>
                     {footerItems.map((item, id) => (
                         <Grid className="footer-item" item xs={4} key={id}>
                             <Typography size="h6" weight="bold" transform="uppercase">
@@ -70,18 +70,17 @@ const Footer = () => {
                             <Typography size="h6" weight="bold" transform="uppercase">
                                 contact us
                             </Typography>
-                            <Box sx={StyleDivider}></Box>
+                            <Box sx={StyleDivider} />
                         </Grid>
-                        <Box sx={{ flexDirection: "column" }}>
-                            {socialItems.map((item, id) => (
-                                <Grid item key={id} xs={4} className="social-item">
-                                    {item.icon}
-                                    <Link className="footer-link" href={item.link} color="inherit" underline="none">
-                                        {item.link}
-                                    </Link>
-                                </Grid>
-                            ))}
-                        </Box>
+
+                        {socialItems.map((item, id) => (
+                            <Grid item key={id} xs={12} md={4} className="social-item">
+                                {item.icon}
+                                <Link className="footer-link" href={item.link} color="inherit" underline="none">
+                                    {item.link}
+                                </Link>
+                            </Grid>
+                        ))}
                     </SocialContainer>
                 </LinkContainer>
             </MainRectangle>
@@ -118,7 +117,7 @@ const SubRectangle = styled(Box)(({ theme }) => ({
     alignItems: "center",
     padding: "1.2rem 1.6rem",
     textAlign: "center",
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("sm")]: {
         flexDirection: "column"
     }
 }));
@@ -130,8 +129,9 @@ const MainRectangle = styled(Box)(({ theme }) => ({
     backgroundColor: "var(--palette-02)",
     display: "flex",
     gap: "2rem",
-    [theme.breakpoints.down("md")]: {
-        flexDirection: "column"
+    [theme.breakpoints.down("sm")]: {
+        flexDirection: "column",
+        padding: "0 5%"
     }
 }));
 
@@ -145,7 +145,13 @@ const Map = styled("iframe")(({ theme }) => ({
 const AddressContainer = styled(Box)(({ theme }) => ({
     height: "100%",
     padding: "12% 0px 0px 0px",
-    width: "40%"
+    width: "40%",
+    [theme.breakpoints.down("sm")]: {
+        display: "flex",
+        flexDirection: "column",
+        width: "100%",
+        paddingTop: "45%"
+    }
 }));
 
 const Address = styled(Box)(({ theme }) => ({
@@ -154,7 +160,10 @@ const Address = styled(Box)(({ theme }) => ({
     width: "100%",
     color: "white",
     gap: "1rem",
-    marginTop: "1rem"
+    marginTop: "1rem",
+    [theme.breakpoints.down("sm")]: {
+        marginTop: "2rem"
+    }
 }));
 
 const LinkContainer = styled(Grid)(({ theme }) => ({
@@ -174,6 +183,10 @@ const LinkContainer = styled(Grid)(({ theme }) => ({
         "&:hover": {
             color: "var(--palette-01)"
         }
+    },
+    [theme.breakpoints.down("sm")]: {
+        marginTop: "1rem",
+        padding: 0
     }
 }));
 const SocialContainer = styled(Grid)(({ theme }) => ({
@@ -188,6 +201,12 @@ const SocialContainer = styled(Grid)(({ theme }) => ({
         justifyContent: "center",
         alignItems: "center",
         gap: "0.3rem"
+    },
+    [theme.breakpoints.down("sm")]: {
+        margin: "2rem 0rem",
+        "& .social-item": {
+            justifyContent: "center"
+        }
     }
 }));
 

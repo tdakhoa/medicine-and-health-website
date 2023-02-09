@@ -9,22 +9,23 @@ const NormalSection = () => {
     return (
         <Root>
             <Title text="Y HỌC CỔ TRUYỀN" link="/category/traditional-medicine" />
-            <Grid container spacing={2} sx={{ textAlign: "center" }}>
-                <Grid item xs={4}>
-                    <SimpleCard
-                        img={cardData[0].img}
-                        title={cardData[0].title}
-                        content={cardData[0].content}
-                        sx={{ height: 300 }}
-                    />
-                    <SimpleCard
-                        img={cardData[1].img}
-                        title={cardData[1].title}
-                        content={cardData[0].content}
-                        sx={{ height: 300 }}
-                    />
+            <Grid container spacing={2} sx={{ textAlign: "center", flexDirection: { xs: "column", md: "row" } }}>
+                <Grid
+                    item
+                    xs={12}
+                    md={4}
+                    sx={{ display: "flex", flexDirection: { xs: "row", md: "column" }, gap: "1rem" }}>
+                    {cardData.slice(0, 2).map((item, i) => (
+                        <SimpleCard
+                            key={i}
+                            img={item.img}
+                            title={item.title}
+                            content={item.content}
+                            sx={{ height: 300 }}
+                        />
+                    ))}
                 </Grid>
-                <Grid item xs={4}>
+                <Grid item xs={12} md={4}>
                     <SimpleCard
                         img={cardData[2].img}
                         imgRatio={9}
@@ -32,22 +33,23 @@ const NormalSection = () => {
                         content={cardData[0].content}
                         contentRatio={3}
                         overlay={false}
-                        sx={{ height: 600 }}
+                        sx={{ height: { xs: 300, md: 600 } }}
                     />
                 </Grid>
-                <Grid item xs={4}>
-                    <SimpleCard
-                        img={cardData[3].img}
-                        title={cardData[3].title}
-                        content={cardData[0].content}
-                        sx={{ height: 300 }}
-                    />
-                    <SimpleCard
-                        img={cardData[4].img}
-                        title={cardData[4].title}
-                        content={cardData[0].content}
-                        sx={{ height: 300 }}
-                    />
+                <Grid
+                    item
+                    xs={12}
+                    md={4}
+                    sx={{ display: "flex", flexDirection: { xs: "row", md: "column" }, gap: "1rem" }}>
+                    {cardData.slice(3, 5).map((item, i) => (
+                        <SimpleCard
+                            key={i}
+                            img={item.img}
+                            title={item.title}
+                            content={item.content}
+                            sx={{ height: 300 }}
+                        />
+                    ))}
                 </Grid>
             </Grid>
         </Root>
@@ -57,5 +59,8 @@ const NormalSection = () => {
 export default NormalSection;
 
 const Root = styled("div")(({ theme }) => ({
-    margin: "5% 10%"
+    margin: "5% 10%",
+    [theme.breakpoints.down("md")]: {
+        margin: "20% 5%"
+    }
 }));

@@ -1,5 +1,5 @@
 import React from "react";
-import { styled } from "@mui/material";
+import { Box, styled } from "@mui/material";
 import { Carousel as NPMCarousel } from "react-responsive-carousel";
 
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
@@ -26,7 +26,9 @@ const Carousel = ({
             stopOnHover={false}
             dynamicHeight={false}>
             {listData.map((data, i) => (
-                <div key={i}>{data}</div>
+                <Box sx={{ height: "inherit" }} key={i}>
+                    {data}
+                </Box>
             ))}
         </StyledCarousel>
     );

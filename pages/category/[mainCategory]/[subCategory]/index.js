@@ -19,23 +19,23 @@ export default function HomePage() {
   );
 }
 
-// export async function getStaticProps({ params }) {
-//   return {
-//     props: params,
-//   };
-// }
+export async function getStaticProps({ params }) {
+  return {
+    props: params,
+  };
+}
 
-// export async function getStaticPaths() {
-//     return {
-//         paths: links.map((link) => {
-//             return {
-//                 params: {
-//                     mainCategory: link.mainCategory,
-//                     subCategory: link.subCategory
-//                 }
-//             };
-//         }),
+export async function getStaticPaths() {
+    return {
+        paths: links.map((link) => {
+            return {
+                params: {
+                    mainCategory: link.mainCategory,
+                    subCategory: link.subCategory
+                }
+            };
+        }),
 
-//         fallback: false
-//     };
-// }
+        fallback: false
+    };
+}

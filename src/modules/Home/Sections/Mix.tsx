@@ -21,27 +21,20 @@ const Mix = () => {
                     title={cardData[0].title}
                     content={cardData[0].content}
                 />
-
-                {cardData.map((data, id) =>
-                    id !== 0 ? (
-                        <AlternateCard
-                            key={id}
-                            direction={id % 2 == 1 ? "row" : "row-reverse"}
-                            sx={{ display: { xs: "flex", md: "none" } }}
-                            img={data.img}
-                            title={data.title}
-                            content={data.content}
-                        />
-                    ) : (
-                        <div key={id}></div>
-                    )
-                )}
             </CardContainer>
 
-            <Grid sx={{ display: { xs: "none", md: "flex" } }} container rowSpacing={0} columnSpacing={2}>
+            <Grid
+                sx={{
+                    "& div:nth-of-type(3), div:nth-of-type(4)": {
+                        display: "none"
+                    }
+                }}
+                container
+                rowSpacing={0}
+                columnSpacing={2}>
                 {cardData.map((data, i) =>
                     i !== 0 ? (
-                        <Grid item xs={3} key={i}>
+                        <Grid item xs={6} md={3} key={i}>
                             <SimpleCard
                                 img={data.img}
                                 title={data.title}
@@ -67,8 +60,8 @@ export default Mix;
 const Root = styled("div")(({ theme }) => ({
     margin: "5% 10%",
     [theme.breakpoints.down("md")]: {
-        margin: "20% 5%",
-        marginBottom: "50%"
+        margin: "0% 5%",
+        marginBottom: "25%"
     }
 }));
 
@@ -81,6 +74,8 @@ const CardContainer = styled(Box)(({ theme }) => ({
     [theme.breakpoints.down("sm")]: {
         display: "flex",
         overflowX: "scroll",
+        position: "relative",
+        zIndex: "10000",
         gap: "2rem",
         padding: "0.5rem",
         borderRadius: "30px 30px 0px 0px",

@@ -113,6 +113,10 @@ interface NavItemProps {
     sx?: object;
 }
 
+interface mobileProps {
+    open: boolean;
+}
+
 const drawerWidth = 280;
 
 const AppBarDesktop = styled(AppBar)<AppBarDesktopProps>(({ theme, trigger, open }) => ({
@@ -127,7 +131,7 @@ const AppBarDesktop = styled(AppBar)<AppBarDesktopProps>(({ theme, trigger, open
     justifyContent: "space-between",
     boxShadow: trigger ? "4px 4px 25px rgba(0, 0, 0, 0.6)" : "none",
     backgroundColor: trigger ? "var(--palette-02)" : "transparent",
-    zIndex: open ? "1000" : "10001",
+    zIndex: open ? "10001" : "10002",
     padding: "0rem 3rem",
     [theme.breakpoints.down("sm")]: {
         padding: "1rem",
@@ -143,9 +147,9 @@ const StyledNavContainer = styled(Box)(() => ({
     padding: "0 3rem"
 }));
 
-const AppBarMobile = styled(Drawer)(() => ({
+const AppBarMobile = styled(Drawer)<mobileProps>(({ open }) => ({
     position: "fixed",
-    zIndex: 10000,
+    zIndex: open ? 10002 : 0,
     height: "100vh",
     width: drawerWidth,
     flexShrink: 0,
@@ -186,9 +190,9 @@ const StyledIconButton = styled(IconButton)(({ theme }) => ({
     }
 }));
 
-const StyledBackdrop = styled(Backdrop)(({ theme }) => ({
+const StyledBackdrop = styled(Backdrop)<mobileProps>(({ theme, open }) => ({
     color: "var(--palette-06)",
-    zIndex: 9999
+    zIndex: open ? 10001 : 0
 }));
 
 const StyledNavItem = styled(Box)<AppBarDesktopProps>(({ theme, trigger }) => ({

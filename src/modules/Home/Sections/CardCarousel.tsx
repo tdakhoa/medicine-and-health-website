@@ -41,6 +41,8 @@ const ChoosePosition = ({ index, i }: Position) => {
     }
 };
 
+var timer: number;
+
 const CardCarousel = () => {
     const [index, setIndex] = useState(0);
 
@@ -110,8 +112,6 @@ const CardCarousel = () => {
         window.addEventListener("mousemove", onPointerMove);
     };
 
-    var timer: number;
-
     useEffect(() => {
         window.clearTimeout(timer);
         timer = window.setTimeout(slideRight, 5000);
@@ -119,7 +119,7 @@ const CardCarousel = () => {
 
     return (
         <Root>
-            <Title text="Thuốc" link="/category/medicine" />
+            <Title sx={{ margin: { xs: 0, md: "3rem" } }} text="Thuốc" link="/category/medicine" />
             <BoxContainer>
                 <DesktopCardContainer>
                     {cardData.map((person, i) => {
@@ -139,19 +139,6 @@ const CardCarousel = () => {
                     <Paginator dataLength={cardData.length} activeIndex={index} handlePageChange={handlePageChange} />
                 </DesktopCardContainer>
             </BoxContainer>
-
-            <MobileCardContainer>
-                {cardData.map((data, id) => (
-                    <AlternateCard
-                        key={id}
-                        direction={id % 2 == 1 ? "row" : "row-reverse"}
-                        sx={{}}
-                        img={data.img}
-                        title={data.title}
-                        content={data.content}
-                    />
-                ))}
-            </MobileCardContainer>
         </Root>
     );
 };
@@ -192,41 +179,31 @@ const DesktopCardContainer = styled("div")(({ theme }) => ({
     height: "30rem",
     paddingBottom: "5%",
     [theme.breakpoints.down("sm")]: {
-        display: "none"
-    }
-}));
-
-const MobileCardContainer = styled(Box)(({ theme }) => ({
-    display: "none",
-    [theme.breakpoints.down("sm")]: {
-        display: "flex",
-        overflowX: "scroll",
-        gap: "2rem",
-        padding: "0.5rem",
-        borderRadius: "30px 30px 0px 0px",
-        "&::-webkit-scrollbar": {
-            display: "none"
-        }
+        overflow: "hidden",
+        width: "100%",
+        padding: 0
     }
 }));
 
 const activeCard = {
     left: "50%",
     transition: "all 1s ease-in-out",
-    transform: "translateX(-85%) scale(1.3)",
+    transform: { xs: "translateX(-9rem)", md: "translateX(-85%) scale(1.3)" },
     zIndex: "1"
 };
 
 const prevCard = {
     left: "0%",
     transform: "translateX(-40%)",
-    transition: "all 1s ease-in-out"
+    transition: "all 1s ease-in-out",
+    opacity: { xs: "0", md: "1" }
 };
 
 const nextCard = {
     left: "100%",
     transform: "translateX(-115%)",
-    transition: "all 1s ease-in-out"
+    transition: "all 1s ease-in-out",
+    opacity: { xs: "0", md: "1" }
 };
 
 const hidePrevCard = {

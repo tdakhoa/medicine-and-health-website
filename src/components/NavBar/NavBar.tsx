@@ -192,7 +192,9 @@ const StyledIconButton = styled(IconButton)(({ theme }) => ({
 
 const StyledBackdrop = styled(Backdrop)<mobileProps>(({ theme, open }) => ({
     color: "var(--palette-06)",
-    zIndex: open ? 10001 : 0
+    zIndex: open ? 10001 : 0,
+    position: "fixed",
+    height: "100vh"
 }));
 
 const StyledNavItem = styled(Box)<AppBarDesktopProps>(({ theme, trigger }) => ({

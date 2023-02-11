@@ -23,15 +23,7 @@ const Mix = () => {
                 />
             </CardContainer>
 
-            <Grid
-                sx={{
-                    "& div:nth-of-type(3), div:nth-of-type(4)": {
-                        display: "none"
-                    }
-                }}
-                container
-                rowSpacing={0}
-                columnSpacing={2}>
+            <SubCardGrid container rowSpacing={0} columnSpacing={2}>
                 {cardData.map((data, i) =>
                     i !== 0 ? (
                         <Grid item xs={6} md={3} key={i}>
@@ -50,7 +42,7 @@ const Mix = () => {
                         <div key={i}></div>
                     )
                 )}
-            </Grid>
+            </SubCardGrid>
         </Root>
     );
 };
@@ -80,6 +72,14 @@ const CardContainer = styled(Box)(({ theme }) => ({
         padding: "0.5rem",
         borderRadius: "30px 30px 0px 0px",
         "&::-webkit-scrollbar": {
+            display: "none"
+        }
+    }
+}));
+
+const SubCardGrid = styled(Grid)(({ theme }) => ({
+    [theme.breakpoints.down("sm")]: {
+        "& div:nth-of-type(3), div:nth-of-type(4)": {
             display: "none"
         }
     }

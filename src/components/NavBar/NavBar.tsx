@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { styled, Box, AppBar, useScrollTrigger, IconButton, Backdrop, Divider, Fade, Drawer } from "@mui/material";
@@ -10,7 +10,8 @@ import { MenuItems } from "../../constants";
 import Typography from "../Typography/Typography";
 
 const NavBar = () => {
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = useState(false);
+    const [prior, setPrior] = useState(false);
     const trigger = useScrollTrigger({
         disableHysteresis: true,
         threshold: 200
@@ -20,9 +21,17 @@ const NavBar = () => {
         setOpen(open !== true);
     };
 
+    useEffect(() => {
+        if (open) setPrior(true);
+        else
+            setTimeout(function () {
+                setPrior(false);
+            }, 500);
+    }, [open]);
+
     return (
         <>
-            <AppBarDesktop trigger={trigger} open={open}>
+            <AppBarDesktop trigger={trigger} prior={prior}>
                 <Link href="/">
                     <Box sx={{ display: "flex", alignItems: "center" }}>
                         <Image priority src={logo} alt="logo" width={40} />
@@ -45,7 +54,7 @@ const NavBar = () => {
 
             <StyledBackdrop open={open} onClick={handleToggleOpen} />
 
-            <AppBarMobile variant="persistent" anchor="right" open={open}>
+            <AppBarMobile variant="persistent" anchor="right" open={open} prior={prior}>
                 <AppBarMobileHeader>
                     <IconButton onClick={handleToggleOpen}>
                         <ChevronRightOutlined />
@@ -99,7 +108,7 @@ const NavItem = ({ content = { title: [""], link: [""] }, sx = {}, trigger, ...p
 
 interface AppBarDesktopProps {
     trigger: boolean;
-    open?: boolean;
+    prior?: boolean;
     i?: number;
     length?: number;
 }
@@ -114,12 +123,12 @@ interface NavItemProps {
 }
 
 interface mobileProps {
-    open: boolean;
+    prior: boolean;
 }
 
 const drawerWidth = 280;
 
-const AppBarDesktop = styled(AppBar)<AppBarDesktopProps>(({ theme, trigger, open }) => ({
+const AppBarDesktop = styled(AppBar)<AppBarDesktopProps>(({ theme, trigger, prior }) => ({
     position: "fixed",
     width: "100%",
     transition: "all .4s ease-in-out",
@@ -131,7 +140,7 @@ const AppBarDesktop = styled(AppBar)<AppBarDesktopProps>(({ theme, trigger, open
     justifyContent: "space-between",
     boxShadow: trigger ? "4px 4px 25px rgba(0, 0, 0, 0.6)" : "none",
     backgroundColor: trigger ? "var(--palette-02)" : "transparent",
-    zIndex: open ? "10001" : "10002",
+    zIndex: prior ? "10001" : "10002",
     padding: "0rem 3rem",
     [theme.breakpoints.down("sm")]: {
         padding: "1rem",
@@ -147,9 +156,9 @@ const StyledNavContainer = styled(Box)(() => ({
     padding: "0 3rem"
 }));
 
-const AppBarMobile = styled(Drawer)<mobileProps>(({ open }) => ({
+const AppBarMobile = styled(Drawer)<mobileProps>(({ prior }) => ({
     position: "fixed",
-    zIndex: open ? 10002 : 0,
+    zIndex: prior ? 10002 : 0,
     height: "100vh",
     width: drawerWidth,
     flexShrink: 0,
@@ -190,9 +199,9 @@ const StyledIconButton = styled(IconButton)(({ theme }) => ({
     }
 }));
 
-const StyledBackdrop = styled(Backdrop)<mobileProps>(({ theme, open }) => ({
+const StyledBackdrop = styled(Backdrop)(({ theme }) => ({
     color: "var(--palette-06)",
-    zIndex: open ? 10001 : 0,
+    zIndex: 10002,
     position: "fixed",
     height: "100vh"
 }));

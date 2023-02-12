@@ -8,14 +8,21 @@ const Contact = () => {
     return (
         <Root>
             <TextContainer>
-                <Typography size="h2" weight="extraBold" color="secondary" transform="uppercase">
+                <Typography size={{ lg: "h2", md: "h3" }} weight="extraBold" color="secondary" transform="uppercase">
                     Tìm chúng tôi tại
                 </Typography>
-                <Grid container direction="row" columnSpacing={8} rowSpacing={4} sx={{ justifyContent: "end" }}>
+                <Grid
+                    container
+                    direction="row"
+                    sx={{
+                        justifyContent: { xs: "space-between", md: "end" },
+                        textAlign: "left",
+                        gap: "1rem"
+                    }}>
                     {ContactItems.map((item, i) => (
                         <Grid item xs={5} key={i} sx={{ display: "flex" }}>
                             {item.icon}
-                            <Typography sx={{ width: "100%", wordWrap: "break-word", paddingLeft: "0.5rem" }}>
+                            <Typography sx={{ width: "80%", wordWrap: "break-word", paddingLeft: "0.5rem" }}>
                                 {item.text}
                             </Typography>
                         </Grid>
@@ -24,9 +31,9 @@ const Contact = () => {
             </TextContainer>
             <CardMedia
                 sx={{
-                    width: "40%",
-                    minHeight: 400,
-                    borderRadius: "100px 0px",
+                    width: { xs: "90%", md: "40%" },
+                    minHeight: { xs: 320, md: 400 },
+                    borderRadius: "0px 100px",
                     boxShadow: "0px 0px 50px rgba(23, 96, 118, 0.3)"
                 }}
                 component="img"
@@ -53,26 +60,33 @@ const ContactItems = [
     },
     {
         icon: <FacebookOutlined />,
-        text: "https://fb.com/@nganlam2104"
+        text: "fb.com/@nganlam2104"
     },
     {
         icon: <Instagram />,
-        text: "https://www.instagram.com/mals.home/"
+        text: "instagram.com/mals.home"
     },
     {
         icon: <YouTube />,
-        text: "https://www.youtube.com/@malshome"
+        text: "youtube.com/@malshome"
     }
 ];
 
-const Root = styled(Box)(() => ({
+const Root = styled(Box)(({ theme }) => ({
     width: "100%",
     display: "flex",
     flexDirection: "row-reverse",
     alignItems: "stretch",
     padding: "5% 10%",
     gap: "7%",
-    justifyContent: "space-between"
+    justifyContent: "space-between",
+    [theme.breakpoints.down("sm")]: {
+        flexDirection: "column-reverse",
+        alignItems: "center",
+        padding: "10% 5%",
+        gap: "2.5rem",
+        textAlign: "center"
+    }
 }));
 
 const TextContainer = styled(Box)(() => ({
@@ -80,5 +94,5 @@ const TextContainer = styled(Box)(() => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "end",
-    gap: "1rem"
+    gap: "2rem"
 }));

@@ -9,6 +9,7 @@ const Hero = () => {
         const element = document.getElementById("news");
         element?.scrollIntoView();
     };
+    
     return (
         <Root>
             <Overlay>

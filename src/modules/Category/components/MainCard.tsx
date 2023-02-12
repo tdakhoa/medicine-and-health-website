@@ -12,7 +12,7 @@ const MainCard = ({ title = "", date = "", description = "", img = "", ...props 
                 <Typography weight="light" size="p">
                     {date}
                 </Typography>
-                <Box sx={{ padding: "0.5rem 30% 0.5rem 0" }}>
+                <Box sx={{ padding: { xs: 0, md: "0.5rem 30% 0.5rem 0" } }}>
                     <Typography size="h6" weight="bold">
                         {title}
                     </Typography>
@@ -50,6 +50,14 @@ const MainCardBox = styled(Box)(({ theme }) => ({
         maxHeight: "100%",
         borderRadius: "10px",
         objectFit: "cover"
+    },
+    [theme.breakpoints.down("sm")]: {
+        flexDirection: "column",
+        maxHeight: "100%",
+        "& img": {
+            width: "100%",
+            height: "12rem"
+        }
     }
 }));
 

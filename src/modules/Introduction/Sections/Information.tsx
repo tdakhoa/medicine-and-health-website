@@ -5,10 +5,15 @@ import { ArrowDownwardOutlined } from "@mui/icons-material";
 import { Button, Typography } from "../../../components";
 
 const Information = () => {
+    const handleClick = () => {
+        const element = document.getElementById("specialists");
+        element?.scrollIntoView();
+    };
+
     return (
         <Root>
             <TextContainer>
-                <Typography size="h2" weight="extraBold" color="secondary" transform="uppercase">
+                <Typography size={{ lg: "h2", md: "h3" }} weight="extraBold" color="secondary" transform="uppercase">
                     Thuốc và sức khoẻ
                 </Typography>
                 <Typography sx={{ textAlign: "justify" }}>
@@ -19,8 +24,9 @@ const Information = () => {
                     a relationship between entities, or part of a conceptual framework.
                 </Typography>
                 <Button
+                    onClick={handleClick}
                     bgcolor="primary"
-                    sx={{ marginTop: "1.4rem" }}
+                    sx={{ marginTop: { xs: 0, md: "1.4rem" } }}
                     endIcon={<ArrowDownwardOutlined sx={{ fontSize: "1.2rem", paddingLeft: "0.2rem" }} />}>
                     <Typography size="p" color="inherit" weight="medium">
                         Đội ngũ chuyên gia
@@ -29,8 +35,8 @@ const Information = () => {
             </TextContainer>
             <CardMedia
                 sx={{
-                    width: "40%",
-                    minHeight: 400,
+                    width: { xs: "90%", md: "40%" },
+                    minHeight: { xs: 320, md: 400 },
                     borderRadius: "0px 100px",
                     boxShadow: "0px 0px 50px rgba(23, 96, 118, 0.3)"
                 }}
@@ -43,19 +49,29 @@ const Information = () => {
 
 export default Information;
 
-const Root = styled(Box)(() => ({
+const Root = styled(Box)(({ theme }) => ({
     width: "100%",
     display: "flex",
     flexDirection: "row",
     alignItems: "stretch",
     padding: "5% 10%",
     gap: "7%",
-    justifyContent: "space-between"
+    justifyContent: "space-between",
+    [theme.breakpoints.down("sm")]: {
+        flexDirection: "column-reverse",
+        alignItems: "center",
+        padding: "10% 5%",
+        gap: "2.5rem",
+        textAlign: "center"
+    }
 }));
 
-const TextContainer = styled(Box)(() => ({
+const TextContainer = styled(Box)(({ theme }) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "start",
-    gap: "1rem"
+    gap: "1rem",
+    [theme.breakpoints.down("sm")]: {
+        alignItems: "center"
+    }
 }));

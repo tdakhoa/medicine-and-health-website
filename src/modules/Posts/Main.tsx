@@ -11,7 +11,6 @@ const Main = () => {
             <Divider />
             <Tags data={tagsData} />
             <Sharing />
-          
         </Root>
     );
 };

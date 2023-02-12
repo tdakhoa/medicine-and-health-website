@@ -32,7 +32,10 @@ const NewPost = () => {
 export default NewPost;
 
 const Root = styled(Box)(({ theme }) => ({
-    display: "flex"
+    display: "flex",
+    overflow: "scroll",
+    width: "100%",
+    height: "100vh"
 }));
 
 const HeaderBox = styled(Box)(({ theme }) => ({

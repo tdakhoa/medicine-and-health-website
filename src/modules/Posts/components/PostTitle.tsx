@@ -15,7 +15,7 @@ const PostTitle = ({ title, date, author, ...props }: PostTitleProps) => {
 
             <TextBox>
                 <Typography>{date}</Typography>
-                <Typography size="h2" weight="extraBold" transform="uppercase">
+                <Typography size={{ lg: "h2", md: "h4" }} weight="extraBold" transform="uppercase">
                     {title}
                 </Typography>
                 <Typography>{author}</Typography>
@@ -47,7 +47,7 @@ const MainTitleContainer = styled(Box)(() => ({
     }
 }));
 
-const TextBox = styled(Box)(() => ({
+const TextBox = styled(Box)(({ theme }) => ({
     maxWidth: "70%",
     padding: "2rem 10%",
     display: "flex",
@@ -60,7 +60,10 @@ const TextBox = styled(Box)(() => ({
     position: "absolute",
     width: "100%",
     height: "100%",
-    zIndex: 2
+    zIndex: 2,
+    [theme.breakpoints.down("sm")]: {
+        maxWidth: "100%"
+    }
 }));
 
 const Overlay = styled(Box)(() => ({

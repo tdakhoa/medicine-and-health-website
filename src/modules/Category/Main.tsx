@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, CardMedia, styled, Grid, Pagination } from "@mui/material";
+import { Box, CardMedia, styled, Grid, Pagination, useMediaQuery, useTheme } from "@mui/material";
 
 import { Typography } from "../../components";
 import { mainNews } from "../../constants";
@@ -7,6 +7,9 @@ import MainCard from "./components/MainCard";
 import { mainData } from "../../constants";
 
 const Main = () => {
+    const theme = useTheme();
+    const matches = useMediaQuery(theme.breakpoints.down("sm"));
+
     const [page, setPage] = useState(1);
 
     const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
@@ -19,7 +22,7 @@ const Main = () => {
                 <MainGrid xs={12} item sx={{ minHeight: 500 }}>
                     <Box className="media-container">
                         <Box className="media-overlay">
-                            <Typography size="h2" weight="bold">
+                            <Typography size={{ lg: "h2", md: "h3" }} weight="bold">
                                 THỦ TỤC KÊ KHAI GIÁ TRANG THIẾT BỊ Y TẾ
                             </Typography>
                             <Typography size="p">17 Jan 2023</Typography>
@@ -41,9 +44,16 @@ const Main = () => {
                     ))}
                 </CardGrid>
             </Grid>
-            <Box sx={{ position: "relative", right: "-1rem", padding: "3% 0" }}>
-                <Pagination page={page} onChange={handleChange} count={10} size="large" />
-            </Box>
+            <PaginationBox>
+                <Pagination
+                    page={page}
+                    onChange={handleChange}
+                    count={10}
+                    siblingCount={0}
+                    boundaryCount={matches ? 1 : 2}
+                    size={matches ? "medium" : "large"}
+                />
+            </PaginationBox>
         </Root>
     );
 };
@@ -88,6 +98,16 @@ const MainGrid = styled(Grid)(({ theme }) => ({
             transition: "all .4s ease-in-out",
             transform: "scale(1.1)"
         }
+    },
+    [theme.breakpoints.down("sm")]: {
+        margin: "2rem 0rem",
+        "& .media-container": {
+            "& .media-overlay": {
+                padding: "1.5rem",
+                paddingBottom: "2.5rem",
+                textAlign: "center"
+            }
+        }
     }
 }));
 
@@ -96,11 +116,27 @@ const CardGrid = styled(Grid)(({ theme }) => ({
     border: "0.5px solid rgba(23, 96, 118, 0.4)",
     borderRadius: "10px",
     padding: "3rem 2rem",
-    marginTop: "4%"
+    marginTop: "4%",
+    [theme.breakpoints.down("sm")]: {
+        padding: "2rem"
+    }
 }));
 
 const Divider = styled(Box)(({ theme }) => ({
     height: "1px",
     background: "linear-gradient(90deg, rgba(23, 96, 118, 0) 0.04%, rgba(23, 96, 118, 0.6) 55.73%)",
     margin: "1.2rem 0rem"
+}));
+
+const PaginationBox = styled(Box)(({ theme }) => ({
+    position: "relative",
+    right: "-1rem",
+    padding: "3% 0",
+    [theme.breakpoints.down("sm")]: {
+        right: "0",
+        width: "100%",
+        display: "flex",
+        justifyContent: "center",
+        padding: "2rem 0rem"
+    }
 }));

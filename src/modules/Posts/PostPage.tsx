@@ -12,11 +12,14 @@ const PostPage = () => {
         <Layout>
             <PostTitle title={postData.title} date={postData.date} author={postData.author} />
 
-            <Grid container columnSpacing={2} sx={{ padding: "5% 10% 2%" }}>
-                <Grid item xs={8}>
+            <Grid
+                container
+                columnSpacing={2}
+                sx={{ padding: { xs: "5%", md: "5% 10% 2%" }, flexDirection: { xs: "column", md: "row" } }}>
+                <Grid item xs={12} md={8}>
                     <Main />
                 </Grid>
-                <Grid item xs={4}>
+                <Grid item xs={12} md={4}>
                     <Sidebar />
                 </Grid>
             </Grid>

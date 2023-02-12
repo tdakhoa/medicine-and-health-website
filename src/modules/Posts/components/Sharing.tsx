@@ -26,38 +26,18 @@ const Sharing = () => {
 
     return (
         <Root>
-            <Box
-                sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    flexDirection: "column",
-                    width: "100%",
-                    border: "0.5px solid rgba(23, 96, 118, 0.4)",
-                    borderRadius: "10px",
-                    padding: "2rem 3rem",
-                    gap: "1rem"
-                }}>
+            <SharingBox>
                 <Typography size="h5" weight="bold" color="secondary" transform="uppercase">
                     Chia sẻ bài viết
                 </Typography>
-                <Box sx={{ display: "flex", gap: "1.5rem" }}>
+                <Box sx={{ display: "flex", gap: { xs: "1rem", md: "1.5rem" } }}>
                     {socials.map((item, i) => (
                         <SocialBox bgColor={item.bgColor}>
                             <item.icon />
                         </SocialBox>
                     ))}
                 </Box>
-                <Box
-                    sx={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        alignItems: "center",
-                        width: "70%",
-                        border: "0.5px solid rgba(23, 96, 118, 0.4)",
-                        borderRadius: "10px",
-                        padding: "0.5rem 1rem"
-                    }}>
+                <CopyBox>
                     {copied ? (
                         <Typography>Copied!</Typography>
                     ) : (
@@ -65,30 +45,11 @@ const Sharing = () => {
                     )}
 
                     <ContentCopy sx={{ color: "var(--palette-02)", cursor: "pointer" }} onClick={handleClick} />
-                </Box>
-            </Box>
-            <Box
-                sx={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    width: "100%",
-                    borderRadius: "10px",
-                    padding: "2.5rem",
-                    gap: "2rem",
-                    background: "rgba(23, 96, 118, 0.1)"
-                }}>
-                <Avatar
-                    alt="Lam Ngan"
-                    src={avatar}
-                    sx={{
-                        width: 80,
-                        height: 80,
-                        boxShadow: "0px 0px 50px rgba(255, 255, 255, 0.25)",
-                        position: "relative",
-                        zIndex: 1000
-                    }}
-                />
+                </CopyBox>
+            </SharingBox>
+
+            <QuotesBox>
+                <StyledAvatar alt="Lam Ngan" src={avatar} />
                 <Box sx={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
                     <Typography size="h6" weight="bold">
                         Ngan Lam
@@ -98,9 +59,15 @@ const Sharing = () => {
                         classical Latin literature from 45 BC, making it over 2000 years old.
                     </Typography>
                 </Box>
-            </Box>
+            </QuotesBox>
 
-            <Box sx={{ display: "flex", justifyContent: "space-between", gap: "1.5rem" }}>
+            <Box
+                sx={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    flexDirection: { xs: "column", md: "row" },
+                    gap: "1.5rem"
+                }}>
                 {navData.map((item, i) => (
                     <NavBox sx={{ flexDirection: i == 0 ? "row" : "row-reverse" }} key={i}>
                         <Box sx={{ width: "50%" }}>
@@ -116,8 +83,8 @@ const Sharing = () => {
                             }}>
                             <Box
                                 sx={{
-                                    display: "flex",
                                     flexDirection: i == 0 ? "row" : "row-reverse",
+                                    display: "flex",
                                     alignItems: "center",
                                     color: "#6C6C6C",
                                     gap: "0.2rem"
@@ -192,7 +159,8 @@ const Root = styled(Box)(({ theme }) => ({
     flexDirection: "column",
     marginTop: "2rem",
     gap: "2.5rem",
-    width: "100%"
+    width: "100%",
+    paddingBottom: "2rem"
 }));
 
 const SocialBox = styled(Box)<SocialsProps>(({ theme, bgColor }) => ({
@@ -227,5 +195,62 @@ const NavBox = styled(Box)(({ theme }) => ({
         height: "100%",
         borderRadius: "10px",
         objectFit: "cover"
+    },
+    [theme.breakpoints.down("sm")]: {
+        padding: "1rem",
+        height: "9rem"
+    }
+}));
+
+const SharingBox = styled(Box)(({ theme }) => ({
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "column",
+    width: "100%",
+    border: "0.5px solid rgba(23, 96, 118, 0.4)",
+    borderRadius: "10px",
+    padding: "2rem 3rem",
+    gap: "1rem",
+    [theme.breakpoints.down("sm")]: {
+        padding: "1rem"
+    }
+}));
+
+const QuotesBox = styled(Box)(({ theme }) => ({
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    width: "100%",
+    borderRadius: "10px",
+    padding: "2.5rem",
+    gap: "2rem",
+    background: "rgba(23, 96, 118, 0.1)",
+    [theme.breakpoints.down("sm")]: {
+        padding: "1rem",
+        alignItems: "left",
+        gap: "1.5rem"
+    }
+}));
+
+const StyledAvatar = styled(Avatar)(({ theme }) => ({
+    width: 80,
+    height: 80,
+    boxShadow: "0px 0px 50px rgba(255, 255, 255, 0.25)",
+    position: "relative",
+    zIndex: 1000
+}));
+
+const CopyBox = styled(Box)(({ theme }) => ({
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    width: "70%",
+    border: "0.5px solid rgba(23, 96, 118, 0.4)",
+    borderRadius: "10px",
+    padding: "0.5rem 1rem",
+    [theme.breakpoints.down("sm")]: {
+        width: "100%",
+        padding: "0.5rem"
     }
 }));

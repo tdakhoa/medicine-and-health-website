@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { InputBase, styled, Box, Grid, Pagination, Tab, Tabs } from "@mui/material";
+import { InputBase, styled, Box, Grid, Pagination, Tab, Tabs, useTheme, useMediaQuery } from "@mui/material";
 
 import Layout from "../Layout";
 import MainTitle from "./components/MainTitle";
@@ -9,6 +9,9 @@ import ConsulationForm from "./components/ConsulationForm";
 import { faq, faqFormData, questionsData, questionTitle } from "../../constants";
 
 const FAQ = () => {
+    const theme = useTheme();
+    const matches = useMediaQuery(theme.breakpoints.down("sm"));
+
     const [page, setPage] = useState(1);
     const [value, setValue] = useState(0);
 
@@ -22,19 +25,19 @@ const FAQ = () => {
     return (
         <Layout>
             <MainTitle title="have question?" />
-            <Box sx={{ display: "flex", justifyContent: "center", margin: "4% 0%" }}>
+            <Box sx={{ display: "flex", justifyContent: "center", margin: { xs: "3rem 1rem", md: "4% 0%" } }}>
                 <SearchBox>
                     <StyledInputBase placeholder="Find out if we have any answered question you need" />
                     <Search />
                 </SearchBox>
             </Box>
             <CenterBox>
-                <Typography size="h4" weight="bold" format="center" sx={{ whiteSpace: "pre-line" }}>
+                <Typography size={{ lg: "h4", md: "h5" }} weight="bold" format="center" sx={{ whiteSpace: "pre-line" }}>
                     We{"'"}re here to answer! If you don{"'"}t see your question,{"\n"}drop us a line!
                 </Typography>
                 <Button
                     bgcolor="primary"
-                    sx={{ marginTop: "1.4rem", display: { xs: "none", md: "flex" } }}
+                    sx={{ marginTop: { xs: "0.5rem", md: "1.4rem" }, display: "flex" }}
                     endIcon={<ArrowDownwardOutlined sx={{ fontSize: "1.2rem", paddingLeft: "0.2rem" }} />}>
                     <Typography size="p">Ask new question</Typography>
                 </Button>
@@ -49,9 +52,16 @@ const FAQ = () => {
                     latest questions
                 </Typography>
 
-                <Grid container sx={{ justifyContent: "space-between", flexGrow: 1 }}>
+                <Grid
+                    container
+                    sx={{
+                        justifyContent: "space-between",
+                        flexGrow: 1,
+                        flexDirection: { xs: "column", md: " row" },
+                        marginBottom: { xs: "2rem", md: 0 }
+                    }}>
                     {questionsData.map((item, i) => (
-                        <QuestionGrid item xs={3.5} key={i}>
+                        <QuestionGrid item xs={12} md={3.5} key={i}>
                             <Typography size="h5" weight="bold">
                                 {item.title}
                             </Typography>
@@ -72,7 +82,7 @@ const FAQ = () => {
                 </Typography>
 
                 <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column" }}>
-                    <Box sx={{ width: "50%", marginTop: "2rem", marginBottom: "1rem" }}>
+                    <Box sx={{ width: { xs: "100%", md: "50%" }, marginTop: "2rem", marginBottom: "1rem" }}>
                         <MyTabs value={value} onChange={handleTabChange} variant="scrollable" scrollButtons="auto">
                             {questionTitle.map((item, i) => (
                                 <Tab label={item.title} />
@@ -82,9 +92,16 @@ const FAQ = () => {
                     <AccordionBox>
                         <QuestionAccordion data={faq} />
                     </AccordionBox>
-                    <Box sx={{ display: "flex", justifyContent: "center" }}>
-                        <Pagination page={page} onChange={handlePageChange} count={10} size="large" />
-                    </Box>
+                    <PaginationBox>
+                        <Pagination
+                            page={page}
+                            onChange={handlePageChange}
+                            count={10}
+                            siblingCount={0}
+                            boundaryCount={matches ? 1 : 2}
+                            size={matches ? "medium" : "large"}
+                        />
+                    </PaginationBox>
                 </Box>
             </Root>
 
@@ -125,14 +142,22 @@ const CenterBox = styled(Box)(({ theme }) => ({
     flexDirection: "column",
     margin: "5% 0%",
     padding: "3% 0%",
-    backgroundColor: "rgba(23, 96, 118, 0.2)"
+    backgroundColor: "rgba(23, 96, 118, 0.2)",
+    [theme.breakpoints.down("sm")]: {
+        padding: "1.5rem 0rem",
+        marginBottom: "3rem"
+    }
 }));
 
 const QuestionGrid = styled(Grid)(({ theme }) => ({
     padding: "1.5rem 2.5rem",
     margin: "2rem 0 3.5rem",
     backgroundColor: "rgba(23, 96, 118, 0.2)",
-    borderRadius: "10px"
+    borderRadius: "10px",
+    [theme.breakpoints.down("sm")]: {
+        margin: "1rem 0rem",
+        padding: "1rem"
+    }
 }));
 
 const AccordionBox = styled(Box)(({ theme }) => ({
@@ -140,7 +165,10 @@ const AccordionBox = styled(Box)(({ theme }) => ({
     boxShadow: "0px 0px 30px rgba(23, 96, 118, 0.4)",
     borderRadius: "10px",
     width: "50%",
-    margin: "1.5rem 0rem"
+    margin: "1.5rem 0rem",
+    [theme.breakpoints.down("sm")]: {
+        width: "100%"
+    }
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
@@ -176,5 +204,16 @@ const MyTabs = styled(Tabs)(() => ({
         border: "none",
         background: "linear-gradient(90deg, #176076 0.04%, rgba(23, 96, 118, 0.5) 99.96%)",
         color: "white !important"
+    }
+}));
+
+const PaginationBox = styled(Box)(({ theme }) => ({
+    justifyContent: "center",
+    [theme.breakpoints.down("sm")]: {
+        right: "0",
+        width: "100%",
+        display: "flex",
+        justifyContent: "center",
+        paddingTop: "0.5rem"
     }
 }));

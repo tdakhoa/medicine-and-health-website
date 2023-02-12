@@ -10,11 +10,11 @@ import DataTable from "./components/DataTable";
 const NewPost = () => {
     return (
         <>
-            <Box sx={{ display: "flex" }}>
+            <Box sx={{ display: "flex", overflow: "scroll" }}>
                 <ToggleDrawer />
                 <Box component="main" sx={{ flexGrow: 1, px: 4, py: 3 }}>
                     <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "end" }}>
-                        <Typography size="h2" weight="bold" color="secondary">
+                        <Typography size={{ lg: "h2", md: "h3" }} weight="bold" color="secondary">
                             TẤT CẢ BÀI VIẾT
                         </Typography>
                         <Link href="/admin/new-post">

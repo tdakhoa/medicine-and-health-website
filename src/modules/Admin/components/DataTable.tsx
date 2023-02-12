@@ -15,7 +15,8 @@ import {
     Chip,
     Checkbox,
     IconButton,
-    Tooltip
+    Tooltip,
+    Grid
 } from "@mui/material";
 import {
     CancelOutlined,
@@ -211,7 +212,7 @@ export default function EnhancedTable() {
     const isSelected = (title: string) => selected.indexOf(title) !== -1;
 
     return (
-        <EnhancedTableBox>
+        <EnhancedTableBox item xs={12}>
             {selected.length > 0 ? <EnhancedTableToolbar numSelected={selected.length} /> : <></>}
             <Box
                 sx={
@@ -444,7 +445,7 @@ const StyledActionCell = {
     display: "flex"
 };
 
-const EnhancedTableBox = styled(Box)(({ theme }) => ({
+const EnhancedTableBox = styled(Grid)(({ theme }) => ({
     width: "100%",
     marginTop: "20px",
     border: "1px solid #176076",

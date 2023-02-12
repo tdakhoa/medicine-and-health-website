@@ -11,7 +11,8 @@ import {
     ListItemButton as MuiListItemButton,
     ListItemIcon,
     Avatar,
-    Badge
+    Badge,
+    useMediaQuery
 } from "@mui/material";
 import {
     PeopleAltOutlined,
@@ -26,7 +27,9 @@ import { Typography } from "../../../components";
 
 export default function ToggleDrawer() {
     const theme = useTheme();
+    const matches = useMediaQuery(theme.breakpoints.down("sm"));
     const { asPath } = useRouter();
+
     const [open, setOpen] = React.useState(false);
 
     const handleToggleOpen = () => {
@@ -34,12 +37,12 @@ export default function ToggleDrawer() {
     };
 
     return (
-        <Drawer variant="permanent" open={open}>
+        <Drawer variant="permanent" anchor={matches ? "bottom" : "left"} open={open}>
             <DrawerHeader
                 sx={{
                     justifyContent: open ? "space-between" : "center"
                 }}>
-                <IconButton onClick={handleToggleOpen}>
+                <IconButton sx={{ display: { xs: "none", md: "flex" } }} onClick={handleToggleOpen}>
                     <MenuOutlined sx={{ color: "white" }} />
                 </IconButton>
                 <IconButton aria-label="notification" sx={{ display: open ? "initial" : "none" }}>
@@ -67,7 +70,7 @@ export default function ToggleDrawer() {
                 <Typography size="p">Admin</Typography>
             </AvatarContainer>
 
-            <List className="full">
+            <List sx={{ display: "flex", flexDirection: { xs: "row", md: "column" }, width: "100%" }}>
                 {menuItems.map((item, index) => (
                     <Link href={item.link}>
                         <StyledItem key={index}>
@@ -168,7 +171,18 @@ const Drawer = styled(MuiDrawer)(({ theme, open }) => ({
         : {
               ...closedMixin(theme),
               "& .MuiDrawer-paper": closedMixin(theme)
-          })
+          }),
+    [theme.breakpoints.down("sm")]: {
+        position: "absolute",
+        bottom: "0",
+        height: "3rem",
+        width: "100%",
+        flexDirection: "row",
+        "& .MuiDrawer-paper": {
+            width: "100%",
+            flexDirection: "row"
+        }
+    }
 }));
 
 const ListItemButton = styled(MuiListItemButton)(({ theme }) => ({
@@ -179,7 +193,8 @@ const ListItemButton = styled(MuiListItemButton)(({ theme }) => ({
     "&:hover": {
         backgroundColor: "rgba(255, 255, 255, 0.1) !important"
     },
-    marginBottom: "0.8rem"
+    marginBottom: "0.8rem",
+    display: "flex"
 }));
 
 const AvatarContainer = styled(Box)(({ theme }) => ({
@@ -196,8 +211,9 @@ const StyledTypo = styled(Typography)<TypoProps>(({ theme, open }) => ({
 }));
 
 const StyledItem = styled(ListItem)(({ theme }) => ({
-    padding: theme.spacing(0, 2),
-    display: "block"
+    display: "flex",
+    flexGrow: "1",
+    padding: 0
 }));
 
 const StyledItemIcon = styled(ListItemIcon)<TypoProps>(({ theme, open }) => ({

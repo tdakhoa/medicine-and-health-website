@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { styled } from "@mui/material";
+import { Box, styled } from "@mui/material";
 
 import Title from "./components/Title";
 import Paginator from "./components/Paginator";
 import RoundedCard from "./components/RoundedCard";
+import AlternateCard from "./components/AlternateCard";
 import { cardData } from "../../../constants";
 
 const ChoosePosition = ({ index, i }: Position) => {
@@ -39,6 +40,8 @@ const ChoosePosition = ({ index, i }: Position) => {
         else if (i < index - 1) return hidePrevCard;
     }
 };
+
+var timer: number;
 
 const CardCarousel = () => {
     const [index, setIndex] = useState(0);
@@ -110,18 +113,15 @@ const CardCarousel = () => {
     };
 
     useEffect(() => {
-        var highestTimeoutId = setTimeout(";");
-        for (var i = 0; i < highestTimeoutId; i++) {
-            clearTimeout(i);
-        }
-        setTimeout(slideRight, 5000);
+        window.clearTimeout(timer);
+        timer = window.setTimeout(slideRight, 5000);
     }, [index]);
 
     return (
         <Root>
-            <Title text="Thuốc" link="/category/medicine" />
+            <Title sx={{ margin: { xs: 0, md: "3rem" } }} text="Thuốc" link="/category/medicine" />
             <BoxContainer>
-                <CardContainer>
+                <DesktopCardContainer>
                     {cardData.map((person, i) => {
                         let position = ChoosePosition({ index, i }) || {};
                         return (
@@ -137,7 +137,7 @@ const CardCarousel = () => {
                         );
                     })}
                     <Paginator dataLength={cardData.length} activeIndex={index} handlePageChange={handlePageChange} />
-                </CardContainer>
+                </DesktopCardContainer>
             </BoxContainer>
         </Root>
     );
@@ -173,30 +173,37 @@ const BoxContainer = styled("div")(({ theme }) => ({
     paddingLeft: "0.3rem"
 }));
 
-const CardContainer = styled("div")(({ theme }) => ({
+const DesktopCardContainer = styled("div")(({ theme }) => ({
     position: "relative",
     width: "70%",
     height: "30rem",
-    paddingBottom: "5%"
+    paddingBottom: "5%",
+    [theme.breakpoints.down("sm")]: {
+        overflow: "hidden",
+        width: "100%",
+        padding: 0
+    }
 }));
 
 const activeCard = {
     left: "50%",
     transition: "all 1s ease-in-out",
-    transform: "translateX(-85%) scale(1.3)",
+    transform: { xs: "translateX(-9rem)", md: "translateX(-85%) scale(1.3)" },
     zIndex: "1"
 };
 
 const prevCard = {
     left: "0%",
     transform: "translateX(-40%)",
-    transition: "all 1s ease-in-out"
+    transition: "all 1s ease-in-out",
+    opacity: { xs: "0", md: "1" }
 };
 
 const nextCard = {
     left: "100%",
     transform: "translateX(-115%)",
-    transition: "all 1s ease-in-out"
+    transition: "all 1s ease-in-out",
+    opacity: { xs: "0", md: "1" }
 };
 
 const hidePrevCard = {

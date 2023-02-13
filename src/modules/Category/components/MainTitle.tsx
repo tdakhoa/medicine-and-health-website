@@ -14,15 +14,11 @@ const MainTitle = ({ title, subTitle = "", ...props }: MainTitleProps) => {
             />
             <TextContainer>
                 <TitleBox>
-                    <Typography
-                        color="secondary"
-                        size="h5"
-                        weight="bold"
-                        sx={{ textTransform: "uppercase", mb: "1rem" }}>
+                    <Typography color="secondary" size="h5" weight="bold" sx={{ textTransform: "uppercase" }}>
                         {subTitle}
                     </Typography>
 
-                    <Typography color="secondary" size="h3" weight="bold" transform="uppercase">
+                    <Typography color="secondary" size={{ lg: "h3", md: "h4" }} weight="bold" transform="uppercase">
                         {title}
                     </Typography>
                 </TitleBox>
@@ -39,7 +35,7 @@ interface MainTitleProps {
     subTitle?: string;
 }
 
-const MainTitleContainer = styled(Box)(() => ({
+const MainTitleContainer = styled(Box)(({ theme }) => ({
     position: "relative",
     width: "100%",
     height: "50vh",
@@ -51,16 +47,26 @@ const MainTitleContainer = styled(Box)(() => ({
         top: 0,
         left: 0,
         zIndex: -1
+    },
+    [theme.breakpoints.down("sm")]: {
+        height: "30vh"
     }
 }));
 
-const TitleBox = styled(Box)(() => ({
+const TitleBox = styled(Box)(({ theme }) => ({
     minWidth: "32rem",
     padding: "2rem 3rem",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    textAlign: "center",
+    gap: "1rem",
+    [theme.breakpoints.down("sm")]: {
+        minWidth: "16rem",
+        padding: "1rem",
+        gap: "0.5rem"
+    }
 }));
 
 const Overlay = styled(Box)(() => ({

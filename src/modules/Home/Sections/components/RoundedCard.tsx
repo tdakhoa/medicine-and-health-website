@@ -87,7 +87,10 @@ const ArticleBox = styled(Box)(({ theme }) => ({
     width: "12rem",
     height: "100%",
     marginTop: "3rem",
-    color: "var(--palette-02)"
+    color: "var(--palette-02)",
+    [theme.breakpoints.down("sm")]: {
+        width: "50%"
+    }
 }));
 
 const GridCard = styled(Grid)(({ theme }) => ({

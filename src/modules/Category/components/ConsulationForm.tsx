@@ -78,13 +78,16 @@ const TextField = ({ label = "", variant = "filled", ...props }: TextFieldProps)
     return <MuiTextField label={label} variant={variant} {...props} sx={sx} />;
 };
 
-const Root = styled(Box)(() => ({
+const Root = styled(Box)(({ theme }) => ({
     width: "100%",
     position: "relative",
     display: "flex",
     flexDirection: "column",
     alignItems: "end",
-    padding: "3rem 10%"
+    padding: "3rem 10%",
+    [theme.breakpoints.down("sm")]: {
+        paddingBottom: "25%"
+    }
 }));
 
 const FormContainer = styled(Box)(({ theme }) => ({

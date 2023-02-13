@@ -30,7 +30,7 @@ export default AlternateSection;
 const Root = styled("div")(({ theme }) => ({
     margin: "5% 10%",
     [theme.breakpoints.down("md")]: {
-        margin: "20% 5%"
+        margin: "0% 5%"
     }
 }));
 
@@ -38,8 +38,13 @@ const CardContainer = styled(Box)(({ theme }) => ({
     [theme.breakpoints.down("sm")]: {
         display: "flex",
         overflowX: "scroll",
+        position: "relative",
+        zIndex: "10000",
         gap: "2rem",
         padding: "0.5rem",
-        borderRadius: "30px 30px 0px 0px"
+        borderRadius: "30px 30px 0px 0px",
+        "&::-webkit-scrollbar": {
+            display: "none"
+        }
     }
 }));

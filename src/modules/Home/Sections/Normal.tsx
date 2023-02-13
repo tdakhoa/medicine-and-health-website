@@ -61,6 +61,6 @@ export default NormalSection;
 const Root = styled("div")(({ theme }) => ({
     margin: "5% 10%",
     [theme.breakpoints.down("md")]: {
-        margin: "20% 5%"
+        margin: "15% 5%"
     }
 }));

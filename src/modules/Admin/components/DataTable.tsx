@@ -15,7 +15,9 @@ import {
     Chip,
     Checkbox,
     IconButton,
-    Tooltip
+    Tooltip,
+    useTheme,
+    useMediaQuery
 } from "@mui/material";
 import {
     CancelOutlined,
@@ -72,6 +74,9 @@ function stableSort<T>(array: readonly T[], comparator: (a: T, b: T) => number) 
 }
 
 function EnhancedTableHead(props: EnhancedTableProps) {
+    const theme = useTheme();
+    const matches = useMediaQuery(theme.breakpoints.down("sm"));
+
     const { onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } = props;
     const createSortHandler = (property: keyof Data) => (event: React.MouseEvent<unknown>) => {
         onRequestSort(event, property);
@@ -79,7 +84,7 @@ function EnhancedTableHead(props: EnhancedTableProps) {
 
     return (
         <TableHead>
-            <TableRow sx={{ backgroundColor: "var(--palette-02)", color: "white" }}>
+            <TableRow sx={{ backgroundColor: "var(--palette-02)", color: "white", whiteSpace: "nowrap" }}>
                 <TableCell padding="checkbox">
                     <Checkbox
                         sx={{ color: "white !important" }}
@@ -95,18 +100,13 @@ function EnhancedTableHead(props: EnhancedTableProps) {
                         padding={headCell.disablePadding ? "none" : "normal"}
                         sortDirection={orderBy === headCell.id ? order : false}>
                         <TableSortLabel
-                            active={orderBy === headCell.id}
+                            active={matches ? true : orderBy === headCell.id}
                             direction={orderBy === headCell.id ? order : "asc"}
                             onClick={createSortHandler(headCell.id)}
                             sx={{ "& svg": { color: "white !important" } }}>
                             <Typography weight="bold" color="white">
                                 {headCell.label}
                             </Typography>
-                            {orderBy === headCell.id ? (
-                                <Box component="span" sx={visuallyHidden}>
-                                    {order === "desc" ? "sorted descending" : "sorted ascending"}
-                                </Box>
-                            ) : null}
                         </TableSortLabel>
                     </TableCell>
                 ))}
@@ -234,7 +234,12 @@ export default function EnhancedTable() {
                           }
                         : {}
                 }>
-                <TableContainer>
+                <TableContainer
+                    sx={{
+                        "&::-webkit-scrollbar": {
+                            height: "0.3rem"
+                        }
+                    }}>
                     <Table sx={{ minWidth: 750 }} aria-labelledby="tableTitle" size="medium">
                         <EnhancedTableHead
                             numSelected={selected.length}
@@ -253,6 +258,7 @@ export default function EnhancedTable() {
 
                                     return (
                                         <TableRow
+                                            sx={{ whiteSpace: "nowrap" }}
                                             hover
                                             role="checkbox"
                                             aria-checked={isItemSelected}
@@ -296,6 +302,11 @@ export default function EnhancedTable() {
                     </Table>
                 </TableContainer>
                 <TablePagination
+                    sx={{
+                        "&::-webkit-scrollbar": {
+                            height: "0.3rem"
+                        }
+                    }}
                     rowsPerPageOptions={[5, 10, 25]}
                     component="div"
                     count={rows.length}

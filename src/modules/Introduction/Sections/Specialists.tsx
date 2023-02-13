@@ -1,11 +1,14 @@
 import React, { useState } from "react";
-import { styled, Box, Grid, Dialog, Pagination } from "@mui/material";
+import { styled, Box, Grid, Dialog, Pagination, useMediaQuery, useTheme } from "@mui/material";
 
 import Title from "../../Home/Sections/components/Title";
 import { Button, Typography } from "../../../components";
 import { ArrowForwardOutlined, HighlightOff } from "@mui/icons-material";
 
 const Contact = () => {
+    const theme = useTheme();
+    const matches = useMediaQuery(theme.breakpoints.down("sm"));
+
     const [open, setOpen] = useState(false);
     const [page, setPage] = useState(1);
     const [data, setData] = useState<ImageDataProps>({ image: "", name: "", description: " ", position: "" });
@@ -25,7 +28,7 @@ const Contact = () => {
 
     return (
         <>
-            <Root>
+            <Root id="specialists">
                 <Title
                     sx={{
                         "& .see-more": {
@@ -37,7 +40,7 @@ const Contact = () => {
 
                 <Grid container spacing={4}>
                     {ImageData.map((item, i) => (
-                        <ContentGrid key={i} item xs={4}>
+                        <ContentGrid key={i} item xs={12} md={4}>
                             <Box className="media-container" sx={{ borderRadius: "60px 0 0 60px" }}>
                                 <Box className="media-overlay" />
                                 <Box className="media-text">
@@ -69,9 +72,16 @@ const Contact = () => {
                     ))}
                 </Grid>
 
-                <Box sx={{ display: "flex", justifyContent: "center", paddingTop: "3%" }}>
-                    <Pagination page={page} onChange={handleChange} count={10} size="large" />
-                </Box>
+                <PaginationBox>
+                    <Pagination
+                        page={page}
+                        onChange={handleChange}
+                        count={10}
+                        siblingCount={0}
+                        boundaryCount={matches ? 1 : 2}
+                        size={matches ? "medium" : "large"}
+                    />
+                </PaginationBox>
             </Root>
 
             <StyledDialog maxWidth="md" open={open} onClose={handleClose}>
@@ -84,10 +94,18 @@ const Contact = () => {
                         flexDirection: "column",
                         padding: "2rem"
                     }}>
-                    <Typography size="h3" weight="bold" format="center" sx={{ color: "var(--palette-02)" }}>
+                    <Typography
+                        size={{ lg: "h3", md: "h4" }}
+                        weight="bold"
+                        format="center"
+                        sx={{ color: "var(--palette-02)" }}>
                         Bác sĩ {data.name}
                     </Typography>
-                    <Typography size="h5" weight="bold" format="center" sx={{ color: "var(--palette-02)" }}>
+                    <Typography
+                        size={{ lg: "h5", md: "h6" }}
+                        weight="bold"
+                        format="center"
+                        sx={{ color: "var(--palette-02)" }}>
                         {data.position}
                     </Typography>
                     <Box
@@ -182,7 +200,10 @@ const Root = styled(Box)(({ theme }) => ({
     flexDirection: "column",
     padding: "5% 10%",
     gap: "7%",
-    justifyContent: "space-between"
+    justifyContent: "space-between",
+    [theme.breakpoints.down("sm")]: {
+        marginBottom: "6rem"
+    }
 }));
 
 const ContentGrid = styled(Grid)(({ theme }) => ({
@@ -265,5 +286,19 @@ const StyledDialog = styled(Dialog)(({ theme }) => ({
         height: "inherit",
         width: "40%",
         objectFit: "cover"
+    },
+    [theme.breakpoints.down("sm")]: {
+        "& img": {
+            display: "none"
+        }
+    }
+}));
+
+const PaginationBox = styled(Box)(({ theme }) => ({
+    display: "flex",
+    justifyContent: "center",
+    padding: "3% 0",
+    [theme.breakpoints.down("sm")]: {
+        padding: "2rem 0"
     }
 }));

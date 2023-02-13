@@ -1,8 +1,6 @@
 import React from "react";
 import { Box, Chip, styled } from "@mui/material";
 
-import { Typography } from "../../../components";
-
 const Tags = ({ data }: tagsProps) => {
     const handleClick = () => {
         console.info("You clicked the Chip.");
@@ -27,5 +25,9 @@ const Root = styled(Box)(({ theme }) => ({
     display: "flex",
     justifyContent: "end",
     gap: "0.5rem",
-    width: "100%"
+    width: "100%",
+    [theme.breakpoints.down("sm")]: {
+        flexWrap: "wrap",
+        justifyContent: "center"
+    }
 }));

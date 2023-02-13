@@ -239,7 +239,8 @@ const ListItemButton = styled(MuiListItemButton)(({ theme }) => ({
     "&:hover": {
         backgroundColor: "rgba(255, 255, 255, 0.1) !important"
     },
-    marginBottom: "0.8rem"
+    marginBottom: "0.8rem",
+    display: "flex"
 }));
 
 const AvatarContainer = styled(Box)(({ theme }) => ({
@@ -256,8 +257,9 @@ const StyledTypo = styled(Typography)<TypoProps>(({ theme, open }) => ({
 }));
 
 const StyledItem = styled(ListItem)(({ theme }) => ({
-    padding: theme.spacing(0, 2),
-    display: "block"
+    display: "flex",
+    flexGrow: "1",
+    padding: 0
 }));
 
 const StyledItemIcon = styled(ListItemIcon)<TypoProps>(({ theme, open }) => ({

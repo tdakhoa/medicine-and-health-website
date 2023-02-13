@@ -211,7 +211,7 @@ export default function EnhancedTable() {
     const isSelected = (title: string) => selected.indexOf(title) !== -1;
 
     return (
-        <EnhancedTableBox item xs={12}>
+        <EnhancedTableBox>
             {selected.length > 0 ? <EnhancedTableToolbar numSelected={selected.length} /> : <></>}
             <Box
                 sx={
@@ -455,7 +455,7 @@ const StyledActionCell = {
     display: "flex"
 };
 
-const EnhancedTableBox = styled(Grid)(({ theme }) => ({
+const EnhancedTableBox = styled(Box)(({ theme }) => ({
     width: "100%",
     marginTop: "20px",
     border: "1px solid #176076",

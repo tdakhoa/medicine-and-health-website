@@ -56,12 +56,16 @@ const NewPost = () => {
     return (
         <Root>
             <ToggleDrawer />
-            <Box component="main" sx={{ flexGrow: 1, px: 4, py: 3 }}>
-                <Typography size="h2" weight="bold" color="secondary">
+            <Box sx={{ padding: { xs: "5%", md: "2%" } }}>
+                <Typography
+                    size={{ lg: "h2", md: "h3" }}
+                    weight="extraBold"
+                    color="secondary"
+                    format={{ lg: "left", md: "center" }}>
                     THÊM BÀI VIẾT
                 </Typography>
-                <InputContainer container spacing={3}>
-                    <Grid item xs={6}>
+                <InputContainer container spacing={{ xs: 0, md: 3 }} sx={{ mt: 2, gap: { xs: "1rem", md: 0 } }}>
+                    <Grid item xs={12} md={6}>
                         <TextField
                             label="Tiêu đề"
                             placeholder="Nhập tiêu đề bài viết"
@@ -73,10 +77,10 @@ const NewPost = () => {
                             }
                         />
                     </Grid>
-                    <Grid item xs={6}>
+                    <Grid item xs={12} md={6}>
                         <Dropdown label="Danh mục" placeholder="Chọn danh mục" data={data} setData={setData} />
                     </Grid>
-                    <Grid item xs={6}>
+                    <Grid item xs={12} md={6}>
                         <TextField
                             label="Từ khoá"
                             placeholder="Nhập các từ khoá của bài viết, mỗi từ khoá cách nhau một dấu phẩy, nhập tối đa 20 từ khoá "
@@ -142,7 +146,10 @@ interface SnackbarState {
 }
 
 const Root = styled(Box)(({ theme }) => ({
-    display: "flex"
+    display: "flex",
+    [theme.breakpoints.down("sm")]: {
+        paddingBottom: "6rem"
+    }
 }));
 
 const InputContainer = styled(Grid)(() => ({
@@ -155,5 +162,9 @@ const ButtonBox = styled(Box)(({ theme }) => ({
     flexDirection: "row-reverse",
     justifyContent: "end",
     gap: "2rem",
-    mt: "3rem"
+    marginTop: "2rem",
+    [theme.breakpoints.down("sm")]: {
+        flexDirection: "column-reverse",
+        gap: "1rem"
+    }
 }));

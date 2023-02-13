@@ -10,9 +10,9 @@ const NewPost = () => {
     return (
         <Root>
             <ToggleDrawer />
-            <Box component="main" sx={{ flexGrow: 1, px: 4, py: 3 }}>
+            <Box component="main" sx={{ width: "100%", px: { xs: 2, md: 4 }, py: 3, pb: 12 }}>
                 <HeaderBox>
-                    <Typography size="h2" weight="bold" color="secondary">
+                    <Typography size={{ lg: "h2", md: "h3" }} weight="extraBold" color="secondary">
                         QUẢN LÝ NHÂN SỰ
                     </Typography>
                     <Button
@@ -32,14 +32,17 @@ const NewPost = () => {
 export default NewPost;
 
 const Root = styled(Box)(({ theme }) => ({
-    display: "flex",
-    overflow: "scroll",
-    width: "100%",
-    height: "100vh"
+    display: "flex"
 }));
 
 const HeaderBox = styled(Box)(({ theme }) => ({
     display: "flex",
     justifyContent: "space-between",
-    alignItems: "end"
+    alignItems: "end",
+    flexDirection: "row",
+    [theme.breakpoints.down("sm")]: {
+        alignItems: "center",
+        flexDirection: "column",
+        textAlign: "center"
+    }
 }));

@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { styled, useTheme, Theme, CSSObject } from "@mui/material/styles";
@@ -12,7 +12,9 @@ import {
     ListItemIcon,
     Avatar,
     Badge,
-    useMediaQuery
+    BottomNavigation,
+    BottomNavigationAction,
+    Paper
 } from "@mui/material";
 import {
     PeopleAltOutlined,
@@ -27,69 +29,121 @@ import { Typography } from "../../../components";
 
 export default function ToggleDrawer() {
     const theme = useTheme();
-    const matches = useMediaQuery(theme.breakpoints.down("sm"));
-    const { asPath } = useRouter();
-
-    const [open, setOpen] = React.useState(false);
+    const router = useRouter();
+    const [open, setOpen] = useState(false);
 
     const handleToggleOpen = () => {
         setOpen(open !== true);
     };
 
     return (
-        <Drawer variant="permanent" anchor={matches ? "bottom" : "left"} open={open}>
-            <DrawerHeader
+        <>
+            <Drawer variant="permanent" open={open}>
+                <DrawerHeader
+                    sx={{
+                        justifyContent: open ? "space-between" : "center"
+                    }}>
+                    <IconButton onClick={handleToggleOpen}>
+                        <MenuOutlined sx={{ color: "white" }} />
+                    </IconButton>
+                    <IconButton aria-label="notification" sx={{ display: open ? "initial" : "none" }}>
+                        <Badge
+                            anchorOrigin={{
+                                vertical: "bottom",
+                                horizontal: "right"
+                            }}
+                            color="secondary"
+                            variant="dot">
+                            <NotificationsNoneOutlined sx={{ color: "white" }} />
+                        </Badge>
+                    </IconButton>
+                </DrawerHeader>
+
+                <AvatarContainer sx={{ display: open ? "flex" : "none" }}>
+                    <Avatar
+                        alt="Lam Ngan"
+                        src={avatar}
+                        sx={{ width: 80, height: 80, boxShadow: "0px 0px 50px rgba(255, 255, 255, 0.25)" }}
+                    />
+                    <Typography size="h6" weight="bold">
+                        Ngân Lam
+                    </Typography>
+                    <Typography size="p">Admin</Typography>
+                </AvatarContainer>
+
+                <List className="full">
+                    {menuItems.map((item, index) => (
+                        <Link href={item.link}>
+                            <StyledItem key={index}>
+                                <ListItemButton
+                                    sx={{
+                                        justifyContent: open ? "initial" : "center",
+                                        backgroundColor:
+                                            router.asPath === item.link
+                                                ? "rgba(255, 255, 255, 0.1) !important"
+                                                : "transparent"
+                                    }}>
+                                    <StyledItemIcon open={open}>{item.icon}</StyledItemIcon>
+                                    <StyledTypo size="p" open={open}>
+                                        {item.text}
+                                    </StyledTypo>
+                                </ListItemButton>
+                            </StyledItem>
+                        </Link>
+                    ))}
+                </List>
+            </Drawer>
+
+            <Paper
                 sx={{
-                    justifyContent: open ? "space-between" : "center"
-                }}>
-                <IconButton sx={{ display: { xs: "none", md: "flex" } }} onClick={handleToggleOpen}>
-                    <MenuOutlined sx={{ color: "white" }} />
-                </IconButton>
-                <IconButton aria-label="notification" sx={{ display: open ? "initial" : "none" }}>
-                    <Badge
-                        anchorOrigin={{
-                            vertical: "bottom",
-                            horizontal: "right"
-                        }}
-                        color="secondary"
-                        variant="dot">
-                        <NotificationsNoneOutlined sx={{ color: "white" }} />
-                    </Badge>
-                </IconButton>
-            </DrawerHeader>
-
-            <AvatarContainer sx={{ display: open ? "flex" : "none" }}>
-                <Avatar
-                    alt="Lam Ngan"
-                    src={avatar}
-                    sx={{ width: 80, height: 80, boxShadow: "0px 0px 50px rgba(255, 255, 255, 0.25)" }}
-                />
-                <Typography size="h6" weight="bold">
-                    Ngân Lam
-                </Typography>
-                <Typography size="p">Admin</Typography>
-            </AvatarContainer>
-
-            <List sx={{ display: "flex", flexDirection: { xs: "row", md: "column" }, width: "100%" }}>
-                {menuItems.map((item, index) => (
-                    <Link href={item.link}>
-                        <StyledItem key={index}>
-                            <ListItemButton
-                                sx={{
-                                    justifyContent: open ? "initial" : "center",
-                                    backgroundColor:
-                                        asPath === item.link ? "rgba(255, 255, 255, 0.1) !important" : "transparent"
-                                }}>
-                                <StyledItemIcon open={open}>{item.icon}</StyledItemIcon>
-                                <StyledTypo size="p" open={open}>
-                                    {item.text}
-                                </StyledTypo>
-                            </ListItemButton>
-                        </StyledItem>
-                    </Link>
-                ))}
-            </List>
-        </Drawer>
+                    position: "fixed",
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    display: { xs: "block", md: "none" },
+                    zIndex: 1,
+                    width: "100%",
+                    padding: "0.5rem",
+                    backgroundColor: "var(--palette-01)",
+                    borderRadius: 0
+                }}
+                elevation={3}>
+                <BottomNavigation
+                    sx={{
+                        backgroundColor: "transparent",
+                        alignItems: "center",
+                        "& .Mui-selected": {
+                            borderRadius: "10px",
+                            padding: "0.3rem 0rem",
+                            backgroundColor: "rgba(255, 255, 255, 0.1)",
+                            color: "white !important",
+                            flex: 2
+                        }
+                    }}
+                    value={router.asPath}>
+                    {menuItems.map((item, i) => (
+                        <BottomNavigationAction
+                            onClick={() => router.push(item.link)}
+                            sx={{
+                                minHeight: "4rem",
+                                color: "white",
+                                padding: "0",
+                                "& .Mui-selected": {
+                                    backgroundColor: "transparent !important"
+                                },
+                                "& .MuiBottomNavigationAction-label": {
+                                    color: "white",
+                                    fontFamily: "Nunito"
+                                }
+                            }}
+                            label={router.asPath == item.link ? item.text : ""}
+                            value={item.link}
+                            icon={item.icon}
+                        />
+                    ))}
+                </BottomNavigation>
+            </Paper>
+        </>
     );
 }
 
@@ -173,15 +227,7 @@ const Drawer = styled(MuiDrawer)(({ theme, open }) => ({
               "& .MuiDrawer-paper": closedMixin(theme)
           }),
     [theme.breakpoints.down("sm")]: {
-        position: "absolute",
-        bottom: "0",
-        height: "3rem",
-        width: "100%",
-        flexDirection: "row",
-        "& .MuiDrawer-paper": {
-            width: "100%",
-            flexDirection: "row"
-        }
+        display: "none"
     }
 }));
 

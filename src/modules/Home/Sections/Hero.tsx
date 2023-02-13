@@ -9,7 +9,7 @@ const Hero = () => {
         const element = document.getElementById("news");
         element?.scrollIntoView();
     };
-    
+
     return (
         <Root>
             <Overlay>
@@ -39,7 +39,7 @@ const Hero = () => {
                             size="p"
                             color="inherit"
                             weight="medium"
-                            sx={{ display: { xs: "none", md: "block" }, paddingRight: "0.2rem" }}>
+                            sx={{ display: { xs: "none", sm: "block" }, paddingRight: "0.2rem" }}>
                             Đọc thêm
                         </Typography>
                     </Button>
@@ -61,7 +61,7 @@ const Root = styled(Box)(({ theme }) => ({
     width: "100%",
     height: "90vh",
     [theme.breakpoints.down("md")]: {
-        height: "80vh"
+        height: "40rem"
     }
 }));
 

@@ -94,20 +94,7 @@ export default function ToggleDrawer() {
                 </List>
             </Drawer>
 
-            <Paper
-                sx={{
-                    position: "fixed",
-                    bottom: 0,
-                    left: 0,
-                    right: 0,
-                    display: { xs: "block", md: "none" },
-                    zIndex: 1,
-                    width: "100%",
-                    padding: "0.5rem",
-                    backgroundColor: "var(--palette-01)",
-                    borderRadius: 0
-                }}
-                elevation={3}>
+            <MobileNav elevation={3}>
                 <BottomNavigation
                     sx={{
                         backgroundColor: "transparent",
@@ -142,7 +129,7 @@ export default function ToggleDrawer() {
                         />
                     ))}
                 </BottomNavigation>
-            </Paper>
+            </MobileNav>
         </>
     );
 }
@@ -267,4 +254,20 @@ const StyledItemIcon = styled(ListItemIcon)<TypoProps>(({ theme, open }) => ({
     marginRight: open ? "12px" : "0px",
     justifyContent: "center",
     color: "white"
+}));
+
+const MobileNav = styled(Paper)(({ theme }) => ({
+    position: "fixed",
+    bottom: 0,
+    left: 0,
+    right: 0,
+    display: "none",
+    zIndex: 1,
+    width: "100%",
+    padding: "0.5rem",
+    backgroundColor: "var(--palette-01)",
+    borderRadius: 0,
+    [theme.breakpoints.down("sm")]: {
+        display: "block"
+    }
 }));

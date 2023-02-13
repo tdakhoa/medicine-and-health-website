@@ -13,7 +13,11 @@ const NewPost = () => {
             <ToggleDrawer />
             <Box component="main" sx={{ width: "100%", px: { xs: 2, md: 4 }, py: 3, pb: 12 }}>
                 <HeaderBox>
-                    <Typography size={{ lg: "h2", md: "h3" }} weight="extraBold" color="secondary">
+                    <Typography
+                        size={{ lg: "h2", md: "h3" }}
+                        weight="extraBold"
+                        color="secondary"
+                        format={{ lg: "left", md: "center" }}>
                         TẤT CẢ BÀI VIẾT
                     </Typography>
                     <Link href="/admin/new-post">
@@ -43,9 +47,8 @@ const HeaderBox = styled(Box)(({ theme }) => ({
     justifyContent: "space-between",
     alignItems: "end",
     flexDirection: "row",
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("md")]: {
         alignItems: "center",
-        flexDirection: "column",
-        textAlign: "center"
+        flexDirection: "column"
     }
 }));

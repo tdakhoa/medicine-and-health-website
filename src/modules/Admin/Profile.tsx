@@ -89,8 +89,12 @@ const Profile = () => {
     return (
         <Root>
             <ToggleDrawer />
-            <Box component="main" sx={{ flexGrow: 1, px: 4, py: 3 }}>
-                <Typography size="h2" weight="bold" color="secondary">
+            <Box sx={{ padding: { xs: "5% 2%", md: "2%" } }}>
+                <Typography
+                    size={{ lg: "h2", md: "h3" }}
+                    weight="extraBold"
+                    color="secondary"
+                    format={{ lg: "left", md: "center" }}>
                     THÔNG TIN CÁ NHÂN
                 </Typography>
                 <InputContainer container spacing={3}>
@@ -130,7 +134,7 @@ const Profile = () => {
                         </StyledDialog>
                     </Grid>
                     {data.map((item, i) => (
-                        <Grid item xs={6} key={i}>
+                        <Grid item xs={12} md={6} key={i}>
                             <TextField
                                 label={item.label}
                                 disabled={item.disabled}
@@ -200,12 +204,19 @@ interface SnackbarState {
 
 const Root = styled(Box)(({ theme }) => ({
     display: "flex",
-    paddingBottom: "5%"
+    paddingBottom: "5%",
+    [theme.breakpoints.down("sm")]: {
+        paddingBottom: "7rem"
+    }
 }));
 
-const InputContainer = styled(Grid)(() => ({
+const InputContainer = styled(Grid)(({ theme }) => ({
     width: "100%",
-    marginLeft: "0"
+    marginLeft: "0",
+    padding: "12px 16px",
+    [theme.breakpoints.down("sm")]: {
+        paddingLeft: 0
+    }
 }));
 
 const StyledAvatar = styled(Avatar)(({ theme }) => ({
@@ -247,7 +258,11 @@ const ButtonBox = styled(Box)(({ theme }) => ({
     flexDirection: "row-reverse",
     justifyContent: "end",
     gap: "2rem",
-    marginTop: "2rem"
+    marginTop: "2rem",
+    [theme.breakpoints.down("sm")]: {
+        justifyContent: "center",
+        marginTop: "1rem"
+    }
 }));
 
 const AvatarLabelStyle = {

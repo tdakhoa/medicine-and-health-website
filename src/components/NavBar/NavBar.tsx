@@ -148,12 +148,15 @@ const AppBarDesktop = styled(AppBar)<AppBarDesktopProps>(({ theme, trigger, prio
     }
 }));
 
-const StyledNavContainer = styled(Box)(() => ({
+const StyledNavContainer = styled(Box)(({ theme }) => ({
     display: "flex",
     alignItems: "stretch",
     justifyContent: "center",
     width: "100%",
-    padding: "0 3rem"
+    padding: "0 3rem",
+    [theme.breakpoints.down("md")]: {
+        padding: "2rem 0"
+    }
 }));
 
 const AppBarMobile = styled(Drawer)<mobileProps>(({ prior }) => ({

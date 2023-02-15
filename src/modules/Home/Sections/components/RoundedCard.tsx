@@ -90,6 +90,9 @@ const ArticleBox = styled(Box)(({ theme }) => ({
     color: "var(--palette-02)",
     [theme.breakpoints.down("sm")]: {
         width: "50%"
+    },
+    [theme.breakpoints.down("md")]: {
+        width: "80%"
     }
 }));
 

@@ -59,10 +59,7 @@ export default Hero;
 const Root = styled(Box)(({ theme }) => ({
     position: "relative",
     width: "100%",
-    height: "90vh",
-    [theme.breakpoints.down("md")]: {
-        height: "40rem"
-    }
+    height: "90vh"
 }));
 
 const Overlay = styled(Box)(({ theme }) => ({

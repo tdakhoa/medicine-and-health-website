@@ -151,6 +151,7 @@ interface Devices {
     lg?: string;
 }
 interface TypographyProps {
+    component?: string;
     color?: string;
     size?: Devices;
     weight?: Devices;
@@ -161,6 +162,7 @@ interface TypographyProps {
 }
 
 interface InputProps {
+    component?: string;
     color?: string;
     size?: Devices | string;
     weight?: Devices | string;
@@ -171,6 +173,7 @@ interface InputProps {
 }
 
 const Typography = ({
+    component = "p",
     color = "inherit",
     size,
     weight,
@@ -198,6 +201,7 @@ const Typography = ({
         };
     return (
         <StyledTypography
+            component={component}
             color={color}
             size={size}
             weight={weight}

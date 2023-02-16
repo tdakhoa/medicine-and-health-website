@@ -62,7 +62,7 @@ const FAQ = () => {
                     }}>
                     {questionsData.map((item, i) => (
                         <QuestionGrid item xs={12} md={3.5} key={i}>
-                            <Typography size="h5" weight="bold">
+                            <Typography component="h2" size="h5" weight="bold">
                                 {item.title}
                             </Typography>
                             <Typography size="p" sx={{ padding: "1rem", paddingLeft: 0 }}>

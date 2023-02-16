@@ -14,11 +14,21 @@ const MainTitle = ({ title, subTitle = "", ...props }: MainTitleProps) => {
             />
             <TextContainer>
                 <TitleBox>
-                    <Typography color="secondary" size="h5" weight="bold" sx={{ textTransform: "uppercase" }}>
+                    <Typography
+                        component="h2"
+                        color="secondary"
+                        size="h5"
+                        weight="bold"
+                        sx={{ textTransform: "uppercase" }}>
                         {subTitle}
                     </Typography>
 
-                    <Typography color="secondary" size={{ lg: "h3", md: "h4" }} weight="bold" transform="uppercase">
+                    <Typography
+                        component="h1"
+                        color="secondary"
+                        size={{ lg: "h3", md: "h4" }}
+                        weight="bold"
+                        transform="uppercase">
                         {title}
                     </Typography>
                 </TitleBox>

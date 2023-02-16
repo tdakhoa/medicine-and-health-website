@@ -81,7 +81,7 @@ const NavItem = ({ content = { title: [""], link: [""] }, sx = {}, trigger, ...p
     return (
         <StyledNavItem trigger={trigger} {...props}>
             <Link href={content.link[0]}>
-                <Typography>{content.title[0]}</Typography>
+                <Typography component="h1">{content.title[0]}</Typography>
             </Link>
             {content.title.length > 1 ? (
                 <NavContentBox id="shadow">
@@ -89,7 +89,10 @@ const NavItem = ({ content = { title: [""], link: [""] }, sx = {}, trigger, ...p
                         i !== 0 ? (
                             <Link key={i} href={content.link[i]}>
                                 <NavItemBox trigger={trigger} i={i} length={content.title.length - 1}>
-                                    <Typography transform="uppercase" sx={{ textAlign: "left !important" }}>
+                                    <Typography
+                                        component="h1"
+                                        transform="uppercase"
+                                        sx={{ textAlign: "left !important" }}>
                                         {item}
                                     </Typography>
                                 </NavItemBox>
@@ -128,7 +131,9 @@ interface mobileProps {
 
 const drawerWidth = 280;
 
-const AppBarDesktop = styled(AppBar)<AppBarDesktopProps>(({ theme, trigger, prior }) => ({
+const AppBarDesktop = styled(AppBar, {
+    shouldForwardProp: (prop) => prop !== "prior" && prop !== "trigger"
+})<AppBarDesktopProps>(({ theme, trigger, prior }) => ({
     position: "fixed",
     width: "100%",
     transition: "all .4s ease-in-out",
@@ -159,7 +164,9 @@ const StyledNavContainer = styled(Box)(({ theme }) => ({
     }
 }));
 
-const AppBarMobile = styled(Drawer)<mobileProps>(({ prior }) => ({
+const AppBarMobile = styled(Drawer, {
+    shouldForwardProp: (prop) => prop !== "prior" && prop !== "trigger"
+})<mobileProps>(({ prior }) => ({
     position: "fixed",
     zIndex: prior ? 10002 : 0,
     height: "100vh",
@@ -209,7 +216,9 @@ const StyledBackdrop = styled(Backdrop)(({ theme }) => ({
     height: "100vh"
 }));
 
-const StyledNavItem = styled(Box)<AppBarDesktopProps>(({ theme, trigger }) => ({
+const StyledNavItem = styled(Box, {
+    shouldForwardProp: (prop) => prop !== "trigger"
+})<AppBarDesktopProps>(({ theme, trigger }) => ({
     position: "relative",
     cursor: "pointer",
     flexGrow: "1",
@@ -273,7 +282,9 @@ const NavContentBox = styled(Box)(({ theme }) => ({
     }
 }));
 
-const NavItemBox = styled(Box)<AppBarDesktopProps>(({ theme, trigger, i = 0, length }) => ({
+const NavItemBox = styled(Box, {
+    shouldForwardProp: (prop) => prop !== "trigger"
+})<AppBarDesktopProps>(({ theme, trigger, i = 0, length }) => ({
     display: "none",
     padding: "0.6rem 1rem",
     opacity: 0,

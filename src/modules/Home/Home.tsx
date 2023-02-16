@@ -13,7 +13,7 @@ const Home = () => {
             <News />
             {homeData.map((item, i) => {
                 const Section = layouts[i % 4];
-                return <Section />;
+                return <Section key={i} />;
             })}
             <NormalSection />
             <AlternateSection />

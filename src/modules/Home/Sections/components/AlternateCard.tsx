@@ -16,7 +16,11 @@ const AlternateCard = ({
         <Root container sx={sx} rowSpacing={2} columnSpacing={8} direction={direction} {...props}>
             <Grid item xs={12} sm={6} className="content-container">
                 <CardContent sx={{ padding: "0.5rem" }}>
-                    <Typography size="h4" weight="bold" sx={{ marginBottom: { xs: "0.5rem", md: "2rem" } }}>
+                    <Typography
+                        component="h1"
+                        size="h4"
+                        weight="bold"
+                        sx={{ marginBottom: { xs: "0.5rem", md: "2rem" } }}>
                         {title}
                     </Typography>
                     <Typography size="p">{content}</Typography>

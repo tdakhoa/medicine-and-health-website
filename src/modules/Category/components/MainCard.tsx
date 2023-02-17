@@ -13,7 +13,7 @@ const MainCard = ({ title = "", date = "", description = "", img = "", ...props 
                     {date}
                 </Typography>
                 <Box sx={{ padding: { xs: 0, md: "0.5rem 30% 0.5rem 0" } }}>
-                    <Typography size="h6" weight="bold">
+                    <Typography component="h1" size="h6" weight="bold">
                         {title}
                     </Typography>
                 </Box>

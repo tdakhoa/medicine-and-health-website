@@ -23,7 +23,7 @@ const SimpleCard = ({
                 </Box>
             </Grid>
             <Grid item xs={contentRatio} sx={{ overflow: "hidden" }}>
-                <Typography size="h6" weight="bold">
+                <Typography component="h1" size="h6" weight="bold">
                     {title}
                 </Typography>
                 <Typography size="p">{content}</Typography>

@@ -22,10 +22,10 @@ const Footer = () => {
                                 filter: "drop-shadow(0px 0px 20px rgba(255, 255, 255, 0.6))"
                             }}
                         />
-                        <Typography size="h6" weight="bold" color="#DE221F">
+                        <Typography component="h1" size="h6" weight="bold" color="#DE221F">
                             THUỐC VÀ SỨC KHOẺ
                         </Typography>
-                        <Typography size="p" weight="light" color="white">
+                        <Typography component="h2" size="p" weight="light" color="white">
                             Lorem Ipsum is simply dummy text of the printing
                         </Typography>
                     </Box>
@@ -45,7 +45,7 @@ const Footer = () => {
                         <Typography color="white" weight="bold" sx={{ flexShrink: 0 }}>
                             Trụ sở chính
                         </Typography>
-                        <Typography color="white" weight="light">
+                        <Typography component="h1" color="white" weight="light">
                             126A Trần Quốc Thảo, Quận 3, Thành phố Hồ Chí Minh
                         </Typography>
                     </Address>

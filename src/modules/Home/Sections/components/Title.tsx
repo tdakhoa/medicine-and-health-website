@@ -8,6 +8,7 @@ const Title = ({ text, link = "", sx = {}, ...props }: TitleProps) => {
     return (
         <StyledTitle sx={sx}>
             <Typography
+                component="h1"
                 size={{ lg: "h2", md: "h3", xs: "h3" }}
                 weight="bold"
                 color="secondary"

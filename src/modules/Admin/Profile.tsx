@@ -89,7 +89,7 @@ const Profile = () => {
     return (
         <Root>
             <ToggleDrawer />
-            <Box sx={{ padding: { xs: "5% 2%", md: "2%" } }}>
+            <MainContainer>
                 <Typography
                     size={{ lg: "h2", md: "h3" }}
                     weight="extraBold"
@@ -134,7 +134,7 @@ const Profile = () => {
                         </StyledDialog>
                     </Grid>
                     {data.map((item, i) => (
-                        <Grid item xs={12} md={6} key={i}>
+                        <Grid item xs={12} sm={6} key={i}>
                             <TextField
                                 label={item.label}
                                 disabled={item.disabled}
@@ -171,7 +171,7 @@ const Profile = () => {
                         <Typography size="p">Huỷ thay đổi</Typography>
                     </Button>
                 </ButtonBox>
-            </Box>
+            </MainContainer>
             <Popup content={content} snackbar={snackbar} open={open} setOpen={setOpen} />
         </Root>
     );
@@ -259,9 +259,19 @@ const ButtonBox = styled(Box)(({ theme }) => ({
     justifyContent: "end",
     gap: "2rem",
     marginTop: "2rem",
+    [theme.breakpoints.down("md")]: {
+        marginTop: "1rem"
+    },
     [theme.breakpoints.down("sm")]: {
         justifyContent: "center",
         marginTop: "1rem"
+    }
+}));
+
+const MainContainer = styled(Box)(({ theme }) => ({
+    padding: "2%",
+    [theme.breakpoints.down("sm")]: {
+        padding: "5% 2%"
     }
 }));
 

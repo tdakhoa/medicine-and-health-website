@@ -14,9 +14,13 @@ const AlternateCard = ({
 }: AlternateCardProps) => {
     return (
         <Root container sx={sx} rowSpacing={2} columnSpacing={8} direction={direction} {...props}>
-            <Grid item xs={12} md={6} className="content-container">
+            <Grid item xs={12} sm={6} className="content-container">
                 <CardContent sx={{ padding: "0.5rem" }}>
-                    <Typography size="h4" weight="bold" sx={{ marginBottom: { xs: "0.5rem", md: "2rem" } }}>
+                    <Typography
+                        component="h1"
+                        size="h4"
+                        weight="bold"
+                        sx={{ marginBottom: { xs: "0.5rem", md: "2rem" } }}>
                         {title}
                     </Typography>
                     <Typography size="p">{content}</Typography>
@@ -32,7 +36,7 @@ const AlternateCard = ({
                     </Typography>
                 </CardActions>
             </Grid>
-            <Grid item xs={12} md={6} className="media-container">
+            <Grid item xs={12} sm={6} className="media-container">
                 <CardMedia image={img} title="" className="media-image" />
             </Grid>
         </Root>
@@ -79,7 +83,7 @@ const Root = styled(Grid)<AlternateCardProps>(({ theme, ...props }) => ({
     "&:hover": {
         color: "var(--palette-02)"
     },
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("sm")]: {
         minWidth: "20rem",
         minHeight: "30rem",
         flexDirection: "column-reverse",
@@ -95,9 +99,10 @@ const Root = styled(Grid)<AlternateCardProps>(({ theme, ...props }) => ({
             }
         },
         "& .media-container": {
-            height: "30%",
+            height: "14rem",
             flex: 1,
             "& .media-image": {
+                height: "inherit",
                 borderRadius: "30px 30px 0px 0px"
             }
         }

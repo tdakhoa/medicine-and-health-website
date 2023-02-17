@@ -9,21 +9,21 @@ const Hero = () => {
         const element = document.getElementById("news");
         element?.scrollIntoView();
     };
-    
+
     return (
         <Root>
             <Overlay>
                 <Box className="hero-introduction">
-                    <Typography size="h1" color="white" weight="extraBold">
+                    <Typography component="h1" size="h1" color="white" weight="extraBold">
                         THUỐC
                     </Typography>
-                    <Typography size="h2" color="white" weight="extraBold">
+                    <Typography component="h1" size="h2" color="white" weight="extraBold">
                         VÀ
                     </Typography>
-                    <Typography size="h1" color="white" weight="extraBold">
+                    <Typography component="h1" size="h1" color="white" weight="extraBold">
                         SỨC KHOẺ
                     </Typography>
-                    <Typography size="p" color="white" weight="light" sx={{ width: { xs: "80%", md: "100%" } }}>
+                    <Typography component="h6" size="p" color="white" weight="light" sx={{ width: { xs: "80%", md: "100%" } }}>
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
                         the industry's standard dummy text ever since the 1500s.
                     </Typography>
@@ -39,7 +39,7 @@ const Hero = () => {
                             size="p"
                             color="inherit"
                             weight="medium"
-                            sx={{ display: { xs: "none", md: "block" }, paddingRight: "0.2rem" }}>
+                            sx={{ display: { xs: "none", sm: "block" }, paddingRight: "0.2rem" }}>
                             Đọc thêm
                         </Typography>
                     </Button>
@@ -59,10 +59,7 @@ export default Hero;
 const Root = styled(Box)(({ theme }) => ({
     position: "relative",
     width: "100%",
-    height: "90vh",
-    [theme.breakpoints.down("md")]: {
-        height: "80vh"
-    }
+    height: "90vh"
 }));
 
 const Overlay = styled(Box)(({ theme }) => ({

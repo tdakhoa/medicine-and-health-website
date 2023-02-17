@@ -30,7 +30,7 @@ const RoundedCard = ({
                     <StyledCardMedia image={img} title="" />
                 </Grid>
                 <Grid sx={{ padding: "1.2rem" }} item xs={6}>
-                    <Typography size="h6" weight="bold">
+                    <Typography component="h1" size="h6" weight="bold">
                         {title}
                     </Typography>
                     <Typography size="p" sx={{ fontSize: "0.9rem" }}>
@@ -90,6 +90,9 @@ const ArticleBox = styled(Box)(({ theme }) => ({
     color: "var(--palette-02)",
     [theme.breakpoints.down("sm")]: {
         width: "50%"
+    },
+    [theme.breakpoints.down("md")]: {
+        width: "80%"
     }
 }));
 

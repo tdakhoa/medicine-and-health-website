@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
-import { Box, styled } from "@mui/material";
+import { styled } from "@mui/material";
 
 import Title from "./components/Title";
 import Paginator from "./components/Paginator";
 import RoundedCard from "./components/RoundedCard";
-import AlternateCard from "./components/AlternateCard";
 import { cardData } from "../../../constants";
 
 const ChoosePosition = ({ index, i }: Position) => {
@@ -43,7 +42,7 @@ const ChoosePosition = ({ index, i }: Position) => {
 
 var timer: number;
 
-const CardCarousel = () => {
+const CarouselSection = () => {
     const [index, setIndex] = useState(0);
 
     const slideLeft = () => {
@@ -143,7 +142,7 @@ const CardCarousel = () => {
     );
 };
 
-export default CardCarousel;
+export default CarouselSection;
 
 interface Position {
     index: number;

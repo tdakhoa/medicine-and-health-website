@@ -22,7 +22,7 @@ const Main = () => {
                 <MainGrid xs={12} item sx={{ minHeight: 500 }}>
                     <Box className="media-container">
                         <Box className="media-overlay">
-                            <Typography size={{ lg: "h2", md: "h3" }} weight="bold">
+                            <Typography component="h1" size={{ lg: "h2", md: "h3" }} weight="bold">
                                 THỦ TỤC KÊ KHAI GIÁ TRANG THIẾT BỊ Y TẾ
                             </Typography>
                             <Typography size="p">17 Jan 2023</Typography>

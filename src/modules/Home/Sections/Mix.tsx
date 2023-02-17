@@ -1,12 +1,14 @@
 import React from "react";
-import { styled, Grid, Box } from "@mui/material";
+import { styled, Grid, Box, useMediaQuery, useTheme } from "@mui/material";
 
 import AlternateCard from "./components/AlternateCard";
 import SimpleCard from "./components/SimpleCard";
 import Title from "./components/Title";
 import { cardData } from "../../../constants";
 
-const Mix = () => {
+const MixSection = () => {
+    const theme = useTheme();
+    const matches = useMediaQuery(theme.breakpoints.down("md"));
     return (
         <Root>
             <Title text="PHÁP LUẬT Y TẾ" link="/category/medical-law" />
@@ -26,14 +28,14 @@ const Mix = () => {
             <SubCardGrid container rowSpacing={0} columnSpacing={2}>
                 {cardData.map((data, i) =>
                     i !== 0 ? (
-                        <Grid item xs={6} md={3} key={i}>
+                        <Grid item xs={6} sm={3} key={i}>
                             <SimpleCard
                                 img={data.img}
                                 title={data.title}
                                 content={data.content}
                                 sx={StyleSimpleCard}
-                                imgRatio={4}
-                                contentRatio={8}
+                                imgRatio={matches ? 6 : 4}
+                                contentRatio={matches ? 6 : 8}
                                 overlay={true}
                                 borderRadius="10px 10px 0px 0px"
                             />
@@ -47,7 +49,7 @@ const Mix = () => {
     );
 };
 
-export default Mix;
+export default MixSection;
 
 const Root = styled("div")(({ theme }) => ({
     margin: "5% 10%",

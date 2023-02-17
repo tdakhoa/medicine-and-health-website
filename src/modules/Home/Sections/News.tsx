@@ -47,7 +47,11 @@ const News = () => {
                 <MainArticle>
                     <CardMedia image={mainNews.img} className="media-image" />
                     <TextContainer className="main">
-                        <Typography size={{ lg: "h2", md: "h3", xs: "h4" }} weight="bold" sx={{ zIndex: 1 }}>
+                        <Typography
+                            component="h1"
+                            size={{ lg: "h2", md: "h3", xs: "h4" }}
+                            weight="bold"
+                            sx={{ zIndex: 1 }}>
                             {mainNews.title}
                         </Typography>
                         <Typography sx={{ zIndex: 1 }}>{mainNews.description}</Typography>
@@ -58,7 +62,7 @@ const News = () => {
                         <Box key={i} sx={{ flexGrow: 1, position: "relative" }}>
                             <CardMedia image={item.img} className="media-image" />
                             <TextContainer className="sub">
-                                <Typography weight="bold" sx={{ zIndex: 1 }}>
+                                <Typography component="h1" weight="bold" sx={{ zIndex: 1 }}>
                                     {item.title}
                                 </Typography>
                                 <Typography size="0.9rem" weight="regular" sx={{ zIndex: 1 }}>

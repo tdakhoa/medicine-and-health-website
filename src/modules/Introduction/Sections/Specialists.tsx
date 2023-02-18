@@ -7,7 +7,7 @@ import { ArrowForwardOutlined, HighlightOff } from "@mui/icons-material";
 
 const Contact = () => {
     const theme = useTheme();
-    const matches = useMediaQuery(theme.breakpoints.down("sm"));
+    const matches = useMediaQuery(theme.breakpoints.down("md"));
 
     const [open, setOpen] = useState(false);
     const [page, setPage] = useState(1);
@@ -201,7 +201,7 @@ const Root = styled(Box)(({ theme }) => ({
     padding: "5% 10%",
     gap: "7%",
     justifyContent: "space-between",
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("md")]: {
         marginBottom: "6rem"
     }
 }));
@@ -287,7 +287,7 @@ const StyledDialog = styled(Dialog)(({ theme }) => ({
         width: "40%",
         objectFit: "cover"
     },
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("md")]: {
         "& img": {
             display: "none"
         }
@@ -298,7 +298,7 @@ const PaginationBox = styled(Box)(({ theme }) => ({
     display: "flex",
     justifyContent: "center",
     padding: "3% 0",
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("md")]: {
         padding: "2rem 0"
     }
 }));

@@ -26,7 +26,7 @@ const MainTitle = ({ title, subTitle = "", ...props }: MainTitleProps) => {
                     <Typography
                         component="h1"
                         color="secondary"
-                        size={{ lg: "h3", md: "h4" }}
+                        size={{ lg: "h3", md: "h3", xs: "h4" }}
                         weight="bold"
                         transform="uppercase">
                         {title}
@@ -57,6 +57,9 @@ const MainTitleContainer = styled(Box)(({ theme }) => ({
         top: 0,
         left: 0,
         zIndex: -1
+    },
+    [theme.breakpoints.down("md")]: {
+        height: "40vh"
     },
     [theme.breakpoints.down("sm")]: {
         height: "30vh"

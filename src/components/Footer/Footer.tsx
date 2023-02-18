@@ -51,7 +51,7 @@ const Footer = () => {
                     </Address>
                 </AddressContainer>
 
-                <LinkContainer container columnSpacing={{ xs: 2, md: 0 }}>
+                <LinkContainer container columnSpacing={{ xs: 2, lg: 0 }}>
                     {footerItems.map((item, id) => (
                         <Grid className="footer-item" item xs={4} key={id}>
                             <Typography size="h6" weight="bold" transform="uppercase">
@@ -74,7 +74,7 @@ const Footer = () => {
                         </Grid>
 
                         {socialItems.map((item, id) => (
-                            <Grid item key={id} xs={12} md={4} className="social-item">
+                            <Grid item key={id} xs={12} lg={4} className="social-item">
                                 {item.icon}
                                 <Link className="footer-link" href={item.link} color="inherit" underline="none">
                                     {item.link}
@@ -117,7 +117,7 @@ const SubRectangle = styled(Box)(({ theme }) => ({
     alignItems: "center",
     padding: "1.2rem 1.6rem",
     textAlign: "center",
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("md")]: {
         flexDirection: "column"
     }
 }));
@@ -129,7 +129,7 @@ const MainRectangle = styled(Box)(({ theme }) => ({
     backgroundColor: "var(--palette-02)",
     display: "flex",
     gap: "2rem",
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("md")]: {
         flexDirection: "column",
         padding: "0 5%"
     }
@@ -151,6 +151,12 @@ const AddressContainer = styled(Box)(({ theme }) => ({
         flexDirection: "column",
         width: "100%",
         paddingTop: "45%"
+    },
+    [theme.breakpoints.down("md")]: {
+        display: "flex",
+        flexDirection: "column",
+        width: "100%",  
+        paddingTop: "20%"
     }
 }));
 
@@ -161,7 +167,7 @@ const Address = styled(Box)(({ theme }) => ({
     color: "white",
     gap: "1rem",
     marginTop: "1rem",
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("md")]: {
         marginTop: "2rem"
     }
 }));
@@ -184,7 +190,7 @@ const LinkContainer = styled(Grid)(({ theme }) => ({
             color: "var(--palette-01)"
         }
     },
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("md")]: {
         marginTop: "1rem",
         padding: 0
     }
@@ -202,7 +208,7 @@ const SocialContainer = styled(Grid)(({ theme }) => ({
         alignItems: "center",
         gap: "0.3rem"
     },
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("md")]: {
         margin: "2rem 0rem",
         "& .social-item": {
             justifyContent: "center"

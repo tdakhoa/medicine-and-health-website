@@ -143,7 +143,7 @@ const CenterBox = styled(Box)(({ theme }) => ({
     margin: "5% 0%",
     padding: "3% 0%",
     backgroundColor: "rgba(23, 96, 118, 0.2)",
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("md")]: {
         padding: "1.5rem 0rem",
         marginBottom: "3rem"
     }
@@ -154,7 +154,7 @@ const QuestionGrid = styled(Grid)(({ theme }) => ({
     margin: "2rem 0 3.5rem",
     backgroundColor: "rgba(23, 96, 118, 0.2)",
     borderRadius: "10px",
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("md")]: {
         margin: "1rem 0rem",
         padding: "1rem"
     }
@@ -166,7 +166,7 @@ const AccordionBox = styled(Box)(({ theme }) => ({
     borderRadius: "10px",
     width: "50%",
     margin: "1.5rem 0rem",
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("md")]: {
         width: "100%"
     }
 }));
@@ -209,7 +209,7 @@ const MyTabs = styled(Tabs)(() => ({
 
 const PaginationBox = styled(Box)(({ theme }) => ({
     justifyContent: "center",
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("md")]: {
         right: "0",
         width: "100%",
         display: "flex",

@@ -187,7 +187,7 @@ const DesktopCardContainer = styled("div")(({ theme }) => ({
 const activeCard = {
     left: "50%",
     transition: "all 1s ease-in-out",
-    transform: { xs: "translateX(-9rem)", md: "translateX(-85%) scale(1.3)" },
+    transform: { xs: "translateX(-9rem)", sm: "translateX(-10.5rem)", lg: "translateX(-85%) scale(1.3)" },
     zIndex: "1"
 };
 

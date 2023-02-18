@@ -110,6 +110,10 @@ const GridCard = styled(Grid)(({ theme }) => ({
         cursor: "pointer",
         backgroundColor: "var(--palette-02)",
         color: "var(--palette-06)"
+    },
+    [theme.breakpoints.between("sm", "md")]: {
+        height: "28rem",
+        width: "20rem"
     }
 }));
 

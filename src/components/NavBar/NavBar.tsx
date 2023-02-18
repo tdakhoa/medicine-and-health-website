@@ -19,6 +19,7 @@ const NavBar = () => {
 
     const handleToggleOpen = () => {
         setOpen(open !== true);
+        document.body.style.overflow = !open ? "hidden" : "auto";
     };
 
     useEffect(() => {
@@ -67,7 +68,7 @@ const NavBar = () => {
                 <CategoryAccordion data={MenuItems} />
             </AppBarMobile>
 
-            <Fade in={trigger}>
+            <Fade in={trigger && !open}>
                 <ScrollTop size="small" onClick={() => window.scrollTo(0, 0)}>
                     <KeyboardArrowUp />
                 </ScrollTop>

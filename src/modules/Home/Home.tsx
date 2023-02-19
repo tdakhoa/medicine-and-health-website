@@ -13,12 +13,8 @@ const Home = () => {
             <News />
             {homeData.map((item, i) => {
                 const Section = layouts[i % 4];
-                return <Section key={i} />;
+                return <Section key={i} title={item.title} link={item.link} />;
             })}
-            <NormalSection />
-            <AlternateSection />
-            <CardSection />
-            <MixSection />
         </Layout>
     );
 };
@@ -27,9 +23,7 @@ export default Home;
 
 const layouts = [NormalSection, AlternateSection, CardSection, MixSection];
 
-const homeData = [1, 2, 3, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5];
-
-const homeData1 = [
+const homeData = [
     { title: "Giới thiệu", link: "/introduction", item: [] },
     { title: "Y học \n cổ truyền", link: "/category/traditional-medicine", item: [] },
     {
@@ -60,3 +54,14 @@ const homeData1 = [
     { title: "Pháp luật \n y tế", link: "/category/medical-law", item: [] },
     { title: "Góc bạn đọc", link: "/introduction", item: ["/category/for-you"] }
 ];
+
+interface Item {
+    title: string;
+    link: string;
+}
+
+interface SectionProps {
+    title: string;
+    link: string;
+    item?: Item[];
+}

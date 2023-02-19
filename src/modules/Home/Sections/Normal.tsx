@@ -5,7 +5,18 @@ import SimpleCard from "./components/SimpleCard";
 import Title from "./components/Title";
 import { cardData } from "../../../constants";
 
-const NormalSection = () => {
+interface Item {
+    title: string;
+    link: string;
+}
+
+interface SectionProps {
+    title: string;
+    link: string;
+    item?: Item[];
+}
+
+const NormalSection = ({ title, link, item }: SectionProps) => {
     return (
         <Root>
             <Title text="Y HỌC CỔ TRUYỀN" link="/category/traditional-medicine" />

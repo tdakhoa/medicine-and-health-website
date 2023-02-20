@@ -27,7 +27,7 @@ const paginator = {
     gap: "1rem",
     alignItems: "center",
     position: "absolute",
-    bottom: { xs: "-0.5rem", md: "-6rem" },
+    bottom: { xs: "-0.5rem", sm: "-4.5rem", lg: "-6rem" },
     left: "50%",
     transform: "translateX(-50%)",
     width: "100%",

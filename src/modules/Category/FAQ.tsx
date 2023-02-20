@@ -6,7 +6,7 @@ import MainTitle from "./components/MainTitle";
 import { ArrowDownwardOutlined, Search } from "@mui/icons-material";
 import { Button, QuestionAccordion, Typography } from "../../components";
 import ConsulationForm from "./components/ConsulationForm";
-import { faq, faqFormData, questionsData, questionTitle } from "../../constants";
+import { faq, faqFormData, homeData, questionsData } from "../../constants";
 
 const FAQ = () => {
     const theme = useTheme();
@@ -84,9 +84,10 @@ const FAQ = () => {
                 <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column" }}>
                     <Box sx={{ width: { xs: "100%", md: "50%" }, marginTop: "2rem", marginBottom: "1rem" }}>
                         <MyTabs value={value} onChange={handleTabChange} variant="scrollable" scrollButtons="auto">
-                            {questionTitle.map((item, i) => (
-                                <Tab label={item.title} />
+                            {homeData.slice(1, homeData.length - 1).map((item, i) => (
+                                <Tab key={i} label={item.title} />
                             ))}
+                            <Tab label="Khác" />
                         </MyTabs>
                     </Box>
                     <AccordionBox>
@@ -143,7 +144,7 @@ const CenterBox = styled(Box)(({ theme }) => ({
     margin: "5% 0%",
     padding: "3% 0%",
     backgroundColor: "rgba(23, 96, 118, 0.2)",
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("md")]: {
         padding: "1.5rem 0rem",
         marginBottom: "3rem"
     }
@@ -154,7 +155,7 @@ const QuestionGrid = styled(Grid)(({ theme }) => ({
     margin: "2rem 0 3.5rem",
     backgroundColor: "rgba(23, 96, 118, 0.2)",
     borderRadius: "10px",
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("md")]: {
         margin: "1rem 0rem",
         padding: "1rem"
     }
@@ -166,7 +167,7 @@ const AccordionBox = styled(Box)(({ theme }) => ({
     borderRadius: "10px",
     width: "50%",
     margin: "1.5rem 0rem",
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("md")]: {
         width: "100%"
     }
 }));
@@ -209,7 +210,7 @@ const MyTabs = styled(Tabs)(() => ({
 
 const PaginationBox = styled(Box)(({ theme }) => ({
     justifyContent: "center",
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("md")]: {
         right: "0",
         width: "100%",
         display: "flex",

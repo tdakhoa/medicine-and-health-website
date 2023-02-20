@@ -5,10 +5,16 @@ import SimpleCard from "./components/SimpleCard";
 import Title from "./components/Title";
 import { cardData } from "../../../constants";
 
-const NormalSection = () => {
+interface SectionProps {
+    title: string;
+    link: string;
+    data: any;
+}
+
+const NormalSection = ({ title, link, data }: SectionProps) => {
     return (
         <Root>
-            <Title text="Y HỌC CỔ TRUYỀN" link="/category/traditional-medicine" />
+            <Title text={title} link={link} />
             <Grid container spacing={2} sx={{ textAlign: "center", flexDirection: { xs: "column", md: "row" } }}>
                 <Grid
                     item

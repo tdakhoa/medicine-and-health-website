@@ -5,10 +5,16 @@ import AlternateCard from "./components/AlternateCard";
 import Title from "./components/Title";
 import { cardData } from "../../../constants";
 
-const AlternateSection = () => {
+interface SectionProps {
+    title: string;
+    link: string;
+    data: any;
+}
+
+const AlternateSection = ({ title, link, data }: SectionProps) => {
     return (
         <Root>
-            <Title text="BỆNH HỌC" link="/category/pathology" />
+            <Title text={title} link={link} />
             <CardContainer>
                 {cardData.map((data, id) => (
                     <AlternateCard

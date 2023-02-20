@@ -80,7 +80,7 @@ const Root = styled(Box)(({ theme }) => ({
     padding: "5% 10%",
     gap: "7%",
     justifyContent: "space-between",
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("md")]: {
         flexDirection: "column-reverse",
         alignItems: "center",
         padding: "10% 5%",
@@ -89,10 +89,13 @@ const Root = styled(Box)(({ theme }) => ({
     }
 }));
 
-const TextContainer = styled(Box)(() => ({
+const TextContainer = styled(Box)(({ theme }) => ({
     width: "100%",
     display: "flex",
     flexDirection: "column",
     alignItems: "end",
-    gap: "2rem"
+    gap: "2rem",
+    [theme.breakpoints.down("md")]: {
+        alignItems: "center"
+    }
 }));

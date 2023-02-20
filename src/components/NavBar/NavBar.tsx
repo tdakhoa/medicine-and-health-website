@@ -6,7 +6,7 @@ import { SearchOutlined, MenuOutlined, ChevronRightOutlined, KeyboardArrowUp } f
 
 import logo from "../../../public/Logo.png";
 import CategoryAccordion from "../CategoryAccordion/CategoryAccordion";
-import { MenuItems } from "../../constants";
+import { homeData } from "../../constants";
 import Typography from "../Typography/Typography";
 
 const NavBar = () => {
@@ -19,6 +19,7 @@ const NavBar = () => {
 
     const handleToggleOpen = () => {
         setOpen(open !== true);
+        document.body.style.overflow = !open ? "hidden" : "auto";
     };
 
     useEffect(() => {
@@ -38,7 +39,7 @@ const NavBar = () => {
                     </Box>
                 </Link>
                 <StyledNavContainer>
-                    {MenuItems.map((item, i) => (
+                    {homeData.map((item, i) => (
                         <NavItem trigger={trigger} key={i} content={item}></NavItem>
                     ))}
                 </StyledNavContainer>
@@ -64,10 +65,10 @@ const NavBar = () => {
                     </IconButton>
                 </AppBarMobileHeader>
                 <Divider />
-                <CategoryAccordion data={MenuItems} />
+                <CategoryAccordion data={homeData} />
             </AppBarMobile>
 
-            <Fade in={trigger}>
+            <Fade in={trigger && !open}>
                 <ScrollTop size="small" onClick={() => window.scrollTo(0, 0)}>
                     <KeyboardArrowUp />
                 </ScrollTop>
@@ -77,34 +78,23 @@ const NavBar = () => {
 };
 export default NavBar;
 
-const NavItem = ({ content = { title: [""], link: [""] }, sx = {}, trigger, ...props }: NavItemProps) => {
+const NavItem = ({ content = { title: "", link: "", item: [] }, sx = {}, trigger, ...props }: NavItemProps) => {
     return (
         <StyledNavItem trigger={trigger} {...props}>
-            <Link href={content.link[0]}>
-                <Typography component="h1">{content.title[0]}</Typography>
+            <Link href={content.link}>
+                <Typography component="h1">{content.title}</Typography>
             </Link>
-            {content.title.length > 1 ? (
-                <NavContentBox id="shadow">
-                    {content.title.map((item, i) =>
-                        i !== 0 ? (
-                            <Link key={i} href={content.link[i]}>
-                                <NavItemBox trigger={trigger} i={i} length={content.title.length - 1}>
-                                    <Typography
-                                        component="h1"
-                                        transform="uppercase"
-                                        sx={{ textAlign: "left !important" }}>
-                                        {item}
-                                    </Typography>
-                                </NavItemBox>
-                            </Link>
-                        ) : (
-                            <div key={i}></div>
-                        )
-                    )}
-                </NavContentBox>
-            ) : (
-                <></>
-            )}
+            <NavContentBox id="shadow">
+                {content.item?.map((item, i) => (
+                    <Link key={i} href={item.link}>
+                        <NavItemBox trigger={trigger} i={i} length={(content.item?.length || 0) - 1}>
+                            <Typography component="h1" transform="uppercase" sx={{ textAlign: "left !important" }}>
+                                {item.title}
+                            </Typography>
+                        </NavItemBox>
+                    </Link>
+                ))}
+            </NavContentBox>
         </StyledNavItem>
     );
 };
@@ -116,8 +106,9 @@ interface AppBarDesktopProps {
     length?: number;
 }
 interface Content {
-    title: string[];
-    link: string[];
+    title: string;
+    link: string;
+    item?: Content[];
 }
 interface NavItemProps {
     content?: Content;
@@ -298,7 +289,7 @@ const NavItemBox = styled(Box, {
         "50%": { transform: "rotateX(20deg)" },
         "100%": { transform: "rotate(0deg)", opacity: 1 }
     },
-    borderRadius: i === length ? "0px 0px 6px 6px" : i === 1 ? "0px 6px 0px 0px" : "none",
+    borderRadius: i === length ? "0px 0px 6px 6px" : i === 0 ? "0px 6px 0px 0px" : "none",
     animationDelay: `${i * 0.05}s`,
     "&:hover": {
         backgroundColor: trigger ? "#34BEE8" : "#E8E6E6"

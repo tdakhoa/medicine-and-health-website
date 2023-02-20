@@ -5,7 +5,6 @@ import {
     Accordion as MuiAccordion,
     AccordionSummary,
     AccordionDetails,
-    Box,
     List,
     ListItemButton,
     ListItemText
@@ -17,33 +16,28 @@ import Typography from "../Typography/Typography";
 const CategoryAccordion = ({ data, ...props }: CategoryAccordionProps) => {
     return (
         <List>
-            {data.map((item, index) =>
-                item.title.length == 1 ? (
-                    <Link key={index} href={item.link[0]}>
+            {data.map((e, index) =>
+                e?.item?.length == 0 ? (
+                    <Link key={index} href={e.link}>
                         <ListItemButton>
-                            <ListItemText
-                                primary={item.title[0]}
-                                sx={{ "& .MuiTypography-root": { fontWeight: 700 } }}
-                            />
+                            <ListItemText primary={e.title} sx={{ "& .MuiTypography-root": { fontWeight: 700 } }} />
                         </ListItemButton>
                     </Link>
                 ) : (
                     <Accordion key={index} disableGutters>
                         <AccordionSummary expandIcon={<ExpandMoreOutlined />}>
-                            <Link href={item.link[0]}>
-                                <Typography weight="bold">{item.title[0]}</Typography>
+                            <Link href={e.link}>
+                                <Typography weight="bold">{e.title}</Typography>
                             </Link>
                         </AccordionSummary>
                         <AccordionDetails>
-                            {item.title.map((e, i) =>
-                                i != 0 ? (
-                                    <Link key={i} href={item.link[i]}>
-                                        <ListItemButton>
-                                            <ListItemText primary={e} />
-                                        </ListItemButton>
-                                    </Link>
-                                ) : null
-                            )}
+                            {e.item?.map((e, i) => (
+                                <Link key={i} href={e.link}>
+                                    <ListItemButton>
+                                        <ListItemText primary={e.title} />
+                                    </ListItemButton>
+                                </Link>
+                            ))}
                         </AccordionDetails>
                     </Accordion>
                 )
@@ -55,8 +49,9 @@ const CategoryAccordion = ({ data, ...props }: CategoryAccordionProps) => {
 export default CategoryAccordion;
 
 interface Data {
-    title: string[];
-    link: string[];
+    title: string;
+    link: string;
+    item?: Data[];
 }
 
 interface CategoryAccordionProps {

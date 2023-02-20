@@ -7,15 +7,28 @@ import Layout from "../Layout";
 import Main from "./Main";
 import MainTitle from "./components/MainTitle";
 import { Sidebar } from "../../components";
-import { TitleLink } from "../../constants";
+import { homeData } from "../../constants";
 
 const Category = () => {
     const router = useRouter();
-    const mainTitleId = TitleLink.link.indexOf(router.asPath);
+
+    let title = "",
+        subtitle = "";
+    for (let i of homeData) {
+        if (i.link == router.asPath) title = i.title;
+        if (i.item.length > 0) {
+            for (let j of i.item) {
+                if (j.link == router.asPath) {
+                    title = j.title;
+                    subtitle = i.title;
+                }
+            }
+        }
+    }
 
     return (
         <Layout>
-            <MainTitle title={TitleLink.title[mainTitleId]} subTitle={TitleLink.subTitle[mainTitleId]} />
+            <MainTitle title={title} subTitle={subtitle} />
             <Grid container columnSpacing={2} sx={{ padding: "5% 10% 2%", flexDirection: { xs: "column", md: "row" } }}>
                 <Grid item xs={12} md={8}>
                     <Main />

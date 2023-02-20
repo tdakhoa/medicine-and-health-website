@@ -3,7 +3,7 @@ import { MenuItem, ListSubheader, Box, InputLabel, FormControl, Select } from "@
 import { SelectChangeEvent } from "@mui/material/Select";
 
 import Typography from "../Typography/Typography";
-import { MenuItems } from "../../constants";
+import { homeData } from "../../constants";
 
 const Dropdown = ({ label = "", placeholder = "", data, setData, sx = {}, ...props }: DropdownProps) => {
     const [val, setValue] = React.useState("");
@@ -30,17 +30,22 @@ const Dropdown = ({ label = "", placeholder = "", data, setData, sx = {}, ...pro
                     <MenuItem disabled value="none">
                         <em>{placeholder}</em>
                     </MenuItem>
-                    {MenuItems.map((item) =>
-                        item.title.map((e, id2) =>
-                            id2 == 0 && item.title.length > 1 ? (
-                                <ListSubheader key={id2} sx={{ fontWeight: 800 }}>
-                                    {e}
+                    {homeData.slice(1, homeData.length - 1).map((e, id) =>
+                        e.item.length > 0 ? (
+                            <>
+                                <ListSubheader key={id} sx={{ fontWeight: 800 }}>
+                                    {e.title}
                                 </ListSubheader>
-                            ) : (
-                                <MenuItem value={e} key={id2} sx={{ pl: id2 > 0 ? 6 : "auto" }}>
-                                    {e}
-                                </MenuItem>
-                            )
+                                {e.item.map((item, i) => (
+                                    <MenuItem value={e.title} key={i} sx={{ pl: 6 }}>
+                                        {item.title}
+                                    </MenuItem>
+                                ))}
+                            </>
+                        ) : (
+                            <MenuItem value={e.title} key={id}>
+                                {e.title}
+                            </MenuItem>
                         )
                     )}
                 </Select>

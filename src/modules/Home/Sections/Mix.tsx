@@ -6,12 +6,18 @@ import SimpleCard from "./components/SimpleCard";
 import Title from "./components/Title";
 import { cardData } from "../../../constants";
 
-const MixSection = () => {
+interface SectionProps {
+    title: string;
+    link: string;
+    data: any;
+}
+
+const MixSection = ({ title, link, data }: SectionProps) => {
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down("md"));
     return (
         <Root>
-            <Title text="PHÁP LUẬT Y TẾ" link="/category/medical-law" />
+            <Title text={title} link={link} />
             <CardContainer>
                 <AlternateCard
                     direction="row"

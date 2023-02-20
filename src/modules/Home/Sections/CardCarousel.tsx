@@ -42,7 +42,13 @@ const ChoosePosition = ({ index, i }: Position) => {
 
 var timer: number;
 
-const CarouselSection = () => {
+interface SectionProps {
+    title: string;
+    link: string;
+    data: any;
+}
+
+const CarouselSection = ({ title, link, data }: SectionProps) => {
     const [index, setIndex] = useState(0);
 
     const slideLeft = () => {
@@ -118,7 +124,7 @@ const CarouselSection = () => {
 
     return (
         <Root>
-            <Title sx={{ margin: { xs: 0, md: "3rem" } }} text="Thuốc" link="/category/medicine" />
+            <Title sx={{ margin: { xs: 0, md: "3rem" } }} text={title} link={link} />
             <BoxContainer>
                 <DesktopCardContainer>
                     {cardData.map((person, i) => {

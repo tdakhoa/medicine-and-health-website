@@ -1,6 +1,7 @@
 import React from "react";
 import Head from "next/head";
 import Category from "../../../src/modules/Category/Category";
+import { homeData } from "../../../src/constants";
 
 export default function HomePage() {
     return (
@@ -24,15 +25,13 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
+    const paths = [];
+    for (let i of homeData.slice(1, homeData.length - 1)) {
+        paths.push({ params: { mainCategory: i.link.slice(i.link.lastIndexOf("/") + 1, i.link.length) } });
+    }
+
     return {
-        paths: [
-            { params: { mainCategory: "traditional-medicine" } },
-            { params: { mainCategory: "medicine" } },
-            { params: { mainCategory: "cardiovascular" } },
-            { params: { mainCategory: "pathology" } },
-            { params: { mainCategory: "pharmacy-information" } },
-            { params: { mainCategory: "medical-law" } }
-        ],
+        paths: paths,
         fallback: false
     };
 }

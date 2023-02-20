@@ -23,7 +23,12 @@ const Hero = () => {
                     <Typography component="h1" size="h1" color="white" weight="extraBold">
                         SỨC KHOẺ
                     </Typography>
-                    <Typography component="h6" size="p" color="white" weight="light" sx={{ width: { xs: "80%", md: "100%" } }}>
+                    <Typography
+                        component="h6"
+                        size="p"
+                        color="white"
+                        weight="light"
+                        sx={{ width: { xs: "80%", md: "100%" } }}>
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
                         the industry's standard dummy text ever since the 1500s.
                     </Typography>

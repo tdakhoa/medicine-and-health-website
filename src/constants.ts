@@ -54,111 +54,6 @@ export const cardData = [
     }
 ];
 
-export const MenuItems = [
-    { title: ["Giới thiệu"], link: ["/introduction"] },
-    { title: ["Y học \n cổ truyền"], link: ["/category/traditional-medicine"] },
-    {
-        title: ["Thuốc", "Thuốc cấm lưu hành", "Thuốc khác"],
-        link: ["/category/medicine", "/category/medicine/non-circlating-medicine", "/category/medicine/other-medicine"]
-    },
-    { title: ["Tim mạch"], link: ["/category/cardiovascular"] },
-    {
-        title: [
-            "Bệnh học",
-            "Nha khoa",
-            "Nhi khoa",
-            "Sản khoa",
-            "Nội tiết",
-            "Ung thư",
-            "Tai - Mũi - Họng",
-            "Cơ - Xương khớp",
-            "Tâm thần",
-            "Tiêu hoá"
-        ],
-        link: [
-            "/category/pathology",
-            "/category/pathology/dental",
-            "/category/pathology/pediatric",
-            "/category/pathology/obstetric",
-            "/category/pathology/endocrinology",
-            "/category/pathology/cancer",
-            "/category/pathology/otorhinolaryngology",
-            "/category/pathology/musculoskeletal",
-            "/category/pathology/psychiatric",
-            "/category/pathology/gastroenterology"
-        ]
-    },
-    { title: ["Thông tin \n y dược"], link: ["/category/pharmacy-information"] },
-    { title: ["Pháp luật \n y tế"], link: ["/category/medical-law"] },
-    { title: ["Góc bạn đọc"], link: ["/category/for-you"] }
-];
-
-export const TitleLink = {
-    title: [
-        "Giới thiệu",
-        "Y học cổ truyền",
-        "Thuốc",
-        "Thuốc cấm lưu hành",
-        "Thuốc khác",
-        "Tim mạch",
-        "Bệnh học",
-        "Nha khoa",
-        "Nhi khoa",
-        "Sản khoa",
-        "Nội tiết",
-        "Ung thư",
-        "Tai - Mũi - Họng",
-        "Cơ - Xương khớp",
-        "Tâm thần",
-        "Tiêu hoá",
-        "Thông tin y dược",
-        "Pháp luật y tế",
-        "Góc bạn đọc"
-    ],
-    subTitle: [
-        "",
-        "",
-        "",
-        "Thuốc",
-        "Thuốc",
-        "",
-        "",
-        "Bệnh học",
-        "Bệnh học",
-        "Bệnh học",
-        "Bệnh học",
-        "Bệnh học",
-        "Bệnh học",
-        "Bệnh học",
-        "Bệnh học",
-        "Bệnh học",
-        "",
-        "",
-        ""
-    ],
-    link: [
-        "/introduction",
-        "/category/traditional-medicine",
-        "/category/medicine",
-        "/category/medicine/non-circlating-medicine",
-        "/category/medicine/other-medicine",
-        "/category/cardiovascular",
-        "/category/pathology",
-        "/category/pathology/dental",
-        "/category/pathology/pediatric",
-        "/category/pathology/obstetric",
-        "/category/pathology/endocrinology",
-        "/category/pathology/cancer",
-        "/category/pathology/otorhinolaryngology",
-        "/category/pathology/musculoskeletal",
-        "/category/pathology/psychiatric",
-        "/category/pathology/gastroenterology",
-        "/category/pharmacy-information",
-        "/category/medical-law",
-        "/category/for-you"
-    ]
-};
-
 export const cardDataPopular = [
     {
         title: "THỦ TỤC KÊ KHAI GIÁ TRANG THIẾT BỊ Y TẾ",
@@ -430,20 +325,6 @@ export const mainData = [
     ]
 ];
 
-export const links = [
-    { mainCategory: "medicine", subCategory: "non-circlating-medicine" },
-    { mainCategory: "medicine", subCategory: "other-medicine" },
-    { mainCategory: "pathology", subCategory: "dental" },
-    { mainCategory: "pathology", subCategory: "pediatric" },
-    { mainCategory: "pathology", subCategory: "obstetric" },
-    { mainCategory: "pathology", subCategory: "endocrinology" },
-    { mainCategory: "pathology", subCategory: "cancer" },
-    { mainCategory: "pathology", subCategory: "otorhinolaryngology" },
-    { mainCategory: "pathology", subCategory: "musculoskeletal" },
-    { mainCategory: "pathology", subCategory: "psychiatric" },
-    { mainCategory: "pathology", subCategory: "gastroenterology" }
-];
-
 export const questionsData = [
     {
         title: "What are the signs of a toxic relationship?",
@@ -467,16 +348,6 @@ export const faqFormData = {
     description: "HÃY ĐỂ LẠI CÂU HỎI CỦA BẠN ĐỂ CHÚNG TÔI GIẢI ĐÁP",
     img: "https://images.unsplash.com/photo-1517120026326-d87759a7b63b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
 };
-
-export const questionTitle = [
-    { title: "Y học cổ truyền" },
-    { title: "Thuốc" },
-    { title: "Tim mạch" },
-    { title: "Bệnh học" },
-    { title: "Thông tin y dược" },
-    { title: "Pháp luật y tế" },
-    { title: "Khác" }
-];
 
 export const faq = [
     {
@@ -587,4 +458,38 @@ export const postsData = [
         date: "6 Feb 2023",
         img: "https://images.unsplash.com/photo-1666214277730-e9c7e755e5a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
     }
+];
+
+export const homeData = [
+    { title: "Giới thiệu", link: "/introduction", data: [], item: [] },
+    { title: "Y học \n cổ truyền", link: "/category/traditional-medicine", data: [], item: [] },
+    {
+        title: "Thuốc",
+        link: "/category/medicine",
+        data: [],
+        item: [
+            { title: "Thuốc cấm lưu hành", link: "/category/medicine/non-circlating-medicine", data: [] },
+            { title: "Thuốc khác", link: "/category/medicine/other-medicine", data: [] }
+        ]
+    },
+    { title: "Tim mạch", link: "/category/cardiovascular", data: [], item: [] },
+    {
+        title: "Bệnh học",
+        link: "/category/pathology",
+        data: [],
+        item: [
+            { title: "Nha khoa", link: "/category/pathology/dental", data: [] },
+            { title: "Nhi khoa", link: "/category/pathology/pediatric", data: [] },
+            { title: "Sản khoa", link: "/category/pathology/obstetric", data: [] },
+            { title: "Nội tiết", link: "/category/pathology/endocrinology", data: [] },
+            { title: "Ung thư", link: "/category/pathology/cancer", data: [] },
+            { title: "Tai - Mũi - Họng", link: "/category/pathology/otorhinolaryngology", data: [] },
+            { title: "Cơ - Xương khớp", link: "/category/pathology/musculoskeletal", data: [] },
+            { title: "Tâm thần", link: "/category/pathology/psychiatric", data: [] },
+            { title: "Tiêu hoá", link: "/category/pathology/gastroenterology", data: [] }
+        ]
+    },
+    { title: "Thông tin \n y dược", link: "/category/pharmacy-information", data: [], item: [] },
+    { title: "Pháp luật \n y tế", link: "/category/medical-law", data: [], item: [] },
+    { title: "Góc bạn đọc", link: "/category/for-you", data: [], item: [] }
 ];

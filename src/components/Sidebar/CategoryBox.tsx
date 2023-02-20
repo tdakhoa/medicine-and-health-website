@@ -3,7 +3,7 @@ import { Box, styled } from "@mui/material";
 
 import Typography from "../Typography/Typography";
 import CategoryAccordion from "../CategoryAccordion/CategoryAccordion";
-import { MenuItems } from "../../constants";
+import { homeData } from "../../constants";
 
 const CategoryBox = () => {
     return (
@@ -11,7 +11,7 @@ const CategoryBox = () => {
             <Typography size="h5" weight="bold" color="secondary" format="center" transform="uppercase">
                 danh mục bài viết
             </Typography>
-            <CategoryAccordion data={MenuItems} />
+            <CategoryAccordion data={homeData} />
         </Root>
     );
 };

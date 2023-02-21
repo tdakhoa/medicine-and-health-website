@@ -58,15 +58,15 @@ const MixSection = ({ title, link, data }: SectionProps) => {
 export default MixSection;
 
 const Root = styled("div")(({ theme }) => ({
-    margin: "5% 10%",
+    margin: "0% 10%",
     [theme.breakpoints.down("md")]: {
         margin: "0% 5%",
-        marginBottom: "25%"
+        paddingTop: "5%"
     }
 }));
 
 const StyleSimpleCard = {
-    height: 400,
+    height: 300,
     textAlign: "center"
 };
 

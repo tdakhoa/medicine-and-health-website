@@ -101,7 +101,13 @@ const socialItems = [
 ];
 
 const Root = styled("div")(({ theme }) => ({
-    marginTop: "8%"
+    marginTop: "15%",
+    [theme.breakpoints.down("md")]: {
+        marginTop: "10rem"
+    },
+    [theme.breakpoints.down("sm")]: {
+        marginTop: "6rem"
+    }
 }));
 
 const SubRectangle = styled(Box)(({ theme }) => ({
@@ -146,17 +152,11 @@ const AddressContainer = styled(Box)(({ theme }) => ({
     height: "100%",
     padding: "12% 0px 0px 0px",
     width: "40%",
-    [theme.breakpoints.down("sm")]: {
-        display: "flex",
-        flexDirection: "column",
-        width: "100%",
-        paddingTop: "45%"
-    },
     [theme.breakpoints.down("md")]: {
         display: "flex",
         flexDirection: "column",
-        width: "100%",  
-        paddingTop: "20%"
+        width: "100%",
+        paddingTop: "9rem"
     }
 }));
 

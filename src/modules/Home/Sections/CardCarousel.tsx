@@ -80,7 +80,6 @@ const CarouselSection = ({ title, link, data }: SectionProps) => {
             }
             if (offset > 0 && offset < 100) {
                 card.style.left = "0";
-
                 return;
             }
             window.removeEventListener("mouseup", onPointerEnd);
@@ -167,7 +166,7 @@ interface PointerProps {
 
 const Root = styled("div")(({ theme }) => ({
     margin: "10% 5%",
-    paddingBottom: "5%"
+    paddingBottom: "2%"
 }));
 
 const BoxContainer = styled("div")(({ theme }) => ({

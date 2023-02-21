@@ -34,7 +34,7 @@ const AlternateSection = ({ title, link, data }: SectionProps) => {
 export default AlternateSection;
 
 const Root = styled("div")(({ theme }) => ({
-    margin: "5% 10%",
+    margin: "0% 10%",
     [theme.breakpoints.down("md")]: {
         margin: "0% 5%"
     }

@@ -84,6 +84,7 @@ const Root = styled(Box)(({ theme }) => ({
     flexDirection: "column",
     alignItems: "start",
     margin: "5% 10%",
+    paddingBottom: "5%",    
     [theme.breakpoints.down("sm")]: {
         margin: "5%"
     }

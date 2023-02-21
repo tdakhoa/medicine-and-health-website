@@ -77,6 +77,7 @@ const MainGrid = styled(Grid)(({ theme }) => ({
         borderRadius: "10px",
         color: "var(--palette-06)",
         "& .media-image": {
+            transition: "all .4s ease-in-out",
             width: "100%",
             height: "100%"
         },

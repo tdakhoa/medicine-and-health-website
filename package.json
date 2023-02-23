@@ -27,6 +27,7 @@
     "material-ui-popup-state": "^5.0.4",
     "next": "13.1.1",
     "notistack": "^2.0.8",
+    "pg": "^8.9.0",
     "react": "18.2.0",
     "react-avatar-edit": "^1.2.0",
     "react-dom": "18.2.0",
